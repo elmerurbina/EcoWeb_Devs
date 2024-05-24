@@ -1,0 +1,284 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del logo*/
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    color: rgb(22, 245, 22); 
+    background-color: rgb(1, 1, 17);
+}
+
+.logo .C {
+    font-size: 1.5em; 
+    margin-left: 5px;
+}
+
+
+.logo span {
+    font-size: 0.67em; 
+}
+
+span.lema {
+    color: rgb(22, 245, 22);
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+
+/* Estilos del menu */
+.menu {
+    list-style-type: none;
+    padding: 10px 0; 
+
+
+
+}
+
+.menu li {
+    display: inline;
+    margin-right: 20px;
+    
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(8, 8, 212);
+    margin-left: 50px;
+    font-size: 16px;
+}
+
+/* Estilos del hover para el menu*/
+.et_header_style_left #et-top-navigation nav > ul > li > a,
+.et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
+ padding-bottom: 15px;
+}
+#top-menu li {
+ padding-right: 5px;
+}
+#et-top-navigation {
+ padding: 20px 0 !important;
+}
+#top-menu li a {
+ background: #C1B2AB; /*** CHANGES THE BACKGROUND COLOR ***/
+ padding: 15px 20px;
+ border-radius: 3px;
+}
+#top-menu li a:hover,
+#top-menu li li a:hover {
+ color: #fff !important;
+}
+#top-menu li a:hover {
+ background: #559CAD !important; /*** CHANGES THE BACKGROUND COLOR ON HOVER ***/
+}
+#top-menu li.current-menu-item > a {
+ background: #edc77b; /*** CHANGES THE BACKGROUND COLOR OF THE CURRENT PAGE LINK ***/
+}
+#top-menu .menu-item-has-children > a:first-child:after {
+ content: none;
+}
+
+
+/* Estilos del header*/
+header {
+    background-color: skyblue;
+}
+
+
+.menu li a:hover {
+    width: 100%;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+    background-image: url('/static/imagenes/tree.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    display: flex; 
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; 
+    align-items: center; 
+    color: white; 
+}
+
+h1 {
+    font-size: 3rem; /* Tamaño de fuente del título */
+    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
+    color: #e5a72e; /* Color dorado para el título */
+}
+.resumen {
+    font-size: 0.8rem; /* Tamaño de fuente del resumen */
+    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
+    text-align: center; /* Centrar texto */
+    color: black; /* Color de texto blanco para asegurar contraste */
+    background-color: white; /* Color de fondo azul oscuro para el resumen */
+    
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+p {
+    font-size: 1.0rem; /* Tamaño de fuente de los párrafos */
+    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
+    text-align: center; /* Centrar texto */
+    color: #ffd700; /* Color dorado para los párrafos */
+    padding: 5px 10px; /* Añadir relleno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.paris {
+    background-color: #ff6f61; /* Color de fondo rosa coral para el párrafo con clase 'paris' */
+    color: #fff; /* Color de texto blanco para asegurar contraste */
+}
+
+.compendio {
+    background-color: #66cccc; /* Color de fondo azul claro para el párrafo con clase 'compendio' */
+    color: #fff; /* Color de texto blanco para asegurar contraste */
+}
+
+.proteccion {
+    background-color: #6eff91; /* Color de fondo verde claro para el párrafo con clase 'proteccion' */
+    color: #000; /* Color de texto negro para asegurar contraste */
+}
+
+
+.paris, .compendio, .proteccion {
+    text-align: center; /* Centrar texto */
+}
+
+button {
+    font-size: 1.5rem; 
+    padding: 15px 30px; 
+    margin-top: 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+#paris {
+    background-color: #0056b3;
+}
+
+#compendio {
+    background-color: #218838; 
+}
+
+#denuncia {
+    background-color: #ffc107; 
+}
+
+
+
+
+
+
+
+
+.intro {
+    padding: 20px;
+    text-align: center; /* Center the content */
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tree {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    background: 
+        linear-gradient(to bottom, #8bc34a, #4caf50), /* Tree trunk */
+        radial-gradient(circle at 60% 20%, #8bc34a 10%, transparent 10%),
+        radial-gradient(circle at 40% 20%, #8bc34a 10%, transparent 10%),
+        radial-gradient(circle at 50% 0, #8bc34a 20%, transparent 20%),
+        radial-gradient(circle at 50% 10%, #8bc34a 20%, transparent 20%),
+        radial-gradient(circle at 50% 20%, #8bc34a 30%, transparent 30%),
+        radial-gradient(circle at 50% 30%, #8bc34a 40%, transparent 40%),
+        radial-gradient(circle at 50% 40%, #8bc34a 50%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #8bc34a 60%, transparent 60%),
+        radial-gradient(circle at 50% 60%, #8bc34a 70%, transparent 70%),
+        radial-gradient(circle at 50% 70%, #8bc34a 80%, transparent 80%),
+        radial-gradient(circle at 50% 80%, #8bc34a 90%, transparent 90%);
+    border-radius: 0 0 20px 20px;
+}
+
+.intro-content {
+    padding-top: 120px; /* Adjust the padding to align text properly */
+}
+
+.intro h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.intro button {
+    padding: 15px 30px; /* Increased padding */
+    font-size: 16px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.intro hr {
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.dynamic-summary {
+    background-color: #f9f9f9; /* Background color for content sections */
+    padding: 40px;
+    margin-top: 40px;
+    text-align: center; /* Center content */
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    background-color: #81c784; /* Color palette related to forests */
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.forum {
+    background-color: #4caf50; /* Color palette related to forests */
+    padding: 20px;
+    margin-left: 20px; /* Add margin for spacing */
+}
+
+.actions button, .forum button {
+    padding: 15px 30px; /* Increased padding */
+    font-size: 16px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
