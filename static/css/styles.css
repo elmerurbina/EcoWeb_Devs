@@ -133,7 +133,6 @@ p {
     font-size: 1.0rem; 
     margin-bottom: 20px;
     text-align: center; 
-    color: #ffd700; 
     padding: 5px 10px; 
     border-radius: 5px; 
 }
@@ -218,19 +217,25 @@ button {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
+    display: flex; /* Use Flexbox layout */
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: space-between; /* Space items evenly along the main axis */
 }
 
 .causes-consequences h2 {
     color: #333;
+    margin-bottom: 20px;
 }
 
-.causes-consequences h3 {
-    color: #555;
+
+.summary {
+    display: flex; /* Use Flexbox layout for summary buttons */
 }
 
 .btn {
     padding: 5px;
     margin-right: 10px;
+    margin-top: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -246,21 +251,31 @@ button {
     color: #fff;
 }
 
+.content {
+    display: flex; /* Use Flexbox layout for content */
+}
+
 .causes,
 .consequences {
     flex: 1; /* Take up equal space within the flex container */
     margin-right: 20px; /* Add some spacing between causes and consequences */
 }
 
+.causes ul, .consequences ul {
+    list-style-type: none;
+    padding: 0;
+}
 
+
+/* Estilos de la seccion de adaptacion y mitigacion*/
 .mitigation-adaptation {
-    background-color: #f9f9f9;
+    background-color: #ecf0f1; /* Light gray background color */
     padding: 20px;
     border-radius: 10px;
 }
 
 .mitigation-adaptation h2 {
-    color: #333;
+    color: #2c3e50; /* Dark blue text color */
 }
 
 .mitigation-adaptation h3 {
@@ -280,13 +295,13 @@ button {
 }
 
 .btn.mitigation-summary {
-    background-color: #e74c3c; /* Red color for "Mitigación" summary button */
-    color: #fff;
+    background-color: #27ae60; /* Green color for "Mitigación" summary button */
+    color: #fff; /* White text color */
 }
 
 .btn.adaptation-summary {
-    background-color: #3498db; /* Blue color for "Adaptación" summary button */
-    color: #fff;
+    background-color: #9b59b6; /* Purple color for "Adaptación" summary button */
+    color: #fff; /* White text color */
 }
 
 .content {
@@ -299,35 +314,41 @@ button {
     margin-right: 20px;
 }
 
-
-
-.dynamic-summary {
-    background-color: #f9f9f9; /* Background color for content sections */
-    padding: 40px;
-    margin-top: 40px;
-    text-align: center; /* Center content */
-}
-
 .actions {
     display: flex;
-    justify-content: space-between;
-    background-color: #81c784; /* Color palette related to forests */
-    padding: 20px;
-    margin-top: 40px;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically if needed */
+  
 }
 
-.forum {
-    background-color: #4caf50; /* Color palette related to forests */
+.actions button {
+    width: 40%;
     padding: 20px;
-    margin-left: 20px; /* Add margin for spacing */
-}
-
-.actions button, .forum button {
-    padding: 15px 30px; /* Increased padding */
-    font-size: 16px;
-    background-color: #007bff; /* Button color */
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 25px;
+    background-color: #119ec2;
+    
+}
+
+.mitigation-list {
+    display: none; /* Hide the mitigation actions by default */
+    background-color: #f9f9f9; /* Light gray background color */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.mitigation-action:hover .mitigation-list {
+    display: block; /* Show the mitigation actions on hover */
+}
+
+
+footer {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    background-color: rgb(1, 1, 17);
+    color: rgb(22, 245, 22); 
 }

@@ -6,6 +6,9 @@
     <title>Clima sostenible</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
 
 </head>
 <body>
@@ -20,6 +23,7 @@
             <ul id="top-menu" class="menu">
                 <li class="current-menu-item"><a href="#">Empresas Sostenibles</a></li>
                 <li class="current-menu-item"><a href="#">Campañas</a></li>
+                <li class="current-menu-item"><a href="#">Foro</a></li>
                 <li class="current-menu-item"><a href="#">Ayuda</a></li>
             </ul>
         </nav>
@@ -50,34 +54,30 @@
     </section>
     
     <section class="causes-consequences">
-        <h2>Causas y consecuencias</h2>
-        <div class="summary">
-           
-        </div>
+        
         <div class="causes">
-    
             <button class="btn cause-summary">Causas del cambio climático</button>
             <ul>
-                <li>Emisiones de gases de efecto invernadero</li>
-                <li>Deforestación</li>
-                <li>Uso de combustibles fósiles</li>
+                <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li>
+                <li><i class="fas fa-tree"></i> Deforestación</li>
+                <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li>
             </ul>
         </div>
         <div class="consequences">
             <button class="btn consequence-summary">Consecuencias del cambio climático</button>
             <ul>
-                <li>Derretimiento de los casquetes polares</li>
-                <li>Aumento del nivel del mar</li>
-                <li>Alteración de los patrones de precipitación</li>
-                <li>sequías</li>
-                <li>Inundaciones</li>
-                <li>fenómenos naturales mas fuertes</li>
+                <li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li>
+                <li><i class="fas fa-water"></i> Aumento del nivel del mar</li>
+                <li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li>
+                <li><i class="fas fa-sun"></i> Sequías</li>
+                <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li>
             </ul>
         </div>
     </section>
     
+    
     <section class="mitigation-adaptation">
-        <h2>Mitigación y adaptación</h2>
+        <h2>Mitigación y adaptación </h2>
         <div class="summary">
             
           
@@ -98,10 +98,25 @@
     
 
     <section class="actions">
-        <button class="mitigation-action">Acciones de Mitigación</button>
-        <button class="forum-action">Foro</button>
+        <button class="mitigation-action">
+            Acciones de Mitigación
+            <div class="mitigation-list">
+                <p><i class="fas fa-sun"></i> Fomentar el uso de energías renovables, como la solar y la eólica.</p>
+                <p><i class="fas fa-lightbulb"></i> Reducir el consumo de energía en el hogar mediante la eficiencia energética y el uso de electrodomésticos de bajo consumo.</p>
+                <p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p>
+                <p><i class="fas fa-leaf"></i> Implementar prácticas agrícolas sostenibles, como la rotación de cultivos y la agricultura regenerativa.</p>
+                <p><i class="fas fa-tree"></i> Conservar y restaurar los ecosistemas naturales, como los bosques y humedales, que actúan como sumideros de carbono.</p>
+                <p><i class="fas fa-carrot"></i> Adoptar dietas más sostenibles, reduciendo el consumo de carne y productos lácteos.</p>
+                <p><i class="fas fa-recycle"></i> Fomentar la reutilización, el reciclaje y la reducción de residuos.</p>
+                <p><i class="fas fa-globe"></i> Apoyar políticas y regulaciones que limiten las emisiones de gases de efecto invernadero en industrias y sectores clave.</p>
+                <p><i class="fas fa-graduation-cap"></i> Promover la educación y la conciencia pública sobre el cambio climático y la importancia de la acción individual y colectiva.</p>
+                <p><i class="fas fa-cloud-upload-alt"></i> Invertir en tecnologías de captura y almacenamiento de carbono para reducir las emisiones de CO2.</p>
+            </div>
+        </button>
     </section>
-
+    
+    
+    <footer>Clima sostenible para una vida digna!</footer>
    
 </body>
 </html>
