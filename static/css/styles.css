@@ -86,16 +86,17 @@ span.lema {
 }
 
 
+.menu li a:hover {
+    width: 100%;
+}
+
 /* Estilos del header*/
 header {
     background-color: skyblue;
 }
 
 
-.menu li a:hover {
-    width: 100%;
-}
-
+/* Estilos de la seccion principal */
 .main {
     position: relative;
     width: 100%;
@@ -106,50 +107,50 @@ header {
     background-position: center;
     background-repeat: no-repeat; 
     display: flex; 
-    flex-direction: column; /* Alineación vertical */
+    flex-direction: column;
     justify-content: center; 
     align-items: center; 
     color: white; 
 }
 
 h1 {
-    font-size: 3rem; /* Tamaño de fuente del título */
-    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
-    color: #e5a72e; /* Color dorado para el título */
+    font-size: 3rem; 
+    margin-bottom: 20px; 
+    color: #e5a72e; 
 }
 .resumen {
-    font-size: 0.8rem; /* Tamaño de fuente del resumen */
-    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
-    text-align: center; /* Centrar texto */
-    color: black; /* Color de texto blanco para asegurar contraste */
-    background-color: white; /* Color de fondo azul oscuro para el resumen */
+    font-size: 0.8rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+    color: black; 
+    background-color: white; 
     
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px; 
 }
 
 
 p {
-    font-size: 1.0rem; /* Tamaño de fuente de los párrafos */
-    margin-bottom: 20px; /* Espacio inferior para separar del siguiente elemento */
-    text-align: center; /* Centrar texto */
-    color: #ffd700; /* Color dorado para los párrafos */
-    padding: 5px 10px; /* Añadir relleno */
-    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.0rem; 
+    margin-bottom: 20px;
+    text-align: center; 
+    color: #ffd700; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
 }
 
 .paris {
-    background-color: #ff6f61; /* Color de fondo rosa coral para el párrafo con clase 'paris' */
-    color: #fff; /* Color de texto blanco para asegurar contraste */
+    background-color: #ff6f61; 
+    color: #fff; 
 }
 
 .compendio {
-    background-color: #66cccc; /* Color de fondo azul claro para el párrafo con clase 'compendio' */
-    color: #fff; /* Color de texto blanco para asegurar contraste */
+    background-color: #66cccc; 
+    color: #fff; 
 }
 
 .proteccion {
-    background-color: #6eff91; /* Color de fondo verde claro para el párrafo con clase 'proteccion' */
-    color: #000; /* Color de texto negro para asegurar contraste */
+    background-color: #6eff91; 
+    color: #000; 
 }
 
 
@@ -179,78 +180,126 @@ button {
 }
 
 
+.climate-change {
+    background-color: #f2f2f2; /* Background color for the section */
+    padding: 20px; /* Padding around the section content */
+    border-radius: 10px; /* Rounded corners for the section */
+}
+
+.climate-change h2 {
+    color: #333; /* Color for the section heading */
+}
+
+.climate-change p {
+    color: #666; /* Color for the section paragraph */
+}
+
+.btn {
+    padding: 5px; /* Padding for the buttons */
+    margin-right: 10px; /* Margin between the buttons */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.btn.conocer-mas {
+    background-color: #3498db; /* Blue color for "Conocer más" button */
+    color: #fff; /* Text color for "Conocer más" button */
+}
+
+.btn.acceder-cursos {
+    background-color: #2ecc71; /* Green color for "Acceder a cursos gratuitos" button */
+    color: #fff; /* Text color for "Acceder a cursos gratuitos" button */
+}
 
 
 
-
-
-
-.intro {
+.causes-consequences {
+    background-color: #f9f9f9;
     padding: 20px;
-    text-align: center; /* Center the content */
-    position: relative;
+    border-radius: 10px;
 }
 
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.causes-consequences h2 {
+    color: #333;
 }
 
-.tree {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px; /* Adjust width as needed */
-    height: 400px; /* Adjust height as needed */
-    background: 
-        linear-gradient(to bottom, #8bc34a, #4caf50), /* Tree trunk */
-        radial-gradient(circle at 60% 20%, #8bc34a 10%, transparent 10%),
-        radial-gradient(circle at 40% 20%, #8bc34a 10%, transparent 10%),
-        radial-gradient(circle at 50% 0, #8bc34a 20%, transparent 20%),
-        radial-gradient(circle at 50% 10%, #8bc34a 20%, transparent 20%),
-        radial-gradient(circle at 50% 20%, #8bc34a 30%, transparent 30%),
-        radial-gradient(circle at 50% 30%, #8bc34a 40%, transparent 40%),
-        radial-gradient(circle at 50% 40%, #8bc34a 50%, transparent 50%),
-        radial-gradient(circle at 50% 50%, #8bc34a 60%, transparent 60%),
-        radial-gradient(circle at 50% 60%, #8bc34a 70%, transparent 70%),
-        radial-gradient(circle at 50% 70%, #8bc34a 80%, transparent 80%),
-        radial-gradient(circle at 50% 80%, #8bc34a 90%, transparent 90%);
-    border-radius: 0 0 20px 20px;
+.causes-consequences h3 {
+    color: #555;
 }
 
-.intro-content {
-    padding-top: 120px; /* Adjust the padding to align text properly */
-}
-
-.intro h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.intro p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.intro button {
-    padding: 15px 30px; /* Increased padding */
-    font-size: 16px;
-    background-color: #007bff; /* Button color */
-    color: white;
+.btn {
+    padding: 5px;
+    margin-right: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
-.intro hr {
-    border: none;
-    border-top: 1px solid #ccc;
+.btn.cause-summary {
+    background-color: #e74c3c; /* Red color for "Causas" summary button */
+    color: #fff;
 }
+
+.btn.consequence-summary {
+    background-color: #3498db; /* Blue color for "Consecuencias" summary button */
+    color: #fff;
+}
+
+.causes,
+.consequences {
+    flex: 1; /* Take up equal space within the flex container */
+    margin-right: 20px; /* Add some spacing between causes and consequences */
+}
+
+
+.mitigation-adaptation {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mitigation-adaptation h2 {
+    color: #333;
+}
+
+.mitigation-adaptation h3 {
+    color: #555;
+}
+
+.summary {
+    display: flex;
+}
+
+.btn {
+    padding: 5px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.mitigation-summary {
+    background-color: #e74c3c; /* Red color for "Mitigación" summary button */
+    color: #fff;
+}
+
+.btn.adaptation-summary {
+    background-color: #3498db; /* Blue color for "Adaptación" summary button */
+    color: #fff;
+}
+
+.content {
+    display: flex;
+}
+
+.mitigation,
+.adaptation {
+    flex: 1;
+    margin-right: 20px;
+}
+
+
 
 .dynamic-summary {
     background-color: #f9f9f9; /* Background color for content sections */
