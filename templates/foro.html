@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='for.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Foro</h1>
+       
+    </header>
+    <main>
+        <h2>Bienvenido al foro</h2>
+        <p>Aquí puedes discutir temas relacionados con el clima sostenible y compartir tus ideas con la comunidad.</p>
+        <button onclick="location.href='{{ url_for('open_debate') }}'">Abrir Nuevo Debate</button>
+        <button onclick="location.href='{{ url_for('view_conversations') }}'">Ver Conversaciones</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Clima Sostenible</p>
+    </footer>
+</body>
+</html>

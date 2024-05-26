@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión y Crear Cuenta</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sistemaAutenticacion.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form sign-in-container">
+            <h1>Iniciar Sesión</h1>
+            <form action="#" method="post">
+                <input type="email" id="login-correo" name="login-correo" placeholder="Correo" required>
+                <input type="password" id="login-password" name="login-password" placeholder="Contraseña" required>
+                <input type="submit" value="Iniciar Sesión">
+                <a class="no-account">¿No tienes una cuenta? Regístrate</a>
+            </form>
+        </div>
+        <div class="form sign-up-container">
+            <h1>Crear Cuenta</h1>
+            <form action="#" method="post">
+                <input type="text" id="register-nombre" name="register-nombre" placeholder="Nombre" required>
+                <input type="email" id="register-correo" name="register-correo" placeholder="Correo" required>
+                <input type="password" id="register-password" name="register-password" placeholder="Contraseña" required>
+                <input type="password" id="register-confirm-password" name="register-confirm-password" placeholder="Confirmar Contraseña" required>
+                <input type="submit" value="Crear Cuenta">
+                <a class="ok-account">¿Ya tienes una cuenta? Inicia Sesión</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/autenticacion.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campañas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='campanias.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Campañas</h1>
+        
+    </header>
+    <main>
+        <h2>Bienvenido a la sección de campañas</h2>
+        <p>Aquí puedes encontrar información sobre nuestras campañas actuales y cómo puedes participar.</p>
+        <button onclick="location.href='{{ url_for('create_campania') }}'">Crear Campaña</button>
+        <button onclick="location.href='{{ url_for('view_campanias') }}'">Ver Campañas</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Clima Sostenible</p>
+    </footer>
+</body>
+</html>
