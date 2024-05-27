@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 
-/* Estilos del logo*/
+/* Estilos del logo */
 .logo {
     font-size: 24px;
     font-weight: bold;
@@ -12,18 +12,17 @@ body {
     position: relative;
     cursor: pointer;
     padding: 5px;
-    color: rgb(22, 245, 22); 
+    color: rgb(22, 245, 22);
     background-color: rgb(1, 1, 17);
 }
 
 .logo .C {
-    font-size: 1.5em; 
+    font-size: 1.5em;
     margin-left: 5px;
 }
 
-
 .logo span {
-    font-size: 0.67em; 
+    font-size: 0.67em;
 }
 
 span.lema {
@@ -32,20 +31,16 @@ span.lema {
     margin-right: 500px;
 }
 
-
-/* Estilos del menu */
+/* Estilos del menú */
 .menu {
     list-style-type: none;
-    padding: 10px 0; 
-
-
-
+    padding: 10px 0;
+    text-align: center;
 }
 
 .menu li {
     display: inline;
     margin-right: 20px;
-    
 }
 
 .menu li a {
@@ -55,115 +50,118 @@ span.lema {
     font-size: 16px;
 }
 
-/* Estilos del hover para el menu*/
+/* Estilos del hover para el menú */
 .et_header_style_left #et-top-navigation nav > ul > li > a,
 .et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
- padding-bottom: 15px;
-}
-#top-menu li {
- padding-right: 5px;
-}
-#et-top-navigation {
- padding: 20px 0 !important;
-}
-#top-menu li a {
- background: #C1B2AB; /*** CHANGES THE BACKGROUND COLOR ***/
- padding: 15px 20px;
- border-radius: 3px;
-}
-#top-menu li a:hover,
-#top-menu li li a:hover {
- color: #fff !important;
-}
-#top-menu li a:hover {
- background: #559CAD !important; /*** CHANGES THE BACKGROUND COLOR ON HOVER ***/
-}
-#top-menu li.current-menu-item > a {
- background: #edc77b; /*** CHANGES THE BACKGROUND COLOR OF THE CURRENT PAGE LINK ***/
-}
-#top-menu .menu-item-has-children > a:first-child:after {
- content: none;
+    padding-bottom: 15px;
 }
 
+#top-menu li {
+    padding-right: 5px;
+}
+
+#et-top-navigation {
+    padding: 20px 0 !important;
+}
+
+#top-menu li a {
+    background: #C1B2AB; /* Cambia el color de fondo */
+    padding: 15px 20px;
+    border-radius: 3px;
+}
+
+#top-menu li a:hover,
+#top-menu li li a:hover {
+    color: #fff !important;
+}
+
+#top-menu li a:hover {
+    background: #559CAD !important; /* Cambia el color de fondo al hacer hover */
+}
+
+#top-menu li.current-menu-item > a {
+    background: #edc77b; /* Cambia el color de fondo del enlace de la página actual */
+}
+
+#top-menu .menu-item-has-children > a:first-child:after {
+    content: none;
+}
 
 .menu li a:hover {
     width: 100%;
 }
 
-/* Estilos del header*/
+/* Estilos del header */
 header {
     background-color: skyblue;
 }
 
-
-/* Estilos de la seccion principal */
+/* Estilos de la sección principal */
 .main {
     position: relative;
     width: 100%;
-    height: 100vh; 
+    height: 100vh;
     overflow: hidden;
     background-image: url('/static/imagenes/tree.jpg');
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; 
-    display: flex; 
+    background-repeat: no-repeat;
+    display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    color: white; 
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 h1 {
-    font-size: 3rem; 
-    margin-bottom: 20px; 
-    color: #e5a72e; 
-}
-.resumen {
-    font-size: 0.8rem; 
-    margin-bottom: 20px; 
-    text-align: center; 
-    color: black; 
-    background-color: white; 
-    
-    border-radius: 10px; 
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e5a72e;
 }
 
+.resumen {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
 
 p {
-    font-size: 1.0rem; 
+    font-size: 1rem;
     margin-bottom: 20px;
-    text-align: center; 
-    padding: 5px 10px; 
-    border-radius: 5px; 
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .paris {
-    background-color: #ff6f61; 
-    color: #fff; 
+    background-color: #ff6f61;
+    color: #fff;
 }
 
 .compendio {
-    background-color: #66cccc; 
-    color: #fff; 
+    background-color: #66cccc;
+    color: #fff;
 }
 
 .proteccion {
-    background-color: #6eff91; 
-    color: #000; 
+    background-color: #6eff91;
+    color: #000;
 }
-
 
 .paris, .compendio, .proteccion {
     text-align: center; /* Centrar texto */
 }
 
 button {
-    font-size: 1.5rem; 
-    padding: 15px 30px; 
-    margin-top: 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #paris {
@@ -171,55 +169,54 @@ button {
 }
 
 #compendio {
-    background-color: #218838; 
+    background-color: #218838;
 }
 
 #denuncia {
-    background-color: #ffc107; 
+    background-color: #ffc107;
 }
 
-
+/* Sección de cambio climático */
 .climate-change {
-    background-color: #f2f2f2; /* Background color for the section */
-    padding: 20px; /* Padding around the section content */
-    border-radius: 10px; /* Rounded corners for the section */
+    background-color: #f2f2f2; /* Color de fondo de la sección */
+    padding: 20px; /* Espaciado alrededor del contenido de la sección */
+    border-radius: 10px; /* Esquinas redondeadas para la sección */
 }
 
 .climate-change h2 {
-    color: #333; /* Color for the section heading */
+    color: #333; /* Color del título de la sección */
 }
 
 .climate-change p {
-    color: #666; /* Color for the section paragraph */
+    color: #666; /* Color del párrafo de la sección */
 }
 
 .btn {
-    padding: 5px; /* Padding for the buttons */
-    margin-right: 10px; /* Margin between the buttons */
-    border: none; /* Remove button border */
-    border-radius: 5px; /* Rounded corners for the buttons */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    padding: 5px; /* Espaciado de los botones */
+    margin-right: 10px; /* Espaciado entre los botones */
+    border: none; /* Eliminar el borde del botón */
+    border-radius: 5px; /* Esquinas redondeadas para los botones */
+    cursor: pointer; /* Cambiar el cursor a puntero al pasar sobre el botón */
 }
 
 .btn.conocer-mas {
-    background-color: #3498db; /* Blue color for "Conocer más" button */
-    color: #fff; /* Text color for "Conocer más" button */
+    background-color: #3498db; /* Color azul para el botón "Conocer más" */
+    color: #fff; /* Color del texto del botón "Conocer más" */
 }
 
 .btn.acceder-cursos {
-    background-color: #2ecc71; /* Green color for "Acceder a cursos gratuitos" button */
-    color: #fff; /* Text color for "Acceder a cursos gratuitos" button */
+    background-color: #2ecc71; /* Color verde para el botón "Acceder a cursos gratuitos" */
+    color: #fff; /* Color del texto del botón "Acceder a cursos gratuitos" */
 }
 
-
-
+/* Sección de causas y consecuencias */
 .causes-consequences {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    display: flex; /* Use Flexbox layout */
-    flex-direction: row; /* Arrange items in a row */
-    justify-content: space-between; /* Space items evenly along the main axis */
+    display: flex; /* Usar diseño Flexbox */
+    flex-direction: row; /* Disponer los elementos en una fila */
+    justify-content: space-between; /* Espaciar los elementos de manera uniforme a lo largo del eje principal */
 }
 
 .causes-consequences h2 {
@@ -227,9 +224,8 @@ button {
     margin-bottom: 20px;
 }
 
-
 .summary {
-    display: flex; /* Use Flexbox layout for summary buttons */
+    display: flex; /* Usar diseño Flexbox para los botones de resumen */
 }
 
 .btn {
@@ -242,23 +238,23 @@ button {
 }
 
 .btn.cause-summary {
-    background-color: #e74c3c; /* Red color for "Causas" summary button */
+    background-color: #e74c3c; /* Color rojo para el botón de resumen de "Causas" */
     color: #fff;
 }
 
 .btn.consequence-summary {
-    background-color: #3498db; /* Blue color for "Consecuencias" summary button */
+    background-color: #3498db; /* Color azul para el botón de resumen de "Consecuencias" */
     color: #fff;
 }
 
 .content {
-    display: flex; /* Use Flexbox layout for content */
+    display: flex; /* Usar diseño Flexbox para el contenido */
 }
 
 .causes,
 .consequences {
-    flex: 1; /* Take up equal space within the flex container */
-    margin-right: 20px; /* Add some spacing between causes and consequences */
+    flex: 1; /* Ocupan igual espacio dentro del contenedor flex */
+    margin-right: 20px; /* Espaciado entre causas y consecuencias */
 }
 
 .causes ul, .consequences ul {
@@ -266,16 +262,15 @@ button {
     padding: 0;
 }
 
-
-/* Estilos de la seccion de adaptacion y mitigacion*/
+/* Sección de adaptación y mitigación */
 .mitigation-adaptation {
-    background-color: #ecf0f1; /* Light gray background color */
+    background-color: #ecf0f1; /* Color de fondo gris claro */
     padding: 20px;
     border-radius: 10px;
 }
 
 .mitigation-adaptation h2 {
-    color: #2c3e50; /* Dark blue text color */
+    color: #2c3e50; /* Color de texto azul oscuro */
 }
 
 .mitigation-adaptation h3 {
@@ -295,13 +290,13 @@ button {
 }
 
 .btn.mitigation-summary {
-    background-color: #27ae60; /* Green color for "Mitigación" summary button */
-    color: #fff; /* White text color */
+    background-color: #27ae60; /* Color verde para el botón de resumen de "Mitigación" */
+    color: #fff; /* Color de texto blanco */
 }
 
 .btn.adaptation-summary {
-    background-color: #9b59b6; /* Purple color for "Adaptación" summary button */
-    color: #fff; /* White text color */
+    background-color: #9b59b6; /* Color púrpura para el botón de resumen de "Adaptación" */
+    color: #fff; /* Color de texto blanco */
 }
 
 .content {
@@ -314,11 +309,11 @@ button {
     margin-right: 20px;
 }
 
+/* Sección de acciones */
 .actions {
     display: flex;
-    justify-content: center; /* Center the button horizontally */
-    align-items: center; /* Center the button vertically if needed */
-  
+    justify-content: center; /* Centrar el botón horizontalmente */
+    align-items: center; /* Centrar el botón verticalmente si es necesario */
 }
 
 .actions button {
@@ -329,20 +324,18 @@ button {
     cursor: pointer;
     font-size: 25px;
     background-color: #119ec2;
-    
 }
 
 .mitigation-list {
-    display: none; /* Hide the mitigation actions by default */
-    background-color: #f9f9f9; /* Light gray background color */
+    display: none; /* Ocultar las acciones de mitigación por defecto */
+    background-color: #f9f9f9; /* Color de fondo gris claro */
     padding: 10px;
     border-radius: 5px;
 }
 
 .mitigation-action:hover .mitigation-list {
-    display: block; /* Show the mitigation actions on hover */
+    display: block; /* Mostrar las acciones de mitigación al pasar el cursor */
 }
-
 
 footer {
     margin-top: 50px;
@@ -350,5 +343,5 @@ footer {
     font-size: 16px;
     text-align: center;
     background-color: rgb(1, 1, 17);
-    color: rgb(22, 245, 22); 
+    color: rgb(22, 245, 22);
 }

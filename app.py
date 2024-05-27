@@ -7,6 +7,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/ep')
+def ep():
+    return render_template('empresasSostenibles.html')
+
+
+
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
 app.add_url_rule('/foro', 'foro', foro)

@@ -8,10 +8,10 @@ app.secret_key = 'your_secret_key'
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        nombre = request.form['nombre']
-        correo = request.form['correo']
-        contrasenia = request.form['contrasenia']
-        confirmar_contrasenia = request.form['confirmar_contrasenia']
+        nombre = request.form['register-nombre']
+        correo = request.form['register-correo']
+        contrasenia = request.form['register-password']
+        confirmar_contrasenia = request.form['register-confirm-password']
 
         if contrasenia != confirmar_contrasenia:
             flash("Las contraseñas no coinciden")
@@ -25,14 +25,14 @@ def register():
         register_user(nombre, correo, contrasenia)
         flash("Usuario registrado exitosamente")
         return redirect(url_for('login'))
-    return render_template('register.html')
+    return render_template('autenticacion.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        correo = request.form['correo']
-        contrasenia = request.form['contrasenia']
+        correo = request.form['login-correo']
+        contrasenia = request.form['login-password']
         user = check_login(correo, contrasenia)
 
         if user:
