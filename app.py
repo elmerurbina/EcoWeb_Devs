@@ -66,5 +66,9 @@ def inundaciones():
 def ayuda():
     return render_template('ayuda.html')
 
+@app.route('/sostenibilidad')
+def sostenibilidad():
+    return render_template('sostenibilidad.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
