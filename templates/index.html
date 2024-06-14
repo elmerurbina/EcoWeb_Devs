@@ -24,7 +24,7 @@
                 <li class="current-menu-item"><a href="{{url_for('ep')}}">Empresas Sostenibles</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('login')}}">Campañas</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('login')}}">Foro</a></li>
-                <li class="current-menu-item"><a href="">Publicaciones</a></li>
+                <li class="current-menu-item"><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
                 <li class="current-menu-item"><a href="#">Ayuda</a></li>
             </ul>
         </nav>
@@ -60,19 +60,19 @@
         <div class="causes">
             <button class="btn cause-summary">Causas del cambio climático</button>
             <ul>
-                <a href="#"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
+                <a href="{{url_for('gei')}}"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
                 <a href="{{url_for('deforestacion')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
-                <a href="#"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
+                <a href="{{url_for('cf')}}"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
             </ul>
         </div>
         <div class="consequences">
             <button class="btn consequence-summary">Consecuencias del cambio climático</button>
             <ul>
-                <a href="#"><li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li></a>
-                <a href="#"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
-                <a href="#"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
-               <a href="#"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
-               <a href="#">  <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li> </a>
+                <a href="{{url_for('dcp')}}"><li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li></a>
+                <a href="{{url_for('anm')}}"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
+                <a href="{{url_for('alpp')}}"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
+               <a href="{{url_for('sequias')}}"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
+               <a href="{{url_for('inundaciones')}}">  <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li> </a>
             </ul>
         </div>
     </section>

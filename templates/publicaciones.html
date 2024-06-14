@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/publicaciones.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Publicaciones</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Patrocinar Publicación</a></li>
+                <li><a href="#">Enviar Publicación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Lista de Publicaciones</h2>
+            <ul>
+                <li>
+                    <h3>Cambio Climático y Deforestación</h3>
+                    <p>Este artículo explora cómo la deforestación afecta al cambio climático, incluyendo sus causas, consecuencias a corto y largo plazo, y medidas de mitigación.</p>
+                    <p><a href="{{url_for ('deforestacion')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Impacto del Aumento del Nivel del Mar</h3>
+                    <p>Analiza cómo el aumento del nivel del mar afecta a las comunidades costeras y los ecosistemas marinos, con referencias a estudios y medidas de adaptación.</p>
+                    <p><a href="{{url_for('anm')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>El Fenómeno de El Niño</h3>
+                    <p>Explicación detallada sobre cómo funciona El Niño, sus impactos en el clima global y ejemplos de eventos históricos.</p>
+                    <p><a href="{{url_for('sequias')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>La Niña y sus Efectos</h3>
+                    <p>Análisis de La Niña, sus características opuestas a El Niño y cómo influye en los patrones climáticos a nivel mundial.</p>
+                    <p><a href="{{url_for('inundaciones')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Alteración de los Patrones de Precipitación</h3>
+                    <p>Descripción de cómo los cambios en los patrones de precipitación afectan el clima regional y global, con ejemplos y consecuencias a largo plazo.</p>
+                    <p><a href="{{url_for('alpp')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Sequías: Causas y Consecuencias</h3>
+                    <p>Análisis de las causas de las sequías y cómo afectan a las regiones afectadas, con un enfoque en las medidas de mitigación y adaptación.</p>
+                    <p><a href="{{url_for('sequias')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Inundaciones y El Fenómeno de La Niña</h3>
+                    <p>Explicación de cómo La Niña influye en la frecuencia e intensidad de las inundaciones en diversas regiones, con estudios de caso y medidas preventivas.</p>
+                    <p><a href="{{url_for('inundaciones')}}">Continuar leyendo</a></p>
+
+                </li>
+                <h3>Derretimiento de los Casquetes Polares</h3>
+                    <p>Análisis del impacto del derretimiento de los casquetes polares en el aumento del nivel del mar y el cambio climático global.</p>
+                    <p><a href="{{url_for('dcp')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Emisiones de Gases de Efecto Invernadero</h3>
+                    <p>Exploración de cómo las emisiones de gases de efecto invernadero contribuyen al calentamiento global y sus efectos en el clima y el medio ambiente.</p>
+                    <p><a href="{{url_for('gei')}}">Continuar leyendo</a></p>
+                </li>
+                <li>
+                    <h3>Uso de Combustibles Fósiles</h3>
+                    <p>Impacto ambiental del uso de combustibles fósiles en el cambio climático, incluyendo alternativas y políticas de mitigación.</p>
+                    <p><a href="{{url_for('cf')}}">Continuar leyendo</a></p>
+                </li>
+               
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Publicaciones Ambientales. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
