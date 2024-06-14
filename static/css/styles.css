@@ -372,7 +372,8 @@ footer {
     text-align: justify; /* Justificar el texto del párrafo */
     margin-bottom: 20px; /* Espaciado inferior del párrafo */
 }
+
+
  a :hover {
-    color: #2ecc71; 
-   
+    color: #45a049; 
  }

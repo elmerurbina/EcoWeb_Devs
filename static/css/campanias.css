@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1abc9c; /* Green color for the header */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-crear-campaña {
+    background-color: #28a745; /* Green button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-crear-campaña i {
+    margin-right: 8px;
+}
+
+.btn-crear-campaña:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#campañas-disponibles {
+    text-align: left;
+}
+
+#campañas-disponibles h2 {
+    color: #333;
+}
+
+.campaña-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f5f5f5;
+    border-left: 5px solid #1abc9c; /* Green border for campaign items */
+    border-radius: 5px;
+}
+
+.campaña-item h3 {
+    margin-top: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #1abc9c;
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

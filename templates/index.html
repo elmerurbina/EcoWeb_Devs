@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 </head>
@@ -22,14 +22,13 @@
         <!--menu-->
             <ul id="top-menu" class="menu">
                 <li class="current-menu-item"><a href="{{url_for('ep')}}">Empresas Sostenibles</a></li>
-                <li class="current-menu-item"><a href="{{ url_for('login')}}">Campañas</a></li>
+                <li class="current-menu-item"><a href="{{ url_for('campanias')}}">Campañas</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('login')}}">Foro</a></li>
                 <li class="current-menu-item"><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
                 <li class="current-menu-item"><a href="{{url_for('ayuda')}}">Ayuda</a></li>
             </ul>
         </nav>
     </header>
-
 
     <!--Seccion principal-->
     <section class="main">
@@ -39,11 +38,11 @@
             provoca alteraciones climáticas extremas como sequías e inundaciones. <br>Estos eventos son cada vez más frecuentes y severos, amenazando la seguridad alimentaria, el suministro de agua y la infraestructura. <br>
              Abordar el cambio climático es crucial para proteger nuestro planeta y nuestras comunidades.</p>
         <p class="paris">Sabías que Nicaragua es parte del acuerdo de París?</p>
-       <a class="parisAcuerdo" href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
+       <a  href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
         <p class="compendio">¿Conoces el compendio de leyes de Nicaragua para la protección y conservación del medio ambiente?</p> 
-       <a href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
+       <a  href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
         <p class="proteccion">La protección y conservación del medio ambiente responsabilidad de todos y todas.</p> 
-        <button id="denuncia">Hacer una denuncia</button>
+        <a  href="{{url_for('denuncia')}}"> <button id="denuncia">Hacer una denuncia</button> </a>
     </section>
 
     <hr>

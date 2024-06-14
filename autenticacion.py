@@ -49,11 +49,6 @@ def login():
     return render_template('autenticacion.html')
 
 
-@app.route('/campanias')
-def campanias():
-    return render_template('campanias.html')
-
-
 @app.route('/foro')
 def foro():
     return render_template('foro.html')

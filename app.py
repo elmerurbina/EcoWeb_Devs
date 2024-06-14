@@ -1,6 +1,8 @@
 from flask import Flask, render_template
-from autenticacion import register, login, campanias, foro
+from autenticacion import register, login, foro
 from publicaciones import publicaciones
+from campanias import campanias
+from denuncia import denuncia
 
 app = Flask(__name__)
 
@@ -21,6 +23,8 @@ app.add_url_rule('/campanias', 'campanias', campanias)
 
 
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
+
+app.add_url_rule('/denuncia', 'denuncia', denuncia)
 
 @app.route('/deforestacion')
 def deforestacion():
