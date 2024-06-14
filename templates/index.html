@@ -14,7 +14,7 @@
 <body>
     <!--Logo-->
     <div class="logo">C<span>S</span> 
-        <span class="lema">Clima Sostenible para un mundo mejor!</span>
+        <span class="lema">Por una Nicaragua Sostenible y amigable con el medio ambiente!</span>
         </div>
 
     <header id="et-top-navigation" class="et_header_style_left">
@@ -24,6 +24,7 @@
                 <li class="current-menu-item"><a href="{{url_for('ep')}}">Empresas Sostenibles</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('login')}}">Campañas</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('login')}}">Foro</a></li>
+                <li class="current-menu-item"><a href="">Publicaciones</a></li>
                 <li class="current-menu-item"><a href="#">Ayuda</a></li>
             </ul>
         </nav>
@@ -34,12 +35,13 @@
     <section class="main">
 
         <h1>¿Qué es cambio climático?</h1> 
-        <p class="resumen"> El cambio climático, resultado de la actividad humana, provoca alteraciones climáticas extremas como sequías e inundaciones. <br>Estos eventos son cada vez más frecuentes y severos, amenazando la seguridad alimentaria, el suministro de agua y la infraestructura. <br>
+        <p class="resumen"> El cambio climático, resultado de la actividad humana, 
+            provoca alteraciones climáticas extremas como sequías e inundaciones. <br>Estos eventos son cada vez más frecuentes y severos, amenazando la seguridad alimentaria, el suministro de agua y la infraestructura. <br>
              Abordar el cambio climático es crucial para proteger nuestro planeta y nuestras comunidades.</p>
         <p class="paris">Sabías que Nicaragua es parte del acuerdo de París?</p>
-        <button id="paris">Conocer Acuerdo de Paris</button>
+       <a class="parisAcuerdo" href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
         <p class="compendio">¿Conoces el compendio de leyes de Nicaragua para la protección y conservación del medio ambiente?</p> 
-        <button id="compendio">Ver compendio de leyes</button>
+       <a href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
         <p class="proteccion">La protección y conservación del medio ambiente responsabilidad de todos y todas.</p> 
         <button id="denuncia">Hacer una denuncia</button>
     </section>
@@ -49,8 +51,8 @@
     <section class="climate-change">
         <h2>¿Qué es el cambio climático?</h2>
         <p>El cambio climático es un fenómeno global que se refiere al aumento de la temperatura promedio en la superficie de la Tierra. Este cambio es causado principalmente por la liberación de gases de efecto invernadero en la atmósfera debido a actividades humanas, como la quema de combustibles fósiles y la deforestación. El cambio climático tiene impactos significativos en el medio ambiente, incluyendo el derretimiento de los casquetes polares, el aumento del nivel del mar, cambios en los patrones de precipitación y la pérdida de biodiversidad. Es importante tomar medidas para mitigar el cambio climático y adaptarse a sus efectos para proteger nuestro planeta y las generaciones futuras.</p>
-        <button class="btn conocer-mas">Conocer más</button>
-        <button class="btn acceder-cursos">Acceder a cursos gratuitos</button>
+        <a href="#"> <button class="btn conocer-mas">Conocer más</button> </a>
+        <a href="#"></a><button class="btn acceder-cursos">Acceder a cursos gratuitos</button></a>
     </section>
     
     <section class="causes-consequences">
@@ -58,19 +60,19 @@
         <div class="causes">
             <button class="btn cause-summary">Causas del cambio climático</button>
             <ul>
-                <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li>
-                <li><i class="fas fa-tree"></i> Deforestación</li>
-                <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li>
+                <a href="#"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
+                <a href="{{url_for('deforestacion')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
+                <a href="#"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
             </ul>
         </div>
         <div class="consequences">
             <button class="btn consequence-summary">Consecuencias del cambio climático</button>
             <ul>
-                <li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li>
-                <li><i class="fas fa-water"></i> Aumento del nivel del mar</li>
-                <li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li>
-                <li><i class="fas fa-sun"></i> Sequías</li>
-                <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li>
+                <a href="#"><li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li></a>
+                <a href="#"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
+                <a href="#"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
+               <a href="#"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
+               <a href="#">  <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li> </a>
             </ul>
         </div>
     </section>
@@ -95,6 +97,18 @@
             </div>
         </div>
     </section>
+
+    <section class="sustainability">
+        <h2>¿Qué es la sostenibilidad?</h2>
+        <p>La sostenibilidad se refiere a la capacidad de satisfacer las necesidades del presente sin 
+            comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades. 
+            En términos ambientales, la sostenibilidad implica la conservación de los recursos naturales y
+             la protección de los ecosistemas para mantener el equilibrio ecológico. Esto incluye prácticas como
+              la gestión sostenible de los recursos naturales, la reducción de la huella de carbono, 
+            el fomento de energías renovables y la promoción de estilos de vida responsables.</p>
+       
+    </section>
+    
     
 
     <section class="actions">

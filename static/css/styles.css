@@ -12,8 +12,8 @@ body {
     position: relative;
     cursor: pointer;
     padding: 5px;
-    color: rgb(22, 245, 22);
-    background-color: rgb(1, 1, 17);
+    color: white;
+    background-color: blue;
 }
 
 .logo .C {
@@ -26,8 +26,8 @@ body {
 }
 
 span.lema {
-    color: rgb(22, 245, 22);
-    margin-left: 500px;
+    color: white;
+    margin-left: 300px;
     margin-right: 500px;
 }
 
@@ -349,6 +349,30 @@ footer {
     padding: 10px;
     font-size: 16px;
     text-align: center;
-    background-color: rgb(1, 1, 17);
-    color: rgb(22, 245, 22);
+    background-color: blue;
+    color: white;
 }
+
+
+/* Sección de sostenibilidad */
+.sustainability {
+    background-color: #f2f2f2; /* Color de fondo de la sección */
+    padding: 20px; /* Espaciado alrededor del contenido de la sección */
+    border-radius: 10px; /* Esquinas redondeadas para la sección */
+    margin-top: 20px; /* Margen superior */
+}
+
+.sustainability h2 {
+    color: #333; /* Color del título de la sección */
+    text-align: center; /* Centrar el título */
+}
+
+.sustainability p {
+    color: #666; /* Color del párrafo de la sección */
+    text-align: justify; /* Justificar el texto del párrafo */
+    margin-bottom: 20px; /* Espaciado inferior del párrafo */
+}
+ a :hover {
+    color: #2ecc71; 
+   
+ }

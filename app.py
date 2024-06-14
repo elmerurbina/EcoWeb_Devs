@@ -18,5 +18,9 @@ app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
 app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/campanias', 'campanias', campanias)
 
+@app.route('/deforestacion')
+def deforestacion():
+    return render_template('deforestacion.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
