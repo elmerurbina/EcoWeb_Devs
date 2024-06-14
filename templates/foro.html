@@ -1,24 +1,66 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='for.css') }}">
+    <title>Foro - Community Forum</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Foro</h1>
-       
-    </header>
-    <main>
-        <h2>Bienvenido al foro</h2>
-        <p>Aquí puedes discutir temas relacionados con el clima sostenible y compartir tus ideas con la comunidad.</p>
-        <button onclick="location.href='{{ url_for('open_debate') }}'">Abrir Nuevo Debate</button>
-        <button onclick="location.href='{{ url_for('view_conversations') }}'">Ver Conversaciones</button>
-    </main>
-    <footer>
-        <p>&copy; 2024 Clima Sostenible</p>
-    </footer>
+
+<div class="forum-container">
+    <h2>Foro Comunitario</h2>
+    
+    <form id="debateForm" action="#" method="post" class="forum-form" style="display: none;">
+        <h3>Abrir un Nuevo Debate</h3>
+        <div class="form-group">
+            <label for="titulo_debate">Título del Debate:</label>
+            <input type="text" id="titulo_debate" name="titulo_debate" required>
+        </div>
+        <div class="form-group">
+            <label for="contenido_debate">Contenido:</label>
+            <textarea id="contenido_debate" name="contenido_debate" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-debate">Abrir Debate</button>
+    </form>
+
+    <!-- Form to Ask a Question -->
+    <form id="preguntaForm" action="#" method="post" class="forum-form" style="display: none;">
+        <h3>Hacer una Pregunta</h3>
+        <div class="form-group">
+            <label for="titulo_pregunta">Título de la Pregunta:</label>
+            <input type="text" id="titulo_pregunta" name="titulo_pregunta" required>
+        </div>
+        <div class="form-group">
+            <label for="contenido_pregunta">Contenido:</label>
+            <textarea id="contenido_pregunta" name="contenido_pregunta" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-pregunta">Hacer Pregunta</button>
+    </form>
+
+    <!-- Form to Start a New Conversation Thread -->
+    <form id="hiloForm" action="#" method="post" class="forum-form" style="display: none;">
+        <h3>Nuevo Hilo de Conversación</h3>
+        <div class="form-group">
+            <label for="titulo_hilo">Título del Hilo:</label>
+            <input type="text" id="titulo_hilo" name="titulo_hilo" required>
+        </div>
+        <div class="form-group">
+            <label for="contenido_hilo">Contenido:</label>
+            <textarea id="contenido_hilo" name="contenido_hilo" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-hilo">Crear Hilo</button>
+    </form>
+
+    <!-- Buttons to Prompt Login -->
+    <div class="prompt-login">
+        <button id="btnPregunta">Hacer una Pregunta</button>
+        <button id="btnDebate">Abrir un Nuevo Debate</button>
+        <button id="btnHilo">Nuevo Hilo de Conversación</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/loadLogin.js') }}"></script>
+
 </body>
 </html>

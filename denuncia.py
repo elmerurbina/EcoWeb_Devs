@@ -6,5 +6,9 @@ app = Flask(__name__)
 def denuncia():
     return render_template('denuncia.html')
 
+@app.route('/denunciaForm')
+def denunciaForm():
+    return render_template('denunciaForm.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

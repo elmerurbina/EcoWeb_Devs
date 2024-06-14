@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Denuncia</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/denunciaForm.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Formulario de Denuncia</h2>
+    <form action="submit_denuncia.php" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="titulo" class="required">Título de la denuncia:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion" class="required">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="evidencia" class="required">Evidencia:</label>
+            <input type="file" id="evidencia" name="evidencia" accept=".jpg, .png, .pdf, .docx, .mp4, .mp3" required>
+        </div>
+        <div class="form-group">
+            <label for="ubicacion" class="required">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion" required>
+        </div>
+        <div class="form-group">
+            <label for="denunciados" class="required">Nombre del o los denunciados:</label>
+            <input type="text" id="denunciados" name="denunciados" required>
+        </div>
+        <div class="form-group">
+            <label for="otros_detalles">Otros detalles:</label>
+            <textarea id="otros_detalles" name="otros_detalles" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Denuncia</button>
+    </form>
+</div>
+
+</body>
+</html>

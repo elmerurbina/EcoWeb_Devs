@@ -1,8 +1,9 @@
 from flask import Flask, render_template
-from autenticacion import register, login, foro
+from autenticacion import register, login
 from publicaciones import publicaciones
 from campanias import campanias
-from denuncia import denuncia
+from denuncia import denuncia, denunciaForm
+from foro import foro
 
 app = Flask(__name__)
 
@@ -18,6 +19,7 @@ def ep():
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
+
 app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/campanias', 'campanias', campanias)
 
@@ -25,6 +27,7 @@ app.add_url_rule('/campanias', 'campanias', campanias)
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
 
 app.add_url_rule('/denuncia', 'denuncia', denuncia)
+app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
 
 @app.route('/deforestacion')
 def deforestacion():

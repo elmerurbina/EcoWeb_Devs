@@ -1,57 +1,41 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light gray background for body */
     margin: 20px;
 }
 
-.form-container {
-    background-color: #fff;
-    max-width: 600px;
+.denuncias-container {
+    background-color: #fff; /* White background for denuncias container */
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-    margin-bottom: 20px;
+h2 {
+    text-align: center;
 }
 
-label {
-    font-weight: bold;
+.load-form {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.required::after {
-    content: "*";
-    color: red;
-}
-
-input[type="text"],
-textarea,
-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-input[type="file"] {
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.btn-submit {
-    background-color: #4CAF50;
+.load-form button {
+    background-color: #f44336; /* Red button color */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-submit:hover {
-    background-color: #45a049;
+.load-form button:hover {
+    background-color: #d32f2f; /* Darker shade of red on hover */
 }
