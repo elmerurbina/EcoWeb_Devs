@@ -55,5 +55,9 @@ def sequias():
 def inundaciones():
     return render_template('inundaciones.html')
 
+@app.route('/ayuda')
+def ayuda():
+    return render_template('ayuda.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ayuda.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Ayuda</h1>
+        <nav>
+            <ul>
+                <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="preguntas-frecuentes">
+            <h2>Preguntas Frecuentes</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question"> ¿Cómo puedo contribuir al cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Puedes contribuir reduciendo tu huella de carbono, usando transporte público, y apoyando políticas ambientales.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question"> ¿Cómo puedo informarme más sobre el cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Visita nuestra sección de Publicaciones para leer artículos sobre el cambio climático y sus consecuencias.</p>
+                </div>
+            </div>
+
+            <!-- Add more FAQ items -->
+            <div class="faq-item">
+                <button class="faq-question"> ¿Cuáles son los efectos del calentamiento global en los océanos?<i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>El calentamiento global afecta los océanos con el blablabla.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"> ¿Cómo se forman los huracanes y qué relación tienen con el cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Los huracanes se forman a partir de condiciones de temperatura y presión en el océano, y su intensidad puede ser influenciada por el cambio climático.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">¿Qué impacto tiene la deforestación en el cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>La deforestación contribuye a la emisión de gases de efecto invernadero y la pérdida de biodiversidad, exacerbando el cambio climático.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"> ¿Qué se entiende por adaptación al cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>La adaptación al cambio climático son las medidas y estrategias para ajustarse a sus efectos, como la gestión del agua y la agricultura sostenible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"> ¿Cómo afecta el cambio climático a la biodiversidad? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>El cambio climático amenaza la biodiversidad con la pérdida de hábitats y la alteración de los ecosistemas, poniendo en riesgo especies en todo el mundo.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"> ¿Qué puedes hacer tú para reducir tu impacto ambiental? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Puedes adoptar hábitos sostenibles como reciclar, reducir el consumo de plásticos y optar por energías renovables en tu hogar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros:</p>
+            <ul>
+                <li><strong>Email:</strong> info@tuempresa.com</li>
+                <li><strong>Teléfono:</strong> +1234567890</li>
+                <li><strong>Dirección:</strong> Juigalpa, Chontales, Nicaragua</li>
+            </ul>
+        </section>
+    </main>  
+
+    <footer>
+        <p>&copy; 2024 EcoWeb Devs. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ toggling
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                question.querySelector('i').classList.toggle('fa-chevron-down');
+                question.querySelector('i').classList.toggle('fa-chevron-up');
+                answer.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
