@@ -15,6 +15,7 @@
 
     <!-- Contenedor para el inicio de sesion -->
     <div class="container">
+        
         <div class="form sign-in-container">
             <h1>Iniciar Sesión</h1>
             <form action="#" method="post">
@@ -27,6 +28,17 @@
 
         <!-- Contenedor para crear cuenta -->
         <div class="form sign-up-container">
+            <!-- Bloque para mostrar el flash message especificado en Python -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-warning" role="alert">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
             <h1>Crear Cuenta</h1>
             <form action="{{ url_for('register') }}" method="post">
                 
