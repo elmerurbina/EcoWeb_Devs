@@ -22,11 +22,11 @@ def register():
         if user_exists:
             flash("El correo ya está registrado")
             return render_template('autenticacion.html')
-
-        register_user(nombre, correo, contrasenia)
-        flash("Usuario registrado exitosamente")
-        return redirect(url_for('login'))
-    return render_template('autenticacion.html')
+        else:
+            register_user(nombre, correo, contrasenia)
+            flash("Usuario registrado exitosamente")
+            return redirect(url_for('login'))
+        return render_template('autenticacion.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
