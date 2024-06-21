@@ -102,3 +102,50 @@ footer p {
 .faq-answer.show {
     display: block;
 }
+
+
+.subscription-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.subscription-form h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.subscription-form input[type="email"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.subscription-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #45a049;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.subscription-form button:hover {
+    background-color: #3e8e41;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+    display: none;
+}

@@ -15,7 +15,9 @@
     <!--Logo-->
     <div class="logo">
         <!--Imagen del logo-->
+        <a href="#subscription">
         <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo" width="70" height="70">
+    </a>
     <!--Link para ver las areas reservadas-->
       <a class="header" href="https://es.wikipedia.org/wiki/%C3%81reas_protegidas_de_Nicaragua"> Areas protegidas de Nicaragua, abarcan un 18% del territorio nacional.</a> 
         </div>
@@ -111,9 +113,9 @@
        
     </section>
     
-    <div class="subscription-form">
+    <div class="subscription-form" id="subscription">
         <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
-        <form id="subscribeForm">
+        <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
             <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
             <button type="submit">Suscribirse</button>
             <p id="message" class="message"></p>
@@ -139,7 +141,7 @@
     </section>
     
     
-    <footer>Clima sostenible para una vida digna!</footer>
+    <footer>Clima sostenible para una Nicaragua libre de Cambios climaticos!</footer>
    
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 

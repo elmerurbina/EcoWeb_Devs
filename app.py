@@ -7,8 +7,8 @@ from foro import foro
 
 app = Flask(__name__)
 
-@app.route('/cs')
-def index():
+@app.route('/verdeNica')
+def verdeNica():
     return render_template('index.html')
 
 @app.route('/ep')
