@@ -54,7 +54,7 @@ textarea {
     resize: vertical;
 }
 
-/* Estilos de los botones */
+/* Estilos de los botones de la plantilla  */
 #btnDebate,
 #btnPregunta,
 #btnHilo {
@@ -77,6 +77,31 @@ textarea {
 #btnHilo:hover {
     background-color: #45a049; /* Darker shade of green on hover */
 }
+
+/* Estilos de los botones de las formas */
+.btn-debate,
+.btn-pregunta,
+.btn-hilo {
+    background-color: #007bff; /* Green button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo hover para los botones */
+.btn-debate:hover,
+.btn-pregunta:hover,
+.btn-hilo:hover {
+    background-color: #007bff; /* Darker shade of green on hover */
+}
+
 
 /* Para abrir un nuevo hilo el usuario antes tendra que iniciar sesion */
 .prompt-login {

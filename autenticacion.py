@@ -28,7 +28,6 @@ def register():
             return redirect(url_for('login'))
         return render_template('autenticacion.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -38,6 +37,7 @@ def login():
 
         if user:
             next_page = request.form.get('next')
+            print(f"DEBUG: next_page = {next_page}")  # Debug statement
             return redirect(url_for('foro', form_type=next_page))
         else:
             flash("Correo o contraseña incorrecta")

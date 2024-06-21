@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foro - Foro Comunitario</title>
+    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
+    <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
 
 <div class="forum-container">
     <h2>Foro Comunitario</h2>
-    
+
+    <!-- Formas para abrir un nuevo debate -->
     <form id="debateForm" action="#" method="post" class="forum-form" style="display: none;">
         <h3>Abrir un Nuevo Debate</h3>
         <div class="form-group">
@@ -51,6 +54,7 @@
         <button type="submit" class="btn-hilo">Crear Hilo</button>
     </form>
 
+    <!-- Buttons to prompt login or show forms -->
     <div class="prompt-login">
         <button id="btnPregunta" onclick="location.href='{{ url_for('login', next='preguntaForm') }}'">Hacer una Pregunta</button>
         <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
@@ -67,7 +71,8 @@
     });
 </script>
 
-<script src="{{ url_for('static', filename='js/loadLogin.js') }}"></script>
+<!-- Archivo JavaScript para cargar la pagina de autenticacion -->
+
 
 </body>
 </html>
