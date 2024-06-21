@@ -1,4 +1,4 @@
-// JavaScript to handle button clicks and redirect to login route
+// Este codigo redirige a la ruta del sistema de autenticacion cuando se hace click en un boton del foro
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('btnPregunta').addEventListener('click', function() {
         redirectToLogin();

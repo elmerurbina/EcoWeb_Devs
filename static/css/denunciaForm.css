@@ -1,9 +1,11 @@
+/* Estilos para el formulario de las denuncias */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 20px;
 }
 
+/* Contenedor */
 .form-container {
     background-color: #fff;
     max-width: 600px;
@@ -21,11 +23,13 @@ label {
     font-weight: bold;
 }
 
+/* Los campos requeridos tiene un arterisco rojo al final */
 .required::after {
     content: "*";
     color: red;
 }
 
+/* Estilos de los inputs */
 input[type="text"],
 textarea,
 select {
@@ -37,11 +41,13 @@ select {
     font-size: 14px;
 }
 
+/* Estilo del input para subir archivos, en este falta hacer que diga archivos permitidos "jpg, png, pdf, docx*/
 input[type="file"] {
     font-size: 14px;
     margin-top: 5px;
 }
 
+/* Boton para enviar el formulario */
 .btn-submit {
     background-color: #4CAF50;
     color: white;

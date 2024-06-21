@@ -1,3 +1,4 @@
+// Su funcionalidad esta en la plantilla de empresas sostenibles
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('nav ul li a');
 

@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Estilos de la plantilla de empresas sostenibles */
 * {
     margin: 0;
     padding: 0;
@@ -75,6 +75,7 @@ p {
     color: #666;
 }
 
+/* Estilos de los botones */
 button {
     background-color: #28a745;
     color: #fff;

@@ -1,11 +1,13 @@
+/* Estilos para el formulario de denuncia */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light gray background for body */
+    background-color: #f0f0f0; 
     margin: 20px;
 }
 
+/* Contenedor que se carga inicialmente y es donde apareceran las denuncias existentes*/
 .denuncias-container {
-    background-color: #fff; /* White background for denuncias container */
+    background-color: #fff; 
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -17,13 +19,15 @@ h2 {
     text-align: center;
 }
 
+/* Forma que contiene al formulario */
 .load-form {
     text-align: center;
     margin-top: 20px;
 }
 
+/* Boton que cuando se hace click carga el formulario para realizar una denuncia */
 .load-form button {
-    background-color: #f44336; /* Red button color */
+    background-color: #f44336; 
     color: white;
     padding: 10px 20px;
     border: none;

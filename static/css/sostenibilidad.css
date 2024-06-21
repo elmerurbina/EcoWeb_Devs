@@ -1,3 +1,4 @@
+/* Estilos para la pagina de sostenibilidad */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; /* Light gray background for body */
@@ -9,7 +10,7 @@ body {
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    background-color: #fff; /* White background for container */
+    background-color: #fff; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }

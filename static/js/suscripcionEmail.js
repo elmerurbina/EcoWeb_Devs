@@ -1,3 +1,4 @@
+// La funcion de este codigo es mostrar el mensaje de suscrpcion exitosa cuando se suscribe al correo
 document.getElementById('subscribeForm').addEventListener('submit', function(event) {
     event.preventDefault();
 

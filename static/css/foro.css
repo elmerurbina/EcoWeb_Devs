@@ -1,11 +1,13 @@
+/* Estilos de la plantilla del foro */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light gray background for body */
+    background-color: #f0f0f0; 
     margin: 20px;
 }
 
+/* Contenedor de las listas de conversaciones y debates */
 .forum-container {
-    background-color: #fff; /* White background for forum container */
+    background-color: #fff; 
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -13,6 +15,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Formulario para abrir una nueva conversacion */
 .forum-form {
     margin-bottom: 30px;
 }
@@ -34,6 +37,7 @@ label {
     font-weight: bold;
 }
 
+/* Estilos de los inputs del formulario */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -50,6 +54,7 @@ textarea {
     resize: vertical;
 }
 
+/* Estilos de los botones */
 #btnDebate,
 #btnPregunta,
 #btnHilo {
@@ -66,12 +71,14 @@ textarea {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Estilo hover para los botones */
 #btnDebate:hover,
 #btnPregunta:hover,
 #btnHilo:hover {
     background-color: #45a049; /* Darker shade of green on hover */
 }
 
+/* Para abrir un nuevo hilo el usuario antes tendra que iniciar sesion */
 .prompt-login {
     text-align: center;
     margin-top: 20px;
@@ -91,13 +98,13 @@ textarea {
 }
 
 #btnPregunta::before {
-    content: "\1F4AC"; /* Unicode symbol for '📬' */
+    content: "\1F4AC"; /* Unicode simbolo '📬' para el boton de preguntas */
 }
 
 #btnDebate::before {
-    content: "\1F5E3"; /* Unicode symbol for '🗣️' */
+    content: "\1F5E3"; /* Unicode simlbolo '🗣️' para un nuevo debate*/
 }
 
 #btnHilo::before {
-    content: "\1F41A"; /* Unicode symbol for '🐚' */
+    content: "\1F41A"; /* Unicode simbolo '🐚' para un nuevo hilo*/
 }

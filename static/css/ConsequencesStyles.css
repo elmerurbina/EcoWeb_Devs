@@ -1,3 +1,4 @@
+/* Estilos para las plantillas que describen y explican las causas del cambio climatico */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -28,7 +29,7 @@ main {
 
 section {
     margin-bottom: 30px;
-    border-left: 5px solid #f39c12; /* Orange border for sections */
+    border-left: 5px solid #f39c12;  /* Linea que aparece a la izquierda */
     padding-left: 10px;
 }
 
@@ -41,6 +42,7 @@ section p {
     text-align: justify;
 }
 
+/* Pie de pagina | este contiene las referencias bibliograficas */
 footer {
     text-align: center;
     margin-top: 50px;
