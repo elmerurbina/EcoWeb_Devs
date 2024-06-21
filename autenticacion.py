@@ -20,11 +20,11 @@ def register():
 
         user_exists = check_login(correo, contrasenia)
         if user_exists:
-            flash("El correo ya está registrado")
+            flash("El correo ya está registrado", "error")
             return render_template('autenticacion.html')
         else:
             register_user(nombre, correo, contrasenia)
-            flash("Usuario registrado exitosamente")
+            flash("Usuario registrado exitosamente", "success")
             return redirect(url_for('login'))
         return render_template('autenticacion.html')
 
@@ -46,7 +46,7 @@ def login():
             else:
                 return redirect(url_for('foro', form_type=next_page))
         else:
-            flash("Correo o contraseña incorrecta")
+            flash("Correo o contraseña incorrecta", "error")
             return render_template('autenticacion.html', next=request.form.get('next', ''))
     return render_template('autenticacion.html', next=request.args.get('next', ''))
 
