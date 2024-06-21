@@ -13,6 +13,8 @@
             <ul>
                 <li><a href="#">Patrocinar Publicación</a></li>
                 <li><a href="#">Enviar Publicación</a></li>
+                <li><a href="#subscription">Noticias</a></li>
+
             </ul>
         </nav>
     </header>
@@ -76,8 +78,19 @@
         </section>
     </main>
 
+    <div class="subscription-form" id="subscription">
+        <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
+        <form id="subscribeForm">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            <button type="submit">Suscribirse</button>
+            <p id="message" class="message"></p>
+        </form>
+    </div>
+
     <footer>
         <p>&copy; 2024 EcoWeb Devs. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 </body>
 </html>
