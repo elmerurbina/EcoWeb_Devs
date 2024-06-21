@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayuda</title>
+    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ayuda.css') }}">
+    <!--Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+
 </head>
 <body>
     <header>
         <h1>Ayuda</h1>
+        <!-- Menu horizontal -->
         <nav>
             <ul>
                 <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
@@ -20,11 +26,14 @@
     </header>
 
     <main>
+        <!-- Seccion de las preguntas frecuentes -->
         <section id="preguntas-frecuentes">
             <h2>Preguntas Frecuentes</h2>
             
             <div class="faq-item">
-                <button class="faq-question"> ¿Cómo puedo contribuir al cambio climático? <i class="fas fa-chevron-down"></i></button>
+                <!--Pregunta-->
+                <button class="faq-question"> ¿Cómo puedo contribuir al cambio climático? <i class="fas fa-chevron-down"></i> <!-- Icono de la derecha --> </button>
+                <!-- Respuesta-->
                 <div class="faq-answer">
                     <p>Puedes contribuir reduciendo tu huella de carbono, usando transporte público, y apoyando políticas ambientales.</p>
                 </div>
@@ -37,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Add more FAQ items -->
             <div class="faq-item">
                 <button class="faq-question"> ¿Cuáles son los efectos del calentamiento global en los océanos?<i class="fas fa-chevron-down"></i></button>
                 <div class="faq-answer">
@@ -79,8 +87,11 @@
                     <p>Puedes adoptar hábitos sostenibles como reciclar, reducir el consumo de plásticos y optar por energías renovables en tu hogar.</p>
                 </div>
             </div>
+            <!--Agregar mas preguntas frecuentes -->
+
         </section>
 
+        <!-- Seccion de contacto -->
         <section id="contacto">
             <h2>Contacto</h2>
             <p>Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros:</p>
@@ -91,6 +102,7 @@
             </ul>
         </section>
 
+        <!-- Forma para realizar suscripcion por correo -->
         <div class="subscription-form" id="subscription">
             <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
             <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
@@ -107,7 +119,7 @@
     </footer>
 
     <script>
-        // JavaScript for FAQ toggling
+        // JavaScript para las preguntas frecuentes (FAQ) toggling
         const faqQuestions = document.querySelectorAll('.faq-question');
 
         faqQuestions.forEach(question => {
@@ -120,6 +132,7 @@
         });
     </script>
 
+<!-- Archivo JavaScript para la suscripcion por correo -->
 <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 </body>
 </html>

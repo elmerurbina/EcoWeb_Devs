@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro - Community Forum</title>
+    <title>Foro - Foro Comunitario</title>
+    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
 
 <div class="forum-container">
     <h2>Foro Comunitario</h2>
     
+    <!-- Forma para abrir un nuevo debate | Sera mostrada hasta que el usuario se autentifique-->
     <form id="debateForm" action="#" method="post" class="forum-form" style="display: none;">
         <h3>Abrir un Nuevo Debate</h3>
         <div class="form-group">
@@ -24,7 +28,7 @@
         <button type="submit" class="btn-debate">Abrir Debate</button>
     </form>
 
-    <!-- Form to Ask a Question -->
+    <!-- Forma para hacer una pregunta, por default no se muestra hasta que el usuario inicie sesion  -->
     <form id="preguntaForm" action="#" method="post" class="forum-form" style="display: none;">
         <h3>Hacer una Pregunta</h3>
         <div class="form-group">
@@ -38,7 +42,7 @@
         <button type="submit" class="btn-pregunta">Hacer Pregunta</button>
     </form>
 
-    <!-- Form to Start a New Conversation Thread -->
+    <!-- Forma para nuevo hilo de conversacion, inicialmente no se muestra -->
     <form id="hiloForm" action="#" method="post" class="forum-form" style="display: none;">
         <h3>Nuevo Hilo de Conversación</h3>
         <div class="form-group">
@@ -52,7 +56,7 @@
         <button type="submit" class="btn-hilo">Crear Hilo</button>
     </form>
 
-    <!-- Buttons to Prompt Login -->
+    <!-- Estos botones una vez se cliquean llevan a la pagina de inicio de sesion -->
     <div class="prompt-login">
         <button id="btnPregunta">Hacer una Pregunta</button>
         <button id="btnDebate">Abrir un Nuevo Debate</button>
@@ -60,6 +64,7 @@
     </div>
 </div>
 
+<!-- Archivo JavaScript para cargar la pagina de autenticacion -->
 <script src="{{ url_for('static', filename='js/loadLogin.js') }}"></script>
 
 </body>

@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sostenibilidad en las Empresas</title>
+    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/empresasSostenibles.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
     <header>
         <div class="logo">
             <h1>Sostenibilidad <span>Empresarial</span></h1>
         </div>
+        <!-- Menu horizontal -->
         <nav>
             <ul>
                 <li><a href="#training">Entrenamiento</a></li>
@@ -49,6 +53,7 @@
         <p>&copy; 2024 Sostenibilidad Empresarial. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Archivo JavaScript -->
     <script src="{{ url_for('static', filename='js/empresasSostenibles.js') }}"></script>
 </body>
 </html>

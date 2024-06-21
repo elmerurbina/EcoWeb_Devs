@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publicaciones</title>
+    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/publicaciones.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+
 </head>
 <body>
     <header>
         <h1>Publicaciones</h1>
         <nav>
+            <!-- Menu horizontal -->
             <ul>
-                <li><a href="#">Patrocinar Publicación</a></li>
-                <li><a href="#">Enviar Publicación</a></li>
-                <li><a href="#subscription">Noticias</a></li>
+                <li><a href="#">Patrocinar Publicación</a></li> <!-- Esta plantila falta desarrollarla -->
+                <li><a href="#">Enviar Publicación</a></li>  <!-- Esta plantila falta desarrollarla -->
+                <li><a href="#subscription">Noticias</a></li>  <!-- Lleva a la suscripcion del correo -->
 
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- Cada ruta redirige a la pagina donde se aborda en detalle el tema -->
         <section>
             <h2>Lista de Publicaciones</h2>
             <ul>
@@ -77,6 +83,7 @@
             </ul>
         </section>
 
+        <!-- Suscripcion por correo -->
         <div class="subscription-form" id="subscription">
             <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
             <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
@@ -92,6 +99,7 @@
         <p>&copy; 2024 EcoWeb Devs. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Archivo JavaScript de la suscripcion por correo -->
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 </body>
 </html>

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerdeNica</title>
+    <!-- Archivos CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <!-- Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
-
 
 </head>
 <body>
@@ -18,14 +19,15 @@
         <a href="#subscription">
         <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo" width="70" height="70">
     </a>
-    <!--Link para ver las areas reservadas-->
+    <!-- Link para ver las areas reservadas -->
       <a class="header" href="https://es.wikipedia.org/wiki/%C3%81reas_protegidas_de_Nicaragua"> Areas protegidas de Nicaragua, abarcan un 18% del territorio nacional.</a> 
         </div>
 
     <header id="et-top-navigation" class="et_header_style_left">
         <nav>
-        <!--menu-->
+        <!-- Menu horizontal -->
             <ul id="top-menu" class="menu">
+                <!-- Cada opcion redirige a una plantilla determinada -->
                 <li class="current-menu-item"><a href="{{url_for('ep')}}">Empresas Sostenibles</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('campanias')}}">Campañas</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('foro')}}">Foro</a></li>
@@ -43,15 +45,19 @@
             provoca alteraciones climáticas extremas como sequías e inundaciones. <br>Estos eventos son cada vez más frecuentes y severos, amenazando la seguridad alimentaria, el suministro de agua y la infraestructura. <br>
              Abordar el cambio climático es crucial para proteger nuestro planeta y nuestras comunidades.</p>
         <p class="paris">Sabías que Nicaragua es parte del acuerdo de París?</p>
+        <!-- Link para leer el Acuerdo de paris o descargar en PDF-->
        <a  href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
         <p class="compendio">¿Conoces el compendio de leyes de Nicaragua para la protección y conservación del medio ambiente?</p> 
-       <a  href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
+       <!-- Link para leer o descargar en PDF el compendio de leyes del medio ambiente de Nicaragua-->
+        <a  href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
         <p class="proteccion">La protección y conservación del medio ambiente responsabilidad de todos y todas.</p> 
-        <a  href="{{url_for('denuncia')}}"> <button id="denuncia">Denuncias</button> </a>
+        <!-- Boton para las denuncias -->
+        <a  href="{{url_for('denuncia')}}"> <button id="denuncia">Denuncias</button> </a> 
     </section>
 
     <hr>
 
+    <!-- Seccion del cambio climatico -->
     <section class="climate-change">
         <h2>¿Qué es el cambio climático?</h2>
         <p>El cambio climático es un fenómeno global que se refiere al aumento de la temperatura promedio en la superficie de la Tierra. Este cambio es causado principalmente por la liberación de gases de efecto invernadero en la atmósfera debido a actividades humanas, como la quema de combustibles fósiles y la deforestación. El cambio climático tiene impactos significativos en el medio ambiente, incluyendo el derretimiento de los casquetes polares, el aumento del nivel del mar, cambios en los patrones de precipitación y la pérdida de biodiversidad. Es importante tomar medidas para mitigar el cambio climático y adaptarse a sus efectos para proteger nuestro planeta y las generaciones futuras.</p>
@@ -59,11 +65,12 @@
         <a href="#"></a><button class="btn acceder-cursos">Acceder a cursos gratuitos</button></a>
     </section>
     
+    <!-- Seccion de las causas y consecuencias -->
     <section class="causes-consequences">
-        
         <div class="causes">
             <button class="btn cause-summary">Causas del cambio climático</button>
             <ul>
+                <!-- Lista de causas-->
                 <a href="{{url_for('gei')}}"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
                 <a href="{{url_for('deforestacion')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
                 <a href="{{url_for('cf')}}"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
@@ -72,6 +79,7 @@
         <div class="consequences">
             <button class="btn consequence-summary">Consecuencias del cambio climático</button>
             <ul>
+                <!-- Lista de consecuencias -->
                 <a href="{{url_for('dcp')}}"><li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li></a>
                 <a href="{{url_for('anm')}}"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
                 <a href="{{url_for('alpp')}}"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
@@ -81,7 +89,7 @@
         </div>
     </section>
     
-    
+    <!-- Seccion de mitigacion y adaptacion -->
     <section class="mitigation-adaptation">
         <h2>Mitigación y adaptación </h2>
         <div class="summary">
@@ -102,6 +110,7 @@
         </div>
     </section>
 
+    <!-- Seccion de la sostenibilidad -->
     <section class="sustainability">
         <h2>¿Qué es la <a href="{{url_for('sostenibilidad')}}"> sostenibilidad </a>?</h2>
         <p>La <a class="sostenibilidad" href="{{url_for('sostenibilidad')}}"> sostenibilidad </a> se refiere a la capacidad de satisfacer las necesidades del presente sin 
@@ -113,6 +122,7 @@
        
     </section>
     
+    <!-- Forma de suscripcion por correo/ esto es parte de la estrategia de Marketing para monetizar -->
     <div class="subscription-form" id="subscription">
         <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
         <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
@@ -122,6 +132,7 @@
         </form>
     </div>
 
+    <!-- Seccion de las acciones de mitigacion -->
     <section class="actions">
         <button class="mitigation-action">
             Acciones de Mitigación
@@ -140,9 +151,10 @@
         </button>
     </section>
     
-    
+    <!-- Pie de pagina -->
     <footer>Clima sostenible para una Nicaragua libre de Cambios climaticos!</footer>
    
+    <!-- Archivo JavaScript para las suscripciones por correo -->
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 
 </body>

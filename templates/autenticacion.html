@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión y Crear Cuenta</title>
+    <!--Coneccion con el archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sistemaAutenticacion.css') }}">
+    <!--Visualizar el logo en la parte del titulo -->
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+
 </head>
+
 <body>
+
+    <!-- Contenedor para el inicio de sesion -->
     <div class="container">
         <div class="form sign-in-container">
             <h1>Iniciar Sesión</h1>
@@ -17,6 +24,8 @@
                 <a class="no-account">¿No tienes una cuenta? Regístrate</a>
             </form>
         </div>
+
+        <!-- Contenedor para crear cuenta -->
         <div class="form sign-up-container">
             <h1>Crear Cuenta</h1>
             <form action="#" method="post">
@@ -30,6 +39,7 @@
         </div>
     </div>
 
+    <!-- Coneccion con el archivo de JavaScript -->
     <script src="{{ url_for('static', filename='js/autenticacion.js') }}"></script>
 </body>
 </html>
