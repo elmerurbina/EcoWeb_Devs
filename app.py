@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from autenticacion import register, login
+from autenticacion import register, login, foro
 from publicaciones import publicaciones
 from campanias import campanias
 from denuncia import denuncia, denunciaForm
@@ -21,6 +21,7 @@ def ep():
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
+app.add_url_rule('/for', 'foro', foro)
 
 app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/campanias', 'campanias', campanias)

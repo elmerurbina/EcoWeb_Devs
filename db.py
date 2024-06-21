@@ -23,7 +23,7 @@ def register_user(nombre, correo, contrasenia):
     connection = create_connection()
     cursor = connection.cursor()
     try:
-        query = "INSERT INTO sistemaAutenticacion (nombre, correo, contrasenia) VALUES (%s, %s, %s)"
+        query = "INSERT INTO  sistemaautenticacion (nombre, correo, contrasenia) VALUES (%s, %s, %s)"
         cursor.execute(query, (nombre, correo, contrasenia))
         connection.commit()
         print("User registered successfully")
@@ -40,9 +40,10 @@ def check_login(correo, contrasenia):
     cursor = connection.cursor()
     user = None
     try:
-        query = "SELECT * FROM sistemaAutenticacion WHERE correo = %s AND contrasenia = %s"
+        query = "SELECT * FROM  sistemaautenticacion WHERE correo = %s AND contrasenia = %s"
         cursor.execute(query, (correo, contrasenia))
         user = cursor.fetchone()
+        print(f"User found: {user}")
     except Error as e:
         print(f"The error '{e}' occurred")
     finally:

@@ -18,12 +18,14 @@
         
         <div class="form sign-in-container">
             <h1>Iniciar Sesión</h1>
-            <form action="#" method="post">
+            <form action="{{ url_for('login') }}" method="POST">
                 <input type="email" id="login-correo" name="login-correo" placeholder="Correo" required>
                 <input type="password" id="login-password" name="login-password" placeholder="Contraseña" required>
+                <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
                 <input type="submit" value="Iniciar Sesión">
                 <a class="no-account">¿No tienes una cuenta? Regístrate</a>
             </form>
+            
         </div>
 
         <!-- Contenedor para crear cuenta -->

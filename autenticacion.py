@@ -38,16 +38,19 @@ def login():
 
         if user:
             next_page = request.form.get('next')
-            if next_page == 'campanias':
-                return redirect(url_for('campanias'))
-            elif next_page == 'foro':
-                return redirect(url_for('foro'))
-            else:
-                return redirect(url_for('index'))
+            return redirect(url_for('foro', form_type=next_page))
         else:
             flash("Correo o contraseña incorrecta")
-            return render_template('autenticacion.html')
-    return render_template('autenticacion.html')
+            return render_template('autenticacion.html', next=request.form.get('next', ''))
+    return render_template('autenticacion.html', next=request.args.get('next', ''))
+
+
+@app.route('/foro')
+def foro():
+    form_type = request.args.get('form_type', '')
+    return render_template('foro.html', form_type=form_type)
+
+
 
 
 if __name__ == '__main__':
