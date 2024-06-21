@@ -2,34 +2,41 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Estilos del logo */
 .logo {
+    display: flex;
+    align-items: center;
     font-size: 24px;
     font-weight: bold;
-    display: inline-block;
-    position: relative;
     cursor: pointer;
     padding: 5px;
-    color: white;
-    background-color: blue;
+    background-color: #007bff;
+    color: #ffffff;
 }
 
-.logo .C {
-    font-size: 1.5em;
-    margin-left: 5px;
+/* Style for the logo image */
+.logo img {
+    margin-right: 300px; 
 }
 
-.logo span {
-    font-size: 0.67em;
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
 }
 
-span.lema {
-    color: white;
-    margin-left: 400px;
-    margin-right: 400px;
+a.header:hover {
+    color: #666;
 }
+
+.logo .header {
+    font-size: 0.80em;
+    color: white; 
+}
+
 
 /* Estilos del menú */
 .menu {
@@ -109,7 +116,7 @@ header {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-image: url('/static/imagenes/tree.jpg');
+    background-image: url('/static/imagenes/main.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,7 +130,8 @@ header {
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: #e5a72e;
+    color: #da9816;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .resumen {
@@ -141,25 +149,30 @@ p {
     text-align: center;
     padding: 5px 10px;
     border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .paris {
-    background-color: #ff6f61;
+    background-color: #ff6f60;
     color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .compendio {
-    background-color: #66cccc;
+    background-color: #379c9c;
     color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .proteccion {
     background-color: #6eff91;
     color: #000;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .paris, .compendio, .proteccion {
     text-align: center; /* Centrar texto */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -169,6 +182,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #paris {
