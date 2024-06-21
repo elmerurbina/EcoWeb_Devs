@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima sostenible</title>
+    <title>VerdeNica</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
 
 
 </head>
@@ -111,7 +111,14 @@
        
     </section>
     
-    
+    <div class="subscription-form">
+        <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
+        <form id="subscribeForm">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            <button type="submit">Suscribirse</button>
+            <p id="message" class="message"></p>
+        </form>
+    </div>
 
     <section class="actions">
         <button class="mitigation-action">
@@ -134,5 +141,7 @@
     
     <footer>Clima sostenible para una vida digna!</footer>
    
+    <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
+
 </body>
 </html>
