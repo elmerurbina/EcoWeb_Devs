@@ -19,8 +19,8 @@ h1 {
     margin: 0;
 }
 
-/* Estilos del contenedor */
-.container {
+/* Estilos del contenedor de la campania */
+.campania-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -30,8 +30,41 @@ h1 {
     text-align: center;
 }
 
+/* Estilos del formulario de campania */
+.campania-form {
+    display: none; /* Inicialmente oculto */
+}
+
+.campania-form h3 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 /* Estilos del boton para crear una nueva campania */
-.btn-crear-campaña {
+.btn-campania {
     background-color: #28a745; 
     color: white;
     border: none;
@@ -44,35 +77,28 @@ h1 {
     align-items: center;
 }
 
-/* Estilo del icono del buton */
-.btn-crear-campaña i {
-    margin-right: 8px;
-}
-
-.btn-crear-campaña:hover {
+.btn-campania:hover {
     background-color: #218838; /* Darker green on hover */
 }
 
-/* Boton para mostrar las campanias registradas */
-#campañas-disponibles {
-    text-align: left;
+/* Botones de interaccion (like, join) */
+.interact-container form {
+    display: inline-block;
+    margin: 10px;
 }
 
-/* Parte donde se mostraran las campanias una vez existan */
-#campañas-disponibles h2 {
-    color: #333;
-}
-
-.campaña-item {
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #f5f5f5;
-    border-left: 5px solid #1abc9c; /* Green border for campaign items */
+.interact-container button {
+    background-color: #1abc9c; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     border-radius: 5px;
 }
 
-.campaña-item h3 {
-    margin-top: 0;
+.interact-container button:hover {
+    background-color: #159a7d; /* Darker teal on hover */
 }
 
 /* Pie de pagina */
@@ -84,4 +110,23 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+
+/* Estilos del boton para mostrar el formulario de campania */
+.prompt-login {
+    margin: 20px;
+}
+
+.prompt-login button {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.prompt-login button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }

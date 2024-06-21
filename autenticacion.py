@@ -28,6 +28,7 @@ def register():
             return redirect(url_for('login'))
         return render_template('autenticacion.html')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -38,12 +39,21 @@ def login():
         if user:
             next_page = request.form.get('next')
             print(f"DEBUG: next_page = {next_page}")  # Debug statement
-            return redirect(url_for('foro', form_type=next_page))
+
+            # Check if the next_page corresponds to 'campaniaForm'
+            if next_page == 'campaniaForm':
+                return redirect(url_for('campanias', form_type=next_page))
+            else:
+                return redirect(url_for('foro', form_type=next_page))
         else:
             flash("Correo o contraseña incorrecta")
             return render_template('autenticacion.html', next=request.form.get('next', ''))
     return render_template('autenticacion.html', next=request.args.get('next', ''))
 
+@app.route('/campania')
+def campania():
+    form_type = request.args.get('form_type', '')
+    return render_template('campania.html', form_type=form_type)
 
 if __name__ == '__main__':
     app.run(debug=True)

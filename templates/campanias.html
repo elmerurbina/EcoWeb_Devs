@@ -1,36 +1,57 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campañas</title>
+    <title>Campania - Campania Comunitaria</title>
     <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campanias.css') }}">
-    <!--Font Awesome para los iconos-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
-
 </head>
 <body>
-    <header>
-        <h1>Campañas</h1>
-    </header>
 
-    <div class="container">
-        <!-- El boton Crear Campania va redirigir a la pagina de autenticacion -->
-      <a href="{{url_for('login')}}">  <button class="btn-crear-campaña"><i class="fas fa-plus"></i> Crear Campaña</button> </a>
+<div class="campania-container">
+    <h2>Campaña Comunitaria</h2>
 
-        <section id="campañas-disponibles">
-            <h2>Campañas Disponibles</h2>
-           
-            <!-- En esta parte van aparecer las campanias existentes -->
+    <form id="campaniaForm" action="#" method="post" class="campania-form" style="display: none;">
+        <h3>Crear una Nueva Campaña</h3>
+        <div class="form-group">
+            <label for="nombre_campania">Nombre de la Campaña:</label>
+            <input type="text" id="nombre_campania" name="nombre_campania" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion_campania">Descripción:</label>
+            <textarea id="descripcion_campania" name="descripcion_campania" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+        </div>
+        <div class="form-group">
+            <label for="presupuesto">Presupuesto: (opcional)</label>
+            <input type="number" id="presupuesto" name="presupuesto">
+        </div>
+        <button type="submit" class="btn-campania">Crear Campaña</button>
+    </form>
 
-        </section>
+    <div class="prompt-login">
+        <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
     </div>
+</div>
 
-    <footer>
-        <p>&copy; 2024 EcoWeb Devs. Todos los derechos reservados.</p>
-    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const formType = "{{ form_type }}";
+        if (formType) {
+            document.getElementById(formType).style.display = 'block';
+        }
+    });
+</script>
+
 </body>
 </html>
