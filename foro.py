@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
 @app.route('/foro')
 def foro():
     form_type = request.args.get('form_type', '')
