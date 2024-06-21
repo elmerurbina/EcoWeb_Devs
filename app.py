@@ -4,8 +4,10 @@ from publicaciones import publicaciones
 from campanias import campanias
 from denuncia import denuncia, denunciaForm
 from foro import foro
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 @app.route('/verdeNica')
 def verdeNica():

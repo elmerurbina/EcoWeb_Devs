@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from db import register_user, check_login
+from config import Config
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.config.from_object(Config)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -47,11 +48,6 @@ def login():
             flash("Correo o contraseña incorrecta")
             return render_template('autenticacion.html')
     return render_template('autenticacion.html')
-
-
-@app.route('/cs')
-def index():
-    return render_template('index.html')
 
 
 if __name__ == '__main__':
