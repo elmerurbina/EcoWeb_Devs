@@ -26,3 +26,12 @@ CREATE TABLE sistemaautenticacion (
     contrasenia VARCHAR(255) NOT NULL,
     confirmar_contrasenia VARCHAR(255)
 );
+
+-- Denuncias table
+CREATE TABLE denuncias (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
