@@ -367,13 +367,34 @@ button {
     display: block; /* Mostrar las acciones de mitigación al pasar el cursor */
 }
 
-footer {
-    margin-top: 50px;
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-    background-color: blue;
+
+.footer {
+    background-color: #007bff;
     color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.footer-block {
+    width: 45%;
+    text-align: left;
+}
+
+.footer-block h3 {
+    margin-top: 0;
+    font-size: 0.9em;
+}
+
+.footer-block p {
+    margin: 10px 0;
+    font-size: 0.8em;
 }
 
 
