@@ -36,6 +36,8 @@
                 <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
                 <input type="submit" value="Iniciar Sesión">
                 <a class="no-account">¿No tienes una cuenta? Regístrate</a>
+                <a href="#" class="view-terms-link">Ver Términos y Condiciones</a>
+
             </form>
         </div>
         
@@ -62,11 +64,14 @@
                 <input type="password" id="register-confirm-password" name="register-confirm-password" placeholder="Confirmar Contraseña" required>
                 <input type="submit" value="Crear Cuenta">
                 <a class="ok-account">¿Ya tienes una cuenta? Inicia Sesión</a>
+                <a href="#" class="view-terms-link">Ver Términos y Condiciones</a>
+
             </form>
         </div>
     </div>
 
     <!-- Coneccion con el archivo de JavaScript -->
     <script src="{{ url_for('static', filename='js/autenticacion.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/terminosCondiciones.js') }}"></script>
 </body>
 </html>

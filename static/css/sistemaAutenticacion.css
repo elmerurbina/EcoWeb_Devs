@@ -89,3 +89,14 @@ h1 {
     border: 1px solid #f5c6cb; /* Light red border for error */
 }
 
+.view-terms-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.view-terms-link:hover {
+    color: #45a049;
+    
+}
+

@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.view-rules-link').forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
-            const rulesWindow = window.open('', 'Rules', 'width=600,height=400');
+            const rulesWindow = window.open('', 'Rules', 'width=600,height=900');
             rulesWindow.document.write(rules);
             rulesWindow.document.close();
         });
