@@ -16,29 +16,41 @@
 
     <!-- Formas para abrir un nuevo debate -->
     <form id="debateForm" action="#" method="post" class="forum-form" style="display: none;">
-        <h3>Abrir un Nuevo Debate</h3>
-        <div class="form-group">
-            <label for="titulo_debate">Título del Debate:</label>
-            <input type="text" id="titulo_debate" name="titulo_debate" required>
-        </div>
-        <div class="form-group">
-            <label for="contenido_debate">Contenido:</label>
-            <textarea id="contenido_debate" name="contenido_debate" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn-debate">Abrir Debate</button>
+        <section class="new-debate">
+            <h3>Abrir un Nuevo Debate</h3>
+           
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" required>
+                
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                
+                <label for="punto-de-vista">Mi punto de vista</label>
+                <textarea id="punto-de-vista" name="punto-de-vista" rows="4" required></textarea>
+                
+                <label for="otras-observaciones">Otras observaciones</label>
+                <textarea id="otras-observaciones" name="otras-observaciones" rows="4"></textarea>
+                
+               <button type="submit">Publicar Debate</button>
+          
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+
+        </section>
     </form>
 
+    <!-- Formulario para hacer una pregunta en el foro -->
     <form id="preguntaForm" action="#" method="post" class="forum-form" style="display: none;">
-        <h3>Hacer una Pregunta</h3>
-        <div class="form-group">
-            <label for="titulo_pregunta">Título de la Pregunta:</label>
-            <input type="text" id="titulo_pregunta" name="titulo_pregunta" required>
-        </div>
-        <div class="form-group">
-            <label for="contenido_pregunta">Contenido:</label>
-            <textarea id="contenido_pregunta" name="contenido_pregunta" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn-pregunta">Hacer Pregunta</button>
+       
+        <section class="ask-question">
+            <h3>Hacer una Pregunta</h3>
+            <textarea id="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
+
+               <button id="publish-button">Publicar</button>
+
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+
+        </section>
+        
     </form>
 
     <form id="hiloForm" action="#" method="post" class="forum-form" style="display: none;">
@@ -71,7 +83,7 @@
     });
 </script>
 
-<!-- Archivo JavaScript para cargar la pagina de autenticacion -->
+<script src="{{ url_for('static', filename='js/reglasComunitarias.js') }}"></script>
 
 
 </body>
