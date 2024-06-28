@@ -43,6 +43,9 @@
        
         <section class="ask-question">
             <h3>Hacer una Pregunta</h3>
+            <label for="titulo">Título de la Pregunta</label>
+            <input type="text" id="titulo" name="titulo" required>
+
             <textarea id="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
 
                <button id="publish-button">Publicar</button>
@@ -54,16 +57,18 @@
     </form>
 
     <form id="hiloForm" action="#" method="post" class="forum-form" style="display: none;">
-        <h3>Nuevo Hilo de Conversación</h3>
-        <div class="form-group">
-            <label for="titulo_hilo">Título del Hilo:</label>
-            <input type="text" id="titulo_hilo" name="titulo_hilo" required>
-        </div>
-        <div class="form-group">
-            <label for="contenido_hilo">Contenido:</label>
-            <textarea id="contenido_hilo" name="contenido_hilo" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn-hilo">Crear Hilo</button>
+        <section class="new-conversation">
+            <h3>Nuevo Hilo de Conversación</h3>
+            <label for="conversation-title">Título</label>
+            <input type="text" id="conversation-title" name="conversation-title" required>
+            
+            <label for="conversation-topic">¿De qué quieres hablar?</label>
+            <textarea id="conversation-topic" name="conversation-topic" placeholder="Escribe sobre lo que te interesa..." rows="4" required></textarea>
+            
+            <button type="submit">Publicar tema de conversación</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+        
     </form>
 
     <!-- Botones para ver las formas -->
