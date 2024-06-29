@@ -326,4 +326,58 @@ a:hover {
     border-color: #f5c6cb;
 }
 
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #45A049;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    z-index: 1000;
+}
 
+.fixed-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.fixed-menu a:hover {
+    background-color: #575757;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h3 {
+    margin-bottom: 10px;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+section li h4 {
+    margin: 0 0 5px 0;
+}
+
+section li p {
+    margin: 0;
+}
+
+header {
+    padding: 40px;
+}

@@ -10,6 +10,13 @@
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
+<header>
+<div class="fixed-menu">
+    <a href="#debates">Debates</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="#conversaciones">Conversaciones</a>
+</div>
+</header>
 
 <div class="forum-container">
     <h2>Foro Comunitario</h2>
@@ -19,6 +26,7 @@
         <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
         <button id="btnHilo" onclick="location.href='{{ url_for('login', next='hiloForm') }}'">Nuevo Hilo de Conversación</button>
     </div>
+
 </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -31,12 +39,10 @@
     {% endif %}
 {% endwith %}
 
-
     <!-- Formas para abrir un nuevo debate -->
     <form id="debateForm" action="{{ url_for('new_debate') }}" method="POST" class="forum-form" style="display: none;">
         <h3>Abrir un Nuevo Debate</h3>
         <section class="new-debate">
-           
                 <label for="titulo">Título</label>
                 <input type="text" id="titulo" name="titulo" required>
                 
@@ -50,13 +56,11 @@
                 <textarea id="otras-observaciones" name="otras-observaciones" rows="4"></textarea>
                 
                <button type="submit">Publicar Debate</button>
-          
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
-
         </section>
     </form>
 
-    <section class="debates">
+    <section id="debates" class="debates">
         <h3>Debates Recientes</h3>
         <ul>
             {% for debate in debates %}
@@ -69,59 +73,44 @@
         </ul>
     </section>
 
-
     <!-- Formulario para hacer una pregunta en el foro -->
     <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
-       
         <h3>Hacer una Pregunta</h3>
         <section class="ask-question">
-           
             <label for="titulo">Título de la Pregunta</label>
             <input type="text" id="titulo" name="titulo" required>
-
-            <textarea id="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
-
-               <button id="publish-button">Publicar</button>
-
+            <textarea id="question-input" name="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
+            <button id="publish-button">Publicar</button>
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
-
         </section>
-        
     </form>
 
-   
-    <section class="questions">
+    <section id="preguntas" class="questions">
         <h3>Preguntas Recientes</h3>
         <ul>
             {% for question in questions %}
             <li>
                 <h4>{{ question.titulo }}</h4>
                 <p>{{ question.pregunta }}</p>
-               
             </li>
             {% endfor %}
         </ul>
     </section>
 
-
+    <!-- Formulario para nuevo hilo de conversación -->
     <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
-        
         <h3>Nuevo Hilo de Conversación</h3>
         <section class="new-conversation">
-           
             <label for="conversation-title">Título</label>
             <input type="text" id="conversation-title" name="conversation-title" required>
-            
             <label for="conversation-topic">¿De qué quieres hablar?</label>
             <textarea id="conversation-topic" name="conversation-topic" placeholder="Escribe sobre lo que te interesa..." rows="4" required></textarea>
-            
             <button type="submit">Publicar tema de conversación</button>
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
         </section>
-
     </form>
 
-    <section class="threads">
+    <section id="conversaciones" class="threads">
         <h3>Hilos de Conversación Recientes</h3>
         <ul>
             {% for thread in threads %}
@@ -133,9 +122,7 @@
             {% endfor %}
         </ul>
     </section>
-
-    <!-- Botones para ver las formas -->
-    
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -147,7 +134,7 @@
 </script>
 
 <script src="{{ url_for('static', filename='js/reglasComunitarias.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/menuForo.js') }}"></script>
 
 </body>
 </html>
