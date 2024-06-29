@@ -162,3 +162,55 @@ def save_denuncia(titulo, descripcion, evidencia_filename, ubicacion, denunciado
         if connection.is_connected():
             cursor.close()
             connection.close()
+
+
+def get_all_debates():
+
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)
+    debates = []
+    try:
+        query = "SELECT * FROM foro_debates ORDER BY fecha_creacion DESC"
+        cursor.execute(query)
+        debates = cursor.fetchall()
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+    return debates
+
+def get_all_questions():
+
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)
+    questions = []
+    try:
+        query = "SELECT * FROM foro_preguntas ORDER BY fecha_creacion DESC"
+        cursor.execute(query)
+        questions = cursor.fetchall()
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+    return questions
+
+def get_all_threads():
+
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)
+    threads = []
+    try:
+        query = "SELECT * FROM foro_hilos ORDER BY fecha_creacion DESC"
+        cursor.execute(query)
+        threads = cursor.fetchall()
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+    return threads

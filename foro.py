@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
-from db import ForoDebate, ForoHilo, ForoPregunta
+from db import ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads
 
 app = Flask(__name__)
 
@@ -7,7 +7,13 @@ app = Flask(__name__)
 @app.route('/foro')
 def foro():
     form_type = request.args.get('form_type', '')
-    return render_template('foro.html', form_type=form_type)
+
+    # Retrieve data from database
+    debates = get_all_debates()
+    questions = get_all_questions()
+    threads = get_all_threads()
+
+    return render_template('foro.html', form_type=form_type, debates=debates, questions=questions, threads=threads)
 
 
 @app.route('/new_debate', methods=['POST'])

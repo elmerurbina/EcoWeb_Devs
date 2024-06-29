@@ -73,5 +73,7 @@ def submit_denuncia():
 
         return redirect(url_for('denuncia'))
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -14,6 +14,13 @@
 <div class="forum-container">
     <h2>Foro Comunitario</h2>
 
+    <div class="prompt-login">
+        <button id="btnPregunta" onclick="location.href='{{ url_for('login', next='preguntaForm') }}'">Hacer una Pregunta</button>
+        <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
+        <button id="btnHilo" onclick="location.href='{{ url_for('login', next='hiloForm') }}'">Nuevo Hilo de Conversación</button>
+    </div>
+</div>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
@@ -49,6 +56,20 @@
         </section>
     </form>
 
+    <section class="debates">
+        <h3>Debates Recientes</h3>
+        <ul>
+            {% for debate in debates %}
+            <li>
+                <h4>{{ debate.titulo }}</h4>
+                <p>{{ debate.descripcion }}</p>
+                <!-- Add more fields as needed -->
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
     <!-- Formulario para hacer una pregunta en el foro -->
     <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
        
@@ -68,6 +89,21 @@
         
     </form>
 
+   
+    <section class="questions">
+        <h3>Preguntas Recientes</h3>
+        <ul>
+            {% for question in questions %}
+            <li>
+                <h4>{{ question.titulo }}</h4>
+                <p>{{ question.pregunta }}</p>
+               
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
     <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
         
         <h3>Nuevo Hilo de Conversación</h3>
@@ -85,13 +121,21 @@
 
     </form>
 
+    <section class="threads">
+        <h3>Hilos de Conversación Recientes</h3>
+        <ul>
+            {% for thread in threads %}
+            <li>
+                <h4>{{ thread.titulo }}</h4>
+                <p>{{ thread.tema }}</p>
+                <!-- Add more fields as needed -->
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
     <!-- Botones para ver las formas -->
-    <div class="prompt-login">
-        <button id="btnPregunta" onclick="location.href='{{ url_for('login', next='preguntaForm') }}'">Hacer una Pregunta</button>
-        <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
-        <button id="btnHilo" onclick="location.href='{{ url_for('login', next='hiloForm') }}'">Nuevo Hilo de Conversación</button>
-    </div>
-</div>
+    
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
