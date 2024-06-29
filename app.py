@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from autenticacion import register, login
 from publicaciones import publicaciones
 from campanias import campanias, new_campaign
-from denuncia import denuncia, denunciaForm
+from denuncia import denuncia, denunciaForm, submit_denuncia
 from foro import foro, new_debate, new_thread, new_question
 from config import Config
 
@@ -31,6 +31,7 @@ app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
 
 app.add_url_rule('/denuncia', 'denuncia', denuncia)
 app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
+app.add_url_rule('/submit_denuncia', 'submit_denuncia', submit_denuncia, methods=['POST'])
 
 app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])

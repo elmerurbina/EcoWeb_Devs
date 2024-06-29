@@ -120,7 +120,7 @@ class ForoHilo:
                 connection.close()
 
 
-# Function to save campaign data in the database
+# Funcion para guardar las campanias en la base de datos
 def save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto=None):
     connection = create_connection()
     cursor = connection.cursor()
@@ -138,6 +138,24 @@ def save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin
 
         connection.commit()
         print("Campaign saved successfully")
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
+
+# Funcion para guardar las denuncias en la base dedatos
+def save_denuncia(titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles=None):
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    try:
+        query = "INSERT INTO denuncias (titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles) VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor.execute(query, (titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles))
+        connection.commit()
+        print("Denuncia saved successfully")
     except Error as e:
         print(f"The error '{e}' occurred")
     finally:
