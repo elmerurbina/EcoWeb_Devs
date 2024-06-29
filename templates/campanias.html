@@ -6,6 +6,8 @@
     <title>Campania - Campania Comunitaria</title>
     <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campanias.css') }}">
+    <!-- Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
@@ -69,6 +71,28 @@
             {% if campaign.presupuesto %}
             <p><strong>Presupuesto:</strong> {{ campaign.presupuesto }}</p>
             {% endif %}
+
+            <div class="campaign-actions">
+                <a href="#" class="action-icon"><i class="fas fa-heart"></i> Like</a>
+                <a href="#" class="action-icon" onclick="toggleCommentForm('{{ campaign.id }}')"><i class="fas fa-comment"></i> Comentar</a>
+                <a href="#" class="action-icon"><i class="fas fa-user-plus"></i> Seguir</a>
+            </div>
+
+            <div id="commentForm{{ campaign.id }}" class="comment-form" style="display: none;">
+                <form action="{{ url_for('add_comment') }}" method="POST">
+                    <textarea name="commentText" placeholder="Escribe tu comentario aquí..." rows="4"></textarea>
+                    <button type="submit">Comentar</button>
+                </form>
+            </div>
+
+            <div class="comments">
+                <h5>Comentarios:</h5>
+                <ul>
+                    {% for comment in campaign.comments %}
+                    <li>{{ comment.comment_text }}</li>
+                    {% endfor %}
+                </ul>
+
         </li>
         {% endfor %}
     </ul>
@@ -83,6 +107,9 @@
         }
     });
 </script>
+
+<script src="{{url_for('static', filename='js/comentarios.js')}}"></script>
+<script src="{{url_for('static', filename='js/id.js')}}"></script>
 
 </body>
 </html>

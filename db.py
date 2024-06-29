@@ -217,16 +217,54 @@ def get_all_threads():
 
 def get_all_campaigns():
     connection = create_connection()
-    cursor = connection.cursor(dictionary=True)  # Use dictionary cursor to fetch results as dictionaries
+    cursor = connection.cursor(dictionary=True)
 
     try:
-        query = "SELECT * FROM campaign"
-        cursor.execute(query)
+        cursor.execute("SELECT * FROM campaign")
         campaigns = cursor.fetchall()
+
+        for campaign in campaigns:
+            campaign['comments'] = get_comments_for_campaign(campaign['id'])
+
         return campaigns
     except Error as e:
         print(f"The error '{e}' occurred")
-        return None
+        return []
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
+def get_comments_for_campaign(campaign_id):
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    try:
+        cursor.execute("SELECT * FROM comments WHERE campaign_id = %s", (campaign_id,))
+        comments = cursor.fetchall()
+        return comments
+    except Error as e:
+        print(f"The error '{e}' occurred")
+        return []
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
+
+
+def save_comment(campaign_id, comment_text):
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    try:
+        query = "INSERT INTO comments (campaign_id, comment_text) VALUES (%s, %s)"
+        cursor.execute(query, (campaign_id, comment_text))
+        connection.commit()
+        print("Comment saved successfully")
+    except Error as e:
+        print(f"The error '{e}' occurred")
+        raise
     finally:
         if connection.is_connected():
             cursor.close()

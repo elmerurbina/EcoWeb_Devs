@@ -53,3 +53,14 @@ CREATE TABLE denuncias (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tabla para los comentarios
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    campaign_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (campaign_id) REFERENCES campaign(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES sistemaautenticacion(id) ON DELETE CASCADE
+);
+

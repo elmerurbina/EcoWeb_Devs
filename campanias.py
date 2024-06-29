@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from db import save_campaign, get_all_campaigns
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from db import save_campaign, get_all_campaigns, save_comment
 
 app = Flask(__name__)
 
@@ -29,6 +29,21 @@ def new_campaign():
 
     return redirect(url_for('campanias'))
 
+@app.route('/add_comment', methods=['POST'])
+def add_comment():
+    if request.method == 'POST':
+        if request.is_json:
+            data = request.json
+            campaign_id = data.get('campaign_id')
+            comment_text = data.get('comment_text')
+
+            try:
+                save_comment(campaign_id, comment_text)
+                return jsonify({'message': 'Comment added successfully'}), 200
+            except Exception as e:
+                return jsonify({'error': f'Failed to add comment: {str(e)}'}), 500
+        else:
+            return jsonify({'error': 'Unsupported Media Type'}), 415
 
 if __name__ == '__main__':
     app.run(debug=True)
