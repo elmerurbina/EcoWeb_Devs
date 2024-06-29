@@ -270,3 +270,19 @@ def save_comment(campaign_id, comment_text):
             cursor.close()
             connection.close()
 
+
+def get_all_denuncias():
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    try:
+        cursor.execute("SELECT * FROM denuncias")
+        denuncias = cursor.fetchall()
+        return denuncias
+    except Error as e:
+        print(f"The error '{e}' occurred")
+        return []
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()

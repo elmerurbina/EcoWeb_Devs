@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
-from db import save_denuncia
+from db import save_denuncia, get_all_denuncias
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
@@ -15,7 +15,8 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 @app.route('/denuncia')
 def denuncia():
-    return render_template('denuncia.html')
+    denuncias = get_all_denuncias()
+    return render_template('denuncia.html', denuncias=denuncias)
 
 @app.route('/denunciaForm')
 def denunciaForm():

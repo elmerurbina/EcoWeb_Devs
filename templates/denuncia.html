@@ -11,19 +11,25 @@
 </head>
 <body>
 
-<div class="denuncias-container">
-    <h2>Denuncias y Reportes</h2>
-    
-    <!-- Aqui van aparecer las denuncias existentes -->
-  
 
+<div class="denuncias-container">
     <!-- Este boton va cargar el formulario para hacer una nueva denuncia -->
     <div class="load-form">
-       <a href="{{url_for('denunciaForm')}}"> <button id="btnDenuncia">Hacer una Denuncia</button> </a>
+        <a href="{{url_for('denunciaForm')}}"> <button id="btnDenuncia">Hacer una Denuncia</button> </a>
+     </div>
+ </div>
+ <section>
+    <h2>Denuncias</h2>
+
+    {% for denuncia in denuncias %}
+    <div class="denuncia-item">
+        <h3>{{ denuncia.titulo }}</h3>
+        <p>{{ denuncia.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ denuncia.fecha }}</p>
+        <!-- Add more details as needed -->
     </div>
-</div>
-
-
+    {% endfor %}
+</section>
 
 </body>
 </html>
