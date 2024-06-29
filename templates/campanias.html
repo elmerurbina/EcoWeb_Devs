@@ -14,6 +14,11 @@
 <div class="campania-container">
     <h2>Campaña Comunitaria</h2>
 
+    <div class="prompt-login">
+        <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
+    </div>
+
+   
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
@@ -50,11 +55,25 @@
         <button type="submit" class="btn-campania">Crear Campaña</button>
     </form>
 
-    <div class="prompt-login">
-        <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
-    </div>
-</section>
 </div>
+
+<section id="campanias" class="campaigns">
+    <h3>Campañas Comunitarias Recientes</h3>
+    <ul>
+        {% for campaign in campaigns %}
+        <li>
+            <h4>{{ campaign.nombre_campania }}</h4>
+            <p>{{ campaign.descripcion_campania }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ campaign.fecha_inicio }}</p>
+            <p><strong>Fecha de Fin:</strong> {{ campaign.fecha_fin }}</p>
+            {% if campaign.presupuesto %}
+            <p><strong>Presupuesto:</strong> {{ campaign.presupuesto }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {

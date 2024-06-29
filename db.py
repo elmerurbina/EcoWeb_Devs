@@ -214,3 +214,21 @@ def get_all_threads():
             cursor.close()
             connection.close()
     return threads
+
+def get_all_campaigns():
+    connection = create_connection()
+    cursor = connection.cursor(dictionary=True)  # Use dictionary cursor to fetch results as dictionaries
+
+    try:
+        query = "SELECT * FROM campaign"
+        cursor.execute(query)
+        campaigns = cursor.fetchall()
+        return campaigns
+    except Error as e:
+        print(f"The error '{e}' occurred")
+        return None
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+

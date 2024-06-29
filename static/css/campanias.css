@@ -152,4 +152,29 @@ footer {
     border-color: #f5c6cb;
 }
 
+.campaigns {
+    margin-top: 20px;
+}
+
+.campaigns ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.campaigns li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.campaigns h4 {
+    margin-top: 0;
+}
+
+.campaigns p {
+    margin: 5px 0;
+}
+
+
 

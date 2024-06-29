@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from db import save_campaign
+from db import save_campaign, get_all_campaigns
 
 app = Flask(__name__)
 
 @app.route('/campanias')
 def campanias():
     form_type = request.args.get('form_type', '')
-    return render_template('campanias.html', form_type=form_type)
+
+    campaigns = get_all_campaigns()
+    return render_template('campanias.html', form_type=form_type, campaigns=campaigns)
 
 
 @app.route('/new_campaign', methods=['POST'])
