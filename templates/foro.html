@@ -14,10 +14,21 @@
 <div class="forum-container">
     <h2>Foro Comunitario</h2>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
     <!-- Formas para abrir un nuevo debate -->
-    <form id="debateForm" action="#" method="post" class="forum-form" style="display: none;">
+    <form id="debateForm" action="{{ url_for('new_debate') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Abrir un Nuevo Debate</h3>
         <section class="new-debate">
-            <h3>Abrir un Nuevo Debate</h3>
            
                 <label for="titulo">Título</label>
                 <input type="text" id="titulo" name="titulo" required>
@@ -39,10 +50,11 @@
     </form>
 
     <!-- Formulario para hacer una pregunta en el foro -->
-    <form id="preguntaForm" action="#" method="post" class="forum-form" style="display: none;">
+    <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
        
+        <h3>Hacer una Pregunta</h3>
         <section class="ask-question">
-            <h3>Hacer una Pregunta</h3>
+           
             <label for="titulo">Título de la Pregunta</label>
             <input type="text" id="titulo" name="titulo" required>
 
@@ -56,9 +68,11 @@
         
     </form>
 
-    <form id="hiloForm" action="#" method="post" class="forum-form" style="display: none;">
+    <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
+        
+        <h3>Nuevo Hilo de Conversación</h3>
         <section class="new-conversation">
-            <h3>Nuevo Hilo de Conversación</h3>
+           
             <label for="conversation-title">Título</label>
             <input type="text" id="conversation-title" name="conversation-title" required>
             
@@ -68,7 +82,7 @@
             <button type="submit">Publicar tema de conversación</button>
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
         </section>
-        
+
     </form>
 
     <!-- Botones para ver las formas -->

@@ -213,6 +213,7 @@ textarea {
     margin: 5px 0 10px 0;
     font-size: 16px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    resize: none;
 }
 
 button {
@@ -303,4 +304,26 @@ a:hover {
 .new-conversation a:hover {
     text-decoration: underline;
 }
+
+/* Estilos para los mensajes informativos */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error,
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 

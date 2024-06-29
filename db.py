@@ -51,3 +51,71 @@ def check_login(correo, contrasenia):
             cursor.close()
             connection.close()
     return user
+
+
+
+class ForoDebate:
+    def __init__(self, titulo, descripcion, punto_de_vista, otras_observaciones=''):
+        self.titulo = titulo
+        self.descripcion = descripcion
+        self.punto_de_vista = punto_de_vista
+        self.otras_observaciones = otras_observaciones
+
+    @staticmethod
+    def save(titulo, descripcion, punto_de_vista, otras_observaciones=''):
+        connection = create_connection()
+        cursor = connection.cursor()
+        try:
+            query = "INSERT INTO foro_debates (titulo, descripcion, punto_de_vista, otras_observaciones) VALUES (%s, %s, %s, %s)"
+            cursor.execute(query, (titulo, descripcion, punto_de_vista, otras_observaciones))
+            connection.commit()
+            print("Debate saved successfully")
+        except Error as e:
+            print(f"The error '{e}' occurred")
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+
+class ForoPregunta:
+    def __init__(self, titulo, pregunta):
+        self.titulo = titulo
+        self.pregunta = pregunta
+
+    @staticmethod
+    def save(titulo, pregunta):
+        connection = create_connection()
+        cursor = connection.cursor()
+        try:
+            query = "INSERT INTO foro_preguntas (titulo, pregunta) VALUES (%s, %s)"
+            cursor.execute(query, (titulo, pregunta))
+            connection.commit()
+            print("Question saved successfully")
+        except Error as e:
+            print(f"The error '{e}' occurred")
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+
+class ForoHilo:
+    def __init__(self, titulo, tema):
+        self.titulo = titulo
+        self.tema = tema
+
+    @staticmethod
+    def save(titulo, tema):
+        connection = create_connection()
+        cursor = connection.cursor()
+        try:
+            query = "INSERT INTO foro_hilos (titulo, tema) VALUES (%s, %s)"
+            cursor.execute(query, (titulo, tema))
+            connection.commit()
+            print("Thread saved successfully")
+        except Error as e:
+            print(f"The error '{e}' occurred")
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+

@@ -3,7 +3,7 @@ from autenticacion import register, login
 from publicaciones import publicaciones
 from campanias import campanias
 from denuncia import denuncia, denunciaForm
-from foro import foro
+from foro import foro, new_debate, new_thread, new_question
 from config import Config
 
 app = Flask(__name__)
@@ -32,6 +32,10 @@ app.add_url_rule('/denuncia', 'denuncia', denuncia)
 app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
 
 app.add_url_rule('/foro', 'foro', foro)
+app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
+app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST'])
+app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
+
 
 @app.route('/deforestacion')
 def deforestacion():
