@@ -120,11 +120,15 @@ class ForoHilo:
                 connection.close()
 
 
+# Function to save campaign data in the database
 def save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto=None):
     connection = create_connection()
     cursor = connection.cursor()
 
     try:
+        if presupuesto == '':
+            presupuesto = None  # Convert empty string to None
+
         if presupuesto is not None:
             query = "INSERT INTO campaign (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto) VALUES (%s, %s, %s, %s, %s)"
             cursor.execute(query, (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto))
