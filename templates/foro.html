@@ -28,7 +28,7 @@
     </div>
 
 </div>
-
+<!--Mensajes informativos -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
@@ -60,14 +60,21 @@
         </section>
     </form>
 
+    <!-- Mostrar los debates desde la base de datos -->
     <section id="debates" class="debates">
         <h3>Debates Recientes</h3>
         <ul>
             {% for debate in debates %}
-            <li>
+            <li class="debate-container">
                 <h4>{{ debate.titulo }}</h4>
                 <p>{{ debate.descripcion }}</p>
-                <!-- Add more fields as needed -->
+                <p><strong>Mi punto de vista:</strong> {{ debate.punto_de_vista }}</p>
+                <p><strong>Otras observaciones:</strong> {{ debate.otras_observaciones }}</p>
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Tu que Opinas? Escribe tu respuesta aqui..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
             </li>
             {% endfor %}
         </ul>
@@ -84,7 +91,7 @@
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
         </section>
     </form>
-
+      <!--Mostrar las preguntas -->
     <section id="preguntas" class="questions">
         <h3>Preguntas Recientes</h3>
         <ul>
@@ -92,6 +99,12 @@
             <li>
                 <h4>{{ question.titulo }}</h4>
                 <p>{{ question.pregunta }}</p>
+
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+            <div class="answer-form" style="display: none;">
+                <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                <button class="submit-answer-button">Enviar Respuesta</button>
+            </div>
             </li>
             {% endfor %}
         </ul>
@@ -109,7 +122,8 @@
             <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
         </section>
     </form>
-
+ 
+    <!-- Mostrar las conversaciones -->
     <section id="conversaciones" class="threads">
         <h3>Hilos de Conversación Recientes</h3>
         <ul>
@@ -117,7 +131,13 @@
             <li>
                 <h4>{{ thread.titulo }}</h4>
                 <p>{{ thread.tema }}</p>
-                <!-- Add more fields as needed -->
+
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+              
             </li>
             {% endfor %}
         </ul>
@@ -135,6 +155,7 @@
 
 <script src="{{ url_for('static', filename='js/reglasComunitarias.js') }}"></script>
 <script src="{{ url_for('static', filename='js/menuForo.js') }}"></script>
+<script src="{{url_for('static', filename='js/responder.js')}}"></script>
 
 </body>
 </html>
