@@ -14,7 +14,25 @@ CREATE TABLE campaign (
 CREATE TABLE foro_debates (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
-    contenido TEXT NOT NULL,
+    descripcion TEXT NOT NULL,
+    punto_de_vista TEXT NOT NULL,
+    otras_observaciones TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla para las preguntas
+CREATE TABLE foro_preguntas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    pregunta TEXT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla para las conversaciones
+CREATE TABLE foro_hilos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    tema TEXT NOT NULL,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
