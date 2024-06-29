@@ -119,3 +119,24 @@ class ForoHilo:
                 cursor.close()
                 connection.close()
 
+
+def save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto=None):
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    try:
+        if presupuesto is not None:
+            query = "INSERT INTO campaign (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(query, (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto))
+        else:
+            query = "INSERT INTO campaign (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin) VALUES (%s, %s, %s, %s)"
+            cursor.execute(query, (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin))
+
+        connection.commit()
+        print("Campaign saved successfully")
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()

@@ -14,8 +14,19 @@
 <div class="campania-container">
     <h2>Campaña Comunitaria</h2>
 
-    <form id="campaniaForm" action="#" method="post" class="campania-form" style="display: none;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <form id="campaniaForm" action="{{url_for('new_campaign')}}" method="POST" class="campania-form" style="display: none;">
         <h3>Crear una Nueva Campaña</h3>
+        <section class="campaing">
         <div class="form-group">
             <label for="nombre_campania">Nombre de la Campaña:</label>
             <input type="text" id="nombre_campania" name="nombre_campania" required>
@@ -42,6 +53,7 @@
     <div class="prompt-login">
         <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
     </div>
+</section>
 </div>
 
 <script>
