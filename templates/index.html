@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!--Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0/css/all.css">
+    
 
 </head>
 <body>
@@ -74,6 +76,7 @@
                 <a href="{{url_for('gei')}}"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
                 <a href="{{url_for('deforestacion')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
                 <a href="{{url_for('cf')}}"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
+               
             </ul>
         </div>
         <div class="consequences">
@@ -84,7 +87,7 @@
                 <a href="{{url_for('anm')}}"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
                 <a href="{{url_for('alpp')}}"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
                <a href="{{url_for('sequias')}}"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
-               <a href="{{url_for('inundaciones')}}">  <li><i class="fa-solid fa-hurricane"></i> Inundaciones</li> </a>
+               <a href="{{url_for('inundaciones')}}">  <i class="fa-solid fa-house-flood-water"></i> Inundaciones</li> </a>
             </ul>
         </div>
     </section>
@@ -137,16 +140,17 @@
       
           <h4>Acciones de Mitigación</h4> 
             <div class="mitigation-list">
-                <p><i class="fas fa-sun"></i> Fomentar el uso de energías renovables, como la solar y la eólica.</p>
-                <p><i class="fas fa-lightbulb"></i> Reducir el consumo de energía en el hogar mediante la eficiencia energética y el uso de electrodomésticos de bajo consumo.</p>
-                <p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p>
-                <p><i class="fas fa-leaf"></i> Implementar prácticas agrícolas sostenibles, como la rotación de cultivos y la agricultura regenerativa.</p>
-                <p><i class="fas fa-tree"></i> Conservar y restaurar los ecosistemas naturales, como los bosques y humedales, que actúan como sumideros de carbono.</p>
-                <p><i class="fas fa-carrot"></i> Adoptar dietas más sostenibles, reduciendo el consumo de carne y productos lácteos.</p>
-                <p><i class="fas fa-recycle"></i> Fomentar la reutilización, el reciclaje y la reducción de residuos.</p>
-                <p><i class="fas fa-globe"></i> Apoyar políticas y regulaciones que limiten las emisiones de gases de efecto invernadero en industrias y sectores clave.</p>
-                <p><i class="fas fa-graduation-cap"></i> Promover la educación y la conciencia pública sobre el cambio climático y la importancia de la acción individual y colectiva.</p>
-                <p><i class="fas fa-cloud-upload-alt"></i> Invertir en tecnologías de captura y almacenamiento de carbono para reducir las emisiones de CO2.</p>
+               <a href="{{url_for('energiasRenovables')}}"> <p><i class="fas fa-sun"></i> Fomentar el uso de energías renovables, como la solar y la eólica.</p> </a>
+               <a href="{{url_for('eficienciaEnergetica')}}"> <p><i class="fas fa-lightbulb"></i> Reducir el consumo de energía en el hogar mediante la eficiencia energética y el uso de electrodomésticos de bajo consumo.</p> </a>
+               <a href="{{url_for('transporteSostenible')}}"><p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p> </a> 
+               <a href="{{url_for('agriculturaSostenible')}}"> <p><i class="fas fa-leaf"></i> Implementar prácticas agrícolas sostenibles, como la rotación de cultivos y la agricultura regenerativa.</p>  </a>
+               <a href="{{url_for('ecosistemas')}}"> <p><i class="fas fa-tree"></i> Conservar y restaurar los ecosistemas naturales, como los bosques y humedales, que actúan como sumideros de carbono.</p> </a>
+               <a href="{{url_for('dietasSostenibles')}}"> <p><i class="fas fa-carrot"></i> Adoptar dietas más sostenibles, reduciendo el consumo de carne y productos lácteos.</p> </a>
+               <a href="{{url_for('reciclaje')}}"><p><i class="fas fa-recycle"></i> Fomentar la reutilización, el reciclaje y la reducción de residuos.</p> </a >
+               <a href="{{url_for('politicasAmbientales')}}"><p><i class="fas fa-globe"></i> Apoyar políticas y regulaciones que limiten las emisiones de gases de efecto invernadero en industrias y sectores clave.</p> </a>
+               <a href="{{url_for('concienciaPublica')}}"><p><i class="fas fa-graduation-cap"></i> Promover la educación y la conciencia pública sobre el cambio climático y la importancia de la acción individual y colectiva.</p> </a> 
+               <a href="{{url_for('tecnologias')}}"> <p><i class="fas fa-cloud-upload-alt"></i> Invertir en tecnologías de captura y almacenamiento de carbono para reducir las emisiones de CO2.</p> </a>
+                <a href="{{url_for('rs')}}"> <p><i class="fa-solid fa-earth-americas"></i> Uso efeciente de los recursos naturales.</p> </a>
             </div>
      
     </section>

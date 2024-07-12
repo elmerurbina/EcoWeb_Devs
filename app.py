@@ -81,5 +81,49 @@ def ayuda():
 def sostenibilidad():
     return render_template('sostenibilidad.html')
 
+@app.route('/rs')
+def rs():
+    return render_template('recursosNaturales.html')
+
+@app.route('/energiasRenovable')
+def energiasRenovables():
+    return render_template('energiaRenovable.html')
+
+@app.route('/eficienciaEnergetica')
+def eficienciaEnergetica():
+    return render_template('eficienciaEnergetica.html')
+
+@app.route('/transporteSostenible')
+def transporteSostenible():
+    return render_template('transporteSostenible.html')
+
+@app.route('/agriculturaSostenible')
+def agriculturaSostenible():
+    return render_template('agricultura.html')
+
+@app.route('/ecosistemas')
+def ecosistemas():
+    return render_template('ecosistemas.html')
+
+@app.route('/dietasSostenibles')
+def dietasSostenibles():
+    return render_template('dietasSostenible.html')
+
+@app.route('/reciclaje')
+def reciclaje():
+    return render_template('reciclaje.html')
+
+@app.route('/politicasAmbientales')
+def politicasAmbientales():
+    return render_template('politicasAmbientales.html')
+
+@app.route('/tecnologias')
+def tecnologias():
+    return render_template('tecnologia.html')
+
+@app.route('/concienciaPublica')
+def concienciaPublica():
+    return render_template('concienciaPublica.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Contenido principal */
+main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Sección de contenido */
+section#content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Títulos de sección */
+h2 {
+    color: #4CAF50;
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* Párrafos */
+p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Íconos */
+i {
+    margin-right: 0.5rem;
+    color: #4CAF50;
+}
+
+/* Enlaces */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #45a049;
+}
+
+/* Listas */
+ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+/* Estilo para listas de íconos */
+.icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.icon-list p {
+    flex: 0 0 calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.icon-list i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .icon-list p {
+        flex: 0 0 calc(100% - 20px);
+    }
+}
