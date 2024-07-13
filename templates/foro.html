@@ -15,6 +15,7 @@
     <a href="#debates">Debates</a>
     <a href="#preguntas">Preguntas</a>
     <a href="#conversaciones">Conversaciones</a>
+    <a href="#" class="view-rules-link">Reglas comunitarias</a>
 </div>
 </header>
 
@@ -60,6 +61,31 @@
         </section>
     </form>
 
+     <!-- Formulario para hacer una pregunta en el foro -->
+     <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Hacer una Pregunta</h3>
+        <section class="ask-question">
+            <label for="titulo">Título de la Pregunta</label>
+            <input type="text" id="titulo" name="titulo" required>
+            <textarea id="question-input" name="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
+            <button id="publish-button">Publicar</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+    </form>
+
+     <!-- Formulario para nuevo hilo de conversación -->
+     <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Nuevo Hilo de Conversación</h3>
+        <section class="new-conversation">
+            <label for="conversation-title">Título</label>
+            <input type="text" id="conversation-title" name="conversation-title" required>
+            <label for="conversation-topic">¿De qué quieres hablar?</label>
+            <textarea id="conversation-topic" name="conversation-topic" placeholder="Escribe sobre lo que te interesa..." rows="4" required></textarea>
+            <button type="submit">Publicar tema de conversación</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+    </form>
+
     <!-- Mostrar los debates desde la base de datos -->
     <section id="debates" class="debates">
         <h3>Debates Recientes</h3>
@@ -80,17 +106,7 @@
         </ul>
     </section>
 
-    <!-- Formulario para hacer una pregunta en el foro -->
-    <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
-        <h3>Hacer una Pregunta</h3>
-        <section class="ask-question">
-            <label for="titulo">Título de la Pregunta</label>
-            <input type="text" id="titulo" name="titulo" required>
-            <textarea id="question-input" name="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
-            <button id="publish-button">Publicar</button>
-            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
-        </section>
-    </form>
+   
       <!--Mostrar las preguntas -->
     <section id="preguntas" class="questions">
         <h3>Preguntas Recientes</h3>
@@ -110,18 +126,7 @@
         </ul>
     </section>
 
-    <!-- Formulario para nuevo hilo de conversación -->
-    <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
-        <h3>Nuevo Hilo de Conversación</h3>
-        <section class="new-conversation">
-            <label for="conversation-title">Título</label>
-            <input type="text" id="conversation-title" name="conversation-title" required>
-            <label for="conversation-topic">¿De qué quieres hablar?</label>
-            <textarea id="conversation-topic" name="conversation-topic" placeholder="Escribe sobre lo que te interesa..." rows="4" required></textarea>
-            <button type="submit">Publicar tema de conversación</button>
-            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
-        </section>
-    </form>
+   
  
     <!-- Mostrar las conversaciones -->
     <section id="conversaciones" class="threads">
