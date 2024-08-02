@@ -64,3 +64,10 @@ CREATE TABLE comments (
     FOREIGN KEY (user_id) REFERENCES sistemaautenticacion(id) ON DELETE CASCADE
 );
 
+CREATE TABLE respuestas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    respuesta TEXT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+

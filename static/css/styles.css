@@ -111,6 +111,11 @@ header {
     padding-top: 60px;
 }
 
+a.header {
+text-align: center;
+margin-left: 25%;
+}
+
 /* Estilos de la sección principal */
 .main {
     position: relative;
