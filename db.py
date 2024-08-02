@@ -9,7 +9,7 @@ def create_connection():
             host='localhost',
             user='root',
             password='7>>HhNN6/fZ',
-            database='clima_sostenible'
+            database='VerdeNica'
         )
         if connection.is_connected():
             print("Connection to MySQL DB successful")
@@ -17,6 +17,28 @@ def create_connection():
         print(f"The error '{e}' occurred")
 
     return connection
+
+
+def save_respuesta(respuesta):
+    conn = create_connection()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO respuestas (respuesta) VALUES (%s)', (respuesta,))
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+def get_respuestas():
+    conn = create_connection()
+    respuestas = []
+    if conn:
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute('SELECT * FROM respuestas ORDER BY fecha DESC')
+        respuestas = cursor.fetchall()
+        cursor.close()
+        conn.close()
+    return respuestas
+
 
 def register_user(nombre, correo, contrasenia):
     """ Register a new user in the database """
@@ -286,3 +308,6 @@ def get_all_denuncias():
         if connection.is_connected():
             cursor.close()
             connection.close()
+
+
+
