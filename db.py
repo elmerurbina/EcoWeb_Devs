@@ -19,11 +19,11 @@ def create_connection():
     return connection
 
 
-def save_respuesta(respuesta):
+def save_respuesta(respuesta, item_id, item_type):
     conn = create_connection()
     if conn:
         cursor = conn.cursor()
-        cursor.execute('INSERT INTO respuestas (respuesta) VALUES (%s)', (respuesta,))
+        cursor.execute('INSERT INTO respuestas (respuesta, item_id, item_type) VALUES (%s, %s, %s)', (respuesta, item_id, item_type))
         conn.commit()
         cursor.close()
         conn.close()
@@ -38,6 +38,7 @@ def get_respuestas():
         cursor.close()
         conn.close()
     return respuestas
+
 
 
 def register_user(nombre, correo, contrasenia):

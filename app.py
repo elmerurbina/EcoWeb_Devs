@@ -3,7 +3,7 @@ from autenticacion import register, login
 from publicaciones import publicaciones
 from campanias import campanias, new_campaign, add_comment
 from denuncia import denuncia, denunciaForm, submit_denuncia
-from foro import foro, new_debate, new_thread, new_question
+from foro import foro, new_debate, new_thread, new_question, new_response, submit_answer
 from config import Config
 
 app = Flask(__name__)
@@ -16,7 +16,6 @@ def verdeNica():
 @app.route('/ep')
 def ep():
     return render_template('empresasSostenibles.html')
-
 
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
@@ -38,6 +37,8 @@ app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
 app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST'])
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
+app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
+app.add_url_rule('/submit_answer', 'submit_answer', submit_answer, methods=['POST'])
 
 
 @app.route('/deforestacion')
