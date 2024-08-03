@@ -36,13 +36,13 @@ Accede al directorio del proyecto y procede a instalar las dependencias necesari
 ## Paso 3: (Opcional) Crear y activar un entorno virtual
 Es recomendable crear un entorno virtual para aislar las dependencias del proyecto. Puedes crear y activar un entorno virtual utilizando los siguientes comandos:
 
-# Crear entorno virtual
+### Crear entorno virtual
 `python -m venv env`
 
-# Activar el entorno virtual en Windows
+### Activar el entorno virtual en Windows
 `.\env\Scripts\activate`
 
-# Activar el entorno virtual en macOS/Linux
+### Activar el entorno virtual en macOS/Linux
 `source env/bin/activate`
 ## Paso 4: configurar las Base de Datos
 1. Abre tu terminal de MySQL o tu gestor de base de datos favorito.
