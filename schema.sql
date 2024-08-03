@@ -1,5 +1,7 @@
 -- Database schema
 -- Campaign table
+CREATE DATABASE VerdeNica;
+
 CREATE TABLE campaign (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_campania VARCHAR(255) NOT NULL,
