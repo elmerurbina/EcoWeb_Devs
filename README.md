@@ -1,5 +1,4 @@
-## Nombre del equipo:                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-## EcoWeb Devs
+## Nombre del equipo: EcoWeb Devs
 ## Nombre de la plataforma: Verde Nica
 
 
