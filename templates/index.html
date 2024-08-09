@@ -63,8 +63,8 @@
     <section class="climate-change">
         <h2>¿Qué es el cambio climático?</h2>
         <p>El cambio climático es un fenómeno global que se refiere al aumento de la temperatura promedio en la superficie de la Tierra. Este cambio es causado principalmente por la liberación de gases de efecto invernadero en la atmósfera debido a actividades humanas, como la quema de combustibles fósiles y la deforestación. El cambio climático tiene impactos significativos en el medio ambiente, incluyendo el derretimiento de los casquetes polares, el aumento del nivel del mar, cambios en los patrones de precipitación y la pérdida de biodiversidad. Es importante tomar medidas para mitigar el cambio climático y adaptarse a sus efectos para proteger nuestro planeta y las generaciones futuras.</p>
-        <a href="#"> <button class="btn conocer-mas">Conocer más</button> </a>
-        <a href="#"></a><button class="btn acceder-cursos">Acceder a cursos gratuitos</button></a>
+        <a href="{{url_for('submit_publication')}}"> <button class="btn conocer-mas">Nueva Publicación</button> </a>
+        <a href="#"></a><button class="btn acceder-cursos">Biodiversidad en Nicaragua</button></a>
     </section>
     
     <!-- Seccion de las causas y consecuencias -->
@@ -125,15 +125,6 @@
        
     </section>
     
-    <!-- Forma de suscripcion por correo/ esto es parte de la estrategia de Marketing para monetizar -->
-    <div class="subscription-form" id="subscription">
-        <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
-        <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
-            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
-            <button type="submit">Suscribirse</button>
-            <p id="message" class="message"></p>
-        </form>
-    </div>
 
     <!-- Seccion de las acciones de mitigacion -->
     <section class="actions">
@@ -154,8 +145,20 @@
             </div>
      
     </section>
-    
-    <!-- Pie de pagina -->
+
+    <!-- Forma de suscripcion por correo/ esto es parte de la estrategia de Marketing para monetizar -->
+    <div class="subscription-form" id="subscription">
+        <h2>Recibe noticias sobre fenómenos naturales y todo lo relacionado al cambio climático, de fuentes seguras directo a tu correo electrónico</h2>
+        <form id="subscribeForm" action="https://formspree.io/f/https://formspree.io/f/xovaajnb" method="POST">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            <button type="submit">Suscribirse</button>
+            <p id="message" class="message"></p>
+        </form>
+    </div>
+
+
+   <!--
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-block">
@@ -178,7 +181,8 @@
             </div>
         </div>
     </footer>
-   
+    -->
+
     <!-- Archivo JavaScript para las suscripciones por correo -->
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Publicación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new_publication.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Nueva Publicación</h1>
+        <form id="publicationForm" action="{{ url_for('submit_publication') }}" method="POST" enctype="multipart/form-data">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" placeholder="Ingresa el título de tu publicación" required>
+
+            <label for="category">Categoría:</label>
+            <select id="category" name="category" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="Biodiversidad">Biodiversidad</option>
+                <option value="Flora">Flora</option>
+                <option value="Fauna">Fauna</option>
+                <option value="Medio Ambiente">Medio Ambiente</option>
+            </select>
+
+            <label for="content">Contenido:</label>
+            <textarea id="content" name="content" placeholder="Escribe sobre el tema..." required></textarea>
+
+             <div class="image-upload">
+                <label for="image" class="image-icon">
+                    <img src="{{ url_for('static', filename='icons/gallery.svg') }}" alt="Subir Imagen" />
+                </label>
+                <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+            </div>
+
+            <button type="submit">Publicar</button>
+
+             <script src="{{ url_for('static', filename='js/new_publication.js') }}"></script>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ from campanias import campanias, new_campaign, add_comment
 from denuncia import denuncia, denunciaForm, submit_denuncia
 from foro import foro, new_debate, new_thread, new_question, new_response, submit_answer
 from config import Config
+from submit_publication import submit_publication
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -28,6 +29,7 @@ app.add_url_rule('/add_comment', 'add_comment', add_comment, methods=['POST'])
 
 
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
+app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
 
 app.add_url_rule('/denuncia', 'denuncia', denuncia)
 app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
