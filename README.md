@@ -5,6 +5,7 @@
 ## Características
 
 - **Conciencia Climática**: Proporciona información sobre el cambio climático, sus causas, efectos y como vivir de manera sostenible.
+- **Biodiversidad**: Proporciona contenido sobre la biodiversidad de Nicaragua y permite a los usuarios subir contenido o hacer nuevas publicaciones sobre la biovidersidad o el medio ambiente en Nicaragua.
 - **Campañas**: Permite a los usuarios crear y participar en campañas ambientales.
 - **Foros**: Espacios de discusión donde la comunidad puede compartir ideas y debatir sobre temas relacionados con el medio ambiente.
 - **Denuncias**: Los usuarios pueden reportar violaciones ambientales para crear un registro y tomar acción.
@@ -42,8 +43,6 @@ Es recomendable crear un entorno virtual para aislar las dependencias del proyec
 ### Activar el entorno virtual en Windows
 `.\env\Scripts\activate`
 
-### Activar el entorno virtual en macOS/Linux
-`source env/bin/activate`
 ## Paso 4: configurar las Base de Datos
 1. Abre tu terminal de MySQL o tu gestor de base de datos favorito.
 
