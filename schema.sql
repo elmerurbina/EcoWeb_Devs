@@ -38,7 +38,7 @@ CREATE TABLE foro_hilos (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Sistema autenticacion table
+-- Tabla del Sistema autenticacion
 CREATE TABLE sistemaautenticacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE sistemaautenticacion (
     confirmar_contrasenia VARCHAR(255)
 );
 
--- Denuncias table
+-- Tabla de las denuncias
 CREATE TABLE denuncias (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -66,10 +66,21 @@ CREATE TABLE comments (
     FOREIGN KEY (user_id) REFERENCES sistemaautenticacion(id) ON DELETE CASCADE
 );
 
+-- Tabla para guardar las respuestas
 CREATE TABLE respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     respuesta TEXT NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla para las publicaciones de biodiversidad
+CREATE TABLE Publicaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    image_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
