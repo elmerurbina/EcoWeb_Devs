@@ -18,6 +18,10 @@ def verdeNica():
 def ep():
     return render_template('empresasSostenibles.html')
 
+@app.route('/biodiversidad')
+def biodiversidad():
+    return render_template('biodiversidad.html')
+
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
