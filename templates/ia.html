@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconocimiento de Especies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ia.css') }}">
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <h1>Reconocimiento de Especies</h1>
+    </header>
+
+    <main>
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="image-upload">
+                <label for="image" class="image-icon">
+                    <img src="{{ url_for('static', filename='icons/upload.svg') }}" alt="Subir Imagen" />
+                </label>
+                <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+            </div>
+
+            <button type="submit">Subir Imagen</button>
+        </form>
+
+        <div id="result">
+            <h2>Información de la Especie</h2>
+            <p><strong>Nombre:</strong> <span id="species-name">---</span></p>
+            <p><strong>Descripción:</strong> <span id="species-description">---</span></p>
+            <img id="species-image" src="" alt="Imagen de la Especie">
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/ia.js') }}"></script>
+</body>
+</html>
