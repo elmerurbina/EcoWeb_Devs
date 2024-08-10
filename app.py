@@ -6,6 +6,7 @@ from denuncia import denuncia, denunciaForm, submit_denuncia
 from foro import foro, new_debate, new_thread, new_question, new_response, submit_answer
 from config import Config
 from submit_publication import submit_publication
+from ia import recognize
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -45,6 +46,14 @@ app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST']
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
 app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
 app.add_url_rule('/submit_answer', 'submit_answer', submit_answer, methods=['POST'])
+
+
+@app.route('/ia', methods=['GET'])
+def ia():
+    return render_template('ia.html')
+
+# Register the 'recognize' route from the ia module
+app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
 
 
 @app.route('/deforestacion')
