@@ -82,3 +82,13 @@ CREATE TABLE Publicaciones (
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Tabla para guardar la informacion del reconocimiento de especies con IA
+CREATE TABLE ia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    image_data LONGBLOB NOT NULL,
+    species_name VARCHAR(255),
+    species_description TEXT,
+    upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
