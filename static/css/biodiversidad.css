@@ -1,92 +1,103 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-}
-
-header {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-header nav {
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background: #28a745;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 2em;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 1rem;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
-h1 {
-    margin: 1rem 0;
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
+/* Main Content Styles */
 main {
-    padding: 5rem 1rem 1rem;
-    margin-top: 100px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+/* Section Styles */
 section {
     margin-bottom: 2rem;
 }
 
 section h2 {
-    color: #4CAF50;
-    margin-bottom: 0.5rem;
+    color: #28a745;
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+}
+
+section p {
+    margin-bottom: 1rem;
 }
 
 ul {
-    list-style-type: disc;
-    margin-left: 2rem;
+    padding-left: 20px;
 }
 
+ul li {
+    margin-bottom: 1rem;
+}
+
+/* Image Styles */
 .featured-image {
-    display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    margin: 1rem 0;
+    border-radius: 10px;
+    margin-top: 1rem;
 }
 
 .small-image {
-    max-width: 100px;
+    width: 100px;
     height: auto;
+    border-radius: 5px;
     display: block;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    margin-top: 100px;
-    bottom: 0;
-    width: 100%;
+/* Responsive Styles */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 1rem;
+    }
 }
