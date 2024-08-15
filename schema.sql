@@ -1,7 +1,9 @@
--- Database schema
--- Campaign table
+-- Esquema de la base de datos
+
+-- Crear Base de Datos
 CREATE DATABASE VerdeNica;
 
+       -- Tablas para almacenar la informacion
 CREATE TABLE campaign (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_campania VARCHAR(255) NOT NULL,
@@ -12,7 +14,7 @@ CREATE TABLE campaign (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Foro debates table
+-- Tabla para manejar la informcion del foro
 CREATE TABLE foro_debates (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -52,7 +54,8 @@ CREATE TABLE denuncias (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT NOT NULL,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    evidencia LONGBLOG NOT NULL
 );
 
 -- Tabla para los comentarios
@@ -74,12 +77,12 @@ CREATE TABLE respuestas (
 );
 
 -- Tabla para las publicaciones de biodiversidad
-CREATE TABLE Publicaciones (
+CREATE TABLE publicaciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     category VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
-    image_url VARCHAR(255),
+    image_url LONGBLOB NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
