@@ -3,7 +3,7 @@ from autenticacion import register, login
 from publicaciones import publicaciones
 from campanias import campanias, new_campaign, add_comment
 from denuncia import denuncia, denunciaForm, submit_denuncia
-from foro import foro, new_debate, new_thread, new_question, new_response, submit_answer
+from foro import foro, new_debate, new_thread, new_question, new_response, respuestas
 from config import Config
 from submit_publication import submit_publication
 from ia import recognize
@@ -45,7 +45,7 @@ app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
 app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST'])
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
 app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
-app.add_url_rule('/submit_answer', 'submit_answer', submit_answer, methods=['POST'])
+app.add_url_rule('/respuestas', 'respuestas', respuestas)
 
 
 @app.route('/ia', methods=['GET'])

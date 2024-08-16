@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, flash, jsonify
-from db import ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads, save_respuesta, \
-    get_respuestas
+from db import ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads, save_response, \
+    get_respuestas, create_connection
 
 app = Flask(__name__)
 
@@ -20,7 +20,7 @@ def foro():
     # Create a dictionary to map item_id and item_type to their responses
     respuestas_dict = {}
     for respuesta in respuestas:
-        key = (respuesta.item_id, respuesta.item_type)
+        key = ()
         if key not in respuestas_dict:
             respuestas_dict[key] = []
         respuestas_dict[key].append(respuesta)
@@ -74,33 +74,37 @@ def new_thread():
     return redirect(url_for('foro'))
 
 
+import logging
+
+
 @app.route('/new_response', methods=['POST'])
 def new_response():
     respuesta = request.form['respuesta']
-    item_id = request.form.get('item_id')
-    item_type = request.form.get('item_type')
 
+    success = save_response(respuesta)
+    if success:
+        return redirect('/respuestas')
+    else:
+        return "Error saving response", 500
+
+
+@app.route('/respuestas')
+def respuestas():
     try:
-        save_respuesta(respuesta)  # Save the response to the database
-        flash('Respuesta agregada con éxito', 'success')
+        connection = create_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        # Fetch all responses
+        cursor.execute('SELECT * FROM respuestas')
+        respuestas = cursor.fetchall()
+
+        return render_template('respuestas.html', respuestas=respuestas)
     except Exception as e:
-        flash(f'Error al agregar la respuesta: {str(e)}', 'error')
-
-    return redirect(url_for('foro'))
-
-
-@app.route('/submit_answer', methods=['POST'])
-def submit_answer():
-    data = request.json
-    answer_content = data.get('answer')
-    item_id = data.get('item_id')
-    item_type = data.get('item_type')
-
-    if answer_content and item_id and item_type:
-        save_respuesta(answer_content, item_id, item_type)
-        return jsonify({'status': 'success'})
-
-    return jsonify({'status': 'error'}), 400
+        print(f"Error: {e}")
+        return "Error retrieving responses", 500
+    finally:
+        cursor.close()
+        connection.close()
 
 
 if __name__ == '__main__':
