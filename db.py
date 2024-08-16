@@ -332,4 +332,3 @@ def get_all_denuncias():
             connection.close()
 
 
-
