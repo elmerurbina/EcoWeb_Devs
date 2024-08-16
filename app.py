@@ -7,6 +7,7 @@ from foro import foro, new_debate, new_thread, new_question, new_response, respu
 from config import Config
 from submit_publication import submit_publication
 from ia import recognize
+from PatrocinarPublicacion import pp
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -46,6 +47,8 @@ app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST']
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
 app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
 app.add_url_rule('/respuestas', 'respuestas', respuestas)
+
+app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
 
 @app.route('/ia', methods=['GET'])

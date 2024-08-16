@@ -1,0 +1,59 @@
+<!-- templates/solicitud.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Patrocinio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patrocinarPublicacion.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Solicitud de Patrocinio</h2>
+        <form method="POST" action="{{ url_for('pp') }}"  enctype="multipart/form-data">
+            <label for="titulo">Título de la publicación</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="telefono">Número de teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="contenido">Contenido (PDF o DOCX)</label>
+            <input type="file" id="contenido" name="contenido" accept=".pdf,.docx" required>
+
+            <label for="donativo">Donativo en $</label>
+            <input type="number" id="donativo" name="donativo" required>
+
+            <label for="categoria">Seleccionar Categoría</label>
+            <select id="categoria" name="categoria" required>
+                <option value="biodiversidad">Biodiversidad</option>
+                <option value="medio ambiente">Medio Ambiente</option>
+                <option value="sostenibilidad">Sostenibilidad</option>
+            </select>
+
+            <label for="organizacion">Seleccionar Organización</label>
+            <select id="organizacion" name="organizacion" required>
+                <option value="academica">Académica</option>
+                <option value="empresa">Empresa</option>
+                <option value="institucion gobernamental">Institución Gobernamental</option>
+                <option value="ONG">ONG</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
