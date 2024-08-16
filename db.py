@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+from datetime import datetime
 
 def create_connection():
     """ Create a database connection to the MySQL database """
@@ -19,14 +20,34 @@ def create_connection():
     return connection
 
 
-def save_respuesta(respuesta, item_id, item_type):
-    conn = create_connection()
-    if conn:
-        cursor = conn.cursor()
-        cursor.execute('INSERT INTO respuestas (respuesta, item_id, item_type) VALUES (%s, %s, %s)', (respuesta, item_id, item_type))
-        conn.commit()
-        cursor.close()
-        conn.close()
+def save_response(respuesta):
+    try:
+        connection = create_connection()
+        if connection is None:
+            return False
+
+        cursor = connection.cursor()
+
+        # Use placeholders for parameters in the SQL query
+        query = '''
+            INSERT INTO respuestas (respuesta) 
+            VALUES (%s)
+        '''
+
+        # Pass respuesta as a single-element tuple
+        cursor.execute(query, (respuesta,))
+
+        connection.commit()
+        print("Response saved successfully")
+        return True
+    except Error as e:
+        print(f"Error: {e}")
+        return False
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
 
 def get_respuestas():
     conn = create_connection()
