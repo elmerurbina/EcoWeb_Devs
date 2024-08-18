@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from autenticacion import register, login
+from autenticacion import register, login, nuevasCredenciales, recuperarCuenta
 from publicaciones import publicaciones
 from campanias import campanias, new_campaign, add_comment
 from denuncia import denuncia, denunciaForm, submit_denuncia
@@ -27,6 +27,8 @@ def biodiversidad():
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
+app.add_url_rule('/recuperarCuenta', 'recuperarCuenta', recuperarCuenta)
+app.add_url_rule('/nuevasCredenciales', 'nuevasCredenciales', nuevasCredenciales)
 
 #app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/campanias', 'campanias', campanias)
