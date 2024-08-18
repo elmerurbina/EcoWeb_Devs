@@ -55,5 +55,15 @@ def campania():
     form_type = request.args.get('form_type', '')
     return render_template('campania.html', form_type=form_type)
 
+@app.route('/recuperarCuenta')
+def recuperarCuenta():
+    return render_template('recuperarCuenta.html')
+
+
+
+@app.route('/nuevasCredenciales')
+def nuevasCredenciales():
+    return render_template('nuevasCredenciales.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
