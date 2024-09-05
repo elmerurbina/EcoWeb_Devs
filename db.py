@@ -314,13 +314,13 @@ def save_comment(campaign_id, comment_text):
             cursor.close()
             connection.close()
 
-
 def get_all_denuncias():
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)
 
     try:
-        cursor.execute("SELECT * FROM denuncias")
+        # Updated SQL query to order by fecha_creacion in descending order
+        cursor.execute("SELECT * FROM denuncias ORDER BY fecha_creacion DESC")
         denuncias = cursor.fetchall()
         return denuncias
     except Error as e:
@@ -330,5 +330,6 @@ def get_all_denuncias():
         if connection.is_connected():
             cursor.close()
             connection.close()
+
 
 

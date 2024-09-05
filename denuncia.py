@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
 from db import save_denuncia, get_all_denuncias
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
 
 app = Flask(__name__)
@@ -31,30 +31,24 @@ def allowed_file(filename):
 def submit_denuncia():
     if request.method == 'POST':
         # Fetch form data
-        titulo = request.form['titulo']
-        descripcion = request.form['descripcion']
-        ubicacion = request.form['ubicacion']
-        denunciados = request.form['denunciados']
-        otros_detalles = request.form.get('otros_detalles', '')  # Optional field
+        titulo = request.form.get('titulo', '')
+        descripcion = request.form.get('descripcion', '')
+        ubicacion = request.form.get('ubicacion', '')
+        denunciados = request.form.get('denunciados', '')
+        otros_detalles = request.form.get('otros_detalles', '')
 
-        # Handle file upload for evidencia
-        if 'evidencia' not in request.files:
-            flash('No se proporcionó ningún archivo')
-            return redirect(request.url)
+        filename = None
 
-        evidencia_file = request.files['evidencia']
+        # Manejo de los archivos de la evidencia
+        if 'evidencia' in request.files:
+            evidencia_file = request.files['evidencia']
 
-        if evidencia_file.filename == '':
-            flash('No hay archivos seleccionados')
-            return redirect(request.url)
-
-        if evidencia_file and allowed_file(evidencia_file.filename):
-            filename = secure_filename(evidencia_file.filename)
-            evidencia_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            flash('Archivo agregado con éxito')
-        else:
-            flash('Archivo no válido')
-            return redirect(request.url)
+            if evidencia_file and allowed_file(evidencia_file.filename):
+                filename = secure_filename(evidencia_file.filename)
+                evidencia_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                flash('Archivo agregado con éxito', 'success')
+            else:
+                flash('Archivo no válido o no se proporcionó archivo', 'warning')
 
         # Save denuncia data to database
         try:
