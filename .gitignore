@@ -1,0 +1,61 @@
+# Ignore Python cache directories and files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Ignore environment and virtual environment directories
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore IDE and editor specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+*.code-workspace
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore build and distribution directories
+build/
+dist/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore local environment configuration
+.local/
+*.env
+
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore test coverage reports
+.coverage
+*.cover
+*.py,cover
+nosetests.xml
+coverage.xml
+*.coveragerc
+*.tox/
+*.nox/
+*.coverage.*
+.cache
