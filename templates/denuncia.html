@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Denuncias - Reportes</title>
-    <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/denuncia.css') }}">
-    <!--Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
 
-
 <div class="denuncias-container">
-    <!-- Este boton va cargar el formulario para hacer una nueva denuncia -->
     <div class="load-form">
-        <a href="{{url_for('denunciaForm')}}"> <button id="btnDenuncia">Hacer una Denuncia</button> </a>
-     </div>
- </div>
- <section>
+        <a href="{{ url_for('denunciaForm') }}">
+            <button id="btnDenuncia">Hacer una Denuncia</button>
+        </a>
+    </div>
+</div>
+
+<section>
     <h2>Denuncias</h2>
 
-    {% for denuncia in denuncias %}
-    <div class="denuncia-item">
-        <h3>{{ denuncia.titulo }}</h3>
-        <p>{{ denuncia.descripcion }}</p>
-        <p><strong>Fecha:</strong> {{ denuncia.fecha }}</p>
-        <!-- Add more details as needed -->
-    </div>
-    {% endfor %}
+    {% if denuncias %}
+        {% for denuncia in denuncias %}
+        <div class="denuncia-item">
+            <h3>{{ denuncia.titulo }}</h3>
+            <p>{{ denuncia.descripcion }}</p>
+            <p><strong>Fecha:</strong> {{ denuncia.fecha }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay denuncias para mostrar.</p>
+    {% endif %}
 </section>
 
 </body>
