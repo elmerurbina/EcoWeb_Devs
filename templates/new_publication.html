@@ -8,7 +8,9 @@
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
 </head>
 <body>
+
     <div class="container">
+        <a class="verPublicacion" href="{{url_for ('publicaciones')}}">Ver Publicaciones</a>
         <h1>Crear Nueva Publicación</h1>
         <form id="publicationForm" action="{{ url_for('submit_publication') }}" method="POST" enctype="multipart/form-data">
             <label for="title">Título:</label>
@@ -48,6 +50,7 @@
         {% endif %}
         {% endwith %}
     </div>
+
 
 </body>
 </html>
