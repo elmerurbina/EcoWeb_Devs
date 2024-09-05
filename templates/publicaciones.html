@@ -16,7 +16,7 @@
         <nav>
             <!-- Menu horizontal -->
             <ul>
-                <li><a href="#">Patrocinar Publicación</a></li> <!-- Esta plantila falta desarrollarla -->
+                <li><a href="{{url_for('pp')}}">Patrocinar Publicación</a></li> <!-- Esta plantila falta desarrollarla -->
                 <li><a href="{{url_for ('submit_publication')}}">Enviar Publicación</a></li>  <!-- Plantilla para crear nueva publicacion -->
                 <li><a href="#subscription">Noticias</a></li>  <!-- Lleva a la suscripcion del correo -->
 
@@ -28,7 +28,28 @@
         <section id="docs">
             <p>Para obtener mas información o guias de navegación para el sistema ver la <b><a href="#">Documentación </a></b></p>
         </section>
-    
+
+
+        <section>
+            <h2>Publicaciones recientes</h2>
+            <ul>
+               {% for publication in publications %}
+        <div class="publication">
+            <h2>{{ publication.title }}</h2>
+            <p>Categoría: {{ publication.category }}</p>
+            <p>{{ publication.content }}</p>
+            {% if publication.image %}
+                <img src="{{ url_for('static', filename=publication.image) }}" alt="Image for {{ publication.title }}" width="200">
+            {% endif %}
+            <p>Creado el: {{ publication.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+            <hr>
+        </div>
+    {% else %}
+        <p>No hay publicaciones disponibles.</p>
+    {% endfor %}
+
+            </ul>
+        </section>
         <!-- Cada ruta redirige a la pagina donde se aborda en detalle el tema -->
         <section>
             <h2>Lista de Publicaciones</h2>
@@ -83,7 +104,7 @@
                     <p>Impacto ambiental del uso de combustibles fósiles en el cambio climático, incluyendo alternativas y políticas de mitigación.</p>
                     <p><a href="{{url_for('cf')}}">Continuar leyendo</a></p>
                 </li>
-               
+
             </ul>
         </section>
 

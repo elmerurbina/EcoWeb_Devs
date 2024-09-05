@@ -1,12 +1,13 @@
 from flask import Flask, render_template
-from autenticacion import register, login
-from publicaciones import publicaciones
+from autenticacion import register, login, nuevasCredenciales, recuperarCuenta
+from publicaciones import submit_publication, publicaciones
 from campanias import campanias, new_campaign, add_comment
 from denuncia import denuncia, denunciaForm, submit_denuncia
-from foro import foro, new_debate, new_thread, new_question, new_response, submit_answer
+from foro import foro, new_debate, new_thread, new_question, new_response, respuestas
 from config import Config
 from submit_publication import submit_publication
 from ia import recognize
+from PatrocinarPublicacion import pp
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -26,6 +27,8 @@ def biodiversidad():
 
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
+app.add_url_rule('/recuperarCuenta', 'recuperarCuenta', recuperarCuenta)
+app.add_url_rule('/nuevasCredenciales', 'nuevasCredenciales', nuevasCredenciales)
 
 #app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/campanias', 'campanias', campanias)
@@ -33,8 +36,10 @@ app.add_url_rule('/new_campaign', 'new_campaign', new_campaign, methods=['POST']
 app.add_url_rule('/add_comment', 'add_comment', add_comment, methods=['POST'])
 
 
-app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
 app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
+app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
+
+
 
 app.add_url_rule('/denuncia', 'denuncia', denuncia)
 app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
@@ -45,7 +50,9 @@ app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
 app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST'])
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
 app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
-app.add_url_rule('/submit_answer', 'submit_answer', submit_answer, methods=['POST'])
+app.add_url_rule('/respuestas', 'respuestas', respuestas)
+
+app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
 
 @app.route('/ia', methods=['GET'])

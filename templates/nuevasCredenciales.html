@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Establecer Nuevas Credenciales</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/nuevasCredenciales.css') }}">
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <h2>Establecer Nuevas Credenciales</h2>
+        <form action="/new-credentials" method="post">
+            <label for="new-password">Nueva Contraseña:</label>
+            <input type="password" id="new-password" name="new-password" required>
+
+            <label for="confirm-password">Confirmar Contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

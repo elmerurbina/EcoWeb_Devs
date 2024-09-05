@@ -106,3 +106,21 @@ button:hover {
     opacity: 0;
     cursor: pointer;
 }
+
+.verPublicacion {
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    margin-top: 0;
+    background-color: #45a049;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: right;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.verPublicacion:hover {
+    background-color: #218838;
+}

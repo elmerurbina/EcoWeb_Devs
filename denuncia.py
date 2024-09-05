@@ -8,6 +8,7 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'your_secret_key'  # Necessary for flashing messages
 
 # Ensure upload directory exists
 if not os.path.exists(UPLOAD_FOLDER):
@@ -22,20 +23,10 @@ def denuncia():
 def denunciaForm():
     return render_template('denunciaForm.html')
 
-
-UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-# Funcion para revisar los formatos permitidos
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-# Route for submitting denuncia form
 @app.route('/submit_denuncia', methods=['POST'])
 def submit_denuncia():
     if request.method == 'POST':
@@ -48,21 +39,21 @@ def submit_denuncia():
 
         # Handle file upload for evidencia
         if 'evidencia' not in request.files:
-            flash('No se proporciono ningun archivo')
+            flash('No se proporcionó ningún archivo')
             return redirect(request.url)
 
         evidencia_file = request.files['evidencia']
 
         if evidencia_file.filename == '':
-            flash('No hay archivos seleccionado')
+            flash('No hay archivos seleccionados')
             return redirect(request.url)
 
         if evidencia_file and allowed_file(evidencia_file.filename):
             filename = secure_filename(evidencia_file.filename)
             evidencia_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            flash('Archivo agregado con exito')
+            flash('Archivo agregado con éxito')
         else:
-            flash('Archivo no valido')
+            flash('Archivo no válido')
             return redirect(request.url)
 
         # Save denuncia data to database
@@ -73,8 +64,6 @@ def submit_denuncia():
             flash(f'Error al guardar la denuncia: {str(e)}', 'error')
 
         return redirect(url_for('denuncia'))
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
