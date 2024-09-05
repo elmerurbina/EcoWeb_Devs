@@ -51,11 +51,15 @@ CREATE TABLE sistemaautenticacion (
 
 -- Tabla de las denuncias
 CREATE TABLE denuncias (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT NOT NULL,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    evidencia LONGBLOG NOT NULL
+    evidencia LONGBLOB,
+    evidencia_filename VARCHAR(255),
+    ubicacion VARCHAR(255) NOT NULL,
+    denunciados VARCHAR(255),
+    otros_detalles VARCHAR(500)
 );
 
 -- Tabla para los comentarios
@@ -82,9 +86,11 @@ CREATE TABLE publicaciones (
     title VARCHAR(255) NOT NULL,
     category VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
-    image_url LONGBLOB NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    image_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    image_data LONGBLOB
 );
+
 
 -- Tabla para guardar la informacion del reconocimiento de especies con IA
 CREATE TABLE ia (
