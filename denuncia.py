@@ -34,12 +34,12 @@ def submit_denuncia():
         titulo = request.form.get('titulo', '')
         descripcion = request.form.get('descripcion', '')
         ubicacion = request.form.get('ubicacion', '')
-        denunciados = request.form.get('denunciados', '')  # Optional
-        otros_detalles = request.form.get('otros_detalles', '')  # Optional
+        denunciados = request.form.get('denunciados', '')
+        otros_detalles = request.form.get('otros_detalles', '')
 
-        filename = None  # Default filename as None if no file is uploaded
+        filename = None
 
-        # Handle file upload for evidencia
+        # Manejo de los archivos de la evidencia
         if 'evidencia' in request.files:
             evidencia_file = request.files['evidencia']
 
