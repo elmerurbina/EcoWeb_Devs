@@ -17,21 +17,42 @@
     </div>
 </div>
 
-<section>
-    <h2>Denuncias</h2>
+<h1>Lista de Denuncias</h1>
 
     {% if denuncias %}
-        {% for denuncia in denuncias %}
-        <div class="denuncia-item">
-            <h3>{{ denuncia.titulo }}</h3>
-            <p>{{ denuncia.descripcion }}</p>
-            <p><strong>Fecha:</strong> {{ denuncia.fecha }}</p>
-        </div>
-        {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Ubicación</th>
+                    <th>Denunciados</th>
+                    <th>Otros Detalles</th>
+                    <th>Evidencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for denuncia in denuncias %}
+                <tr>
+                    <td>{{ denuncia['titulo'] }}</td>
+                    <td>{{ denuncia['descripcion'] }}</td>
+                    <td>{{ denuncia['ubicacion'] }}</td>
+                    <td>{{ denuncia['denunciados'] }}</td>
+                    <td>{{ denuncia['otros_detalles'] }}</td>
+                    <td>
+                        {% if denuncia['evidencia_filename'] %}
+                            <a href="{{ url_for('static', filename='uploads/' + denuncia['evidencia_filename']) }}">Ver Evidencia</a>
+                        {% else %}
+                            No hay evidencia
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
-        <p>No hay denuncias para mostrar.</p>
+        <p>No hay denuncias disponibles.</p>
     {% endif %}
-</section>
 
 </body>
 </html>
