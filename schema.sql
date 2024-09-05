@@ -72,13 +72,14 @@ CREATE TABLE respuestas (
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabla para guardar la spublicaciones
 CREATE TABLE publicaciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    category VARCHAR(255) NOT NULL,
+    category VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
-    image VARCHAR(255) DEFAULT NULL,
+    image_url LONGBLOB NOT NULL,
+>>>>>>> main
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
