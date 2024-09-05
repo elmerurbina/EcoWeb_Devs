@@ -1,7 +1,9 @@
--- Database schema
--- Campaign table
+-- Esquema de la base de datos
+
+-- Crear Base de Datos
 CREATE DATABASE VerdeNica;
 
+       -- Tablas para almacenar la informacion
 CREATE TABLE campaign (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_campania VARCHAR(255) NOT NULL,
@@ -12,7 +14,7 @@ CREATE TABLE campaign (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Foro debates table
+-- Tabla para manejar la informcion del foro
 CREATE TABLE foro_debates (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -38,7 +40,7 @@ CREATE TABLE foro_hilos (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Sistema autenticacion table
+-- Tabla del Sistema autenticacion
 CREATE TABLE sistemaautenticacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -47,12 +49,13 @@ CREATE TABLE sistemaautenticacion (
     confirmar_contrasenia VARCHAR(255)
 );
 
--- Denuncias table
+-- Tabla de las denuncias
 CREATE TABLE denuncias (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT NOT NULL,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    evidencia LONGBLOG NOT NULL
 );
 
 -- Tabla para los comentarios
@@ -66,6 +69,7 @@ CREATE TABLE comments (
     FOREIGN KEY (user_id) REFERENCES sistemaautenticacion(id) ON DELETE CASCADE
 );
 
+-- Tabla para guardar las respuestas
 CREATE TABLE respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     respuesta TEXT NOT NULL,
@@ -82,4 +86,12 @@ CREATE TABLE publicaciones (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
+-- Tabla para guardar la informacion del reconocimiento de especies con IA
+CREATE TABLE ia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    image_data LONGBLOB NOT NULL,
+    species_name VARCHAR(255),
+    species_description TEXT,
+    upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
