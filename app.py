@@ -37,7 +37,6 @@ app.add_url_rule('/add_comment', 'add_comment', add_comment, methods=['POST'])
 
 
 app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
-app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
 
 
