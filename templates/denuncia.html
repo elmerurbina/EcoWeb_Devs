@@ -20,40 +20,42 @@
 
 <h1>Lista de Denuncias</h1>
 
-    {% if denuncias %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Descripción</th>
-                    <th>Ubicación</th>
-                    <th>Denunciados</th>
-                    <th>Otros Detalles</th>
-                    <th>Evidencia</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for denuncia in denuncias %}
-                <tr>
-                    <td>{{ denuncia['titulo'] }}</td>
-                    <td>{{ denuncia['descripcion'] }}</td>
-                    <td>{{ denuncia['ubicacion'] }}</td>
-                    <td>{{ denuncia['denunciados'] }}</td>
-                    <td>{{ denuncia['otros_detalles'] }}</td>
-                    <td>
-                        {% if denuncia['evidencia_filename'] %}
-                            <a href="{{ url_for('static', filename='uploads/' + denuncia['evidencia_filename']) }}">Ver Evidencia</a>
-                        {% else %}
-                            No hay evidencia
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No hay denuncias disponibles.</p>
-    {% endif %}
+   {% if denuncias %}
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Denunciados</th>
+                <th>Otros Detalles</th>
+                <th>Evidencia</th>
+                <th>Fecha de Creación</th> <!-- New column for date -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for denuncia in denuncias %}
+            <tr>
+                <td>{{ denuncia['titulo'] }}</td>
+                <td>{{ denuncia['descripcion'] }}</td>
+                <td>{{ denuncia['ubicacion'] }}</td>
+                <td>{{ denuncia['denunciados'] }}</td>
+                <td>{{ denuncia['otros_detalles'] }}</td>
+                <td>
+                    {% if denuncia['evidencia_filename'] %}
+                        <a href="{{ url_for('static', filename='uploads/' + denuncia['evidencia_filename']) }}">Ver Evidencia</a>
+                    {% else %}
+                        No hay evidencia
+                    {% endif %}
+                </td>
+                <td>{{ denuncia['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S') }}</td> <!-- New column for formatted date -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay denuncias disponibles.</p>
+{% endif %}
 
 </body>
 </html>
