@@ -1,3 +1,6 @@
+# Archivo principal para manejar todas las rutas
+
+# Importacion de librerias y modulos
 from flask import Flask, render_template
 from autenticacion import register, login, nuevasCredenciales, recuperarCuenta
 from publicaciones import submit_publication, publicaciones
@@ -9,41 +12,44 @@ from submit_publication import submit_publication
 from ia import recognize
 from PatrocinarPublicacion import pp
 
+# Inicializacion de la aplicacion Flask
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# Ruta del Index
 @app.route('/verdeNica')
 def verdeNica():
     return render_template('index.html')
 
+# Ruta de la interfaz de empresas sostenibles
 @app.route('/ep')
 def ep():
     return render_template('empresasSostenibles.html')
 
+# Ruta de la interfaz de Biodiversidad en Nicaragua
 @app.route('/biodiversidad')
 def biodiversidad():
     return render_template('biodiversidad.html')
 
-
+# Rutas del sistema de autenticacion
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/login', 'login', login, methods=['GET', 'POST'])
 app.add_url_rule('/recuperarCuenta', 'recuperarCuenta', recuperarCuenta)
 app.add_url_rule('/nuevasCredenciales', 'nuevasCredenciales', nuevasCredenciales)
 
-#app.add_url_rule('/foro', 'foro', foro)
+# Rutas para las interfaces del Foro
 app.add_url_rule('/campanias', 'campanias', campanias)
 app.add_url_rule('/new_campaign', 'new_campaign', new_campaign, methods=['POST'])
 app.add_url_rule('/add_comment', 'add_comment', add_comment, methods=['POST'])
 
-
+# Ruta para la parte de las publicaciones
 app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
 
-
-
-app.add_url_rule('/denuncia', 'denuncia', denuncia)
-app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
-app.add_url_rule('/submit_denuncia', 'submit_denuncia', submit_denuncia, methods=['POST'])
+# Ruta de la parte de las denuncias
+app.add_url_rule('/denuncia', 'denuncia', denuncia) # Mostrar las denuncias
+app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm) # Formulario
+app.add_url_rule('/submit_denuncia', 'submit_denuncia', submit_denuncia, methods=['POST']) # Enviar denuncia
 
 app.add_url_rule('/foro', 'foro', foro)
 app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
@@ -55,13 +61,17 @@ app.add_url_rule('/respuestas', 'respuestas', respuestas)
 app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
 
+# Interfaz del modelo de Inteligencia Artificial
 @app.route('/ia', methods=['GET'])
 def ia():
     return render_template('ia.html')
 
-# Register the 'recognize' route from the ia module
+
+# Parte del sistema de IA para reconocimiento de especies animales/plantas mediante imagen
 app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
 
+
+             # RUTAS INDEPENDIENTES PARA LAS PAGINAS DE PUBLICACIONES SEPARADAS
 
 @app.route('/deforestacion')
 def deforestacion():
