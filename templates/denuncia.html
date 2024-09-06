@@ -11,16 +11,18 @@
 
 <div class="denuncias-container">
     <div class="load-form">
+        <!-- Ir al formulario para hacer una nueva denuncia -->
         <a href="{{ url_for('denunciaForm') }}">
             <button id="btnDenuncia">Hacer una Denuncia</button>
         </a>
     </div>
 </div>
 
-
+<!-- Mostrar la lista de denuncias desde la base de datos -->
 <h1>Lista de Denuncias</h1>
 
    {% if denuncias %}
+<!-- Par mejor visualizacion mostrar las denuncias en forma de tabla -->
     <table>
         <thead>
             <tr>
@@ -30,7 +32,7 @@
                 <th>Denunciados</th>
                 <th>Otros Detalles</th>
                 <th>Evidencia</th>
-                <th>Fecha de Creación</th> <!-- New column for date -->
+                <th>Fecha de Creación</th>
             </tr>
         </thead>
         <tbody>
@@ -42,18 +44,20 @@
                 <td>{{ denuncia['denunciados'] }}</td>
                 <td>{{ denuncia['otros_detalles'] }}</td>
                 <td>
+                    <!-- Ver el archivo de la evidencia -->
                     {% if denuncia['evidencia_filename'] %}
                         <a href="{{ url_for('static', filename='uploads/' + denuncia['evidencia_filename']) }}">Ver Evidencia</a>
                     {% else %}
                         No hay evidencia
                     {% endif %}
                 </td>
-                <td>{{ denuncia['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S') }}</td> <!-- New column for formatted date -->
+                <td>{{ denuncia['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S') }}</td> <!-- Mostrar la fecha de creacion -->
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% else %}
+<!-- Al no haber denuncias en la base de datos mostrar este mensaje -->
     <p>No hay denuncias disponibles.</p>
 {% endif %}
 

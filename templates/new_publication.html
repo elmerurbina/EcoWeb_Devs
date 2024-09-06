@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- Formulario para crear una nueva publicacion -->
     <div class="container">
         <a class="verPublicacion" href="{{url_for ('publicaciones')}}">Ver Publicaciones</a>
         <h1>Crear Nueva Publicación</h1>
@@ -40,6 +41,7 @@
              <script src="{{ url_for('static', filename='js/new_publication.js') }}"></script>
         </form>
 
+        <!-- Mensajes informativos -->
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         <div class="messages">

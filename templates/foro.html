@@ -10,6 +10,7 @@
     <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
 </head>
 <body>
+<!-- Menu horizontal -->
 <header>
     <div class="fixed-menu">
         <a href="#debates">Debates</a>
@@ -26,6 +27,7 @@
 
     <h2>Foro Comunitario</h2>
 
+    <!-- Autenticar al usuario antes de permitirle el acceso al formulario -->
     <div class="prompt-login">
         <button id="btnPregunta" onclick="location.href='{{ url_for('login', next='preguntaForm') }}'">Hacer una Pregunta</button>
         <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
@@ -43,7 +45,7 @@
     {% endif %}
     {% endwith %}
 
-    <!-- Formularios para nuevas interacciones -->
+    <!-- Formularios para agregar un nuevo debate -->
     <form id="debateForm" action="{{ url_for('new_debate') }}" method="POST" class="forum-form" style="display: none;">
         <h3>Abrir un Nuevo Debate</h3>
         <section class="new-debate">
@@ -64,6 +66,7 @@
         </section>
     </form>
 
+    <!-- Formulario para agregar una nueva pregunta -->
     <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
         <h3>Hacer una Pregunta</h3>
         <section class="ask-question">
@@ -75,6 +78,7 @@
         </section>
     </form>
 
+    <!-- Formulario para nuevo hilo de conversacion -->
     <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
         <h3>Nuevo Hilo de Conversación</h3>
         <section class="new-conversation">
@@ -110,6 +114,7 @@
     </ul>
 </section>
 
+    <!-- Seccion para mostrar las preguntas -->
 <section id="preguntas" class="questions">
     <h3>Preguntas Recientes</h3>
     <ul>
@@ -130,6 +135,7 @@
     </ul>
 </section>
 
+    <!-- Seccion para mostrar las conversaciones -->
 <section id="conversaciones" class="threads">
     <h3>Hilos de Conversación Recientes</h3>
     <ul>
@@ -152,7 +158,7 @@
 
 </div>
 
-<!-- Scripts -->
+<!-- JavaScript -->
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const formType = "{{ form_type }}";
@@ -161,6 +167,7 @@
         }
     });
 
+    // Manejo del boton responder
     function toggleAnswerForm(button) {
         const form = button.nextElementSibling;
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
@@ -170,25 +177,25 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Display the correct form based on form_type
+    // Mostrar la informacion basado en el tipo
     const formType = "{{ form_type }}";
     if (formType) {
         document.getElementById(formType).style.display = 'block';
     }
 
-    // Attach event listeners to all submit buttons within answer forms
+
     document.querySelectorAll('.submit-answer-button').forEach(button => {
         button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
 
-            const answerForm = this.closest('.answer-form'); // Get the closest answer-form
+            const answerForm = this.closest('.answer-form');
             const textarea = answerForm.querySelector('textarea');
             const respuesta = textarea.value.trim();
-            // Prepare the data to send
+
             const formData = new FormData();
             formData.append('respuesta', respuesta);
 
-            // Send the data via fetch
+            // Enviar los datos en formato JSON
             fetch('/new_response', {
                 method: 'POST',
                 body: formData,
@@ -215,7 +222,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </script>
 
 
-
+<!-- Conexion con los archivos JS externos -->
 <script src="{{ url_for('static', filename='js/reglasComunitarias.js') }}"></script>
 <script src="{{ url_for('static', filename='js/menuForo.js') }}"></script>
 <script src="{{ url_for('static', filename='js/responder.js') }}"></script>
