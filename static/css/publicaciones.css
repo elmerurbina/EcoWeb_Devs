@@ -146,3 +146,54 @@ footer {
     color: green;
     display: none;
 }
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .subscription-form {
+        padding: 15px;
+    }
+
+    .subscription-form h2 {
+        font-size: 16px;
+    }
+
+    .subscription-form input[type="email"],
+    .subscription-form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .subscription-form {
+        padding: 10px;
+    }
+
+    .subscription-form h2 {
+        font-size: 14px;
+    }
+
+    .subscription-form input[type="email"],
+    .subscription-form button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

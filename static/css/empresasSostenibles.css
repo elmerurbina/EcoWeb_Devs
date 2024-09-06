@@ -102,3 +102,31 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    section {
+        padding: 60px 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}

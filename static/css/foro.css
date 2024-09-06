@@ -430,3 +430,130 @@ header {
     background-color: #0056b3; 
     transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+    .forum-container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    h2, h3 {
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 16px;
+    }
+
+    #btnDebate,
+    #btnPregunta,
+    #btnHilo,
+    .btn-debate,
+    .btn-pregunta,
+    .btn-hilo {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .ask-question,
+    .new-debate,
+    .new-conversation {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .ask-question textarea,
+    #question-input,
+    .new-debate textarea,
+    .new-conversation textarea {
+        width: 100%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .fixed-menu {
+        flex-direction: column;
+        padding: 5px 0;
+    }
+
+    .fixed-menu a {
+        padding: 5px 10px;
+    }
+
+    section li {
+        padding: 8px;
+    }
+
+    .answer-form textarea {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px;
+    }
+
+    .fixed-menu {
+        padding: 10px;
+    }
+
+    .fixed-menu a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .forum-container {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    h2, h3 {
+        font-size: 1.25rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 14px;
+    }
+
+    #btnDebate,
+    #btnPregunta,
+    #btnHilo,
+    .btn-debate,
+    .btn-pregunta,
+    .btn-hilo {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .ask-question,
+    .new-debate,
+    .new-conversation {
+        padding: 10px;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    section li {
+        font-size: 14px;
+    }
+}

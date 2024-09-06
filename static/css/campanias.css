@@ -219,6 +219,74 @@ footer {
 .comment-form button:hover {
     background-color: #45a049;
 }
+/* Media queries for smaller screens */
+@media (max-width: 600px) {
+    header {
+        padding: 15px;
+    }
+
+    .campania-container {
+        padding: 10px;
+    }
+
+    .campania-form h3 {
+        font-size: 1.2em;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+        font-size: 14px;
+    }
+
+    .btn-campania {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .interact-container button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    footer {
+        padding: 8px;
+        position: static;
+    }
+
+    .prompt-login button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .alert {
+        font-size: 14px;
+    }
+
+    .comment-form textarea {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .comment-form button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .campaigns li {
+        padding: 5px;
+    }
+
+    .campaign-actions .action-icon {
+        font-size: 18px;
+    }
+}
 
 
 

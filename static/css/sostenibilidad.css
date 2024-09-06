@@ -58,3 +58,51 @@ footer {
 a:hover{
     color: #45a049;
 }
+
+
+@media (max-width: 768px) {
+    .sostenibilidad-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    ul {
+        padding-left: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .sostenibilidad-container {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    ul {
+        padding-left: 10px;
+    }
+}

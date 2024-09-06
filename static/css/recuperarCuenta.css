@@ -52,3 +52,48 @@ button:hover {
     margin-top: 20px;
     font-size: 14px;
 }
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+        margin: 50px auto;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    input[type="email"] {
+        font-size: 14px;
+        padding: .4rem;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+        margin: 30px auto;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    input[type="email"] {
+        font-size: 12px;
+        padding: .3rem;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

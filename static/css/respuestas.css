@@ -71,3 +71,63 @@ a {
 a:hover {
     background-color: #0056b3;
 }
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .flash-messages {
+        margin-bottom: 15px;
+    }
+
+    .alert {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    ul li {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .flash-messages {
+        margin-bottom: 10px;
+    }
+
+    .alert {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    ul li {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

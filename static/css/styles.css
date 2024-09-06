@@ -504,3 +504,166 @@ footer {
         width: 100%;
     }
 }
+
+/* Responsivo para el menú */
+@media (max-width: 768px) {
+    .menu {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .menu li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu li a {
+        display: block;
+        margin: 0;
+        padding: 10px;
+    }
+}
+
+/* Responsivo para el header y la sección principal */
+@media (max-width: 768px) {
+    .main {
+        height: auto;
+        background-position: center top;
+    }
+
+    .main h1 {
+        font-size: 2rem;
+    }
+
+    .resumen, p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsivo para la sección de cambio climático */
+@media (max-width: 768px) {
+    .climate-change {
+        padding: 10px;
+    }
+
+    .climate-change h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Responsivo para la sección de causas y consecuencias */
+@media (max-width: 768px) {
+    .causes-consequences {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .causes, .consequences {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .summary {
+        flex-direction: column;
+    }
+}
+
+/* Responsivo para la sección de adaptación y mitigación */
+@media (max-width: 768px) {
+    .mitigation-adaptation {
+        padding: 10px;
+    }
+
+    .mitigation-adaptation h2 {
+        font-size: 1.5rem;
+    }
+
+    .mitigation-adaptation h3 {
+        font-size: 1.2rem;
+    }
+
+    .btn.mitigation-summary, .btn.adaptation-summary {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Responsivo para la sección de acciones */
+@media (max-width: 768px) {
+    .actions {
+        padding: 10px;
+    }
+
+    .actions h4 {
+        font-size: 1.5rem;
+    }
+
+    .mitigation-list {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .mitigation-list p {
+        font-size: 14px;
+    }
+}
+
+/* Responsivo para el footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 10px;
+    }
+
+    .footer-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-content p {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .footer-content ul li {
+        font-size: 14px;
+    }
+}
+
+/* Responsivo para la sección de sostenibilidad */
+@media (max-width: 768px) {
+    .sustainability {
+        padding: 10px;
+    }
+
+    .sustainability h2 {
+        font-size: 1.5rem;
+    }
+
+    .sustainability p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsivo para el formulario de suscripción */
+@media (max-width: 768px) {
+    .subscription-form {
+        padding: 10px;
+    }
+
+    .subscription-form h2 {
+        font-size: 1.2rem;
+    }
+
+    .subscription-form input[type="email"] {
+        width: 100%;
+    }
+
+    .subscription-form button[type="submit"] {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}

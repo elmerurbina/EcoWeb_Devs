@@ -162,3 +162,49 @@ footer p {
     color: green;
     display: none;
 }
+
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 0;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    section p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .subscription-form h2 {
+        font-size: 16px;
+    }
+
+    .subscription-form input[type="email"] {
+        font-size: 14px;
+    }
+
+    .subscription-form button {
+        font-size: 14px;
+    }
+}
