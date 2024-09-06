@@ -1,3 +1,6 @@
+# Archivo para manejar la logica de las publicaciones
+
+# Importacion de librerias y modulos
 from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 from werkzeug.utils import secure_filename
@@ -8,18 +11,19 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for flashing messages
 
-# Directory to save uploaded images
+# Directorio para guardar las imagenes
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# MySQL database connection setup
+# Generar la conexion con la base de datos
 db = mysql.connector.connect(
-    host="localhost",  # Replace with your MySQL host
-    user="root",  # Replace with your MySQL user
-    password="7>>HhNN6/fZ",  # Replace with your MySQL password
-    database="VerdeNica"  # Name of your database
+    host="localhost",
+    user="root",
+    password="7>>HhNN6/fZ",
+    database="VerdeNica"
 )
 
+# Ruta para manejar una nueva publicacion creada por el usuario
 @app.route('/submit_publication', methods=['GET', 'POST'])
 def submit_publication():
     if request.method == 'POST':
@@ -28,20 +32,20 @@ def submit_publication():
         content = request.form['content']
         image_file = request.files['image']
 
-        # Handle image upload if provided
+        # Manejar el archivo de la imagen si se proporciono
         if image_file and image_file.filename != '':
-            # Ensure filename is secure and unique by appending a UUID
+            # Asegurarse que el archivo sea seguro y que no exista en el directorio de uploads
             filename = secure_filename(image_file.filename)
             unique_filename = f"{uuid.uuid4().hex}_{filename}"
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
             image_file.save(image_path)
 
-            # Store relative image path (used for HTML rendering)
+
             image_path = os.path.join('uploads', unique_filename)
         else:
-            image_path = None  # No image uploaded
+            image_path = None  # En caso de que no se suba una imagen
 
-        # Insert the publication into the MySQL database with created_at
+        # Guardar la publicacion en la base de datos
         cursor = db.cursor()
         sql = """
             INSERT INTO publicaciones (title, category, content, image, created_at)
@@ -56,10 +60,11 @@ def submit_publication():
 
     return render_template('new_publication.html')
 
+# Ruta para la interfaz principal
 @app.route('/publicaciones')
 def publicaciones():
     cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC")
+    cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC") # Las publicaciones de ordenan en orden de mas reciente
     publications = cursor.fetchall()
     return render_template('publicaciones.html', publications=publications)
 

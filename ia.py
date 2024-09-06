@@ -5,7 +5,7 @@ from PIL import Image
 from db import create_connection
 
 def recognize_species(image_data):
-    # Replace with the actual API call to your AI model or service
+
     response = requests.post("YOUR_AI_MODEL_API_URL", files={"file": image_data})
     return response.json()
 
@@ -20,10 +20,10 @@ def recognize():
     if file and allowed_file(file.filename):
         image_data = file.read()
 
-        # Recognize the species using the AI model
+
         species_info = recognize_species(image_data)
 
-        # Save the upload to the database
+
         conn = create_connection()
         cursor = conn.cursor()
         cursor.execute(

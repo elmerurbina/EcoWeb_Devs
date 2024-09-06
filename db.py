@@ -1,9 +1,13 @@
+# Archivo para manejar la conexion con la base de datos y los metodos
+
+# Librerias
 import mysql.connector
 from mysql.connector import Error
 from datetime import datetime
 
+# Crear la conexion
 def create_connection():
-    """ Create a database connection to the MySQL database """
+    """ Craer la conexion con la base de datos MySQL """
 
     try:
         connection = mysql.connector.connect(
@@ -19,7 +23,7 @@ def create_connection():
 
     return connection
 
-
+# Funcion para guardar las respuestas del Foro
 def save_response(respuesta):
     try:
         connection = create_connection()
@@ -28,13 +32,12 @@ def save_response(respuesta):
 
         cursor = connection.cursor()
 
-        # Use placeholders for parameters in the SQL query
         query = '''
             INSERT INTO respuestas (respuesta) 
             VALUES (%s)
         '''
 
-        # Pass respuesta as a single-element tuple
+
         cursor.execute(query, (respuesta,))
 
         connection.commit()
@@ -49,21 +52,22 @@ def save_response(respuesta):
         if connection:
             connection.close()
 
+# Funcion para acceder a las respuestas del Foro guardadas en la base de datos
 def get_respuestas():
     conn = create_connection()
     respuestas = []
     if conn:
         cursor = conn.cursor(dictionary=True)
-        cursor.execute('SELECT * FROM respuestas ORDER BY fecha DESC')
+        cursor.execute('SELECT * FROM respuestas ORDER BY fecha DESC') # Ordenar las respuestas en orden de mas reciente
         respuestas = cursor.fetchall()
         cursor.close()
         conn.close()
     return respuestas
 
 
-
+# Funcion para registrar a un nuevo usuario
 def register_user(nombre, correo, contrasenia):
-    """ Register a new user in the database """
+    """ Registrar nueva cuenta en la base de datos"""
     connection = create_connection()
     cursor = connection.cursor()
     try:
@@ -78,8 +82,10 @@ def register_user(nombre, correo, contrasenia):
             cursor.close()
             connection.close()
 
+
+# Funcion para validar las credenciales de inicio de sesion
 def check_login(correo, contrasenia):
-    """ Check user login credentials """
+    """ Comprobar credenciales del usuario """
     connection = create_connection()
     cursor = connection.cursor()
     user = None
@@ -97,7 +103,7 @@ def check_login(correo, contrasenia):
     return user
 
 
-
+# Clase para manejar la insercion de datos de los debates del foro
 class ForoDebate:
     def __init__(self, titulo, descripcion, punto_de_vista, otras_observaciones=''):
         self.titulo = titulo
@@ -121,6 +127,7 @@ class ForoDebate:
                 cursor.close()
                 connection.close()
 
+# Clase para la insercion de datos de las preguntas del foro
 class ForoPregunta:
     def __init__(self, titulo, pregunta):
         self.titulo = titulo
@@ -142,6 +149,7 @@ class ForoPregunta:
                 cursor.close()
                 connection.close()
 
+# Clase para la insercion de datos de los hilos de conversacion
 class ForoHilo:
     def __init__(self, titulo, tema):
         self.titulo = titulo
@@ -170,13 +178,15 @@ def save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin
     cursor = connection.cursor()
 
     try:
-        if presupuesto == '':
-            presupuesto = None  # Convert empty string to None
+        if presupuesto == '': # Si el campo presupuesto esta vacio
+            presupuesto = None  # Convertir la variable vacia a None
 
+        # Si el presupuesto no esta vacio
         if presupuesto is not None:
             query = "INSERT INTO campaign (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto) VALUES (%s, %s, %s, %s, %s)"
             cursor.execute(query, (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto))
         else:
+            # Si el campo del presupuesto esta vacio
             query = "INSERT INTO campaign (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin) VALUES (%s, %s, %s, %s)"
             cursor.execute(query, (nombre_campania, descripcion_campania, fecha_inicio, fecha_fin))
 
@@ -207,7 +217,7 @@ def save_denuncia(titulo, descripcion, evidencia_filename, ubicacion, denunciado
             cursor.close()
             connection.close()
 
-
+# Funcion para obtener los debates guardados en la base de datos
 def get_all_debates():
 
     connection = create_connection()
@@ -225,6 +235,8 @@ def get_all_debates():
             connection.close()
     return debates
 
+
+# Funcion para obtener las preguntas guardadas en la base de datos
 def get_all_questions():
 
     connection = create_connection()
@@ -242,6 +254,8 @@ def get_all_questions():
             connection.close()
     return questions
 
+
+# Funcion para obtener los hilos de conversacion guardados en la base de datos
 def get_all_threads():
 
     connection = create_connection()
@@ -259,6 +273,7 @@ def get_all_threads():
             connection.close()
     return threads
 
+# Funcion para obtener las campanias guardadas en la base de datos
 def get_all_campaigns():
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)
@@ -268,6 +283,7 @@ def get_all_campaigns():
         campaigns = cursor.fetchall()
 
         for campaign in campaigns:
+            # Obtener los comentarios por el ID de la campania
             campaign['comments'] = get_comments_for_campaign(campaign['id'])
 
         return campaigns
@@ -279,6 +295,7 @@ def get_all_campaigns():
             cursor.close()
             connection.close()
 
+# Funcion para obtener los comentarios guardados en la  base de datos
 def get_comments_for_campaign(campaign_id):
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)
@@ -296,7 +313,7 @@ def get_comments_for_campaign(campaign_id):
             connection.close()
 
 
-
+# Funcion para guardar los comentarios en la base de datos
 def save_comment(campaign_id, comment_text):
     connection = create_connection()
     cursor = connection.cursor()
@@ -314,6 +331,7 @@ def save_comment(campaign_id, comment_text):
             cursor.close()
             connection.close()
 
+# Funcion para obtener las denuncias guardadas en la base de datos
 def get_all_denuncias():
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)

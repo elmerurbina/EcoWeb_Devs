@@ -1,32 +1,45 @@
+# Archivo para manejar la logica de las denuncias
+
+# Importacion de Modulos y librerias
 import os
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
 from db import save_denuncia, get_all_denuncias
 
+
+# Guardar las fotos subidas en el folder uploads dentro de la carpeta static
 UPLOAD_FOLDER = 'static/uploads'
+
+# Extensiones permitidas
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'your_secret_key'  # Necessary for flashing messages
+app.secret_key = 'your_secret_key'
 
-# Ensure upload directory exists
+# Comprobar que el directoro para uploads es correcto
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+
+# Ruta para la interfaz principal de las denuncias
 @app.route('/denuncia')
 def denuncia():
+    # Obtener todas las denuncias desde la base de datos
     denuncias = get_all_denuncias()
     return render_template('denuncia.html', denuncias=denuncias)
 
+# Ruta para la interfaz del formulario de las denuncias
 @app.route('/denunciaForm')
 def denunciaForm():
     return render_template('denunciaForm.html')
 
+# Comprobar que el archivo esta dentro de las extensiones permitidas
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# Funcion para guardar las denuncias
 @app.route('/submit_denuncia', methods=['POST'])
 def submit_denuncia():
     if request.method == 'POST':
@@ -50,7 +63,7 @@ def submit_denuncia():
             else:
                 flash('Archivo no válido o no se proporcionó archivo', 'warning')
 
-        # Save denuncia data to database
+        # Guardar la denuncia en la base de datos
         try:
             save_denuncia(titulo, descripcion, filename, ubicacion, denunciados, otros_detalles)
             flash('Denuncia guardada exitosamente', 'success')

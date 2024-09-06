@@ -1,3 +1,5 @@
+# Archivo para manejar la logica de las publicaciones patrocinadas
+
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
@@ -6,7 +8,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-
+# Configuraciones del mail server
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -22,6 +24,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 mail = Mail(app)
 
+# Definicion de la ruta para patrocinar publicacion
 @app.route('/pp', methods=['GET', 'POST'])
 def pp():
     if request.method == 'POST':
@@ -32,7 +35,7 @@ def pp():
         categoria = request.form['categoria']
         organizacion = request.form['organizacion']
 
-        # Handle file upload
+        # Maneja cuando se suban archivos
         if 'contenido' not in request.files:
             flash('No se ha subido ningún archivo.')
             return redirect(request.url)
@@ -71,6 +74,7 @@ def pp():
 
     return render_template('patrocinarPublicacion.html')
 
+# Solo permiten archivos con extension pdf y docx
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'pdf', 'docx'}
 

@@ -1,3 +1,6 @@
+# Este archivo no esta funcionando ya que el metodo se implemento directamente en el archivo
+# publicaciones.py
+
 from flask import Flask, render_template, request, redirect, url_for, flash
 from db import create_connection
 
