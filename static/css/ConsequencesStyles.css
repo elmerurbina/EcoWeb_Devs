@@ -89,3 +89,54 @@ footer ul li a:hover {
     line-height: 1.6;
     color: #333;
 }
+/* Media queries for smaller screens */
+@media (max-width: 600px) {
+    header {
+        padding: 15px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section {
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding-top: 8px;
+        margin-top: 30px;
+    }
+
+    footer ul li {
+        font-size: 14px;
+    }
+
+    footer ul li a {
+        font-size: 14px;
+    }
+
+    #nicaragua-impact {
+        padding: 0.5rem;
+        border-left: none;
+        margin-top: 1rem;
+    }
+
+    #nicaragua-impact h2 {
+        font-size: 1.2rem;
+    }
+
+    #nicaragua-impact p {
+        font-size: 14px;
+    }
+}

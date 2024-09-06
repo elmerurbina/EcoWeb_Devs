@@ -124,3 +124,88 @@ button:hover {
 .verPublicacion:hover {
     background-color: #218838;
 }
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+        padding: 8px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .messages .alert {
+        font-size: 12px;
+    }
+
+    .image-upload .image-icon img {
+        width: 24px;
+    }
+
+    .verPublicacion {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+        padding: 6px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    button {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .messages .alert {
+        font-size: 10px;
+    }
+
+    .image-upload .image-icon img {
+        width: 20px;
+    }
+
+    .verPublicacion {
+        padding: 6px 12px;
+    }
+}

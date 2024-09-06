@@ -2,7 +2,7 @@
 
 
 body {
-    background-image: url('/static/imagenes/isla.png');
+    background-image: url('/static/imagenes/isla.png'); /* Imagen de Fondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@ body {
     font-family: sans-serif;
 }
 
-
+/* Contenedor */
 .container {
 
     display: flex;
@@ -110,3 +110,62 @@ h1 {
     color: #45a049;
 
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .form {
+        width: 90%;
+        max-width: 400px;
+        padding: 1rem;
+    }
+
+    .form input {
+        font-size: 14px;
+    }
+
+    .form input[type="submit"] {
+        padding: 0.7rem;
+    }
+
+    .form a {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .flash-message {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .form {
+        width: 95%;
+        padding: 0.8rem;
+    }
+
+    .form input {
+        padding: 0.5rem;
+        font-size: 13px;
+    }
+
+    .form input[type="submit"] {
+        padding: 0.6rem;
+    }
+
+    .form a {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .flash-message {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+

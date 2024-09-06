@@ -105,3 +105,38 @@ p {
     font-size: 16px;
 }
 
+/* Media queries for smaller screens */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+
+    .denuncias-container {
+        padding: 15px;
+    }
+
+    .load-form button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .table-container {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    thead th {
+        padding: 10px;
+    }
+
+    tbody td {
+        padding: 10px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

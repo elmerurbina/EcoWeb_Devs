@@ -59,3 +59,46 @@ ul {
     color: green;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 15px;
+    }
+
+    input, textarea, select {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    input, textarea, select {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}

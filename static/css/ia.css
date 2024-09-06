@@ -65,3 +65,72 @@ mage-upload {
     height: 50px;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.75rem;
+        font-size: 1.25rem;
+    }
+
+    main {
+        padding: 0.75rem;
+    }
+
+    form {
+        width: 100%;
+        padding: 0;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+    }
+
+    #result img {
+        margin-top: 1rem;
+    }
+
+    .mage-upload {
+        flex-direction: column;
+    }
+
+    .image-icon img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 0.5rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        padding: 0.5rem;
+        font-size: 12px;
+    }
+
+    #result img {
+        margin-top: 1rem;
+    }
+
+    .mage-upload {
+        flex-direction: column;
+        margin: 10px 0;
+    }
+
+    .image-icon img {
+        width: 30px;
+        height: 30px;
+    }
+}
