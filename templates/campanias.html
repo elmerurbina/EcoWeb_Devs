@@ -25,7 +25,7 @@
         <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
     </div>
 
-   
+   <!-- Mostrar los mensajes informativos -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
@@ -36,6 +36,7 @@
     {% endif %}
 {% endwith %}
 
+    <!-- Formulario para crear una nueva campania -->
     <form id="campaniaForm" action="{{url_for('new_campaign')}}" method="POST" class="campania-form" style="display: none;">
         <h3>Crear una Nueva Campaña</h3>
         <section class="campaing">
@@ -64,6 +65,7 @@
 
 </div>
 
+<!-- Seccion para mostrar las campanias que estan guardadas en la base de datos -->
 <section id="campanias" class="campaigns">
     <h3>Campañas Comunitarias Recientes</h3>
     <ul>
@@ -78,11 +80,15 @@
             {% endif %}
 
             <div class="campaign-actions">
+                <!-- Icono para dar Like -->
                 <a href="#" class="action-icon"><i class="fas fa-heart"></i> Like</a>
+                <!-- Icono para comentar -->
                 <a href="#" class="action-icon" onclick="toggleCommentForm('{{ campaign.id }}')"><i class="fas fa-comment"></i> Comentar</a>
+                <!-- Icono para seguir la campania -->
                 <a href="#" class="action-icon"><i class="fas fa-user-plus"></i> Seguir</a>
             </div>
 
+            <!-- Formulario para agregar un nuevo comentario -->
             <div id="commentForm{{ campaign.id }}" class="comment-form" style="display: none;">
                 <form action="{{ url_for('add_comment') }}" method="POST">
                     <textarea name="commentText" placeholder="Escribe tu comentario aquí..." rows="4"></textarea>
@@ -90,6 +96,7 @@
                 </form>
             </div>
 
+            <!-- Mostrar los comentarios -->
             <div class="comments">
                 <h5>Comentarios:</h5>
                 <ul>
@@ -103,7 +110,7 @@
     </ul>
 </section>
 
-
+<!-- JavaScript para manejar el tipo de forma y mostrar el formulario de comentar -->
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const formType = "{{ form_type }}";
@@ -113,6 +120,7 @@
     });
 </script>
 
+<!-- Archivos JavaScript externos -->
 <script src="{{url_for('static', filename='js/comentarios.js')}}"></script>
 <script src="{{url_for('static', filename='js/id.js')}}"></script>
 
