@@ -15,7 +15,7 @@
 
     <!-- Contenedor para el inicio de sesion -->
     <div class="container">
-        
+
         <div class="form sign-in-container">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -27,7 +27,7 @@
             {% endif %}
         {% endwith %}
 
-       
+
 
             <h1>Iniciar Sesión</h1>
             <form action="{{ url_for('login') }}" method="POST">
@@ -41,7 +41,7 @@
             </form>
             <a class="recuperar" href="{{url_for('recuperarCuenta')}}">Recuperar Credenciales</a>
         </div>
-        
+
 
         <!-- Contenedor para crear cuenta -->
         <div class="form sign-up-container">
@@ -58,7 +58,7 @@
 
             <h1>Crear Cuenta</h1>
             <form action="{{ url_for('register') }}" method="post">
-                
+
                 <input type="text" id="register-nombre" name="register-nombre" placeholder="Nombre" required>
                 <input type="email" id="register-correo" name="register-correo" placeholder="Correo" required>
                 <input type="password" id="register-password" name="register-password" placeholder="Contraseña" required>
