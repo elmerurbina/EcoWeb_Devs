@@ -1,4 +1,14 @@
 /* El sistema de autenticacion contiene los estilos paa el log in y para registrar */
+
+
+body {
+    background-image: url('/static/imagenes/isla.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 * {
     padding: 0;
     margin: 0;
@@ -6,8 +16,9 @@
     font-family: sans-serif;
 }
 
+
 .container {
-    background-color: #fff;
+
     display: flex;
     align-items: center;
     justify-content: center;
