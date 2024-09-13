@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <!-- Menu horizontal -->
@@ -108,10 +109,16 @@
             <div class="answer-form" style="display: none;">
                 <textarea placeholder="¿Qué opinas? Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
+
             </div>
+            <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
         </li>
         {% endfor %}
+
     </ul>
+
 </section>
 
     <!-- Seccion para mostrar las preguntas -->
@@ -130,6 +137,9 @@
                 <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
             </div>
+             <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
         </li>
         {% endfor %}
     </ul>
@@ -151,6 +161,9 @@
                 <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
             </div>
+             <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i> <span>Like</span>
+            <i class="fas fa-thumbs-down dislike-icon"></i> <span>Dislike</span> <br>
         </li>
         {% endfor %}
     </ul>
@@ -173,7 +186,80 @@
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     }
 </script>
+// JavaScript para manejar los likes y dislikes
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Función para inicializar los iconos en una sección
+    function initializeIcons(section) {
+        const sectionId = section.getAttribute('id');
+        const likeIcons = section.querySelectorAll('.like-icon');
+        const dislikeIcons = section.querySelectorAll('.dislike-icon');
 
+        // Llamar la función para cargar el estado de los botones desde el almacenamiento local
+        loadIconState();
+
+        likeIcons.forEach(likeIcon => {
+            likeIcon.addEventListener('click', function() {
+                // Toggle la clase activa del botón like
+                this.classList.toggle('active');
+
+                // Asegurarse de que si el botón de like está activo, el de dislike no lo esté
+                if (this.classList.contains('active')) {
+                    // Asegurarse de que solo el botón correspondiente esté activo
+                    const correspondingDislikeIcon = section.querySelector('.dislike-icon');
+                    if (correspondingDislikeIcon) {
+                        correspondingDislikeIcon.classList.remove('active');
+                    }
+                    saveIconState('like');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        dislikeIcons.forEach(dislikeIcon => {
+            dislikeIcon.addEventListener('click', function() {
+                this.classList.toggle('active');
+
+                if (this.classList.contains('active')) {
+                    const correspondingLikeIcon = section.querySelector('.like-icon');
+                    if (correspondingLikeIcon) {
+                        correspondingLikeIcon.classList.remove('active');
+                    }
+                    saveIconState('dislike');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        function saveIconState(state) {
+            console.log('Saving state:', state); // Debug log
+            localStorage.setItem(`iconState-${sectionId}`, state);
+        }
+
+        function loadIconState() {
+            const state = localStorage.getItem(`iconState-${sectionId}`);
+            console.log('Loaded state:', state); // Esta línea es de depuración
+
+            if (state === 'like') {
+                likeIcons.forEach(icon => icon.classList.add('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            } else if (state === 'dislike') {
+                dislikeIcons.forEach(icon => icon.classList.add('active'));
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+            } else {
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            }
+        }
+    }
+
+    // Inicializar los iconos para cada sección
+    const sections = document.querySelectorAll('#debates, #preguntas, #conversaciones');
+    sections.forEach(section => initializeIcons(section));
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -205,7 +291,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = '/respuestas'; // Redirect to the responses page
+                    window.location.href = '/respuestas'; // Redirigir a la pagina de las respuestas
                 } else {
                     return response.text().then(text => {
                         throw new Error(text);

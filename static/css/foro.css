@@ -499,6 +499,57 @@ header {
     }
 }
 
+/* Style for like and dislike icons */
+.like-icon, .dislike-icon {
+    color: #555; /* Default color */
+    cursor: pointer;
+    margin-right: 8px;
+    transition: color 0.3s ease;
+}
+
+/* Style for like and dislike hover effect */
+.like-icon:hover, .dislike-icon:hover {
+    color: #28a745; /* Green for like icon hover */
+}
+
+/* Dislike icon hover effect */
+.dislike-icon:hover {
+    color: #dc3545; /* Red for dislike icon hover */
+}
+
+/* Style for like and dislike icons */
+.like-icon, .dislike-icon {
+    color: #555; /* Default color */
+    cursor: pointer;
+    margin-right: 8px;
+    transition: color 0.3s ease;
+}
+
+/* Style for active like and dislike icons */
+.like-icon.active {
+    color: #28a745; /* Green for active like */
+}
+
+.dislike-icon.active {
+    color: #dc3545; /* Red for active dislike */
+}
+
+/* Style for hover effect */
+.like-icon:hover {
+    color: #28a745; /* Green for like icon hover */
+}
+
+.dislike-icon:hover {
+    color: #dc3545; /* Red for dislike icon hover */
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.1em;
+    margin-bottom: 1rem;
+}
 
 @media (max-width: 480px) {
     header {
