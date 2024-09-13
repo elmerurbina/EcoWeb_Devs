@@ -1,3 +1,6 @@
+# Archivo para manejar la funcionalidad del reconocimiento de imagenes con IA
+
+# Librerias y modulos
 import csv
 from PIL import Image
 from flask import request, jsonify
@@ -8,60 +11,64 @@ from db import create_connection
 # Cargar el dataset
 species_data = []
 
-# Funcion para cargar el dataser
+# Funcion para cargar el dataset
 def load_dataset():
     global species_data
     with open('dataset.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             species_data.append({
-                'image_path': row['image_path'],
-                'species_name': row['species_name'],
-                'species_description': row['species_description'],
-                'image_hash': imagehash.average_hash(Image.open(row['image_path']))
+                'image_path': row['image_path'], # Ruta de la imagen
+                'species_name': row['species_name'], # Nombre de la especie
+                'species_description': row['species_description'], # Descripcion de la especie
+                'image_hash': imagehash.average_hash(Image.open(row['image_path'])) # Usado para comparar las imagenes
             })
 
-# Call this function once when the app starts to load the dataset
+# Llamar la funcion una vez se el programa comience a cargar el dataset
 load_dataset()
 
-# Function to recognize the species by comparing image hashes
+# Reconocer las especies mediante comparacion de imaganes utilizando hashes
 def recognize_species(image_data):
     uploaded_image = Image.open(BytesIO(image_data))
     uploaded_image_hash = imagehash.average_hash(uploaded_image)
 
-    # Compare the uploaded image hash with each image in the dataset
+    # Compara la imagen subida con cada una de las imagenes que existen en el dataset
     for species in species_data:
-        if uploaded_image_hash - species['image_hash'] < 5:  # Allow slight differences
+        if uploaded_image_hash - species['image_hash'] < 5:  # Permite pequenias diferencias
             return {
+                # Si la imagen existe retornar el nombre y la descripcion
                 'name': species['species_name'],
                 'description': species['species_description']
             }
 
+    # Si la imagen no existe retornar un mensaje por default
     return {'name': 'Lo sentimos, esta imagen no esta dentro de nuestro dataset!', 'description': 'No hay descripcion disponible'}
 
-# Route to handle image upload and species recognition
+# Funcion para manejar la imagen que sube el usuario y el reconocimiento de esta
 def recognize():
     if 'file' not in request.files:
-        print("No file part in request")  # Debugging
+        print("No file part in request")  # Esta linea es meramente depuracion
         return jsonify({'error': 'No file part'}), 400
 
     file = request.files['file']
     if file.filename == '':
-        print("No selected file")  # Debugging
+        print("No selected file")  # Esta linea es meramente depuracion
         return jsonify({'error': 'No selected file'}), 400
 
-    # Debugging: Print file details
+    # Esta linea es meramente depuracion para saber si la imagen se subio correctamente
     print(f"File received: {file.filename}")
 
     if file and allowed_file(file.filename):
         image_data = file.read()
 
-        # Call your function to recognize species
+        # Llamar la funcion para reconocer la imagen mediante hashes
         species_info = recognize_species(image_data)
 
+        # Crear conexion con la base de datos
         conn = create_connection()
         cursor = conn.cursor()
         cursor.execute(
+            # Guardar la imagen y los datos como el nombre y la descripcion en la base de datos
             "INSERT INTO ia (filename, image_data, species_name, species_description) VALUES (%s, %s, %s, %s)",
             (file.filename, image_data, species_info.get('name', 'Unknown'), species_info.get('description', 'No description available'))
         )
@@ -74,6 +81,7 @@ def recognize():
     print("File type not allowed")  # Debugging
     return jsonify({'error': 'File type not allowed'}), 400
 
+# Funcion para definir las extensiones o archivos permitidos
 def allowed_file(filename):
     allowed_extensions = {'jpg', 'jpeg', 'png'}
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
