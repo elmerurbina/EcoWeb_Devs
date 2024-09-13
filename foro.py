@@ -5,10 +5,12 @@
 from flask import Flask, render_template, request, url_for, redirect, flash, jsonify
 from db import ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads, save_response, \
     get_respuestas, create_connection
-import logging
+from config import Config
+
 
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 # Ruta para la interfaz principal
 @app.route('/foro')

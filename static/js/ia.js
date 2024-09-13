@@ -6,13 +6,13 @@ document.getElementById('upload-form').addEventListener('submit', function(event
     errorMessage.id = "error-message";
     errorMessage.style.color = "red";
 
-    // Remove any previous error message
+
     const existingErrorMessage = document.getElementById('error-message');
     if (existingErrorMessage) {
         existingErrorMessage.remove();
     }
 
-    // Check if the user selected an image
+    // Validar que el usuario suba una imagen
     if (!imageInput.files.length) {
         errorMessage.textContent = 'Por favor proporcionar una imagen';
         document.getElementById('upload-form').appendChild(errorMessage);
@@ -21,14 +21,14 @@ document.getElementById('upload-form').addEventListener('submit', function(event
 
     const formData = new FormData(this);
 
-    // Show the uploaded image in the 'species-image' element
+    // Mostrar la imagen del usuario en el img species-image
     const reader = new FileReader();
     reader.onload = function(e) {
         document.getElementById('species-image').src = e.target.result;
     };
     reader.readAsDataURL(imageInput.files[0]);
 
-    // Send the form data to the server
+    // Eniviar los datos del formulario al servidor
     fetch('/recognize', {
         method: 'POST',
         body: formData

@@ -3,8 +3,10 @@
 
 from flask import Flask, render_template, request, redirect, url_for, flash
 from db import create_connection
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 

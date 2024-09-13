@@ -5,6 +5,7 @@ import os
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
 from db import save_denuncia, get_all_denuncias
+from config import Config
 
 
 # Guardar las fotos subidas en el folder uploads dentro de la carpeta static
@@ -15,7 +16,7 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4', 'mp3'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'your_secret_key'
+app.config.from_object(Config)
 
 # Comprobar que el directoro para uploads es correcto
 if not os.path.exists(UPLOAD_FOLDER):

@@ -4,4 +4,4 @@ import secrets
 
 # Generar clave secreta
 class Config:
-    SECRET_KEY = secrets.token_hex(16)
+    SECRET_KEY = secrets.token_hex(50)

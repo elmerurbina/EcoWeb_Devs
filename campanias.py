@@ -3,8 +3,10 @@
 # Metodos y librerias
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from db import save_campaign, get_all_campaigns, save_comment
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 # Definicion de la ruta ruta principal
 @app.route('/campanias')
