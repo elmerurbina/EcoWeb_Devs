@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <!-- Menu horizontal -->
@@ -108,10 +109,16 @@
             <div class="answer-form" style="display: none;">
                 <textarea placeholder="¿Qué opinas? Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
+
             </div>
+            <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
         </li>
         {% endfor %}
+
     </ul>
+
 </section>
 
     <!-- Seccion para mostrar las preguntas -->
@@ -130,6 +137,9 @@
                 <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
             </div>
+            <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i> <span>Like</span>
+            <i class="fas fa-thumbs-down dislike-icon"></i> <span>Dislike</span> <br>
         </li>
         {% endfor %}
     </ul>
@@ -151,6 +161,9 @@
                 <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
             </div>
+             <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i> <span>Like</span>
+            <i class="fas fa-thumbs-down dislike-icon"></i> <span>Dislike</span> <br>
         </li>
         {% endfor %}
     </ul>

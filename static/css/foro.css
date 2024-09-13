@@ -499,6 +499,54 @@ header {
     }
 }
 
+/* Style for like and dislike icons */
+.like-icon, .dislike-icon {
+    color: #555; /* Default color */
+    cursor: pointer;
+    margin-right: 8px;
+    transition: color 0.3s ease;
+}
+
+/* Style for like and dislike hover effect */
+.like-icon:hover, .dislike-icon:hover {
+    color: #28a745; /* Green for like icon hover */
+}
+
+/* Dislike icon hover effect */
+.dislike-icon:hover {
+    color: #dc3545; /* Red for dislike icon hover */
+}
+
+/* Style for the like and dislike text */
+.like-icon + span, .dislike-icon + span {
+    font-size: 14px;
+    color: #333;
+    margin-right: 16px;
+}
+
+/* Add some spacing between the icons */
+.like-icon, .dislike-icon {
+    margin-left: 8px;
+}
+
+/* Example layout styling */
+.topics-list li {
+    list-style: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.topics-list li:last-child {
+    border-bottom: none;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.1em;
+    margin-bottom: 1rem;
+}
 
 @media (max-width: 480px) {
     header {
