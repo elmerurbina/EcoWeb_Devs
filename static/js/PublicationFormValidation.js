@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = form.querySelector('button[type="submit"]');
 
     submitButton.addEventListener('click', (event) => {
-        // Prevent form submission if validation fails
+        // No enviar formularios sin llenar todos los campos requeridos
         if (!validateForm()) {
-            event.preventDefault(); // Prevent form from being submitted
+            event.preventDefault();
             alert('Por favor, completa todos los campos obligatorios.');
         }
     });
@@ -13,24 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateForm() {
         let isValid = true;
 
-        // Get all required fields
+       // Cargar todos los campos requeridos
         const requiredFields = form.querySelectorAll('[required]');
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
-                field.style.border = '1px solid red'; // Highlight empty required fields
+                field.style.border = '1px solid red'; // Agregar un borde rojo a los campos requeridos
             } else {
-                field.style.border = ''; // Remove highlight if field is filled
+                field.style.border = ''; // Cuando el usuario empieza a escribir, quitar el color rojo
             }
         });
 
-        // Check if file input has a file selected
+        // Comprueba si existe imagen seleccionada
         const fileInput = form.querySelector('input[type="file"]');
         if (fileInput && fileInput.files.length === 0) {
-            fileInput.style.border = '1px solid red'; // Highlight file input if no file is selected
+            fileInput.style.border = '1px solid red';
             isValid = false;
         } else {
-            fileInput.style.border = ''; // Remove highlight if a file is selected
+            fileInput.style.border = '';
         }
 
         return isValid;

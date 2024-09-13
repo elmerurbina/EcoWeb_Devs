@@ -8,7 +8,7 @@ from controller.campanias import campanias, new_campaign, add_comment
 from controller.denuncia import denuncia, denunciaForm, submit_denuncia
 from controller.foro import foro, new_debate, new_thread, new_question, new_response, respuestas
 from settings import Config
-from controller.submit_publication import submit_publication
+from controller.submit_publication import submit_publication, dislike_publication, like_publication
 from controller.ia import recognize
 from controller.PatrocinarPublicacion import pp
 
@@ -45,6 +45,9 @@ app.add_url_rule('/add_comment', 'add_comment', add_comment, methods=['POST'])
 # Ruta para la parte de las publicaciones
 app.add_url_rule('/submit_publication', 'submit_publication', submit_publication, methods=['GET', 'POST'])
 app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
+app.add_url_rule('/like/<int:publication_id>', 'like_publication', like_publication, methods=['POST'])
+app.add_url_rule('/dislike/<int:publication_id>', 'dislike_publication', dislike_publication, methods=['POST'])
+
 
 # Ruta de la parte de las denuncias
 app.add_url_rule('/denuncia', 'denuncia', denuncia) # Mostrar las denuncias
