@@ -1,4 +1,4 @@
-from config import create_connection
+from settings import create_connection
 from mysql.connector import Error
 
 

@@ -3,7 +3,7 @@
 # Metodos y librerias
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from models.campaignModel import save_campaign, get_all_campaigns, save_comment
-from config import Config
+from settings import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)

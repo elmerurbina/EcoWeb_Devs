@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
-from config import Config
+from settings import Config
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -17,7 +17,6 @@ app.config['MAIL_USERNAME'] = 'your_email@gmail.com'  # Para que pueda funcionar
 app.config['MAIL_PASSWORD'] = 'your_email_password'  # Tienen que ser correctas, en este caso estoy dejando sample data
 
 # Sin embrago el archivo siempre se va guardar en la carpeta Uploads
-
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 
 

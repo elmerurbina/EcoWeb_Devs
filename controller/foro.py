@@ -5,7 +5,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from models.foroModel import ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads, save_response, \
     get_respuestas, create_connection
-from config import Config
+from settings import Config
 
 
 

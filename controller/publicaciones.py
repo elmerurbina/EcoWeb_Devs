@@ -1,11 +1,12 @@
 # Archivo para manejar la logica de las publicaciones
 
 # Importacion de librerias y modulos
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+import mysql.connector
 import os
 from werkzeug.utils import secure_filename
 import uuid
-from config import Config, create_connection
+from settings import Config, create_connection
 from datetime import datetime
 
 app = Flask(__name__)
@@ -56,9 +57,21 @@ def submit_publication():
 # Ruta para la interfaz principal
 @app.route('/publicaciones')
 def publicaciones():
-    cursor = create_connection().cursor(dictionary=True)
-    cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC") # Las publicaciones de ordenan en orden de mas reciente
-    publications = cursor.fetchall()
+    conn = create_connection()
+    if conn is None:
+        return jsonify({'error': 'Database connection failed'}), 500
+
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC")
+        publications = cursor.fetchall()
+    except mysql.connector.Error as e:
+        print(f"Error executing query: {e}")
+        return jsonify({'error': 'Failed to execute query'}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
     return render_template('publicaciones.html', publications=publications)
 
 if __name__ == '__main__':
