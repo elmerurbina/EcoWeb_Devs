@@ -3,10 +3,11 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
+from config import Config
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.config.from_object(Config)
 
 # Configuraciones del mail server
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'

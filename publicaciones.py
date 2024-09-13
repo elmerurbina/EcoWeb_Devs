@@ -6,10 +6,11 @@ import os
 from werkzeug.utils import secure_filename
 import mysql.connector
 import uuid
+from config import Config
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Required for flashing messages
+app.config.from_object(Config)
 
 # Directorio para guardar las imagenes
 UPLOAD_FOLDER = 'static/uploads/'
