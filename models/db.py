@@ -1,28 +1,12 @@
 # Archivo para manejar la conexion con la base de datos y los metodos
 
 # Librerias
-import mysql.connector
+from config import create_connection
 from mysql.connector import Error
 import bcrypt
 from datetime import datetime
 
-# Crear la conexion
-def create_connection():
-    """ Craer la conexion con la base de datos MySQL """
 
-    try:
-        connection = mysql.connector.connect(
-            host='localhost',
-            user='elmer',
-            password='11119gM9*g2516v0512>>o37Ri27',
-            database='VerdeNica'
-        )
-        if connection.is_connected():
-            print("Connection to MySQL DB successful")
-    except Error as e:
-        print(f"The error '{e}' occurred")
-
-    return connection
 
 # Funcion para guardar las respuestas del Foro
 def save_response(respuesta):

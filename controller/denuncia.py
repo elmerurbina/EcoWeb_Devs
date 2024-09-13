@@ -4,7 +4,7 @@
 import os
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
-from db import save_denuncia, get_all_denuncias
+from models.db import save_denuncia, get_all_denuncias
 from config import Config
 
 

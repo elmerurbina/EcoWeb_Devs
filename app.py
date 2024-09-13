@@ -2,15 +2,15 @@
 
 # Importacion de librerias y modulos
 from flask import Flask, render_template
-from autenticacion import register, login, nuevasCredenciales, recuperarCuenta
-from publicaciones import submit_publication, publicaciones
-from campanias import campanias, new_campaign, add_comment
-from denuncia import denuncia, denunciaForm, submit_denuncia
-from foro import foro, new_debate, new_thread, new_question, new_response, respuestas
+from controller.autenticacion import register, login, nuevasCredenciales, recuperarCuenta
+from controller.publicaciones import publicaciones
+from controller.campanias import campanias, new_campaign, add_comment
+from controller.denuncia import denuncia, denunciaForm, submit_denuncia
+from controller.foro import foro, new_debate, new_thread, new_question, new_response, respuestas
 from config import Config
-from submit_publication import submit_publication
-from ia import recognize
-from PatrocinarPublicacion import pp
+from controller.submit_publication import submit_publication
+from controller.ia import recognize
+from controller.PatrocinarPublicacion import pp
 
 # Inicializacion de la aplicacion Flask
 app = Flask(__name__)

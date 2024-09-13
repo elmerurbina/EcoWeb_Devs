@@ -6,7 +6,7 @@ from PIL import Image
 from flask import request, jsonify
 import imagehash
 from io import BytesIO
-from db import create_connection
+from models.db import create_connection
 
 # Cargar el dataset
 species_data = []
@@ -14,7 +14,10 @@ species_data = []
 # Funcion para cargar el dataset
 def load_dataset():
     global species_data
-    with open('dataset.csv', newline='', encoding='utf-8') as csvfile:
+    dataset_path = 'C:/Users/elmer/PycharmProjects/EcoWeb_Devs/dataset.csv'
+    with open(dataset_path, newline='', encoding='utf-8') as csvfile:
+        # Your code here
+
         reader = csv.DictReader(csvfile)
         for row in reader:
             species_data.append({
