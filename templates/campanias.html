@@ -18,14 +18,13 @@
         <p>Para obtener mas información o guias de navegación para el sistema ver la <b><a href="#">Documentación </a></b></p>
     </section>
 
-
     <h2>Campaña Comunitaria</h2>
 
     <div class="prompt-login">
         <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
     </div>
 
-   <!-- Mostrar los mensajes informativos -->
+    <!-- Mostrar los mensajes informativos -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
@@ -34,7 +33,7 @@
             </div>
         {% endfor %}
     {% endif %}
-{% endwith %}
+    {% endwith %}
 
     <!-- Formulario para crear una nueva campania -->
     <form id="campaniaForm" action="{{url_for('new_campaign')}}" method="POST" class="campania-form" style="display: none;">
@@ -81,11 +80,11 @@
 
             <div class="campaign-actions">
                 <!-- Icono para dar Like -->
-                <a href="#" class="action-icon"><i class="fas fa-heart"></i> Like</a>
+                <a href="#" class="action-icon" id="likeButton"><i class="fas fa-heart"></i> Like</a>
                 <!-- Icono para comentar -->
                 <a href="#" class="action-icon" onclick="toggleCommentForm('{{ campaign.id }}')"><i class="fas fa-comment"></i> Comentar</a>
                 <!-- Icono para seguir la campania -->
-                <a href="#" class="action-icon"><i class="fas fa-user-plus"></i> Seguir</a>
+                <a href="#" class="action-icon" id="followButton"><i class="fas fa-user-plus"></i> Seguir</a>
             </div>
 
             <!-- Formulario para agregar un nuevo comentario -->
@@ -116,6 +115,25 @@
         const formType = "{{ form_type }}";
         if (formType) {
             document.getElementById(formType).style.display = 'block';
+        }
+
+        // Handling like button
+        const likeButton = document.getElementById('likeButton');
+        if (likeButton) {
+            likeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+                this.style.color = this.classList.contains('active') ? 'green' : 'initial';
+            });
+        }
+
+        // Handling follow button
+        const followButton = document.getElementById('followButton');
+        if (followButton) {
+            followButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.innerHTML = '<i class="fas fa-user-plus"></i> Siguiendo';
+            });
         }
     });
 </script>
