@@ -517,27 +517,30 @@ header {
     color: #dc3545; /* Red for dislike icon hover */
 }
 
-/* Style for the like and dislike text */
-.like-icon + span, .dislike-icon + span {
-    font-size: 14px;
-    color: #333;
-    margin-right: 16px;
-}
-
-/* Add some spacing between the icons */
+/* Style for like and dislike icons */
 .like-icon, .dislike-icon {
-    margin-left: 8px;
+    color: #555; /* Default color */
+    cursor: pointer;
+    margin-right: 8px;
+    transition: color 0.3s ease;
 }
 
-/* Example layout styling */
-.topics-list li {
-    list-style: none;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+/* Style for active like and dislike icons */
+.like-icon.active {
+    color: #28a745; /* Green for active like */
 }
 
-.topics-list li:last-child {
-    border-bottom: none;
+.dislike-icon.active {
+    color: #dc3545; /* Red for active dislike */
+}
+
+/* Style for hover effect */
+.like-icon:hover {
+    color: #28a745; /* Green for like icon hover */
+}
+
+.dislike-icon:hover {
+    color: #dc3545; /* Red for dislike icon hover */
 }
 
 

@@ -187,6 +187,36 @@
     }
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Select like and dislike icons
+    const likeIcon = document.querySelector('.like-icon');
+    const dislikeIcon = document.querySelector('.dislike-icon');
+
+    // Add click event listener for like icon
+    likeIcon.addEventListener('click', function() {
+        // Toggle the active class for like icon
+        this.classList.toggle('active');
+
+        // If like icon is active, make sure dislike icon is not active
+        if (this.classList.contains('active')) {
+            dislikeIcon.classList.remove('active');
+        }
+    });
+
+    // Add click event listener for dislike icon
+    dislikeIcon.addEventListener('click', function() {
+        // Toggle the active class for dislike icon
+        this.classList.toggle('active');
+
+        // If dislike icon is active, make sure like icon is not active
+        if (this.classList.contains('active')) {
+            likeIcon.classList.remove('active');
+        }
+    });
+});
+</script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
