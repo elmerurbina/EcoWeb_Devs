@@ -1,12 +1,12 @@
 # Archivo para manejar la logica de las publicaciones
 
 # Importacion de librerias y modulos
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+import mysql.connector
 import os
 from werkzeug.utils import secure_filename
-import mysql.connector
 import uuid
-from config import Config
+from settings import Config, create_connection
 from datetime import datetime
 
 app = Flask(__name__)
@@ -16,13 +16,6 @@ app.config.from_object(Config)
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Generar la conexion con la base de datos
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="7>>HhNN6/fZ",
-    database="VerdeNica"
-)
 
 # Ruta para manejar una nueva publicacion creada por el usuario
 @app.route('/submit_publication', methods=['GET', 'POST'])
@@ -47,14 +40,14 @@ def submit_publication():
             image_path = None  # En caso de que no se suba una imagen
 
         # Guardar la publicacion en la base de datos
-        cursor = db.cursor()
+        cursor = create_connection().cursor()
         sql = """
             INSERT INTO publicaciones (title, category, content, image, created_at)
             VALUES (%s, %s, %s, %s, %s)
         """
         created_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Current timestamp
         cursor.execute(sql, (title, category, content, image_path, created_at))
-        db.commit()
+        create_connection().commit()
 
         flash('Publicación creada con éxito', 'success')
         return redirect(url_for('publicaciones'))
@@ -64,9 +57,21 @@ def submit_publication():
 # Ruta para la interfaz principal
 @app.route('/publicaciones')
 def publicaciones():
-    cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC") # Las publicaciones de ordenan en orden de mas reciente
-    publications = cursor.fetchall()
+    conn = create_connection()
+    if conn is None:
+        return jsonify({'error': 'Database connection failed'}), 500
+
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT * FROM publicaciones ORDER BY created_at DESC")
+        publications = cursor.fetchall()
+    except mysql.connector.Error as e:
+        print(f"Error executing query: {e}")
+        return jsonify({'error': 'Failed to execute query'}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
     return render_template('publicaciones.html', publications=publications)
 
 if __name__ == '__main__':

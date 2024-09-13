@@ -8,10 +8,10 @@ import mysql.connector
 class Config:
     SECRET_KEY = secrets.token_hex(50)
 
-# Crear la conexion
+# Crear conexion con la base de datos
 def create_connection():
-    """ Craer la conexion con la base de datos MySQL """
-
+    """Create a connection with the MySQL database."""
+    connection = None
     try:
         connection = mysql.connector.connect(
             host='localhost',
@@ -23,5 +23,4 @@ def create_connection():
             print("Connection to MySQL DB successful")
     except Error as e:
         print(f"The error '{e}' occurred")
-
     return connection

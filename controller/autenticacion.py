@@ -2,8 +2,8 @@
 
 # Librerias y modulos
 from flask import Flask, render_template, request, redirect, url_for, flash
-from models.db import register_user, check_login
-from config import Config
+from models.autenticacionModel import register_user, check_login
+from settings import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)

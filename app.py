@@ -7,7 +7,7 @@ from controller.publicaciones import publicaciones
 from controller.campanias import campanias, new_campaign, add_comment
 from controller.denuncia import denuncia, denunciaForm, submit_denuncia
 from controller.foro import foro, new_debate, new_thread, new_question, new_response, respuestas
-from config import Config
+from settings import Config
 from controller.submit_publication import submit_publication
 from controller.ia import recognize
 from controller.PatrocinarPublicacion import pp

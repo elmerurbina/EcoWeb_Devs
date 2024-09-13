@@ -4,8 +4,8 @@
 import os
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.utils import secure_filename
-from models.db import save_denuncia, get_all_denuncias
-from config import Config
+from models.denunciasModel import save_denuncia, get_all_denuncias
+from settings import Config
 
 
 # Guardar las fotos subidas en el folder uploads dentro de la carpeta static
