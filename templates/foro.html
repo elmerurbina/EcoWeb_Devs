@@ -137,9 +137,9 @@
                 <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                 <button class="submit-answer-button">Enviar Respuesta</button>
             </div>
-            <!--Iconos de like y dislike -->
-            <i class="fas fa-thumbs-up like-icon"></i> <span>Like</span>
-            <i class="fas fa-thumbs-down dislike-icon"></i> <span>Dislike</span> <br>
+             <!--Iconos de like y dislike -->
+            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
         </li>
         {% endfor %}
     </ul>
@@ -187,34 +187,85 @@
     }
 </script>
 
+<!-- JavaScript para manejar los likes y dislikes -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Select like and dislike icons
-    const likeIcon = document.querySelector('.like-icon');
-    const dislikeIcon = document.querySelector('.dislike-icon');
+    // Funcion para inicializar los iconos en una seccion
+    function initializeIcons(section) {
+        const likeIcons = section.querySelectorAll('.like-icon');
+        const dislikeIcons = section.querySelectorAll('.dislike-icon');
 
-    // Add click event listener for like icon
-    likeIcon.addEventListener('click', function() {
-        // Toggle the active class for like icon
-        this.classList.toggle('active');
+        // Llamar la funcion para cargar el estado de los botones desde el almacenamiento local
+        loadIconState();
 
-        // If like icon is active, make sure dislike icon is not active
-        if (this.classList.contains('active')) {
-            dislikeIcon.classList.remove('active');
+        likeIcons.forEach(likeIcon => {
+            likeIcon.addEventListener('click', function() {
+                // Toggle la clase activa del boton like
+                this.classList.toggle('active');
+
+                // Asegurarse que si el boton de like esta activo, el de dislike no lo este
+                if (this.classList.contains('active')) {
+                    // Asegurarse que solo el boton correspondiente este activo
+                    const correspondingDislikeIcon = section.querySelector('.dislike-icon');
+                    if (correspondingDislikeIcon) {
+                        correspondingDislikeIcon.classList.remove('active');
+                    }
+                    saveIconState('like');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        // Se sigue la misma logica para el boton de los dislikes
+        dislikeIcons.forEach(dislikeIcon => {
+            dislikeIcon.addEventListener('click', function() {
+
+                this.classList.toggle('active');
+
+
+                if (this.classList.contains('active')) {
+
+                    const correspondingLikeIcon = section.querySelector('.like-icon');
+                    if (correspondingLikeIcon) {
+                        correspondingLikeIcon.classList.remove('active');
+                    }
+                    saveIconState('dislike');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        function saveIconState(state) {
+            console.log('Saving state:', state); // Debug log
+            localStorage.setItem('iconState', state);
         }
-    });
 
-    // Add click event listener for dislike icon
-    dislikeIcon.addEventListener('click', function() {
-        // Toggle the active class for dislike icon
-        this.classList.toggle('active');
+        // Funcion para cargar el estado de los botones
+        function loadIconState() {
+            const state = localStorage.getItem('iconState');
+            console.log('Loaded state:', state); // Esta linea es de depuracion
 
-        // If dislike icon is active, make sure like icon is not active
-        if (this.classList.contains('active')) {
-            likeIcon.classList.remove('active');
+            if (state === 'like') {
+                likeIcons.forEach(icon => icon.classList.add('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            } else if (state === 'dislike') {
+                dislikeIcons.forEach(icon => icon.classList.add('active'));
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+            } else {
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            }
         }
-    });
+    }
+
+    // Inicializar los iconos para cada seccion
+    initializeIcons(document.querySelector('#debates'));
+    initializeIcons(document.querySelector('#preguntas'));
+    initializeIcons(document.querySelector('#conversaciones'));
 });
+
 </script>
 
 
@@ -248,7 +299,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = '/respuestas'; // Redirect to the responses page
+                    window.location.href = '/respuestas'; // Redirigir a la pagina de las respuestas
                 } else {
                     return response.text().then(text => {
                         throw new Error(text);

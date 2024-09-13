@@ -81,33 +81,67 @@
 
     <!-- JavaScript para los botones de Like y Dislike -->
     <script>
-       function handleLike(publicationId) {
-    // Cargar los botones mediante el ID
+function handleLike(publicationId) {
     const likeBtn = document.querySelector(`button.like-btn[data-id="${publicationId}"]`);
     const dislikeBtn = document.querySelector(`button.dislike-btn[data-id="${publicationId}"]`);
 
-    // Toggle la clase activa del boton cuando se de click
+    // Toggle la clase activa para el boton de like
     likeBtn.classList.toggle('active');
 
-    // Si se vuelve a clickear el boton eliminar la clase activa
+    // Si la clase like esta activa, elimina el estado de la clase dislike y guardar el estado del boton
     if (likeBtn.classList.contains('active')) {
         dislikeBtn.classList.remove('active');
+        saveLikeState(publicationId, 'like');
+    } else {
+        saveLikeState(publicationId, 'none');
     }
 }
 
+// Misma logica para la funcion del boton de dislike
 function handleDislike(publicationId) {
-    // Cragar los botones de likes y dislikes utilizando el ID
     const likeBtn = document.querySelector(`button.like-btn[data-id="${publicationId}"]`);
     const dislikeBtn = document.querySelector(`button.dislike-btn[data-id="${publicationId}"]`);
 
-    // Toggle la clase activa del btoton
+
     dislikeBtn.classList.toggle('active');
 
-    // Si se vuelve a clickear el boton eliminar la clase activa
+
     if (dislikeBtn.classList.contains('active')) {
         likeBtn.classList.remove('active');
+        saveLikeState(publicationId, 'dislike');
+    } else {
+        saveLikeState(publicationId, 'none');
     }
 }
+
+// Guardar el estado del boton en almacenamiento local
+function saveLikeState(publicationId, state) {
+    localStorage.setItem(`publication-${publicationId}`, state);
+}
+
+// Cargar el estado del boton desde el almacenamiento local
+function loadLikeState(publicationId) {
+    const state = localStorage.getItem(`publication-${publicationId}`);
+    if (state === 'like') {
+        document.querySelector(`button.like-btn[data-id="${publicationId}"]`).classList.add('active');
+    } else if (state === 'dislike') {
+        document.querySelector(`button.dislike-btn[data-id="${publicationId}"]`).classList.add('active');
+    }
+}
+
+// Llamar la funcion cada que se carga la pagina para asegurar la persisetncia del estado de los botones
+function loadAllStates() {
+    const publications = document.querySelectorAll('.like-btn');
+    publications.forEach(pub => {
+        const publicationId = pub.getAttribute('data-id');
+        loadLikeState(publicationId);
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadAllStates();
+});
 
     </script>
 </body>
