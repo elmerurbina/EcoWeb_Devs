@@ -147,6 +147,46 @@ footer {
     display: none;
 }
 
+.likes-dislikes {
+    margin-top: 10px;
+}
+
+.like-btn, .dislike-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effects */
+.like-btn:hover {
+    background-color: #d0ffd0;
+}
+
+.dislike-btn:hover {
+    background-color: #ffd0d0;
+}
+
+/* Persistent active state when clicked */
+.like-btn.active {
+    background-color: #28a745; /* Green for active like */
+    color: white;
+}
+
+.dislike-btn.active {
+    background-color: #dc3545; /* Red for active dislike */
+    color: white;
+}
+
+.like-btn i, .dislike-btn i {
+    margin-right: 5px;
+}
+
+
+
+
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -173,29 +213,6 @@ footer {
     }
 }
 
-.likes-dislikes {
-    margin-top: 10px;
-}
-
-.like-btn, .dislike-btn {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 5px 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.like-btn:hover {
-    background-color: #d0ffd0;
-}
-
-.dislike-btn:hover {
-    background-color: #ffd0d0;
-}
-
-.like-btn i, .dislike-btn i {
-    margin-right: 5px;
-}
 
 @media (max-width: 480px) {
     .container {

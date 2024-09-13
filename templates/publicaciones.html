@@ -60,7 +60,6 @@
             </ul>
         </section>
 
-        <!-- Other sections... -->
 
         <!-- Suscripción por correo -->
         <div class="subscription-form" id="subscription">
@@ -79,31 +78,37 @@
 
     <!-- Archivo JavaScript de la suscripción por correo -->
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
-    <!-- JavaScript for Like and Dislike buttons -->
-    <script>
-        function handleLike(publicationId) {
-            fetch(`/like/${publicationId}`, { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Gracias por tu like!');
-                    } else {
-                        alert('Hubo un error al procesar tu like.');
-                    }
-                });
-        }
 
-        function handleDislike(publicationId) {
-            fetch(`/dislike/${publicationId}`, { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Gracias por tu feedback!');
-                    } else {
-                        alert('Hubo un error al procesar tu dislike.');
-                    }
-                });
-        }
+    <!-- JavaScript para los botones de Like y Dislike -->
+    <script>
+       function handleLike(publicationId) {
+    // Cargar los botones mediante el ID
+    const likeBtn = document.querySelector(`button.like-btn[data-id="${publicationId}"]`);
+    const dislikeBtn = document.querySelector(`button.dislike-btn[data-id="${publicationId}"]`);
+
+    // Toggle la clase activa del boton cuando se de click
+    likeBtn.classList.toggle('active');
+
+    // Si se vuelve a clickear el boton eliminar la clase activa
+    if (likeBtn.classList.contains('active')) {
+        dislikeBtn.classList.remove('active');
+    }
+}
+
+function handleDislike(publicationId) {
+    // Cragar los botones de likes y dislikes utilizando el ID
+    const likeBtn = document.querySelector(`button.like-btn[data-id="${publicationId}"]`);
+    const dislikeBtn = document.querySelector(`button.dislike-btn[data-id="${publicationId}"]`);
+
+    // Toggle la clase activa del btoton
+    dislikeBtn.classList.toggle('active');
+
+    // Si se vuelve a clickear el boton eliminar la clase activa
+    if (dislikeBtn.classList.contains('active')) {
+        likeBtn.classList.remove('active');
+    }
+}
+
     </script>
 </body>
 </html>
