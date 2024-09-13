@@ -105,12 +105,6 @@ a.header:hover {
     width: 100%;
 }
 
-/* Estilos del header */
-header {
-    background-color: none;
-    padding-top: 60px;
-}
-
 /* Estilos del slogan */
 .header {
     position: absolute;          /* Fijo en la parte superior */
@@ -393,40 +387,6 @@ button {
     font-size: 20px;
 }
 
-
-footer {
-    background-color: #007bff;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer-content h3 {
-    margin-bottom: 10px;
-    color: #000000;
-}
-
-.footer-content p {
-    color: #000000;
-    font-size: 16px;
-    margin-bottom: 20px;
-    margin-left: 30%;
-    margin-right: 30%;
-}
-
-.footer-content ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.footer-content ul li {
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 5px;
-}
-
-
-
 /* Sección de sostenibilidad */
 .sustainability {
     background-color: #f2f2f2; /* Color de fondo de la sección */
@@ -498,6 +458,45 @@ footer {
     font-size: 0.9em;
     margin-top: 10px;
 }
+
+/* Estilos para el pie de pagina */
+.footer-content {
+    display: flex;              /* Flexbox para alinear horizontalmente */
+    justify-content: space-between; /* Espacio equitativo entre las columnas */
+    padding: 20px;
+    font-size: 0.8em;
+    background-color: #2E8B57;  /* Fondo verde */
+    color: white;               /* Texto blanco */
+}
+
+.column {
+    width: 30%;                 /* Ancho igual para cada columna */
+    padding: 10px;
+    box-sizing: border-box;      /* Asegura que el padding no afecte el ancho */
+}
+
+h3 {
+    text-align: left;            /* Título alineado a la izquierda */
+    font-size: 1.5em;
+}
+
+p, ul {
+    font-size: 0.9em;
+    line-height: 1.6;            /* Espacio entre líneas para mejorar legibilidad */
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;           /* Indentación de la lista */
+}
+
+footer {
+    width: 100%;
+    background-color: #2E8B57;   /* Fondo verde */
+    padding: 20px 0;             /* Espaciado superior e inferior */
+    color: white;
+}
+
 
 /* Responsivo */
 @media (max-width: 768px) {
