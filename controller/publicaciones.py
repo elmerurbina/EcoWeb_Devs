@@ -42,7 +42,7 @@ def submit_publication():
             image_file.save(image_path)
 
 
-            image_path = os.path.join('uploads', unique_filename)
+            image_path = os.path.join('../uploads', unique_filename)
         else:
             image_path = None  # En caso de que no se suba una imagen
 
