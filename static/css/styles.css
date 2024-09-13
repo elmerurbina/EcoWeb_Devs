@@ -111,11 +111,21 @@ header {
     padding-top: 60px;
 }
 
-a.header {
-text-align: center;
-margin-left: 25%;
+/* Estilos del slogan */
+.header {
+    position: absolute;          /* Fijo en la parte superior */
+    margin-top: 60px;                   /* Ubicado en la parte superior de la página */
+    left: 0;
+    width: 100%;              /* Ocupa el ancho completo de la pantalla */
+    background-color: #2E8B57; /* Verde */
+    color: #FFFFFF;            /* Texto blanco para mejor contraste */
+    text-align: center;        /* Centrar el texto */
+    padding: 15px 8px;           /* Espaciado arriba y abajo */
+    font-size: 24px;           /* Tamaño de fuente */
+    font-family: 'Arial', sans-serif; /* Tipografía simple */
+    font-weight: bold;         /* Texto en negrita */
+    box-shadow: 0px 4px 2px -2px gray; /* Sombra para darle un poco de relieve */
 }
-
 /* Estilos de la sección principal */
 .main {
     position: relative;
