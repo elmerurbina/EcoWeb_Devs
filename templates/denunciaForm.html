@@ -25,23 +25,27 @@
     {% endif %}
 {% endwith %}
 
-    <form action="{{url_for('submit_denuncia')}}" method="POST" enctype="multipart/form-data">
+   <form action="{{url_for('submit_denuncia')}}" method="POST" enctype="multipart/form-data" novalidate>
         <div class="form-group">
             <label for="titulo" class="required">Título de la denuncia:</label>
             <input type="text" id="titulo" name="titulo" required>
+            <div class="error-message"></div>
         </div>
         <div class="form-group">
             <label for="descripcion" class="required">Descripción:</label>
             <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+            <div class="error-message"></div>
         </div>
         <div class="form-group">
             <label for="evidencia" class="required">Evidencia:</label>
             <!--el accept no se esta mostrando por alguna razon que desconozco -->
             <input type="file" id="evidencia" name="evidencia" accept=".jpg, .png, .pdf, .docx, .mp4, .mp3" >
+            <div class="error-message"></div>
         </div>
         <div class="form-group">
             <label for="ubicacion" class="required">Ubicación:</label>
             <input type="text" id="ubicacion" name="ubicacion" required>
+            <div class="error-message"></div>
         </div>
         <div class="form-group">
             <label for="denunciados" class="">Nombre del o los denunciados:</label>
@@ -54,6 +58,9 @@
         <button type="submit" class="btn-submit">Enviar Denuncia</button>
     </form>
 </div>
+
+<script src="{{ url_for('static', filename='js/denuncia.js') }}"></script>
+
 
 </body>
 </html>
