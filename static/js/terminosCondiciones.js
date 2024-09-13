@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to open Terms and Conditions in a new window
+    // Funcion para abrir los terminos y condiciones
     function openTermsConditions(event) {
         event.preventDefault();
         

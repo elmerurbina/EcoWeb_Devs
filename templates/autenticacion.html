@@ -30,14 +30,16 @@
 
 
             <h1>Iniciar Sesión</h1>
-            <form action="{{ url_for('login') }}" method="POST">
+            <form id="login-form" action="{{ url_for('login') }}" method="POST" novalidate>
                 <input type="email" id="login-correo" name="login-correo" placeholder="Correo" required>
+                 <div class="error-message"></div>
                 <input type="password" id="login-password" name="login-password" placeholder="Contraseña" required>
+                 <div class="error-message"></div>
                 <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
                 <input type="submit" value="Iniciar Sesión">
+
                 <a class="no-account">¿No tienes una cuenta? Regístrate</a>
                 <a href="#" class="view-terms-link">Ver Términos y Condiciones</a>
-
             </form>
             <a class="recuperar" href="{{url_for('recuperarCuenta')}}">Recuperar Credenciales</a>
         </div>
@@ -57,16 +59,17 @@
         {% endwith %}
 
             <h1>Crear Cuenta</h1>
-            <form action="{{ url_for('register') }}" method="post">
-
+            <form id="register-form" action="{{ url_for('register') }}" method="post" novalidate>
                 <input type="text" id="register-nombre" name="register-nombre" placeholder="Nombre" required>
+                 <div class="error-message"></div>
                 <input type="email" id="register-correo" name="register-correo" placeholder="Correo" required>
+                 <div class="error-message"></div>
                 <input type="password" id="register-password" name="register-password" placeholder="Contraseña" required>
+                 <div class="error-message"></div>
                 <input type="password" id="register-confirm-password" name="register-confirm-password" placeholder="Confirmar Contraseña" required>
+                 <div class="error-message"></div>
                 <input type="submit" value="Crear Cuenta">
                 <a class="ok-account">¿Ya tienes una cuenta? Inicia Sesión</a>
-                <a href="#" class="view-terms-link">Ver Términos y Condiciones</a>
-
             </form>
         </div>
     </div>
