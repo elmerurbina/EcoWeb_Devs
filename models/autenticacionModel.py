@@ -1,9 +1,50 @@
 from settings import create_connection
 from mysql.connector import Error
 import bcrypt
+from flask_login import UserMixin
 
+class User(UserMixin):
+    def __init__(self, user_id, nombre, correo, contrasenia, profile_photo):
+        self.id = user_id
+        self.nombre = nombre
+        self.correo = correo
+        self.contrasenia = contrasenia
+        self.profile_photo = profile_photo or 'profile-placeholder.jpeg'
 
-# Funcion para registrar a un nuevo usuario
+    @staticmethod
+    def get(user_id):
+        """Fetch user by ID from the database."""
+        connection = create_connection()
+        cursor = connection.cursor()
+        try:
+            query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE id = %s"
+            cursor.execute(query, (user_id,))
+            result = cursor.fetchone()
+
+            if result:
+                return User(result[0], result[1], result[2], result[3], result[4])  # Return a User instance
+            return None
+        except Error as e:
+            print(f"The error '{e}' occurred")
+            return None
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+
+    def is_active(self):
+        return True
+
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+# Function to register a new user
 def register_user(nombre, correo, contrasenia):
     """Register a new user in the database."""
     connection = create_connection()
@@ -24,25 +65,20 @@ def register_user(nombre, correo, contrasenia):
             connection.close()
 
 
-# Funcion para validar las credenciales de inicio de sesion
+# Function to validate login credentials
 def check_login(correo, contrasenia):
-    """Verify user credentials."""
     connection = create_connection()
     cursor = connection.cursor()
     user = None
     try:
-        query = "SELECT correo, contrasenia FROM sistemaautenticacion WHERE correo = %s"
+        query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE correo = %s"
         cursor.execute(query, (correo,))
         result = cursor.fetchone()
 
         if result:
-            stored_password = result[1]
-            print(f"Stored password hash: {stored_password}")
-            print(f"Password to check: {contrasenia}")
+            stored_password = result[3]  # Assuming contrasenia is at index 3
 
-            # Check if the password matches
             if bcrypt.checkpw(contrasenia.encode(), stored_password.encode()):
-                print(f"User found: {result}")
                 user = result
             else:
                 print("Invalid credentials")

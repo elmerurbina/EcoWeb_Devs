@@ -2,19 +2,41 @@
 
 # Importacion de librerias y modulos
 from flask import Flask, render_template
-from controller.autenticacion import register, login, nuevasCredenciales, recuperarCuenta
-from controller.publicaciones import publicaciones
-from controller.campanias import campanias, new_campaign, add_comment
-from controller.denuncia import denuncia, denunciaForm, submit_denuncia
-from controller.foro import foro, new_debate, new_thread, new_question, new_response, respuestas
+from  flask_login import LoginManager
+from controllers.autenticacion import register, login, nuevasCredenciales, recuperarCuenta
+from controllers.publicaciones import publicaciones
+from controllers.campanias import campanias, new_campaign, add_comment
+from controllers.denuncia import denuncia, denunciaForm, submit_denuncia
+from controllers.foro import (
+    foro, new_debate, edit_debate, edit_question,
+    delete_debate_route, new_question,
+    delete_question_route, new_thread, respuestas,
+    edit_thread, new_response, delete_thread_route
+)
+from models.foroModel import get_all_debates, get_all_questions, get_all_threads, get_question_by_id, get_debate_by_id, get_thread_by_id
+
 from settings import Config
-from controller.submit_publication import submit_publication, dislike_publication, like_publication
-from controller.ia import recognize
-from controller.PatrocinarPublicacion import pp
+from controllers.submit_publication import submit_publication, dislike_publication, like_publication
+from controllers.ia import recognize
+from controllers.PatrocinarPublicacion import pp
+from models.autenticacionModel import User
+from controllers.profileController import profile, edit_profile, delete_profile, logout, unauthorized
+
 
 # Inicializacion de la aplicacion Flask
 app = Flask(__name__)
 app.config.from_object(Config)
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Definir la función de carga de usuario
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
+
 
 # Ruta del Index
 @app.route('/verdeNica')
@@ -30,6 +52,17 @@ def ep():
 @app.route('/biodiversidad')
 def biodiversidad():
     return render_template('biodiversidad.html')
+
+@app.errorhandler(401)
+def unauthorized(error):
+    return render_template('unauthorized.html'), 401
+
+
+app.add_url_rule('/profile', 'profile', profile)
+app.add_url_rule('/logout', 'logout', logout)
+app.add_url_rule('/edit_profile', 'edit_profile', edit_profile, methods=['GET', 'POST'])
+app.add_url_rule('/delete_profile', 'delete_profile', delete_profile, methods=['POST'])
+
 
 # Rutas del sistema de autenticacion
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
@@ -55,11 +88,41 @@ app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm) # Formulario
 app.add_url_rule('/submit_denuncia', 'submit_denuncia', submit_denuncia, methods=['POST']) # Enviar denuncia
 
 app.add_url_rule('/foro', 'foro', foro)
+
+# Ruta para agregar un nuevo debate
 app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
+
+# Ruta para editar un debate
+app.add_url_rule('/edit_debate/<int:debate_id>', 'edit_debate', edit_debate, methods=['GET', 'POST'])
+
+# Ruta para eliminar un debate
+app.add_url_rule('/delete_debate/<int:debate_id>', 'delete_debate_route', delete_debate_route, methods=['POST'])
+
+# Rutas para preguntas
 app.add_url_rule('/new_question', 'new_question', new_question, methods=['POST'])
+app.add_url_rule('/edit_question/<int:question_id>', 'edit_question', edit_question, methods=['GET', 'POST'])
+app.add_url_rule('/delete_question/<int:question_id>', 'delete_question_route', delete_question_route, methods=['POST'])
+
+# Rutas para hilos de conversación
 app.add_url_rule('/new_thread', 'new_thread', new_thread, methods=['POST'])
+app.add_url_rule('/edit_thread/<int:thread_id>', 'edit_thread', edit_thread, methods=['GET', 'POST'])
+app.add_url_rule('/delete_thread/<int:thread_id>', 'delete_thread_route', delete_thread_route, methods=['POST'])
+
+# Ruta para mostrar el perfil de usuario
+app.add_url_rule('/profile', 'profile', profile)
+
+# Nueva respuesta
 app.add_url_rule('/new_response', 'new_response', new_response, methods=['POST'])
+
+# Ruta para la interfaz de las respuestas
 app.add_url_rule('/respuestas', 'respuestas', respuestas)
+
+app.add_url_rule('/get_all_debates', 'get_all_debates', get_all_debates())
+app.add_url_rule('/get_all_questions', 'get_all_questions', get_all_questions())
+app.add_url_rule('/get_all_threads', 'get_all_threads', get_all_threads())
+app.add_url_rule('/get_debate_by_id/<int:debate_id>', 'get_debate_by_id', get_debate_by_id)
+app.add_url_rule('/get_question_by_id/<int:question_id>', 'get_question_by_id', get_question_by_id)
+app.add_url_rule('/get_thread_by_id/<int:thread_id>', 'get_thread_by_id', get_thread_by_id)
 
 app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
