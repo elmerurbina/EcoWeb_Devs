@@ -4,10 +4,12 @@ import bcrypt
 from flask_login import UserMixin
 
 class User(UserMixin):
-    def __init__(self, user_id, nombre, correo):
+    def __init__(self, user_id, nombre, correo, contrasenia, profile_photo):
         self.id = user_id
         self.nombre = nombre
         self.correo = correo
+        self.contrasenia = contrasenia
+        self.profile_photo = profile_photo or 'profile-placeholder.jpeg'
 
     @staticmethod
     def get(user_id):
@@ -15,12 +17,12 @@ class User(UserMixin):
         connection = create_connection()
         cursor = connection.cursor()
         try:
-            query = "SELECT id, nombre, correo FROM sistemaautenticacion WHERE id = %s"
+            query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE id = %s"
             cursor.execute(query, (user_id,))
             result = cursor.fetchone()
 
             if result:
-                return User(result[0], result[1], result[2])  # Return a User instance
+                return User(result[0], result[1], result[2], result[3], result[4])  # Return a User instance
             return None
         except Error as e:
             print(f"The error '{e}' occurred")
@@ -40,8 +42,7 @@ class User(UserMixin):
         return False
 
     def get_id(self):
-        return str(self.id)  # Ensure this returns a string
-
+        return str(self.id)
 
 # Function to register a new user
 def register_user(nombre, correo, contrasenia):
@@ -70,7 +71,7 @@ def check_login(correo, contrasenia):
     cursor = connection.cursor()
     user = None
     try:
-        query = "SELECT id, nombre, correo, contrasenia FROM sistemaautenticacion WHERE correo = %s"
+        query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE correo = %s"
         cursor.execute(query, (correo,))
         result = cursor.fetchone()
 

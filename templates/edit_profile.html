@@ -4,26 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit-profile.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Editar Perfil</h1>
-        <form action="{{ url_for('edit_profile') }}" method="POST">
+
+        {% if get_flashed_messages() %}
+            <div class="flash-messages">
+                {% with messages=get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endif %}
+
+        <form action="{{ url_for('edit_profile') }}" method="POST" enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" value="{{ user.nombre }}" required>
 
             <label for="correo">Correo electrónico:</label>
             <input type="email" id="correo" name="correo" value="{{ user.correo }}" required>
 
-            <label for="contrasenia">Nueva contraseña (opcional):</label>
-            <input type="password" id="contrasenia" name="contrasenia">
+            <label for="profile_photo">Foto de perfil (opcional):</label>
+            <input type="file" id="profile_photo" name="profile_photo" accept="image/*">
 
             <button type="submit">Actualizar Perfil</button>
         </form>
 
-        <form action="{{ url_for('delete_profile') }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar tu perfil?');">
-            <button type="submit" class="btn-delete">Eliminar Perfil</button>
-        </form>
+
     </div>
 </body>
 </html>

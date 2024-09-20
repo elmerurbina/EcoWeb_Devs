@@ -14,9 +14,12 @@
         </div>
 
         <div class="profile-content">
-            <div class="profile-picture">
-                <img src="{{ url_for('static', filename='images/profile-placeholder.png') }}" alt="Profile Picture">
-            </div>
+           <div class="profile-picture">
+  <img src="{{ url_for('static', filename='uploads/' + user.profile_photo) }}" alt="Profile Photo"
+     onerror="this.src='{{ url_for('static', filename='imagenes/profile-placeholder.jpeg') }}';">
+
+</div>
+
             <div class="profile-details">
                 <h2>Detalles del perfil</h2>
                 <p><strong>Nombre:</strong> {{ user.nombre }}</p>
@@ -24,10 +27,42 @@
             </div>
         </div>
 
+       {% if get_flashed_messages() %}
+    <div class="flash-messages">
+        {% with messages=get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+{% endif %}
+
+
         <div class="profile-actions">
             <a href="{{ url_for('edit_profile') }}" class="btn">Editar perfil</a>
             <a href="{{ url_for('logout') }}" class="btn btn-logout">Cerrar sesión</a>
         </div>
+
+        <div class="profile-delete">
+            <form action="{{ url_for('delete_profile') }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar tu perfil?');">
+                <button type="submit" class="btn btn-delete">Eliminar Perfil</button>
+            </form>
+        </div>
     </div>
+
+<script>
+    document.getElementById('updateProfileForm').addEventListener('submit', function(event) {
+    let profilePhoto = document.getElementById('profile_photo').value;
+    if (!profilePhoto) {
+        alert("Profile photo is empty. Keeping the current profile picture.");
+        // Proceed with form submission
+    }
+});
+
+</script>
 </body>
 </html>

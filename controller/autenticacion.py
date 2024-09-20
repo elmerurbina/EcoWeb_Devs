@@ -43,8 +43,8 @@ def login():
         user_data = check_login(correo, contrasenia)  # Ensure this returns necessary data
 
         if user_data:
-            # Create User instance with id, nombre, and correo
-            user = User(user_data[0], user_data[1], user_data[2])  # user_data[0] is id, [1] is nombre, [2] is correo
+            # Create User instance with id, nombre, correo, contrasenia, and profile_photo
+            user = User(user_data[0], user_data[1], user_data[2], user_data[3], user_data[4])  # user_data[0] is id, [1] is nombre, [2] is correo, [3] is contrasenia, [4] is profile_photo
 
             # Log in the user
             login_user(user)
