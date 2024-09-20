@@ -3,11 +3,11 @@
 # Importacion de librerias y modulos
 from flask import Flask, render_template
 from  flask_login import LoginManager
-from controller.autenticacion import register, login, nuevasCredenciales, recuperarCuenta
-from controller.publicaciones import publicaciones
-from controller.campanias import campanias, new_campaign, add_comment
-from controller.denuncia import denuncia, denunciaForm, submit_denuncia
-from controller.foro import (
+from controllers.autenticacion import register, login, nuevasCredenciales, recuperarCuenta
+from controllers.publicaciones import publicaciones
+from controllers.campanias import campanias, new_campaign, add_comment
+from controllers.denuncia import denuncia, denunciaForm, submit_denuncia
+from controllers.foro import (
     foro, new_debate, edit_debate, edit_question,
     delete_debate_route, new_question,
     delete_question_route, new_thread, respuestas,
@@ -16,11 +16,11 @@ from controller.foro import (
 from models.foroModel import get_all_debates, get_all_questions, get_all_threads, get_question_by_id, get_debate_by_id, get_thread_by_id
 
 from settings import Config
-from controller.submit_publication import submit_publication, dislike_publication, like_publication
-from controller.ia import recognize
-from controller.PatrocinarPublicacion import pp
+from controllers.submit_publication import submit_publication, dislike_publication, like_publication
+from controllers.ia import recognize
+from controllers.PatrocinarPublicacion import pp
 from models.autenticacionModel import User
-from controller.profileController import profile, edit_profile, delete_profile, logout
+from controllers.profileController import profile, edit_profile, delete_profile, logout, unauthorized
 
 
 # Inicializacion de la aplicacion Flask
@@ -37,6 +37,7 @@ def load_user(user_id):
     return User.get(user_id)
 
 
+
 # Ruta del Index
 @app.route('/verdeNica')
 def verdeNica():
@@ -51,6 +52,11 @@ def ep():
 @app.route('/biodiversidad')
 def biodiversidad():
     return render_template('biodiversidad.html')
+
+@app.errorhandler(401)
+def unauthorized(error):
+    return render_template('unauthorized.html'), 401
+
 
 app.add_url_rule('/profile', 'profile', profile)
 app.add_url_rule('/logout', 'logout', logout)
