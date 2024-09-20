@@ -16,7 +16,7 @@ def load_dataset():
     global species_data
     dataset_path = 'C:/Users/elmer/PycharmProjects/EcoWeb_Devs/dataset.csv'
     with open(dataset_path, newline='', encoding='utf-8') as csvfile:
-        # Your code here
+
 
         reader = csv.DictReader(csvfile)
         for row in reader:

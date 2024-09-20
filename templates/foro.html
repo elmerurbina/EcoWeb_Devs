@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <!-- Menu horizontal -->
@@ -18,7 +18,14 @@
         <a href="#preguntas">Preguntas</a>
         <a href="#conversaciones">Conversaciones</a>
         <a href="#" class="view-rules-link">Reglas comunitarias</a>
-    </div>
+
+       <!-- User Profile Icon -->
+<div class="user-profile">
+    <a href="{{ url_for('login', next='profile') }}">
+        <i class="fas fa-user-circle"></i> Mi Perfil
+    </a>
+</div>
+
 </header>
 
 <div class="forum-container">
@@ -92,84 +99,109 @@
         </section>
     </form>
 
+
     <!-- Mostrar los debates desde la base de datos -->
     <section id="debates" class="debates">
-    <h3>Debates Recientes</h3>
-    <ul>
-        {% for debate in debates %}
-        <li class="debate-container" data-item-id="{{ debate.id }}" data-item-type="debate">
-            <h4>{{ debate.titulo }}</h4>
-            <p>{{ debate.descripcion }}</p>
-            <p><strong>Mi punto de vista:</strong> {{ debate.punto_de_vista }}</p>
-            <p><strong>Otras observaciones:</strong> {{ debate.otras_observaciones }}</p>
-            <!-- Ver las respuestas de los usuarios -->
-            <a href="{{ url_for('respuestas', debate_id=debate.id) }}">Ver Respuestas</a> <br>
-            <!-- Agregar una respuesta -->
-            <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
-            <div class="answer-form" style="display: none;">
-                <textarea placeholder="¿Qué opinas? Escribe tu respuesta aquí..." rows="4"></textarea>
-                <button class="submit-answer-button">Enviar Respuesta</button>
+        <h3>Debates Recientes</h3>
+        <ul>
+            {% for debate in debates %}
+            <li class="debate-container" data-item-id="{{ debate.id }}" data-item-type="debate">
+                <h4>{{ debate.titulo }}</h4>
+                <p>{{ debate.descripcion }}</p>
+                <p><strong>Mi punto de vista:</strong> {{ debate.punto_de_vista }}</p>
+                <p><strong>Otras observaciones:</strong> {{ debate.otras_observaciones }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('respuestas', debate_id=debate.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="¿Qué opinas? Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_debate', debate_id=debate.id) }}'">Editar Debate</button>
+                <button class="delete-button" onclick="confirmDelete('debate', {{ debate.id }})">Eliminar Debate</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 
-            </div>
-            <!--Iconos de like y dislike -->
-            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
-            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
-        </li>
-        {% endfor %}
+    <!-- Sección para mostrar las preguntas -->
+    <section id="preguntas" class="questions">
+        <h3>Preguntas Recientes</h3>
+        <ul>
+            {% for question in questions %}
+            <li class="question-container" data-item-id="{{ question.id }}" data-item-type="question">
+                <h4>{{ question.titulo }}</h4>
+                <p>{{ question.pregunta }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('respuestas', pregunta_id=question.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_question', question_id=question.id) }}'">Editar Pregunta</button>
+                <button class="delete-button" onclick="confirmDelete('question', {{ question.id }})">Eliminar Pregunta</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 
-    </ul>
-
-</section>
-
-    <!-- Seccion para mostrar las preguntas -->
-<section id="preguntas" class="questions">
-    <h3>Preguntas Recientes</h3>
-    <ul>
-        {% for question in questions %}
-        <li class="question-container" data-item-id="{{ question.id }}" data-item-type="question">
-            <h4>{{ question.titulo }}</h4>
-            <p>{{ question.pregunta }}</p>
-            <!-- Ver las respuestas de los usuarios -->
-            <a href="{{ url_for('respuestas', pregunta_id=question.id) }}">Ver Respuestas</a> <br>
-            <!-- Agregar una respuesta -->
-            <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
-            <div class="answer-form" style="display: none;">
-                <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
-                <button class="submit-answer-button">Enviar Respuesta</button>
-            </div>
-             <!--Iconos de like y dislike -->
-            <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
-            <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
-        </li>
-        {% endfor %}
-    </ul>
-</section>
-
-    <!-- Seccion para mostrar las conversaciones -->
-<section id="conversaciones" class="threads">
-    <h3>Hilos de Conversación Recientes</h3>
-    <ul>
-        {% for thread in threads %}
-        <li class="thread-container" data-item-id="{{ thread.id }}" data-item-type="thread">
-            <h4>{{ thread.titulo }}</h4>
-            <p>{{ thread.tema }}</p>
-            <!-- Ver las respuestas de los usuarios -->
-            <a href="{{ url_for('respuestas', hilo_id=thread.id) }}">Ver Respuestas</a> <br>
-            <!-- Agregar una respuesta -->
-            <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
-            <div class="answer-form" style="display: none;">
-                <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
-                <button class="submit-answer-button">Enviar Respuesta</button>
-            </div>
-             <!--Iconos de like y dislike -->
-            <i class="fas fa-thumbs-up like-icon"></i> <span>Like</span>
-            <i class="fas fa-thumbs-down dislike-icon"></i> <span>Dislike</span> <br>
-        </li>
-        {% endfor %}
-    </ul>
-</section>
-
+    <!-- Sección para mostrar las conversaciones -->
+    <section id="conversaciones" class="threads">
+        <h3>Hilos de Conversación Recientes</h3>
+        <ul>
+            {% for thread in threads %}
+            <li class="thread-container" data-item-id="{{ thread.id }}" data-item-type="thread">
+                <h4>{{ thread.titulo }}</h4>
+                <p>{{ thread.tema }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('respuestas', hilo_id=thread.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_thread', thread_id=thread.id) }}'">Editar Conversación</button>
+                <button class="delete-button" onclick="confirmDelete('thread', {{ thread.id }})">Eliminar Conversación</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
+
+<!-- Javascript para manejar la lógica de eliminar -->
+<script>
+    function toggleAnswerForm(button) {
+        const form = button.nextElementSibling;
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+
+    function confirmDelete(itemType, itemId) {
+        const confirmation = confirm(`¿Estás seguro de que quieres eliminar este ${itemType}?`);
+        if (confirmation) {
+            window.location.href = `/delete_${itemType}/${itemId}`;
+        }
+    }
+</script>
 
 <!-- JavaScript -->
 <script>
@@ -186,7 +218,7 @@
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     }
 </script>
-// JavaScript para manejar los likes y dislikes
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // Función para inicializar los iconos en una sección
