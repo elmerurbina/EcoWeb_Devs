@@ -2,18 +2,55 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+
+}
+
+#et-top-navigation {
+    position: relative;
+    background-color: #FFFFFF; /* Adjust based on your design */
+    padding: 10px;
+}
+
+.hamburger {
+    cursor: pointer;
+    font-size: 24px;
+    color: #007bff;
+}
+
+#menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50px; /* Adjust based on your layout */
+    left: 0;
+    background-color: #FFFFFF; /* Same as header background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#menu-items li {
+    padding: 10px 15px;
+}
+
+#menu-items li a {
+    text-decoration: none;
+    color: #000000; /* Link color */
+}
+
+.hidden {
+    display: none;
 }
 
 /* Profile Container */
 .profile-container {
     background-color: #fff;
+    margin-top: 100px;
     width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -22,7 +59,7 @@ body {
 
 /* Profile Header */
 .profile-header h1 {
-    margin: 0;
+
     font-size: 24px;
     color: #333;
 }

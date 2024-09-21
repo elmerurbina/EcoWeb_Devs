@@ -12,17 +12,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Publicaciones</h1>
-        <nav>
-            <!-- Menu horizontal -->
-            <ul>
-                <li><a href="{{ url_for('pp') }}">Patrocinar Publicación</a></li> <!-- Esta plantilla falta desarrollarla -->
-                <li><a href="{{ url_for('submit_publication') }}">Enviar Publicación</a></li>  <!-- Plantilla para crear nueva publicación -->
-                <li><a href="#subscription">Noticias</a></li>  <!-- Lleva a la suscripción del correo -->
-            </ul>
-        </nav>
-    </header>
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('submit_publication')}}">Crear Nueva Publicacion</a></li>
+            <li><a href="{{url_for('pp')}}">Patrocinar una Publicacion</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
 
     <main>
         <section id="docs">
@@ -144,5 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
     </script>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>

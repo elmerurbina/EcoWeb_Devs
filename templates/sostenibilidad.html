@@ -12,11 +12,27 @@
 </head>
 <body>
 
-<div class="sostenibilidad-container">
-    <header>
-        <h1>¿Qué es Sostenibilidad?</h1>
-    </header>
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
 
+        </ul>
+    </nav>
+</header>
+
+<div class="sostenibilidad-container">
     <section id="definicion">
         <h2>Definición de Sostenibilidad</h2>
         <p>La sostenibilidad se refiere a la capacidad de satisfacer las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades (Brundtland, 1987).</p>
@@ -69,5 +85,6 @@
     </footer>
 </div>
 
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>

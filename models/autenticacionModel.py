@@ -46,15 +46,15 @@ class User(UserMixin):
 
 # Function to register a new user
 def register_user(nombre, correo, contrasenia):
-    """Register a new user in the database."""
+    """registrar un nuevo usuario utilizando un procedure almacenado."""
     connection = create_connection()
     cursor = connection.cursor()
     try:
         # Hash the password
         hashed_password = bcrypt.hashpw(contrasenia.encode(), bcrypt.gensalt())
 
-        query = "INSERT INTO sistemaautenticacion (nombre, correo, contrasenia) VALUES (%s, %s, %s)"
-        cursor.execute(query, (nombre, correo, hashed_password))
+        # Call the stored procedure
+        cursor.callproc('RegisterUser', (nombre, correo, hashed_password.decode()))
         connection.commit()
         print("User registered successfully")
     except Error as e:
@@ -67,23 +67,25 @@ def register_user(nombre, correo, contrasenia):
 
 # Function to validate login credentials
 def check_login(correo, contrasenia):
+    """Validate login credentials using a stored procedure."""
     connection = create_connection()
     cursor = connection.cursor()
     user = None
     try:
-        query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE correo = %s"
-        cursor.execute(query, (correo,))
-        result = cursor.fetchone()
+        # Call the stored procedure
+        cursor.callproc('CheckLogin', (correo,))
 
-        if result:
-            stored_password = result[3]  # Assuming contrasenia is at index 3
-
-            if bcrypt.checkpw(contrasenia.encode(), stored_password.encode()):
-                user = result
+        # Retrieve the result from the stored procedure
+        for result in cursor.stored_results():
+            row = result.fetchone()  # Fetch the first row from the result
+            if row:
+                stored_password = row[3]  # Assuming contrasenia is at index 3
+                if bcrypt.checkpw(contrasenia.encode(), stored_password.encode()):
+                    user = row
+                else:
+                    print("Invalid credentials")
             else:
-                print("Invalid credentials")
-        else:
-            print("User not found")
+                print("User not found")
     except Error as e:
         print(f"The error '{e}' occurred")
     finally:
