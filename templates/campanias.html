@@ -15,20 +15,20 @@
 
 <header id="et-top-navigation" class="et_header_style_left">
     <nav>
-        <!-- Dropdown menu using <select> and <optgroup> -->
-        <select id="menu-select" onchange="location = this.value;">
-             <option value="" disabled selected>Opciones de Menu</option>
-            <optgroup label="Opciones de Menu">
-                <!-- Each option redirects to a specific route -->
-                <option value="{{url_for('ia')}}">Reconocimiento Especies</option>
-                <option value="{{ url_for('ayuda')}}">Ayuda</option>
-                <option value="{{url_for('publicaciones')}}">Publicaciones</option>
-                <option value="{{url_for('verdeNica')}}">Inicio</option>
-                <option value="{{url_for('denuncia')}}">Denuncias</option>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
 
-            </optgroup>
-
-        </select>
+        </ul>
     </nav>
 </header>
 

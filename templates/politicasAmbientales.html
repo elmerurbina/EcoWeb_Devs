@@ -8,9 +8,25 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/accionesMitigacion.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Apoyar políticas y regulaciones ambientales</h1>
-    </header>
+    <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
     
     <main>
         <section id="content">
@@ -22,5 +38,7 @@
             <p>El apoyo a políticas ambientales efectivas requiere la participación activa de legisladores, empresas, organizaciones no gubernamentales y la sociedad civil. Al educar y sensibilizar a la comunidad sobre la importancia de las políticas ambientales y el impacto de nuestras acciones individuales, podemos promover cambios positivos hacia un futuro más sostenible y resiliente.</p>
         </section>
     </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>

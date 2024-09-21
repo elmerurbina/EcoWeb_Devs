@@ -39,81 +39,47 @@ a.header:hover {
 }
 
 
-/* General styles for the header */
 #et-top-navigation {
-    background-color: #007bff;
-    padding: 20px;
-    font-size: 24px;
-    margin-left: -20px;
-    margin-top: -160px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: fixed;
-    width: 100%;
-
-}
-
-/* Dropdown select styles */
-#menu-select {
-    width: 300px;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    -webkit-appearance: none;  /* Safari & Chrome */
-    -moz-appearance: none;     /* Firefox */
-    text-align: center;
-    cursor: pointer;
-}
-
-/* Optgroup label styles */
-#menu-select optgroup {
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #45a049;
-}
-
-/* Option styles */
-#menu-select option {
-    background-color: #007bff;
-    color: #000000;
+    position: relative;
+    background-color: #FFFFFF; /* Adjust based on your design */
     padding: 10px;
 }
 
-/* Hover effects for options */
-#menu-select option:hover {
-    background-color: #27ae60;
-    color: #000000;
+.hamburger {
+    cursor: pointer;
+    font-size: 24px;
+    color: #007bff; /* Change color as needed */
 }
 
-/* Adjusting the select dropdown arrow */
-#menu-select::-ms-expand {
-    display: none;  /* Hides the default dropdown arrow for IE */
+#menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50px; /* Adjust based on your layout */
+    left: 0;
+    background-color: #FFFFFF; /* Same as header background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#menu-select:focus {
-    outline: none;
-    border-color: #45a049;
+#menu-items li {
+    padding: 10px 15px;
 }
 
-/* Ensuring the header and select dropdown are responsive */
-@media (max-width: 768px) {
-    #menu-select {
-        width: 100%;
-        font-size: 14px;
-    }
+#menu-items li a {
+    text-decoration: none;
+    color: #000000; /* Link color */
 }
 
+.hidden {
+    display: none;
+}
 
 /* Estilos del contenedor de la campania */
 .campania-container {
     max-width: 800px;
     margin: 20px auto;
-    margin-top: 150px;
+    margin-top: 50px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

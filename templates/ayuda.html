@@ -13,18 +13,26 @@
 
 </head>
 <body>
-    <header>
-        <h1>Ayuda</h1>
-        <!-- Menu horizontal -->
-        <nav>
-            <ul>
-                <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#subscription">Noticias</a></li>
-                <li><a href="#">Documentación</a></li>
-            </ul>
-        </nav>
-    </header>
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
 
     <main>
 
@@ -140,5 +148,7 @@
 
 <!-- Archivo JavaScript para la suscripcion por correo -->
 <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+
 </body>
 </html>

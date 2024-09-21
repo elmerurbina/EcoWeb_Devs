@@ -11,9 +11,25 @@
      
 </head>
 <body>
-    <header>
-        <h1>El Uso de Combustibles Fósiles y Cambio Climático</h1>
-    </header>
+   <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
     
     <main>
         <section id="introduction">
@@ -52,5 +68,8 @@
             </ul>
         </footer>
     </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+
 </body>
 </html>

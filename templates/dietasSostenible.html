@@ -8,10 +8,25 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/accionesMitigacion.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Adoptar dietas más sostenibles</h1>
-    </header>
-    
+   <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
     <main>
         <section id="content">
             <h2>Dietas Sostenibles</h2>
@@ -22,5 +37,7 @@
             <p>Las políticas y campañas educativas que promuevan dietas más sostenibles pueden incentivar a individuos y comunidades a hacer elecciones alimentarias más conscientes y respetuosas con el medio ambiente. Al trabajar juntos para reducir el consumo de productos de origen animal y aumentar la diversidad de alimentos vegetales en nuestras dietas, podemos contribuir significativamente a la mitigación del cambio climático y la conservación de recursos naturales.</p>
         </section>
     </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>

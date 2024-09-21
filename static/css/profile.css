@@ -2,194 +2,55 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
 
 }
 
-/* Estilos del slogan*/
-a.header:hover {
-    color: #666;
-}
-
-.slogan .header {
-    font-size: 20px;
-    color: #000000;
-    margin-top: -20px;
-}
-
-
-/* General styles for the header */
 #et-top-navigation {
-    background-color: #007bff;
-    padding: 25px;
-    font-size: 24px;
-    margin-left: 0px;
-    margin-top: -520px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: fixed;
-    width: 100%;
-
-}
-
-/* Dropdown select styles */
-#menu-select {
-    width: 300px;
-    padding: 12px;
-    margin-top: -480px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    -webkit-appearance: none;  /* Safari & Chrome */
-    -moz-appearance: none;     /* Firefox */
-    text-align: center;
-    cursor: pointer;
-}
-
-/* Optgroup label styles */
-#menu-select optgroup {
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #45a049;
-}
-
-/* Option styles */
-#menu-select option {
-    background-color: #007bff;
-    color: #000000;
+    position: relative;
+    background-color: #FFFFFF; /* Adjust based on your design */
     padding: 10px;
 }
 
-/* Hover effects for options */
-#menu-select option:hover {
-    background-color: #27ae60;
-    color: #000000;
+.hamburger {
+    cursor: pointer;
+    font-size: 24px;
+    color: #007bff;
 }
 
-/* Adjusting the select dropdown arrow */
-#menu-select::-ms-expand {
-    display: none;  /* Hides the default dropdown arrow for IE */
-}
-
-#menu-select:focus {
-    outline: none;
-    border-color: #45a049;
-}
-
-/* Ensuring the header and select dropdown are responsive */
-@media (max-width: 768px) {
-    #menu-select {
-        width: 100%;
-        font-size: 14px;
-    }
-}
-
-
-
-/* Estilos del menú */
-.menu {
+#menu-items {
     list-style-type: none;
-    padding: 40px 6px;
-    text-align: center;
-    background-color: #007bff;
-    color: #000000;
-    margin-left: -480px;
-    width: 100%;
-    margin-top: -300px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    z-index: 1000;
-}
-
-.menu li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #000000;
-    margin-left: 50px;
-    font-size: 16px;
-}
-
-a.main :hover {
-    text-decoration: #666666;
-    color: #000000;
-}
-
-/* Estilos del hover para el menú */
-.et_header_style_left #et-top-navigation nav > ul > li > a,
-.et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
-    padding-bottom: 15px;
-}
-
-#top-menu li {
-    padding-right: 5px;
-}
-
-#et-top-navigation {
-    padding: 20px 0 !important;
-}
-
-#top-menu li a {
-    background: #000000;
-    padding: 15px 20px;
-    border-radius: 3px;
-}
-
-#top-menu li a:hover,
-#top-menu li li a:hover {
-    color: #000000 !important;
-}
-
-#top-menu li a:hover {
-    background: #007bff !important; /* Cambia el color de fondo al hacer hover */
-}
-
-#top-menu li.current-menu-item > a {
-    background: #45a049; /* Cambia el color de fondo del enlace de la página actual */
-}
-
-#top-menu .menu-item-has-children > a:first-child:after {
-    content: none;
-}
-
-.menu li a:hover {
-    width: 100%;
-}
-
-/* Estilos del slogan */
-.header {
-    position: fixed;          /* Fijo en la parte superior */
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50px; /* Adjust based on your layout */
     left: 0;
-   margin-top: -350px;
-    width: 100%;              /* Ocupa el ancho completo de la pantalla */
-    background-color: #45a049; /* Verde */
-    color: #000000;            /* Texto blanco para mejor contraste */
-    text-align: center;        /* Centrar el texto */
-    padding: 15px 12px;           /* Espaciado arriba y abajo */
-    font-size: 24px;           /* Tamaño de fuente */
-    font-family: 'Arial', sans-serif; /* Tipografía simple */
-    font-weight: bold;         /* Texto en negrita */
-    box-shadow: 0px 4px 2px -2px gray; /* Sombra para darle un poco de relieve */
-    z-index: 1000;
+    background-color: #FFFFFF; /* Same as header background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+#menu-items li {
+    padding: 10px 15px;
+}
+
+#menu-items li a {
+    text-decoration: none;
+    color: #000000; /* Link color */
+}
+
+.hidden {
+    display: none;
+}
 
 /* Profile Container */
 .profile-container {
     background-color: #fff;
     margin-top: 100px;
     width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;

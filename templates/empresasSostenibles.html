@@ -8,22 +8,28 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/empresasSostenibles.css') }}">
     <!--Visualizar el logo en la parte superior izquierda del titulo -->
     <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>Sostenibilidad <span>Empresarial</span></h1>
+   <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
         </div>
-        <!-- Menu horizontal -->
-        <nav>
-            <ul>
-                <li><a href="#training">Entrenamiento</a></li>
-                <li><a href="#guides">Guías</a></li>
-                <li><a href="#instructors">Instructores</a></li>
-                <li><a href="#advisors">Asesores</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('foro')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
     
     <section id="training">
         <h2>Entrenamiento</h2>
@@ -55,5 +61,6 @@
 
     <!-- Archivo JavaScript -->
     <script src="{{ url_for('static', filename='js/empresasSostenibles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>
