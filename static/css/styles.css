@@ -7,7 +7,7 @@ body {
 }
 
 /* Estilos del logo */
-.logo {
+.slogan {
     display: flex;
     align-items: center;
     font-size: 24px;
@@ -25,7 +25,7 @@ body {
 }
 
 
-.logo a {
+.slogan a {
     text-decoration: none;
     color: inherit;
 }
@@ -34,7 +34,7 @@ a.header:hover {
     color: #666;
 }
 
-.logo .header {
+.slogan .header {
     font-size: 0.80em;
     color: #000000;
 }
@@ -134,6 +134,7 @@ a.main :hover {
 .main {
     position: relative;
     width: 100%;
+    margin-top: 30px;
     height: 100vh;
     overflow: hidden;
     background-image: url('/static/imagenes/main.jpg'); /* Imagen de fondo en la seccion main */
@@ -223,6 +224,7 @@ button {
 /* Color de fondo del boton para hacer una denuncia */
 #denuncia {
     background-color: #45a049;
+    margin-bottom: 25px;
 }
 
 /* Sección de cambio climático */

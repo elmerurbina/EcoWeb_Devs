@@ -2,17 +2,124 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; 
-    margin: 20px;
+
+}
+
+
+/* Estilos del slogan*/
+a.header:hover {
+    color: #666;
+}
+
+.slogan .header {
+    font-size: 20px;
+    color: #000000;
+    margin-top: -10px;
+}
+
+
+/* Estilos del menú */
+.menu {
+    list-style-type: none;
+    padding: 40px 6px;
+    text-align: center;
+    background-color: #007bff;
+    color: #000000;
+    margin-left: -10px;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 1000;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #000000;
+    margin-left: 50px;
+    font-size: 16px;
+}
+
+a.main :hover {
+    text-decoration: #666666;
+    color: #000000;
+}
+
+/* Estilos del hover para el menú */
+.et_header_style_left #et-top-navigation nav > ul > li > a,
+.et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
+    padding-bottom: 15px;
+}
+
+#top-menu li {
+    padding-right: 5px;
+}
+
+#et-top-navigation {
+    padding: 20px 0 !important;
+}
+
+#top-menu li a {
+    background: #000000;
+    padding: 15px 20px;
+    border-radius: 3px;
+}
+
+#top-menu li a:hover,
+#top-menu li li a:hover {
+    color: #000000 !important;
+}
+
+#top-menu li a:hover {
+    background: #007bff !important; /* Cambia el color de fondo al hacer hover */
+}
+
+#top-menu li.current-menu-item > a {
+    background: #45a049; /* Cambia el color de fondo del enlace de la página actual */
+}
+
+#top-menu .menu-item-has-children > a:first-child:after {
+    content: none;
+}
+
+.menu li a:hover {
+    width: 100%;
+}
+
+/* Estilos del slogan */
+.header {
+    position: fixed;          /* Fijo en la parte superior */
+    left: 0;
+    width: 100%;              /* Ocupa el ancho completo de la pantalla */
+    background-color: #45a049; /* Verde */
+    color: #000000;            /* Texto blanco para mejor contraste */
+    text-align: center;        /* Centrar el texto */
+    padding: 15px 12px;           /* Espaciado arriba y abajo */
+    font-size: 24px;           /* Tamaño de fuente */
+    font-family: 'Arial', sans-serif; /* Tipografía simple */
+    font-weight: bold;         /* Texto en negrita */
+    box-shadow: 0px 4px 2px -2px gray; /* Sombra para darle un poco de relieve */
+    z-index: 1000;
 }
 
 /* Contenedor que se carga inicialmente y es donde apareceran las denuncias existentes*/
 .denuncias-container {
-    background-color: #fff; 
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+
+    max-width: 100%;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 12px 200px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 1000;
 }
 
 h2 {
@@ -27,8 +134,8 @@ h2 {
 
 /* Boton que cuando se hace click carga el formulario para realizar una denuncia */
 .load-form button {
-    background-color: #f44336; 
-    color: white;
+    background-color: #45a049;
+    color: #000000;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -41,7 +148,7 @@ h2 {
 }
 
 .load-form button:hover {
-    background-color: #d32f2f; /* Darker shade of red on hover */
+    background-color: #27ae60; /* Darker shade of red on hover */
 }
 
 /* Heading style */
@@ -56,6 +163,7 @@ h1 {
     width: 80%;
     margin: 20px auto;
     overflow-x: auto;
+
 }
 
 /* Table style */
@@ -64,6 +172,7 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     background-color: #fff;
+     margin-top: 150px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
