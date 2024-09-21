@@ -1,14 +1,14 @@
 from settings import create_connection
 from mysql.connector import Error
 
-# Funcion para guardar las denuncias en la base dedatos
+# Function to save a "denuncia" using a stored procedure
 def save_denuncia(titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles=None):
     connection = create_connection()
     cursor = connection.cursor()
 
     try:
-        query = "INSERT INTO denuncias (titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles) VALUES (%s, %s, %s, %s, %s, %s)"
-        cursor.execute(query, (titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles))
+        # Call the stored procedure to save a "denuncia"
+        cursor.callproc('SaveDenuncia', (titulo, descripcion, evidencia_filename, ubicacion, denunciados, otros_detalles))
         connection.commit()
         print("Denuncia saved successfully")
     except Error as e:
@@ -26,9 +26,10 @@ def get_all_denuncias():
     cursor = connection.cursor(dictionary=True)
 
     try:
-        # Updated SQL query to order by fecha_creacion in descending order
-        cursor.execute("SELECT * FROM denuncias ORDER BY fecha_creacion DESC")
-        denuncias = cursor.fetchall()
+        # Call the stored procedure to retrieve all "denuncias"
+        cursor.callproc('GetAllDenuncias')
+        for result in cursor.stored_results():
+            denuncias = result.fetchall()
         return denuncias
     except Error as e:
         print(f"The error '{e}' occurred")
