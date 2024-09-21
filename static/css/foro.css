@@ -2,14 +2,116 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; 
-    margin: 20px;
+
 }
+
+/* Estilos del slogan */
+.header {
+    position: fixed;          /* Fijo en la parte superior */
+    left: 0;
+    margin: auto;
+    margin-top: -100px;
+    width: 100%;              /* Ocupa el ancho completo de la pantalla */
+    background-color: #45a049; /* Verde */
+    color: #000000;            /* Texto blanco para mejor contraste */
+    text-align: center;        /* Centrar el texto */
+    padding: 15px 12px;           /* Espaciado arriba y abajo */
+    font-size: 24px;           /* Tamaño de fuente */
+    font-family: 'Arial', sans-serif; /* Tipografía simple */
+    font-weight: bold;         /* Texto en negrita */
+    box-shadow: 0px 4px 2px -2px gray; /* Sombra para darle un poco de relieve */
+    z-index: 1000;
+}
+
+
+/* Estilos del slogan*/
+a.header:hover {
+    color: #666666;
+}
+
+.slogan .header {
+    font-size: 20px;
+    color: #000000;
+    margin-top: -20px;
+}
+
+
+/* General styles for the header */
+#et-top-navigation {
+    background-color: #007bff;
+    padding: 20px;
+    font-size: 24px;
+    margin-left: -20px;
+    margin-top: -100px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+
+}
+
+/* Dropdown select styles */
+#menu-select {
+    width: 300px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;  /* Safari & Chrome */
+    -moz-appearance: none;     /* Firefox */
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Optgroup label styles */
+#menu-select optgroup {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #45a049;
+}
+
+/* Option styles */
+#menu-select option {
+    background-color: #007bff;
+    color: #000000;
+    padding: 10px;
+}
+
+/* Hover effects for options */
+#menu-select option:hover {
+    background-color: #27ae60;
+    color: #000000;
+}
+
+/* Adjusting the select dropdown arrow */
+#menu-select::-ms-expand {
+    display: none;  /* Hides the default dropdown arrow for IE */
+}
+
+#menu-select:focus {
+    outline: none;
+    border-color: #45a049;
+}
+
+/* Ensuring the header and select dropdown are responsive */
+@media (max-width: 768px) {
+    #menu-select {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
 
 /* Contenedor de las listas de conversaciones y debates */
 .forum-container {
     background-color: #fff; 
     max-width: 800px;
     margin: auto;
+    margin-top: 100px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -326,30 +428,6 @@ a:hover {
     border-color: #f5c6cb;
 }
 
-.fixed-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #45A049;
-    color: #fff;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    margin-bottom: 25px;
-    z-index: 1000;
-}
-
-.fixed-menu a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-}
-
-.fixed-menu a:hover {
-    background-color: #575757;
-}
-
 section {
     margin-bottom: 20px;
 }
@@ -524,6 +602,8 @@ header {
     margin-right: 8px;
     transition: color 0.3s ease;
 }
+
+
 
 /* Style for active like and dislike icons */
 .like-icon.active {

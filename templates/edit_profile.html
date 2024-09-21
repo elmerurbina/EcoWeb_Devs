@@ -7,6 +7,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/edit-profile.css') }}">
 </head>
 <body>
+
+
+<div class="slogan">
+
+    <!-- Slogan -->
+      <p class="header">VerdeNica: un Entorno Digital al Servicio de los Nicaragüenses</p>
+
+        </div>
+
+
+<header id="et-top-navigation" class="et_header_style_left">
+        <nav>
+        <!-- Menu horizontal -->
+            <ul id="top-menu" class="menu">
+                <!-- Cada opcion redirige a una plantilla determinada -->
+                <li class="current-menu-item"><a href="{{url_for('ia')}}">Reconocimiento Especies</a></li>
+                <li class="current-menu-item"><a href="{{ url_for('campanias')}}">Campañas</a></li>
+                <li class="current-menu-item"><a href="{{ url_for('foro')}}">Foro</a></li>
+                <li class="current-menu-item"><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+                <li class="current-menu-item"><a href="{{url_for('verdeNica')}}">Inicio</a></li>
+                <li class="current-menu-item"><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
     <div class="container">
         <h1>Editar Perfil</h1>
 
