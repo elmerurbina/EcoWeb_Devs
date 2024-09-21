@@ -15,7 +15,8 @@ body {
     cursor: pointer;
     padding: 5px;
     background-color: #007bff;
-    color: #ffffff;
+    color: #000000;
+
 }
 
 /* Estilo para la imagen del logo */
@@ -35,7 +36,7 @@ a.header:hover {
 
 .logo .header {
     font-size: 0.80em;
-    color: white;
+    color: #000000;
 }
 
 
@@ -44,12 +45,15 @@ a.header:hover {
     list-style-type: none;
     padding: 30px 0;
     text-align: center;
-    background-color: skyblue;
+    background-color: #007bff;
+    color: #000000;
     position: relative;
     width: 100%;
-    top: 20px;
+    top: 40px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 0;
+    position: fixed;
+    z-index: 1000;
 }
 
 .menu li {
@@ -59,9 +63,14 @@ a.header:hover {
 
 .menu li a {
     text-decoration: none;
-    color: rgb(8, 8, 212);
+    color: #000000;
     margin-left: 50px;
     font-size: 16px;
+}
+
+a.main :hover {
+    text-decoration: #666666;
+    color: #000000;
 }
 
 /* Estilos del hover para el menú */
@@ -79,22 +88,22 @@ a.header:hover {
 }
 
 #top-menu li a {
-    background: #C1B2AB;
+    background: #000000;
     padding: 15px 20px;
     border-radius: 3px;
 }
 
 #top-menu li a:hover,
 #top-menu li li a:hover {
-    color: #fff !important;
+    color: #000000 !important;
 }
 
 #top-menu li a:hover {
-    background: #559CAD !important; /* Cambia el color de fondo al hacer hover */
+    background: #007bff !important; /* Cambia el color de fondo al hacer hover */
 }
 
 #top-menu li.current-menu-item > a {
-    background: #edc77b; /* Cambia el color de fondo del enlace de la página actual */
+    background: #45a049; /* Cambia el color de fondo del enlace de la página actual */
 }
 
 #top-menu .menu-item-has-children > a:first-child:after {
@@ -107,18 +116,19 @@ a.header:hover {
 
 /* Estilos del slogan */
 .header {
-    position: absolute;          /* Fijo en la parte superior */
+    position: fixed;          /* Fijo en la parte superior */
     margin-top: 60px;                   /* Ubicado en la parte superior de la página */
     left: 0;
     width: 100%;              /* Ocupa el ancho completo de la pantalla */
-    background-color: #2E8B57; /* Verde */
-    color: #FFFFFF;            /* Texto blanco para mejor contraste */
+    background-color: #45a049; /* Verde */
+    color: #000000;            /* Texto blanco para mejor contraste */
     text-align: center;        /* Centrar el texto */
     padding: 15px 8px;           /* Espaciado arriba y abajo */
     font-size: 24px;           /* Tamaño de fuente */
     font-family: 'Arial', sans-serif; /* Tipografía simple */
     font-weight: bold;         /* Texto en negrita */
     box-shadow: 0px 4px 2px -2px gray; /* Sombra para darle un poco de relieve */
+    z-index: 1000;
 }
 /* Estilos de la sección principal */
 .main {
@@ -134,13 +144,13 @@ a.header:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #000000;
 }
 
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: #da9816;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -148,8 +158,8 @@ h1 {
     font-size: 0.8rem;
     margin-bottom: 20px;
     text-align: center;
-    color: black;
-    background-color: white;
+    color: #000000;
+    background-color: #666666;
     border-radius: 10px;
 }
 
@@ -165,22 +175,22 @@ p {
 
 /* Estilo del texto sobre el acuerdo de Paris */
 .paris {
-    background-color: #ff6f60;
-    color: #fff;
+    background-color: #666666;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Estilo del texto sobre el compendio de leyes de Nicaragua  */
 .compendio {
-    background-color: #379c9c;
-    color: #fff;
+    background-color: #666666;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Estilos del texto que esta encima de el boton para las denuncias */
 .proteccion {
-    background-color: #6eff91;
-    color: #000;
+    background-color: #666666;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -202,32 +212,32 @@ button {
 
 /* Color de fondo del boton del acuerdo de Paris */
 #paris {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
 
 /* Color de fondo del boton del compendio de leyes de Nicaragua */
 #compendio {
-    background-color: #218838;
+    background-color: #45a049;
 }
 
 /* Color de fondo del boton para hacer una denuncia */
 #denuncia {
-    background-color: #ffc107;
+    background-color: #45a049;
 }
 
 /* Sección de cambio climático */
 .climate-change {
-    background-color: #f2f2f2; /* Color de fondo de la sección */
+    background-color: #FFFFFF; /* Color de fondo de la sección */
     padding: 20px; /* Espaciado alrededor del contenido de la sección */
     border-radius: 10px; /* Esquinas redondeadas para la sección */
 }
 
 .climate-change h2 {
-    color: #333; /* Color del título de la sección */
+    color: #000000; /* Color del título de la sección */
 }
 
 .climate-change p {
-    color: #666; /* Color del párrafo de la sección */
+    color: #000000; /* Color del párrafo de la sección */
 
 }
 
@@ -240,18 +250,18 @@ button {
 }
 
 .btn.conocer-mas {
-    background-color: #3498db; /* Color azul para el botón "Conocer más" */
-    color: #fff; /* Color del texto del botón "Conocer más" */
+    background-color: #45a049; /* Color azul para el botón "Conocer más" */
+    color: #000000; /* Color del texto del botón "Conocer más" */
 }
 
 .btn.acceder-cursos {
-    background-color: #2ecc71; /* Color verde para el botón "Acceder a cursos gratuitos" */
-    color: #fff; /* Color del texto del botón "Acceder a cursos gratuitos" */
+    background-color: #45a049; /* Color verde para el botón "Acceder a cursos gratuitos" */
+    color: #000000; /* Color del texto del botón "Acceder a cursos gratuitos" */
 }
 
 /* Sección de causas y consecuencias */
 .causes-consequences {
-    background-color: #f9f9f9;
+    background-color: #FFFFFF;
     padding: 20px;
     border-radius: 10px;
     display: flex; /* Usar diseño Flexbox */
@@ -260,7 +270,7 @@ button {
 }
 
 .causes-consequences h2 {
-    color: #333;
+    color: #FFFFFF;
     margin-bottom: 20px;
 }
 
@@ -278,13 +288,13 @@ button {
 }
 
 .btn.cause-summary {
-    background-color: #e74c3c; /* Color rojo para el botón de resumen de "Causas" */
-    color: #fff;
+    background-color: #007bff; /* Color rojo para el botón de resumen de "Causas" */
+    color: #000000;
 }
 
 .btn.consequence-summary {
-    background-color: #3498db; /* Color azul para el botón de resumen de "Consecuencias" */
-    color: #fff;
+    background-color: #007bff; /* Color azul para el botón de resumen de "Consecuencias" */
+    color: #000000;
 }
 
 .content {
@@ -304,17 +314,17 @@ button {
 
 /* Sección de adaptación y mitigación */
 .mitigation-adaptation {
-    background-color: #ecf0f1; /* Color de fondo gris claro */
+    background-color: #FFFFFF; /* Color de fondo gris claro */
     padding: 20px;
     border-radius: 10px;
 }
 
 .mitigation-adaptation h2 {
-    color: #2c3e50; /* Color de texto azul oscuro */
+    color: #000000; /* Color de texto azul oscuro */
 }
 
 .mitigation-adaptation h3 {
-    color: #555;
+    color: #000000;
 }
 
 .summary {
@@ -330,13 +340,13 @@ button {
 }
 
 .btn.mitigation-summary {
-    background-color: #27ae60; /* Color verde para el botón de resumen de "Mitigación" */
-    color: #fff; /* Color de texto blanco */
+    background-color: #007bff; /* Color verde para el botón de resumen de "Mitigación" */
+    color: #000000; /* Color de texto blanco */
 }
 
 .btn.adaptation-summary {
-    background-color: #9b59b6; /* Color púrpura para el botón de resumen de "Adaptación" */
-    color: #fff; /* Color de texto blanco */
+    background-color: #007bff; /* Color púrpura para el botón de resumen de "Adaptación" */
+    color: #000000; /* Color de texto blanco */
 }
 
 .content {
@@ -396,12 +406,12 @@ button {
 }
 
 .sustainability h2 {
-    color: #333; /* Color del título de la sección */
+    color: #000000; /* Color del título de la sección */
     text-align: center; /* Centrar el título */
 }
 
 .sustainability p {
-    color: #666; /* Color del párrafo de la sección */
+    color: #000000; /* Color del párrafo de la sección */
     text-align: justify; /* Justificar el texto del párrafo */
     margin-bottom: 20px; /* Espaciado inferior del párrafo */
 }
@@ -411,21 +421,17 @@ button {
     color: #45a049;
  }
 
- a.sostenibilidad:hover {
-    color: #45a049;
- }
-
 /* Formulario de suscripción */
 .subscription-form {
     padding: 20px;
-    background-color: #fff;
+    background-color: #FFFFFF;
     margin: 20px 0;
     text-align: center;
 }
 
 .subscription-form h2 {
     font-size: 1.5em;
-    color: #27ae60;
+    color: #45a049;
 }
 
 .subscription-form form {
@@ -441,9 +447,9 @@ button {
 }
 
 .subscription-form button[type="submit"] {
-    background-color: #2ecc71;
+    background-color: #45a049;
     border: none;
-    color: #fff;
+    color: #000000;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1em;
@@ -465,8 +471,8 @@ button {
     justify-content: space-between; /* Espacio equitativo entre las columnas */
     padding: 20px;
     font-size: 0.8em;
-    background-color: #2E8B57;  /* Fondo verde */
-    color: white;               /* Texto blanco */
+    background-color: #666666;  /* Fondo verde */
+    color: #000000;               /* Texto blanco */
 }
 
 .column {
@@ -492,9 +498,9 @@ ul {
 
 footer {
     width: 100%;
-    background-color: #2E8B57;   /* Fondo verde */
+    background-color: #666666;   /* Fondo verde */
     padding: 20px 0;             /* Espaciado superior e inferior */
-    color: white;
+    color: #000000;
 }
 
 

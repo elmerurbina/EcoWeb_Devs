@@ -46,13 +46,13 @@
     <p class="resumen"> El cambio climático, resultado de la actividad humana, provoca alteraciones climáticas extremas como sequías e inundaciones. <br>Estos eventos son cada vez más frecuentes y severos, amenazando la seguridad alimentaria, el suministro de agua y la infraestructura. <br> Abordar el cambio climático es crucial para proteger nuestro planeta y nuestras comunidades.</p>
     <p class="paris">Sabías que Nicaragua es parte del acuerdo de París?</p>
     <!-- Link para leer el Acuerdo de paris o descargar en PDF-->
-    <a href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
+    <a class="main" href="https://unfccc.int/files/essential_background/convention/application/pdf/spanish_paris_agreement.pdf"> <button id="paris">Conocer Acuerdo de Paris</button> </a>
     <p class="compendio">¿Conoces el compendio de leyes de Nicaragua para la protección y conservación del medio ambiente?</p>
     <!-- Link para leer o descargar en PDF el compendio de leyes del medio ambiente de Nicaragua-->
-    <a href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
+    <a class="main" href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> <button id="compendio">Ver compendio de leyes</button> </a>
     <p class="proteccion">La protección y conservación del medio ambiente responsabilidad de todos y todas.</p>
     <!-- Boton para las denuncias -->
-    <a href="{{url_for('denuncia')}}"> <button id="denuncia">Denuncias</button> </a>
+    <a class="main" href="{{url_for('denuncia')}}"> <button id="denuncia">Denuncias</button> </a>
 </section>
 
 
@@ -62,7 +62,7 @@
     <section class="climate-change">
         <h2>¿Qué es el cambio climático?</h2>
         <p>El cambio climático es un fenómeno global que se refiere al aumento de la temperatura promedio en la superficie de la Tierra. Este cambio es causado principalmente por la liberación de gases de efecto invernadero en la atmósfera debido a actividades humanas, como la quema de combustibles fósiles y la deforestación. El cambio climático tiene impactos significativos en el medio ambiente, incluyendo el derretimiento de los casquetes polares, el aumento del nivel del mar, cambios en los patrones de precipitación y la pérdida de biodiversidad. Es importante tomar medidas para mitigar el cambio climático y adaptarse a sus efectos para proteger nuestro planeta y las generaciones futuras.</p>
-        <a href="{{url_for('submit_publication')}}"> <button class="btn conocer-mas">Nueva Publicación</button> </a>
+
         <a href="{{url_for('biodiversidad')}}"> <button class="btn acceder-cursos">Biodiversidad en Nicaragua</button></a>
          <a href="{{url_for('ia')}}"> <button class="btn acceder-cursos">Reconocimiento de Especies con IA</button></a>
     </section>
