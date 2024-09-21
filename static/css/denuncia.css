@@ -47,9 +47,9 @@ body {
 .denuncias-container {
 
     max-width: 100%;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-bottom: 200px;
-    margin-left: 20%;
+    margin-left: 30%;
     margin-right: 20%;
     padding: 12px 200px;
     border-radius: 8px;
@@ -60,6 +60,7 @@ body {
 
 h2 {
     text-align: center;
+    margin-top: 100px;
 }
 
 /* Forma que contiene al formulario */
