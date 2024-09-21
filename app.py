@@ -44,9 +44,9 @@ def verdeNica():
     return render_template('index.html')
 
 # Ruta de la interfaz de empresas sostenibles
-@app.route('/ep')
-def ep():
-    return render_template('empresasSostenibles.html')
+@app.route('/ps')
+def ps():
+    return render_template('productosSostenibles.html')
 
 # Ruta de la interfaz de Biodiversidad en Nicaragua
 @app.route('/biodiversidad')
