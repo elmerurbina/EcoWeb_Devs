@@ -138,8 +138,8 @@ a.main :hover {
     margin-top: 30px;
     height: 100vh;
     overflow: hidden;
-    background-image: url('/static/imagenes/main.jpg'); /* Imagen de fondo en la seccion main */
-    background-size: cover;
+    background-image: url('/static/imagenes/main.png');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -165,10 +165,10 @@ h1 {
     border-radius: 10px;
 }
 
-/* Parrafo del fondo blanco que esta en la seccion main */
+
 p {
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
     padding: 5px 10px;
     border-radius: 5px;
@@ -179,6 +179,7 @@ p {
 .paris {
     background-color: #666666;
     color: #000000;
+    margin-bottom: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -205,12 +206,34 @@ p {
 button {
     font-size: 1.5rem;
     padding: 15px 30px;
-    margin-top: 20px;
+    margin-top: 1px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
 }
+.main-button {
+    margin-top: 40px;
+    background-color: #45a049; /* Initial background color */
+    color: #000000; /* Text color */
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Makes the link behave like a button */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 16px;
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Hover effect */
+.main-button:hover {
+    background-color: #27ae60; /* Change background color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    color: #000000; /* Maintain text color */
+}
+
+
 
 /* Color de fondo del boton del acuerdo de Paris */
 #paris {
