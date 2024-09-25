@@ -156,42 +156,7 @@
         </form>
     </div>
 
- <footer>
-    <div class="footer-content">
-        <div class="column">
-            <h3>Misión</h3>
-            <p>La misión de VerdeNica es ofrecer una plataforma integral que eduque, empodere y
-            movilice a los nicaragüenses en la lucha contra el cambio climático. Nos comprometemos a
-            proporcionar información verificada y accesible, fomentar la participación ciudadana y
-            promover prácticas sostenibles. Al combinar tecnología avanzada con un enfoque
-            comunitario, buscamos transformar la manera en que enfrentamos los desafíos
-            ambientales, creando un espacio donde la ciencia, la acción y la conciencia se unen para
-            construir un futuro más verde y resiliente.</p>
-        </div>
-
-        <div class="column">
-            <h3>Visión</h3>
-            <p>VerdeNica aspira a ser la plataforma líder en Nicaragua para la educación y acción contra
-            el cambio climático, creando un país donde cada ciudadano esté informado, empoderado y
-            motivado para tomar decisiones que protejan el planeta. Visualizamos una Nicaragua en la
-            que la participación ciudadana, la colaboración entre organizaciones y la integración de
-            tecnología avanzada se unan para enfrentar los desafíos ambientales y promover un
-            desarrollo sostenible.</p>
-        </div>
-
-        <div class="column">
-            <h3>Valores</h3>
-            <ul>
-                <li>Sostenibilidad</li>
-                <li>Responsabilidad con el Entorno Social</li>
-                <li>Innovación</li>
-                <li>Transparencia</li>
-                <li>Compromiso con el Medio Ambiente</li>
-            </ul>
-        </div>
-    </div>
-</footer>
-
+  {% include 'footer.html' %}
     <!-- Archivo JavaScript para las suscripciones por correo -->
     <script src="{{ url_for('static', filename='js/suscripcionEmail.js') }}"></script>
 

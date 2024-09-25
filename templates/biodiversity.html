@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biodiversidad en Nicaragua</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/biodiversidad.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/biodiversity.css')}}">
     <link rel="icon" href="/images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -142,6 +142,8 @@
             </ul>
         </section>
     </main>
+
+ {% include 'footer.html' %}
 
     <!-- Conexion con archivo JavaScript -->
     <script src="{{url_for('static', filename='js/biodiversidad.js')}}"></script>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campania - Campania Comunitaria</title>
     <!-- Archivo CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campanias.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campaigns.css') }}">
     <!-- Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
@@ -130,6 +130,8 @@
     </ul>
 </section>
 
+
+
 <!-- JavaScript para manejar el tipo de forma y mostrar el formulario de comentar -->
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -160,9 +162,12 @@
 </script>
 
 <!-- Archivos JavaScript externos -->
-<script src="{{ url_for('static', filename='js/campaniasForm.js') }}"></script>
-<script src="{{url_for('static', filename='js/comentarios.js')}}"></script>
+<script src="{{ url_for('static', filename='js/campaigns-form.js') }}"></script>
+<script src="{{url_for('static', filename='js/comments.js')}}"></script>
 <script src="{{url_for('static', filename='js/id.js')}}"></script>
+<script src="{{url_for ('static', filename='js/menu.js')}}"
+
+
 
 </body>
 </html>

@@ -9,10 +9,10 @@ from controllers.campaigns_controller import campanias, new_campaign, add_commen
 from controllers.denounce_controller import denuncia, denunciaForm, submit_denuncia
 from controllers.forum_controller import ForumController
 from settings import Config
-from controllers.submit_publicationController import (
+from controllers.submit_publication_controller import (
     submit_publication, dislike_publication, like_publication)
-from controllers.ai_controller import recognize
-from controllers.sponsor_publicationController import pp
+from controllers.ai_controller import  recognize
+from controllers.sponsor_publication_controller import pp
 from controllers.profile_controller import (
     profile, edit_profile, delete_profile, logout)
 from models.forum_model import (
@@ -35,6 +35,10 @@ auth_controller = AuthenticationController(app)
 # Users will be remembered for 30 days
 app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
 
+app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
+@app.route('/ia', methods=['GET'])
+def ia():
+    return render_template('ai.html')
 
 # Function to load the user id
 @login_manager.user_loader
@@ -55,7 +59,7 @@ def verde_nica():
 
 
 # Routes to manage the user's profile
-#app.add_url_rule('/profile', 'profile', profile)
+app.add_url_rule('/profile', 'profile', profile)
 app.add_url_rule('/logout', 'logout', logout)
 app.add_url_rule('/edit_profile', 'edit_profile',
                  edit_profile, methods=['GET', 'POST'])
@@ -133,7 +137,7 @@ app.add_url_rule('/delete_thread/<int:thread_id>',
                  'delete_thread', login_required(forum_controller.delete_thread), methods=['POST'])
 
 # Profile route
-app.add_url_rule('/profile', 'profile', login_required(forum_controller.profile))
+#app.add_url_rule('/profile', 'profile', login_required(forum_controller.profile))
 
 
 '''
@@ -164,13 +168,6 @@ pp stands for 'producto sostenible'
 '''
 app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
-
-# This function is for the Artificial intelligence model
-@app.route('/ia', methods=['GET'])
-def ia():
-    return render_template('ia.html')
-# Function to recognize a specie based on an image uploaded
-app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
 
 
 # Ruta de la interfaz de empresas sostenibles
@@ -241,7 +238,7 @@ def rs():
 
 @app.route('/energiasRenovable')
 def energiasRenovables():
-    return render_template('energiaRenovable.html')
+    return render_template('renewable_energy.html')
 
 @app.route('/eficienciaEnergetica')
 def eficienciaEnergetica():

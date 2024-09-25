@@ -86,11 +86,11 @@ class AuthenticationController:
 
     def recover_account(self):
         """Renders the account recovery interface."""
-        return render_template('recuperar_cuenta.html')
+        return render_template('recover_account.html')
 
     def new_credentials(self):
         """Renders the new credentials interface."""
-        return render_template('nuevas_credenciales.html')
+        return render_template('new_credentials.html')
 
 
 if __name__ == '__main__':
