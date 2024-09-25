@@ -9,7 +9,7 @@
     <!-- Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!--Visualizar el logo en la parte superior izquierda del titulo -->
-    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="icon" href="../static/images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0/css/all.css">
     
 
@@ -31,11 +31,11 @@
         <!-- Menu horizontal -->
             <ul id="top-menu" class="menu">
                 <!-- Cada opcion redirige a una plantilla determinada -->
-                <li class="current-menu-item"><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
-                <li class="current-menu-item"><a href="{{ url_for('campanias')}}">Campañas</a></li>
+                <li class="current-menu-item"><a href="{{url_for('sustainable_products')}}">Productos Sostenibles</a></li>
+                <li class="current-menu-item"><a href="{{ url_for('campaigns')}}">Campañas</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('forum')}}">Foro</a></li>
-                <li class="current-menu-item"><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
-                <li class="current-menu-item"><a href="{{url_for('ayuda')}}">Ayuda</a></li>
+                <li class="current-menu-item"><a href="{{url_for('publications')}}">Publicaciones</a></li>
+                <li class="current-menu-item"><a href="{{url_for('help')}}">Ayuda</a></li>
             </ul>
         </nav>
     </header>
@@ -52,7 +52,7 @@
     <a class="main-button" href="https://www.mem.gob.ni/wp-content/uploads/2017/05/Compendio-Juridico-de-Medio-Ambiente-y-Recursos-Naturales-de-Nicaragua.pdf"> Ver Compendio de Leyes de Nicaragua Para la Proteccion y Preservacion del Medio Ambiente</a>
 
     <!-- Boton para las denuncias -->
-    <a class="main-button" href="{{url_for('denuncia')}}"> Denunciar Violaciones Medio Ambientales</a>
+    <a class="main-button" href="{{url_for('denounce')}}"> Denunciar Violaciones Medio Ambientales</a>
 </section>
 
 
@@ -63,7 +63,7 @@
         <h2>¿Qué es el cambio climático?</h2>
         <p>El cambio climático es un fenómeno global que se refiere al aumento de la temperatura promedio en la superficie de la Tierra. Este cambio es causado principalmente por la liberación de gases de efecto invernadero en la atmósfera debido a actividades humanas, como la quema de combustibles fósiles y la deforestación. El cambio climático tiene impactos significativos en el medio ambiente, incluyendo el derretimiento de los casquetes polares, el aumento del nivel del mar, cambios en los patrones de precipitación y la pérdida de biodiversidad. Es importante tomar medidas para mitigar el cambio climático y adaptarse a sus efectos para proteger nuestro planeta y las generaciones futuras.</p>
 
-        <a href="{{url_for('biodiversidad')}}"> <button class="btn acceder-cursos">Biodiversidad en Nicaragua</button></a>
+        <a href="{{url_for('biodiversity')}}"> <button class="btn acceder-cursos">Biodiversidad en Nicaragua</button></a>
          <a href="{{url_for('ia')}}"> <button class="btn acceder-cursos">Reconocimiento de Especies con IA</button></a>
     </section>
     
@@ -74,7 +74,7 @@
             <ul>
                 <!-- Lista de causas-->
                 <a href="{{url_for('gei')}}"> <li><i class="fas fa-industry"></i> Emisiones de gases de efecto invernadero</li> </a>
-                <a href="{{url_for('deforestacion')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
+                <a href="{{url_for('deforestation')}}"><li><i class="fas fa-tree"></i> Deforestación</li></a>
                 <a href="{{url_for('cf')}}"> <li><i class="fas fa-gas-pump"></i> Uso de combustibles fósiles</li></a>
                
             </ul>
@@ -86,8 +86,8 @@
                 <a href="{{url_for('dcp')}}"><li><i class="fas fa-ice-cream"></i> Derretimiento de los casquetes polares</li></a>
                 <a href="{{url_for('anm')}}"><li><i class="fas fa-water"></i> Aumento del nivel del mar</li></a>
                 <a href="{{url_for('alpp')}}"><li><i class="fas fa-cloud-rain"></i> Alteración de los patrones de precipitación</li> </a>
-               <a href="{{url_for('sequias')}}"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
-               <a href="{{url_for('inundaciones')}}">  <i class="fa-solid fa-house-flood-water"></i> Inundaciones</li> </a>
+               <a href="{{url_for('droughts')}}"> <li><i class="fas fa-sun"></i> Sequías</li> </a>
+               <a href="{{url_for('inundations')}}">  <i class="fa-solid fa-house-flood-water"></i> Inundaciones</li> </a>
             </ul>
         </div>
     </section>
@@ -115,8 +115,8 @@
 
     <!-- Seccion de la sostenibilidad -->
     <section class="sustainability">
-        <h2>¿Qué es la <a href="{{url_for('sostenibilidad')}}"> sostenibilidad </a>?</h2>
-        <p>La <a class="sostenibilidad" href="{{url_for('sostenibilidad')}}"> sostenibilidad </a> se refiere a la capacidad de satisfacer las necesidades del presente sin 
+        <h2>¿Qué es la <a href="{{url_for('sustainability')}}"> sostenibilidad </a>?</h2>
+        <p>La <a class="sostenibilidad" href="{{url_for('sustainability')}}"> sostenibilidad </a> se refiere a la capacidad de satisfacer las necesidades del presente sin
             comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades. 
             En términos ambientales, la sostenibilidad implica la conservación de los recursos naturales y
              la protección de los ecosistemas para mantener el equilibrio ecológico. Esto incluye prácticas como
@@ -131,17 +131,17 @@
       
           <h4>Acciones de Mitigación</h4> 
             <div class="mitigation-list">
-               <a href="{{url_for('energiasRenovables')}}"> <p><i class="fas fa-sun"></i> Fomentar el uso de energías renovables, como la solar y la eólica.</p> </a>
-               <a href="{{url_for('eficienciaEnergetica')}}"> <p><i class="fas fa-lightbulb"></i> Reducir el consumo de energía en el hogar mediante la eficiencia energética y el uso de electrodomésticos de bajo consumo.</p> </a>
-               <a href="{{url_for('transporteSostenible')}}"><p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p> </a> 
-               <a href="{{url_for('agriculturaSostenible')}}"> <p><i class="fas fa-leaf"></i> Implementar prácticas agrícolas sostenibles, como la rotación de cultivos y la agricultura regenerativa.</p>  </a>
-               <a href="{{url_for('ecosistemas')}}"> <p><i class="fas fa-tree"></i> Conservar y restaurar los ecosistemas naturales, como los bosques y humedales, que actúan como sumideros de carbono.</p> </a>
-               <a href="{{url_for('dietasSostenibles')}}"> <p><i class="fas fa-carrot"></i> Adoptar dietas más sostenibles, reduciendo el consumo de carne y productos lácteos.</p> </a>
-               <a href="{{url_for('reciclaje')}}"><p><i class="fas fa-recycle"></i> Fomentar la reutilización, el reciclaje y la reducción de residuos.</p> </a >
-               <a href="{{url_for('politicasAmbientales')}}"><p><i class="fas fa-globe"></i> Apoyar políticas y regulaciones que limiten las emisiones de gases de efecto invernadero en industrias y sectores clave.</p> </a>
-               <a href="{{url_for('concienciaPublica')}}"><p><i class="fas fa-graduation-cap"></i> Promover la educación y la conciencia pública sobre el cambio climático y la importancia de la acción individual y colectiva.</p> </a> 
-               <a href="{{url_for('tecnologias')}}"> <p><i class="fas fa-cloud-upload-alt"></i> Invertir en tecnologías de captura y almacenamiento de carbono para reducir las emisiones de CO2.</p> </a>
-                <a href="{{url_for('rs')}}"> <p><i class="fa-solid fa-earth-americas"></i> Uso efeciente de los recursos naturales.</p> </a>
+               <a href="{{url_for('renewable_energy')}}"> <p><i class="fas fa-sun"></i> Fomentar el uso de energías renovables, como la solar y la eólica.</p> </a>
+               <a href="{{url_for('energy_efficiency')}}"> <p><i class="fas fa-lightbulb"></i> Reducir el consumo de energía en el hogar mediante la eficiencia energética y el uso de electrodomésticos de bajo consumo.</p> </a>
+               <a href="{{url_for('sustainable_transport')}}"><p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p> </a>
+               <a href="{{url_for('sustainable_agriculture')}}"> <p><i class="fas fa-leaf"></i> Implementar prácticas agrícolas sostenibles, como la rotación de cultivos y la agricultura regenerativa.</p>  </a>
+               <a href="{{url_for('ecosystem')}}"> <p><i class="fas fa-tree"></i> Conservar y restaurar los ecosistemas naturales, como los bosques y humedales, que actúan como sumideros de carbono.</p> </a>
+               <a href="{{url_for('sustainable_diet')}}"> <p><i class="fas fa-carrot"></i> Adoptar dietas más sostenibles, reduciendo el consumo de carne y productos lácteos.</p> </a>
+               <a href="{{url_for('recycle')}}"><p><i class="fas fa-recycle"></i> Fomentar la reutilización, el reciclaje y la reducción de residuos.</p> </a >
+               <a href="{{url_for('environmental_policies')}}"><p><i class="fas fa-globe"></i> Apoyar políticas y regulaciones que limiten las emisiones de gases de efecto invernadero en industrias y sectores clave.</p> </a>
+               <a href="{{url_for('public_awareness')}}"><p><i class="fas fa-graduation-cap"></i> Promover la educación y la conciencia pública sobre el cambio climático y la importancia de la acción individual y colectiva.</p> </a>
+               <a href="{{url_for('technology')}}"> <p><i class="fas fa-cloud-upload-alt"></i> Invertir en tecnologías de captura y almacenamiento de carbono para reducir las emisiones de CO2.</p> </a>
+                <a href="{{url_for('natural_resources')}}"> <p><i class="fa-solid fa-earth-americas"></i> Uso efeciente de los recursos naturales.</p> </a>
             </div>
      
     </section>

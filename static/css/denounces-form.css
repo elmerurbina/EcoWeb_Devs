@@ -6,15 +6,17 @@ body {
 }
 
 #et-top-navigation {
-    position: relative;
-    background-color: #FFFFFF; /* Adjust based on your design */
+    position: fixed;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin-top: -95px;
     padding: 10px;
 }
 
 .hamburger {
     cursor: pointer;
     font-size: 24px;
-    color: #007bff; /* Change color as needed */
+    color: #007bff;
 }
 
 #menu-items {
@@ -22,7 +24,7 @@ body {
     padding: 0;
     margin: 0;
     position: absolute;
-    top: 50px; /* Adjust based on your layout */
+    top: 50px;
     left: 0;
     background-color: #FFFFFF; /* Same as header background */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -35,6 +37,12 @@ body {
 #menu-items li a {
     text-decoration: none;
     color: #000000; /* Link color */
+}
+
+
+#menu-items li a:hover {
+    color: #27ae60;
+
 }
 
 .hidden {

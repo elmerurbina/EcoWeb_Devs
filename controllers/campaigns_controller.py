@@ -8,12 +8,12 @@ from settings import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Definicion de la ruta ruta principal
-@app.route('/campanias')
-def campanias():
+# Main route
+@app.route('/campaigns')
+def campaigns():
     form_type = request.args.get('form_type', '')
 
-# Obtener todas las campanias disponibles en la base de datos
+# Gett all the campaigns from the database
     campaigns = get_all_campaigns()
     return render_template('campaigns.html', form_type=form_type, campaigns=campaigns)
 
@@ -25,11 +25,11 @@ def new_campaign():
     fecha_inicio = request.form['fecha_inicio']
     fecha_fin = request.form['fecha_fin']
 
-    # Presupuesto es opcional, aqui se comprueba si ese campo esta vacio o no
+    # This is an optional field
     presupuesto = request.form.get('presupuesto', None)
 
     try:
-        # Guardar la informacion en la base de datos
+        # Save the information on the database using stored procedures
         save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto)
         flash('Campaña creada exitosamente', 'success') #  Mostrar mensaje de validacion
     except Exception as e:

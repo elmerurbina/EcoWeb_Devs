@@ -7,6 +7,7 @@
     <!-- Archivo CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/forum.css') }}">
     <!-- Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="../static/images/logo.png" type="image/png">
     <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -19,13 +20,13 @@
         </div>
         <ul id="menu-items" class="hidden">
             <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
-             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+             <li><a href="{{url_for('sustainable_products')}}">Productos Sostenibles</a></li>
             <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
-             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
-            <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
-            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
-            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
-            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+             <li><a href="{{url_for('biodiversity')}}">Biodiversidad en Nicaragua</a></li>
+            <li><a href="{{ url_for('campaigns')}}">Campañas</a></li>
+            <li><a href="{{url_for('publications')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denounce')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('help')}}">Ayuda</a></li>
             <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
 
         </ul>
@@ -34,7 +35,7 @@
 
 <div class="forum-container">
     <section id="docs">
-                  <p>Para obtener más información o guías de navegación para el sistema, ver la <a href="{{url_for ('documentacion')}}">Documentación</a></p>
+                  <p>Para obtener más información o guías de navegación para el sistema, ver la <a href="{{url_for ('documentation')}}">Documentación</a></p>
     </section>
 
     <h2>Foro Comunitario</h2>

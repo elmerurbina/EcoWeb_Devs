@@ -5,7 +5,9 @@ body {
 }
 
 #et-top-navigation {
-    position: relative;
+    position: fixed;
+    margin-top: -60px;
+    width: 100%;
     background-color: #FFFFFF; /* Adjust based on your design */
     padding: 10px;
 }
@@ -36,12 +38,20 @@ body {
     color: #000000; /* Link color */
 }
 
+
+#menu-items li a:hover {
+    color: #27ae60;
+
+}
+
+
 .hidden {
     display: none;
 }
 
 main {
     padding: 1rem;
+    margin-top: 50px;
 }
 
 form {

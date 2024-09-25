@@ -1,3 +1,4 @@
+# Business logic for the authentication system
 from settings import create_connection
 from mysql.connector import Error
 import bcrypt
@@ -17,12 +18,14 @@ class User(UserMixin):
         connection = create_connection()
         cursor = connection.cursor()
         try:
-            query = "SELECT id, nombre, correo, contrasenia, profile_photo FROM sistemaautenticacion WHERE id = %s"
+            query = ("SELECT id, nombre, correo, contrasenia, "
+                     "profile_photo FROM sistemaautenticacion WHERE id = %s")
             cursor.execute(query, (user_id,))
             result = cursor.fetchone()
 
             if result:
-                return User(result[0], result[1], result[2], result[3], result[4])  # Return a User instance
+                # Return a User instance
+                return User(result[0], result[1], result[2], result[3], result[4])
             return None
         except Error as e:
             print(f"The error '{e}' occurred")
@@ -50,10 +53,10 @@ def register_user(nombre, correo, contrasenia):
     connection = create_connection()
     cursor = connection.cursor()
     try:
-        # Hash the password
+        # Hash the password to protect the user's data
         hashed_password = bcrypt.hashpw(contrasenia.encode(), bcrypt.gensalt())
 
-        # Call the stored procedure
+        # Call the stored procedure to register the user
         cursor.callproc('RegisterUser', (nombre, correo, hashed_password.decode()))
         connection.commit()
         print("User registered successfully")
@@ -72,14 +75,14 @@ def check_login(correo, contrasenia):
     cursor = connection.cursor()
     user = None
     try:
-        # Call the stored procedure
+        # Call the stored procedure to check the credentials
         cursor.callproc('CheckLogin', (correo,))
 
         # Retrieve the result from the stored procedure
         for result in cursor.stored_results():
             row = result.fetchone()  # Fetch the first row from the result
             if row:
-                stored_password = row[3]  # Assuming contrasenia is at index 3
+                stored_password = row[3]  # Password is at 3 index on the db
                 if bcrypt.checkpw(contrasenia.encode(), stored_password.encode()):
                     user = row
                 else:

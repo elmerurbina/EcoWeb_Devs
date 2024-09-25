@@ -22,15 +22,15 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 # Ruta para la interfaz principal de las denuncias
-@app.route('/denuncia')
-def denuncia():
+@app.route('/denounce')
+def denounce():
     # Obtener todas las denuncias desde la base de datos
     denuncias = get_all_denuncias()
     return render_template('denounces.html', denuncias=denuncias)
 
 # Ruta para la interfaz del formulario de las denuncias
-@app.route('/denunciaForm')
-def denunciaForm():
+@app.route('/denounce_form')
+def denounce_form():
     return render_template('denounces_form.html')
 
 # Comprobar que el archivo está dentro de las extensiones permitidas

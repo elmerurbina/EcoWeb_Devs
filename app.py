@@ -4,9 +4,9 @@ from flask import Flask, render_template
 from flask_login import LoginManager, login_required
 from datetime import timedelta
 from controllers.authentication_controller import AuthenticationController
-from controllers.publications_controller import publicaciones
-from controllers.campaigns_controller import campanias, new_campaign, add_comment
-from controllers.denounce_controller import denuncia, denunciaForm, submit_denuncia
+from controllers.publications_controller import publications
+from controllers.campaigns_controller import campaigns, new_campaign, add_comment
+from controllers.denounce_controller import denounce, denounce_form, submit_denuncia
 from controllers.forum_controller import ForumController
 from settings import Config
 from controllers.submit_publication_controller import (
@@ -35,7 +35,9 @@ auth_controller = AuthenticationController(app)
 # Users will be remembered for 30 days
 app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
 
+# AI Model recognition routes
 app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
+# Load the main template for the ai model
 @app.route('/ia', methods=['GET'])
 def ia():
     return render_template('ai.html')
@@ -46,7 +48,7 @@ def load_user(user_id):
     return User.get(user_id)
 
 
-# Show a personalized page when sesion has expired
+# Show a personalized page when session has expired
 @app.errorhandler(401)
 def unauthorized(error):
     return render_template('unauthorized.html'), 401
@@ -75,7 +77,7 @@ app.add_url_rule('/new_credentials', 'new_credentials', auth_controller.new_cred
 
 
 # Routes for Campaigns management
-app.add_url_rule('/campanias', 'campanias', campanias)
+app.add_url_rule('/campaigns', 'campaigns', campaigns)
 app.add_url_rule('/new_campaign', 'new_campaign',
                  new_campaign, methods=['POST'])
 app.add_url_rule('/add_comment', 'add_comment',
@@ -84,7 +86,7 @@ app.add_url_rule('/add_comment', 'add_comment',
 # Routes to manage the publications
 app.add_url_rule('/submit_publication', 'submit_publication',
                  submit_publication, methods=['GET', 'POST'])
-app.add_url_rule('/publicaciones', 'publicaciones', publicaciones)
+app.add_url_rule('/publications', 'publications', publications)
 # Get the user id when someone like or dislike a publication
 app.add_url_rule('/like/<int:publication_id>',
                  'like_publication', like_publication, methods=['POST'])
@@ -94,8 +96,8 @@ app.add_url_rule('/dislike/<int:publication_id>',
 
 
 # Routes to manage the denounces interfaces
-app.add_url_rule('/denuncia', 'denuncia', denuncia)
-app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
+app.add_url_rule('/denounce', 'denounce', denounce)
+app.add_url_rule('/denounce_form', 'denounce_form', denounce_form)
 app.add_url_rule('/submit_denuncia', 'submit_denuncia',
                  submit_denuncia, methods=['POST'])
 
@@ -136,9 +138,6 @@ app.add_url_rule('/edit_thread/<int:thread_id>',
 app.add_url_rule('/delete_thread/<int:thread_id>',
                  'delete_thread', login_required(forum_controller.delete_thread), methods=['POST'])
 
-# Profile route
-#app.add_url_rule('/profile', 'profile', login_required(forum_controller.profile))
-
 
 '''
     The next three routes are to get all the debates, questions,
@@ -163,36 +162,33 @@ app.add_url_rule('/get_thread_by_id/<int:thread_id>',
                  'get_thread_by_id', get_thread_by_id)
 
 '''
-This route is the template to loading the sustainable products.
-pp stands for 'producto sostenible'
+This route is the template to loading the sponsor publication.
+pp stands for 'patrocinar publicacion'
 '''
 app.add_url_rule('/pp','pp', pp, methods=['GET', 'POST'])
 
+'''
+    Independents routes for static pages.
+    Those pages bellow are for provide information and not have dynamic.
+'''
 
 
-# Ruta de la interfaz de empresas sostenibles
-@app.route('/ps')
-def ps():
+# Sustainable (productos sostenibles) routes
+@app.route('/sustainable_products')
+def sustainable_products():
     return render_template('sustainable_products.html')
 
-
-@app.route('/documentacion')
-def documentacion():
+@app.route('/documentation')
+def documentation():
     return render_template('05Manual_de_uso.html')
 
-
 # Ruta de la interfaz de Biodiversidad en Nicaragua
-@app.route('/biodiversidad')
-def biodiversidad():
+@app.route('/biodiversity')
+def biodiversity():
     return render_template('biodiversity.html')
 
-
-
-
-             # RUTAS INDEPENDIENTES PARA LAS PAGINAS DE PUBLICACIONES SEPARADAS
-
-@app.route('/deforestacion')
-def deforestacion():
+@app.route('/deforestation')
+def deforestation():
     return render_template('deforestation.html')
 
 @app.route('/gei')
@@ -205,7 +201,7 @@ def cf():
 
 @app.route('/dcp')
 def dcp():
-    return render_template('DCP.html')
+    return render_template('dcp.html')
 
 @app.route('/anm')
 def anm():
@@ -216,64 +212,64 @@ def anm():
 def alpp():
     return render_template('alpp.html')
 
-@app.route('/sequias')
-def sequias():
+@app.route('/droughts')
+def droughts():
     return render_template('droughts.html')
 
-@app.route('/inundaciones')
-def inundaciones():
+@app.route('/inundations')
+def inundations():
     return render_template('inundations.html')
 
-@app.route('/ayuda')
-def ayuda():
+@app.route('/help')
+def help():
     return render_template('help.html')
 
-@app.route('/sostenibilidad')
-def sostenibilidad():
+@app.route('/sustainability')
+def sustainability():
     return render_template('sustainability.html')
 
-@app.route('/rs')
-def rs():
+@app.route('/natural_resources')
+def natural_resources():
     return render_template('natural_resources.html')
 
-@app.route('/energiasRenovable')
-def energiasRenovables():
+@app.route('/renewable_energy')
+def renewable_energy():
     return render_template('renewable_energy.html')
 
-@app.route('/eficienciaEnergetica')
-def eficienciaEnergetica():
+@app.route('/energy_efficiency')
+def energy_efficiency():
     return render_template('energy_efficiency.html')
 
-@app.route('/transporteSostenible')
-def transporteSostenible():
+@app.route('/sustainable_transport')
+def sustainable_transport():
     return render_template('sustainable_transport.html')
 
-@app.route('/agriculturaSostenible')
-def agriculturaSostenible():
+@app.route('/sustainable_agriculture')
+def sustainable_agriculture():
     return render_template('agriculture.html')
 
-@app.route('/ecosistemas')
-def ecosistemas():
+@app.route('/ecosystem')
+def ecosystem():
     return render_template('ecosystems.html')
 
-@app.route('/dietasSostenibles')
-def dietasSostenibles():
+@app.route('/sustainable_diet')
+def sustainable_diet():
     return render_template('sustainable_diet.html')
 
-@app.route('/reciclaje')
-def reciclaje():
+@app.route('/recycle')
+def recycle():
     return render_template('recycle.html')
 
-@app.route('/politicasAmbientales')
-def politicasAmbientales():
+@app.route('/environmental_policies')
+def environmental_policies():
     return render_template('environment_policies.html')
 
-@app.route('/tecnologias')
-def tecnologias():
+@app.route('/technology')
+def technology():
     return render_template('technology.html')
 
-@app.route('/concienciaPublica')
-def concienciaPublica():
+@app.route('/public_awareness')
+def public_awareness():
     return render_template('public_awareness.html')
 
 if __name__ == '__main__':

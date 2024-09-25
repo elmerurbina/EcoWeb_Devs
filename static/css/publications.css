@@ -9,7 +9,9 @@ body {
 
 
 #et-top-navigation {
-    position: relative;
+    position: fixed;
+    margin-top: -70px;
+    width: 100%;
     background-color: #FFFFFF; /* Adjust based on your design */
     padding: 10px;
 }
@@ -42,6 +44,12 @@ body {
 
 .hidden {
     display: none;
+}
+
+
+#menu-items li a:hover {
+    color: #27ae60;
+
 }
 
 /* Seccion principal */
