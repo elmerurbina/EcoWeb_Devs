@@ -12,7 +12,7 @@ from datetime import datetime
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Directorio para guardar las imagenes
+# Directorio para guardar las images
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -72,7 +72,7 @@ def publicaciones():
         cursor.close()
         conn.close()
 
-    return render_template('publicaciones.html', publications=publications)
+    return render_template('publications.html', publications=publications)
 
 if __name__ == '__main__':
     app.run(debug=True)

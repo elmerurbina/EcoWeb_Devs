@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Denuncia</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/denunciaForm.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+    <!-- Formulario para hacer una nueva denuncia -->
+<div class="form-container">
+    <h2>Formulario de Denuncia</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+   <form action="{{url_for('submit_denuncia')}}" method="POST" enctype="multipart/form-data" novalidate>
+        <div class="form-group">
+            <label for="titulo" class="required">Título de la denuncia:</label>
+            <input type="text" id="titulo" name="titulo" required>
+            <div class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="descripcion" class="required">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+            <div class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="evidencia" class="required">Evidencia:</label>
+            <!--el accept no se esta mostrando por alguna razon que desconozco -->
+            <input type="file" id="evidencia" name="evidencia" accept=".jpg, .png, .pdf, .docx, .mp4, .mp3" >
+            <div class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="ubicacion" class="required">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion" required>
+            <div class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="denunciados" class="">Nombre del o los denunciados:</label>
+            <input type="text" id="denunciados" name="denunciados" >
+        </div>
+        <div class="form-group">
+            <label for="otros_detalles">Otros detalles:</label>
+            <textarea id="otros_detalles" name="otros_detalles" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Denuncia</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/denuncia.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

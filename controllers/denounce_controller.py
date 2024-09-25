@@ -26,12 +26,12 @@ if not os.path.exists(UPLOAD_FOLDER):
 def denuncia():
     # Obtener todas las denuncias desde la base de datos
     denuncias = get_all_denuncias()
-    return render_template('denuncia.html', denuncias=denuncias)
+    return render_template('denounces.html', denuncias=denuncias)
 
 # Ruta para la interfaz del formulario de las denuncias
 @app.route('/denunciaForm')
 def denunciaForm():
-    return render_template('denunciaForm.html')
+    return render_template('denounces_form.html')
 
 # Comprobar que el archivo está dentro de las extensiones permitidas
 def allowed_file(filename):

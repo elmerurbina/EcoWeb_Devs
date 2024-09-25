@@ -95,3 +95,4 @@ CREATE TABLE ia (
     species_description TEXT,
     upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+

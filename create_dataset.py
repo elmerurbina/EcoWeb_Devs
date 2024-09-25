@@ -17,11 +17,11 @@ for root, dirs, files in os.walk(dataset_path):
         if file.endswith(('png', 'jpg', 'jpeg')):
             file_path = os.path.join(root, file)
 
-            # Cargar las imagenes
+            # Cargar las images
             try:
                 img = Image.open(file_path)
 
-                img_resized = img.resize((64, 64))  # Recortar todas las imagenes a 64x64 pixeles
+                img_resized = img.resize((64, 64))  # Recortar todas las images a 64x64 pixeles
 
 
                 img_data = list(img_resized.getdata())

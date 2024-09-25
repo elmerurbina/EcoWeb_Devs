@@ -72,7 +72,7 @@ def pp():
             flash('Tipo de archivo no permitido. Por favor sube un archivo PDF o DOCX.')
             return redirect(request.url)
 
-    return render_template('patrocinarPublicacion.html')
+    return render_template('sponsor_publication.html')
 
 # Solo permiten archivos con extension pdf y docx
 def allowed_file(filename):

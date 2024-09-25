@@ -9,7 +9,7 @@
     <!-- Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!--Visualizar el logo en la parte superior izquierda del titulo -->
-    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0/css/all.css">
     
 
@@ -19,7 +19,7 @@
     <div class="slogan">
         <!--Imagen del logo-->
         <a href="#subscription">
-       <!--<img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo" width="70" height="70">  --> 
+       <!--<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="70" height="70">  -->
     </a>
     <!-- Slogan -->
       <p class="header">VerdeNica: un Entorno Digital al Servicio de los Nicaragüenses</p>
@@ -33,7 +33,7 @@
                 <!-- Cada opcion redirige a una plantilla determinada -->
                 <li class="current-menu-item"><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
                 <li class="current-menu-item"><a href="{{ url_for('campanias')}}">Campañas</a></li>
-                <li class="current-menu-item"><a href="{{ url_for('foro')}}">Foro</a></li>
+                <li class="current-menu-item"><a href="{{ url_for('forum')}}">Foro</a></li>
                 <li class="current-menu-item"><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
                 <li class="current-menu-item"><a href="{{url_for('ayuda')}}">Ayuda</a></li>
             </ul>

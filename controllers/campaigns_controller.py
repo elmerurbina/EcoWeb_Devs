@@ -15,7 +15,7 @@ def campanias():
 
 # Obtener todas las campanias disponibles en la base de datos
     campaigns = get_all_campaigns()
-    return render_template('campanias.html', form_type=form_type, campaigns=campaigns)
+    return render_template('campaigns.html', form_type=form_type, campaigns=campaigns)
 
 # Ruta para crear una nueva campania
 @app.route('/new_campaign', methods=['POST'])

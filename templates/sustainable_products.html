@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Sostenibles - VerdeNica</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/productosSostenibles.css') }}">
+     <link rel="icon" href="/images/logo.png" type="image/png">
+</head>
+<body>
+
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+
+    <!-- Main Section -->
+    <main>
+        <section id="intro">
+            <h2>Bienvenidos a VerdeNica</h2>
+            <p>Descubre nuestros productos sostenibles, fabricados con responsabilidad y respeto por el medio ambiente.</p>
+            <a href="#productos" class="main-button">Ver Productos</a>
+        </section>
+
+        <section id="productos">
+            <h2>Productos Destacados</h2>
+            <div class="product-grid">
+                <!-- Each product can have an image, title, description, and buy button -->
+                <div class="product">
+                    <img src="../static/images/product1.png" alt="Producto 1">
+                    <h3>Bolso Ecológico</h3>
+                    <p>Hecho de materiales reciclados.</p>
+                     <p>NIO 1499.99</p>
+                    <a href="#" class="buy-button">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="../static/images/product2.png" alt="Producto 2">
+                    <h3>Botella Reutilizable</h3>
+                    <p>Reduce el uso de plásticos de un solo uso.</p>
+                    <p>NIO 150.00</p>
+                    <a href="#" class="buy-button">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="../static/images/product3.png" alt="Producto 3">
+                    <h3>Kit de Jardinería</h3>
+                    <p>Perfecto para tu huerto en casa.</p>
+                    <p>NIO 999.99</p>
+                    <a href="#" class="buy-button">Comprar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="categorias">
+            <h2>Categorías de Productos</h2>
+            <ul class="category-list">
+                <li><a href="#">Moda Sostenible</a></li>
+                <li><a href="#">Cuidado Personal</a></li>
+                <li><a href="#">Hogar Ecológico</a></li>
+                <li><a href="#">Energía Renovable</a></li>
+                <li><a href="#">Material Didactico</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 VerdeNica - Todos los derechos reservados</p>
+        <a href="mailto:info@verdenica.com">Contacto: info@verdenica.com</a>
+    </footer>
+
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

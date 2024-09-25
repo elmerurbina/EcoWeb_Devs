@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Comunitario</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foro.css') }}">
+    <!-- Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+            <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<div class="forum-container">
+    <section id="docs">
+                  <p>Para obtener más información o guías de navegación para el sistema, ver la <a href="{{url_for ('documentacion')}}">Documentación</a></p>
+    </section>
+
+    <h2>Foro Comunitario</h2>
+
+    <!-- Autenticar al usuario antes de permitirle el acceso al formulario -->
+    <div class="prompt-login">
+        <button id="btnPregunta" onclick="location.href='{{ url_for('login', next='preguntaForm') }}'">Hacer una Pregunta</button>
+        <button id="btnDebate" onclick="location.href='{{ url_for('login', next='debateForm') }}'">Abrir un Nuevo Debate</button>
+        <button id="btnHilo" onclick="location.href='{{ url_for('login', next='hiloForm') }}'">Nuevo Hilo de Conversación</button>
+    </div>
+
+    <!-- Mensajes informativos -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- Formularios para agregar un nuevo debate -->
+    <form id="debateForm" action="{{ url_for('new_debate') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Abrir un Nuevo Debate</h3>
+        <section class="new-debate">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+            <label for="punto-de-vista">Mi punto de vista</label>
+            <textarea id="punto-de-vista" name="punto-de-vista" rows="4" required></textarea>
+
+            <label for="otras-observaciones">Otras observaciones</label>
+            <textarea id="otras-observaciones" name="otras-observaciones" rows="4"></textarea>
+
+            <button type="submit">Publicar Debate</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+    </form>
+
+    <!-- Formulario para agregar una nueva pregunta -->
+    <form id="preguntaForm" action="{{ url_for('new_question') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Hacer una Pregunta</h3>
+        <section class="ask-question">
+            <label for="titulo">Título de la Pregunta</label>
+            <input type="text" id="titulo" name="titulo" required>
+            <textarea id="question-input" name="question-input" placeholder="¿Qué estás pensando?" rows="4"></textarea>
+            <button type="submit">Publicar</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+    </form>
+
+    <!-- Formulario para nuevo hilo de conversacion -->
+    <form id="hiloForm" action="{{ url_for('new_thread') }}" method="POST" class="forum-form" style="display: none;">
+        <h3>Nuevo Hilo de Conversación</h3>
+        <section class="new-conversation">
+            <label for="conversation-title">Título</label>
+            <input type="text" id="conversation-title" name="conversation-title" required>
+            <label for="conversation-topic">¿De qué quieres hablar?</label>
+            <textarea id="conversation-topic" name="conversation-topic" placeholder="Escribe sobre lo que te interesa..." rows="4" required></textarea>
+            <button type="submit">Publicar tema de conversación</button>
+            <a href="#" class="view-rules-link">Ver reglas comunitarias</a>
+        </section>
+    </form>
+
+
+    <!-- Mostrar los debates desde la base de datos -->
+    <section id="debates" class="debates">
+        <h3>Debates Recientes</h3>
+        <ul>
+            {% for debate in debates %}
+            <li class="debate-container" data-item-id="{{ debate.id }}" data-item-type="debate">
+                <h4>{{ debate.titulo }}</h4>
+                <p>{{ debate.descripcion }}</p>
+                <p><strong>Mi punto de vista:</strong> {{ debate.punto_de_vista }}</p>
+                <p><strong>Otras observaciones:</strong> {{ debate.otras_observaciones }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('responses', debate_id=debate.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="¿Qué opinas? Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_debate', debate_id=debate.id) }}'">Editar Debate</button>
+                <button class="delete-button" onclick="confirmDelete('debate', {{ debate.id }})">Eliminar Debate</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Sección para mostrar las preguntas -->
+    <section id="preguntas" class="questions">
+        <h3>Preguntas Recientes</h3>
+        <ul>
+            {% for question in questions %}
+            <li class="question-container" data-item-id="{{ question.id }}" data-item-type="question">
+                <h4>{{ question.titulo }}</h4>
+                <p>{{ question.pregunta }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('responses', pregunta_id=question.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_question', question_id=question.id) }}'">Editar Pregunta</button>
+                <button class="delete-button" onclick="confirmDelete('question', {{ question.id }})">Eliminar Pregunta</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Sección para mostrar las conversaciones -->
+    <section id="conversaciones" class="threads">
+        <h3>Hilos de Conversación Recientes</h3>
+        <ul>
+            {% for thread in threads %}
+            <li class="thread-container" data-item-id="{{ thread.id }}" data-item-type="thread">
+                <h4>{{ thread.titulo }}</h4>
+                <p>{{ thread.tema }}</p>
+                <!-- Ver las respuestas de los usuarios -->
+                <a href="{{ url_for('responses', hilo_id=thread.id) }}">Ver Respuestas</a> <br>
+                <!-- Agregar una respuesta -->
+                <button class="responder-button" onclick="toggleAnswerForm(this)">Responder</button>
+                <div class="answer-form" style="display: none;">
+                    <textarea placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
+                    <button class="submit-answer-button">Enviar Respuesta</button>
+                </div>
+                <!-- Iconos de like y dislike -->
+                <i class="fas fa-thumbs-up like-icon"></i>Like <span></span>
+                <i class="fas fa-thumbs-down dislike-icon"></i>Dislike <span></span> <br>
+                <!-- Botón de editar y eliminar -->
+                <button class="edit-button" onclick="location.href='{{ url_for('edit_thread', thread_id=thread.id) }}'">Editar Conversación</button>
+                <button class="delete-button" onclick="confirmDelete('thread', {{ thread.id }})">Eliminar Conversación</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+<!-- Javascript para manejar la lógica de eliminar -->
+<script>
+    function toggleAnswerForm(button) {
+        const form = button.nextElementSibling;
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+
+    function confirmDelete(itemType, itemId) {
+        const confirmation = confirm(`¿Estás seguro de que quieres eliminar este ${itemType}?`);
+        if (confirmation) {
+            window.location.href = `/delete_${itemType}/${itemId}`;
+        }
+    }
+</script>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const formType = "{{ form_type }}";
+        if (formType) {
+            document.getElementById(formType).style.display = 'block';
+        }
+    });
+
+    // Manejo del boton responder
+    function toggleAnswerForm(button) {
+        const form = button.nextElementSibling;
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Función para inicializar los iconos en una sección
+    function initializeIcons(section) {
+        const sectionId = section.getAttribute('id');
+        const likeIcons = section.querySelectorAll('.like-icon');
+        const dislikeIcons = section.querySelectorAll('.dislike-icon');
+
+        // Llamar la función para cargar el estado de los botones desde el almacenamiento local
+        loadIconState();
+
+        likeIcons.forEach(likeIcon => {
+            likeIcon.addEventListener('click', function() {
+                // Toggle la clase activa del botón like
+                this.classList.toggle('active');
+
+                // Asegurarse de que si el botón de like está activo, el de dislike no lo esté
+                if (this.classList.contains('active')) {
+                    // Asegurarse de que solo el botón correspondiente esté activo
+                    const correspondingDislikeIcon = section.querySelector('.dislike-icon');
+                    if (correspondingDislikeIcon) {
+                        correspondingDislikeIcon.classList.remove('active');
+                    }
+                    saveIconState('like');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        dislikeIcons.forEach(dislikeIcon => {
+            dislikeIcon.addEventListener('click', function() {
+                this.classList.toggle('active');
+
+                if (this.classList.contains('active')) {
+                    const correspondingLikeIcon = section.querySelector('.like-icon');
+                    if (correspondingLikeIcon) {
+                        correspondingLikeIcon.classList.remove('active');
+                    }
+                    saveIconState('dislike');
+                } else {
+                    saveIconState('none');
+                }
+            });
+        });
+
+        function saveIconState(state) {
+            console.log('Saving state:', state); // Debug log
+            localStorage.setItem(`iconState-${sectionId}`, state);
+        }
+
+        function loadIconState() {
+            const state = localStorage.getItem(`iconState-${sectionId}`);
+            console.log('Loaded state:', state); // Esta línea es de depuración
+
+            if (state === 'like') {
+                likeIcons.forEach(icon => icon.classList.add('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            } else if (state === 'dislike') {
+                dislikeIcons.forEach(icon => icon.classList.add('active'));
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+            } else {
+                likeIcons.forEach(icon => icon.classList.remove('active'));
+                dislikeIcons.forEach(icon => icon.classList.remove('active'));
+            }
+        }
+    }
+
+    // Inicializar los iconos para cada sección
+    const sections = document.querySelectorAll('#debates, #preguntas, #conversaciones');
+    sections.forEach(section => initializeIcons(section));
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Mostrar la informacion basado en el tipo
+    const formType = "{{ form_type }}";
+    if (formType) {
+        document.getElementById(formType).style.display = 'block';
+    }
+
+
+    document.querySelectorAll('.submit-answer-button').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const answerForm = this.closest('.answer-form');
+            const textarea = answerForm.querySelector('textarea');
+            const respuesta = textarea.value.trim();
+
+            const formData = new FormData();
+            formData.append('respuesta', respuesta);
+
+            // Enviar los datos en formato JSON
+            fetch('/new_response', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/respuestas'; // Redirigir a la pagina de las respuestas
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al enviar la respuesta. Por favor, inténtalo de nuevo.');
+            });
+        });
+    });
+});
+</script>
+
+
+<!-- Conexion con los archivos JS externos -->
+<script src="{{ url_for('static', filename='js/reglasComunitarias.js') }}"></script>
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+<script src="{{ url_for('static', filename='js/responder.js') }}"></script>
+
+</body>
+</html>

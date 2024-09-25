@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es Sostenibilidad? - Información y Ventajas</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sostenibilidad.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    
+</head>
+<body>
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<div class="sostenibilidad-container">
+    <section id="definicion">
+        <h2>Definición de Sostenibilidad</h2>
+        <p>La sostenibilidad se refiere a la capacidad de satisfacer las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades (Brundtland, 1987).</p>
+        <p>La sostenibilidad abarca tres pilares fundamentales: ambiental, social y económico.</p>
+    </section>
+
+    <section id="empresas">
+        <h2>Sostenibilidad en las <a href="{{url_for('ep')}}">Empresas </a></h2>
+        <p>En el ámbito <a href="{{url_for('ep')}}"> empresarial</a>, la sostenibilidad implica integrar prácticas que minimicen el impacto ambiental y social de las operaciones, al tiempo que generen beneficios económicos a largo plazo (UN Global Compact, 2000).</p>
+    </section>
+
+    <section id="vida-diaria">
+        <h2>Sostenibilidad en la Vida Diaria</h2>
+        <p>La sostenibilidad en la vida cotidiana incluye acciones como reducir el consumo de energía, reciclar materiales y utilizar transporte sostenible, contribuyendo así a la conservación de recursos naturales (Green, 2008).</p>
+    </section>
+
+    <section id="ventajas">
+        <h2>Ventajas de la Sostenibilidad</h2>
+        <ul>
+            <li>Reduce el impacto ambiental negativo.</li>
+            <li>Promueve el uso eficiente de recursos.</li>
+            <li>Mejora la reputación corporativa y la relación con los stakeholders (Porter & Kramer, 2011).</li>
+        </ul>
+    </section>
+
+    <section id="produccion">
+        <h2>Producción Sostenible</h2>
+        <p>La producción sostenible busca minimizar los residuos, reducir las emisiones y optimizar el uso de recursos en los procesos industriales, siguiendo principios de ecoeficiencia (World Business Council for Sustainable Development, 1992).</p>
+    </section>
+
+    <section id="agricultura">
+        <h2>Agricultura Sostenible</h2>
+        <p>La agricultura sostenible se centra en practicar métodos que protejan la biodiversidad, el suelo y los recursos hídricos, al tiempo que aseguren la viabilidad económica de los agricultores (FAO, 1995).</p>
+    </section>
+
+    <section id="referencias">
+        <h2>Referencias</h2>
+        <ul>
+            <li>Brundtland, G. (1987). Report of the World Commission on Environment and Development: Our Common Future.</li>
+            <li>UN Global Compact. (2000). United Nations Global Compact: Principles.</li>
+            <li>Green, M. (2008). Sustainability in everyday life. Green Publishers.</li>
+            <li>Porter, M. E., & Kramer, M. R. (2011). Creating shared value. Harvard Business Review.</li>
+            <li>World Business Council for Sustainable Development. (1992). Eco-efficiency: Creating more value with less impact.</li>
+            <li>Food and Agriculture Organization of the United Nations (FAO). (1995). Sustainable Agriculture: Towards a common vision.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 EcoWeb Dves. Todos los derechos reservados</p>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

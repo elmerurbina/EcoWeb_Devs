@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte Sostenible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/accionesMitigacion.css') }}">
+</head>
+<body>
+    <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+    
+    <main>
+        <section id="content">
+            <h2>Transporte Sostenible</h2>
+            <p><i class="fas fa-bus"></i> Promover el transporte público, el carpooling y el uso de vehículos eléctricos.</p>
+            <p>El transporte sostenible es esencial para reducir las emisiones de gases de efecto invernadero y mejorar la calidad del aire. La promoción del transporte público, el carpooling y el uso de vehículos eléctricos son estrategias clave para lograr un sistema de transporte más sostenible y eficiente.</p>
+            <p>El transporte público, como autobuses, trenes y tranvías, puede transportar a un gran número de personas con menos energía y emisiones por persona en comparación con los vehículos privados. Mejorar la infraestructura del transporte público y aumentar su accesibilidad y eficiencia puede incentivar a más personas a utilizar estos servicios en lugar de depender de sus automóviles.</p>
+            <p>El carpooling, o compartir coche, es otra forma efectiva de reducir el número de vehículos en la carretera y, por lo tanto, disminuir las emisiones de gases de efecto invernadero. Plataformas y aplicaciones que facilitan el carpooling han ganado popularidad, permitiendo a las personas coordinar viajes compartidos de manera fácil y segura.</p>
+            <p>El uso de vehículos eléctricos (VE) está aumentando a medida que las tecnologías de baterías mejoran y los costos disminuyen. Los VE no emiten gases de escape y pueden funcionar con electricidad generada a partir de fuentes renovables, lo que los convierte en una opción de transporte mucho más limpia. Además, los VE requieren menos mantenimiento que los vehículos de combustión interna, lo que puede resultar en ahorros a largo plazo.</p>
+            <p>Para fomentar el uso de vehículos eléctricos, es crucial desarrollar una infraestructura de carga adecuada. Esto incluye la instalación de estaciones de carga en áreas urbanas, suburbanas y rurales, así como en carreteras y autopistas. Políticas gubernamentales que ofrezcan incentivos para la compra de VE y subsidios para la instalación de estaciones de carga pueden acelerar la adopción de esta tecnología.</p>
+            <p>El transporte activo, como caminar y andar en bicicleta, también desempeña un papel importante en un sistema de transporte sostenible. Invertir en infraestructura para peatones y ciclistas, como carriles bici seguros y zonas peatonales, puede fomentar estos modos de transporte no motorizados, reduciendo aún más las emisiones y mejorando la salud pública.</p>
+            <p>El transporte de mercancías también puede beneficiarse de prácticas sostenibles. Optimizando las rutas de transporte, utilizando vehículos de bajo consumo y promoviendo el uso de ferrocarriles y barcos en lugar de camiones para el transporte de larga distancia, se pueden reducir significativamente las emisiones del sector logístico.</p>
+            <p>En conclusión, promover el transporte sostenible es esencial para mitigar el cambio climático y mejorar la calidad del aire. Las estrategias como el fomento del transporte público, el carpooling, el uso de vehículos eléctricos y el transporte activo pueden contribuir a un sistema de transporte más limpio y eficiente. La inversión en infraestructura y políticas favorables son cruciales para apoyar esta transición hacia un transporte más sostenible.</p>
+        </section>
+    </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

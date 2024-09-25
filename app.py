@@ -1,18 +1,13 @@
 # Main file to manage all the routes
 # Packages and modules import
 from flask import Flask, render_template
-from flask_login import LoginManager
-from controllers.authentication_controller import (
-    register, login,nuevasCredenciales, recuperarCuenta)
+from flask_login import LoginManager, login_required
+from datetime import timedelta
+from controllers.authentication_controller import AuthenticationController
 from controllers.publications_controller import publicaciones
 from controllers.campaigns_controller import campanias, new_campaign, add_comment
 from controllers.denounce_controller import denuncia, denunciaForm, submit_denuncia
-from controllers.forum_controller import (
-    foro, new_debate, edit_debate, edit_question,
-    delete_debate_route, new_question,
-    delete_question_route, new_thread, respuestas,
-    edit_thread, new_response, delete_thread_route
-)
+from controllers.forum_controller import ForumController
 from settings import Config
 from controllers.submit_publicationController import (
     submit_publication, dislike_publication, like_publication)
@@ -35,6 +30,10 @@ app.config.from_object(Config)
 login_manager = LoginManager()
 # Initialize the application of with the login manager
 login_manager.init_app(app)
+# Instantiate the AuthenticationController
+auth_controller = AuthenticationController(app)
+# Users will be remembered for 30 days
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
 
 
 # Function to load the user id
@@ -50,29 +49,25 @@ def unauthorized(error):
 
 
 # Route of the main page
-@app.route('/verdeNica')
-def verdeNica():
+@app.route('/verde_nica')
+def verde_nica():
     return render_template('index.html')
 
 
 # Routes to manage the user's profile
-app.add_url_rule('/profile', 'profile', profile)
+#app.add_url_rule('/profile', 'profile', profile)
 app.add_url_rule('/logout', 'logout', logout)
 app.add_url_rule('/edit_profile', 'edit_profile',
                  edit_profile, methods=['GET', 'POST'])
 app.add_url_rule('/delete_profile', 'delete_profile',
                  delete_profile, methods=['POST'])
 
-
 # Routes to manage the authentication system
-app.add_url_rule('/register', 'register',
-                 register, methods=['GET', 'POST'])
-app.add_url_rule('/login', 'login',
-                 login, methods=['GET', 'POST'])
-app.add_url_rule('/recuperarCuenta',
-                 'recuperarCuenta', recuperarCuenta)
-app.add_url_rule('/nuevasCredenciales',
-                 'nuevasCredenciales', nuevasCredenciales)
+app.add_url_rule('/register', 'register', auth_controller.register, methods=['GET', 'POST'])
+app.add_url_rule('/login', 'login', auth_controller.login, methods=['GET', 'POST'])
+app.add_url_rule('/campaign', 'campaign', auth_controller.campaign, methods=['GET'])
+app.add_url_rule('/recover_account', 'recover_account', auth_controller.recover_account, methods=['GET'])
+app.add_url_rule('/new_credentials', 'new_credentials', auth_controller.new_credentials, methods=['GET'])
 
 
 # Routes for Campaigns management
@@ -100,64 +95,61 @@ app.add_url_rule('/denunciaForm', 'denunciaForm', denunciaForm)
 app.add_url_rule('/submit_denuncia', 'submit_denuncia',
                  submit_denuncia, methods=['POST'])
 
+'''
+    The section of the Forum is divided into three categories:
+    Debates: intended for opinions on a specific topic.
+    Questions: intended for creating specific questions.
+    Threads: for people who want to talk openly about a topic.
+'''
+# Create an instance of ForumController
+forum_controller = ForumController()
 
-''' 
-    The section of the Forum is divided in three categories:
-    Debates: which is intended for opinions in a specific topic.
-    Questions: Intended for creating specific questions.
-    Thread: Is to people who want to talk openly about a topic.
-'''
-# Main template of the forum
-app.add_url_rule('/foro', 'foro', foro)
-# Route to add a new debate
-app.add_url_rule('/new_debate', 'new_debate', new_debate, methods=['POST'])
-# Route to edit a debate
-app.add_url_rule('/edit_debate/<int:debate_id>', 'edit_debate',
-                 edit_debate, methods=['GET', 'POST'])
-# Route to delete debate
+# Add all the routes using app.add_url_rule
+app.add_url_rule('/forum', 'forum', login_required(forum_controller.forum))
+app.add_url_rule('/responses', 'responses', login_required(forum_controller.responses))
+
+# Debate-related routes
+app.add_url_rule('/new_debate', 'new_debate',
+                 login_required(forum_controller.new_debate), methods=['POST'])
+app.add_url_rule('/edit_debate/<int:debate_id>',
+                 'edit_debate', login_required(forum_controller.edit_debate), methods=['GET', 'POST'])
 app.add_url_rule('/delete_debate/<int:debate_id>',
-                 'delete_debate_route', delete_debate_route, methods=['POST'])
-'''
-    The next three routes are for creating,
-    editing and deleting a question.
-'''
+                 'delete_debate', login_required(forum_controller.delete_debate), methods=['POST'])
+
+# Question-related routes
 app.add_url_rule('/new_question', 'new_question',
-                 new_question, methods=['POST'])
+                 login_required(forum_controller.new_question), methods=['POST'])
 app.add_url_rule('/edit_question/<int:question_id>',
-                 'edit_question', edit_question, methods=['GET', 'POST'])
+                 'edit_question', login_required(forum_controller.edit_question), methods=['GET', 'POST'])
 app.add_url_rule('/delete_question/<int:question_id>',
-                 'delete_question_route', delete_question_route,
-                 methods=['POST'])
-'''
-    The next three routes are for creating,
-    editing and deleting a conversation thread.
-'''
-app.add_url_rule('/new_thread', 'new_thread',
-                 new_thread, methods=['POST'])
+                 'delete_question', login_required(forum_controller.delete_question), methods=['POST'])
+
+# Thread-related routes
+app.add_url_rule('/new_thread',
+                 'new_thread', login_required(forum_controller.new_thread), methods=['POST'])
 app.add_url_rule('/edit_thread/<int:thread_id>',
-                 'edit_thread', edit_thread,
-                 methods=['GET', 'POST'])
+                 'edit_thread', login_required(forum_controller.edit_thread), methods=['GET', 'POST'])
 app.add_url_rule('/delete_thread/<int:thread_id>',
-                 'delete_thread_route',
-                 delete_thread_route, methods=['POST'])
-# Route to add a new response or answer
-app.add_url_rule('/new_response', 'new_response',
-                 new_response, methods=['POST'])
-# Route to see the existing answers
-app.add_url_rule('/respuestas', 'respuestas', respuestas)
+                 'delete_thread', login_required(forum_controller.delete_thread), methods=['POST'])
+
+# Profile route
+app.add_url_rule('/profile', 'profile', login_required(forum_controller.profile))
+
+
 '''
     The next three routes are to get all the debates, questions,
     and threads from the database and display them on the main template.
 '''
-app.add_url_rule('/get_all_debates',
-                 'get_all_debates', get_all_debates())
-app.add_url_rule('/get_all_questions',
-                 'get_all_questions', get_all_questions())
-app.add_url_rule('/get_all_threads',
-                 'get_all_threads', get_all_threads())
-''' 
+app.add_url_rule('/get_all_debates', 'get_all_debates',
+                 get_all_debates)
+app.add_url_rule('/get_all_questions', 'get_all_questions',
+                 get_all_questions)
+app.add_url_rule('/get_all_threads', 'get_all_threads',
+                 get_all_threads)
+
+'''
     The next three routes are for getting the forum content,
-    based on the id to associate it with an answer when it's added.
+    based on the ID to associate it with an answer when it's added.
 '''
 app.add_url_rule('/get_debate_by_id/<int:debate_id>',
                  'get_debate_by_id', get_debate_by_id)
@@ -165,7 +157,6 @@ app.add_url_rule('/get_question_by_id/<int:question_id>',
                  'get_question_by_id', get_question_by_id)
 app.add_url_rule('/get_thread_by_id/<int:thread_id>',
                  'get_thread_by_id', get_thread_by_id)
-
 
 '''
 This route is the template to loading the sustainable products.
@@ -185,7 +176,7 @@ app.add_url_rule('/recognize', 'recognize', recognize, methods=['POST'])
 # Ruta de la interfaz de empresas sostenibles
 @app.route('/ps')
 def ps():
-    return render_template('productosSostenibles.html')
+    return render_template('sustainable_products.html')
 
 
 @app.route('/documentacion')
@@ -196,7 +187,7 @@ def documentacion():
 # Ruta de la interfaz de Biodiversidad en Nicaragua
 @app.route('/biodiversidad')
 def biodiversidad():
-    return render_template('biodiversidad.html')
+    return render_template('biodiversity.html')
 
 
 
@@ -205,11 +196,11 @@ def biodiversidad():
 
 @app.route('/deforestacion')
 def deforestacion():
-    return render_template('deforestacion.html')
+    return render_template('deforestation.html')
 
 @app.route('/gei')
 def gei():
-    return render_template('GEI.html')
+    return render_template('gei.html')
 
 @app.route('/cf')
 def cf():
@@ -221,7 +212,7 @@ def dcp():
 
 @app.route('/anm')
 def anm():
-    return render_template('ANM.html')
+    return render_template('anm.html')
 
 
 @app.route('/alpp')
@@ -230,23 +221,23 @@ def alpp():
 
 @app.route('/sequias')
 def sequias():
-    return render_template('sequias.html')
+    return render_template('droughts.html')
 
 @app.route('/inundaciones')
 def inundaciones():
-    return render_template('inundaciones.html')
+    return render_template('inundations.html')
 
 @app.route('/ayuda')
 def ayuda():
-    return render_template('ayuda.html')
+    return render_template('help.html')
 
 @app.route('/sostenibilidad')
 def sostenibilidad():
-    return render_template('sostenibilidad.html')
+    return render_template('sustainability.html')
 
 @app.route('/rs')
 def rs():
-    return render_template('recursosNaturales.html')
+    return render_template('natural_resources.html')
 
 @app.route('/energiasRenovable')
 def energiasRenovables():
@@ -254,39 +245,39 @@ def energiasRenovables():
 
 @app.route('/eficienciaEnergetica')
 def eficienciaEnergetica():
-    return render_template('eficienciaEnergetica.html')
+    return render_template('energy_efficiency.html')
 
 @app.route('/transporteSostenible')
 def transporteSostenible():
-    return render_template('transporteSostenible.html')
+    return render_template('sustainable_transport.html')
 
 @app.route('/agriculturaSostenible')
 def agriculturaSostenible():
-    return render_template('agricultura.html')
+    return render_template('agriculture.html')
 
 @app.route('/ecosistemas')
 def ecosistemas():
-    return render_template('ecosistemas.html')
+    return render_template('ecosystems.html')
 
 @app.route('/dietasSostenibles')
 def dietasSostenibles():
-    return render_template('dietasSostenible.html')
+    return render_template('sustainable_diet.html')
 
 @app.route('/reciclaje')
 def reciclaje():
-    return render_template('reciclaje.html')
+    return render_template('recycle.html')
 
 @app.route('/politicasAmbientales')
 def politicasAmbientales():
-    return render_template('politicasAmbientales.html')
+    return render_template('environment_policies.html')
 
 @app.route('/tecnologias')
 def tecnologias():
-    return render_template('tecnologia.html')
+    return render_template('technology.html')
 
 @app.route('/concienciaPublica')
 def concienciaPublica():
-    return render_template('concienciaPublica.html')
+    return render_template('public_awareness.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

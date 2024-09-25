@@ -1,12 +1,17 @@
 # Configuraciones principales
 
 import secrets
+from flask import Flask
 from mysql.connector import Error
 import mysql.connector
+
+app = Flask(__name__)
 
 # Generar clave secreta
 class Config:
     SECRET_KEY = secrets.token_hex(50)
+
+
 
 # Crear conexion con la base de datos
 def create_connection():
