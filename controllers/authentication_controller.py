@@ -66,7 +66,7 @@ class AuthenticationController:
 
                 if next_page == 'profile':
                     return redirect(url_for('profile'))  # Redirect to profile route
-                elif next_page == 'campania_form':
+                elif next_page == 'campaniaForm':
                     return redirect(url_for('campaign', form_type=next_page))
                 else:
                     return redirect(url_for('forum', form_type=next_page))  # Default to forum
@@ -82,7 +82,7 @@ class AuthenticationController:
     def campaign(self):
         """Renders the campaign interface."""
         form_type = request.args.get('form_type', '')
-        return render_template('campania.html', form_type=form_type)
+        return render_template('campaigns.html', form_type=form_type)
 
     def recover_account(self):
         """Renders the account recovery interface."""

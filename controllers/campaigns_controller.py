@@ -37,7 +37,7 @@ def new_campaign():
         flash(f'Error al crear la campaña: {str(e)}', 'error')
 
 # After creating the campaign load the main interface with all the campaigns
-    return redirect(url_for('campanias'))
+    return redirect(url_for('campaigns'))
 
 # Handle the comments
 @app.route('/add_comment', methods=['POST'])
