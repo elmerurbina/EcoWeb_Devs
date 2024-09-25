@@ -62,7 +62,7 @@ class ForumController:
         except Exception as e:
             flash(f'Error al agregar el debate: {str(e)}', 'error')
 
-        return redirect(url_for('foro'))
+        return redirect(url_for('forum'))
 
     @app.route('/edit_debate/<int:debate_id>', methods=['GET', 'POST'])
     @login_required

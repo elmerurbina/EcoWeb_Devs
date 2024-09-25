@@ -6,7 +6,7 @@ from datetime import timedelta
 from controllers.authentication_controller import AuthenticationController
 from controllers.publications_controller import publications
 from controllers.campaigns_controller import campaigns, new_campaign, add_comment
-from controllers.denounce_controller import denounce, denounce_form, submit_denuncia
+from controllers.denounce_controller import DenounceApp
 from controllers.forum_controller import ForumController
 from settings import Config
 from controllers.submit_publication_controller import (
@@ -94,12 +94,14 @@ app.add_url_rule('/dislike/<int:publication_id>',
                  'dislike_publication', dislike_publication,
                  methods=['POST'])
 
+denounce_controller = DenounceApp()
 
 # Routes to manage the denounces interfaces
-app.add_url_rule('/denounce', 'denounce', denounce)
-app.add_url_rule('/denounce_form', 'denounce_form', denounce_form)
+app.add_url_rule('/denounce', 'denounce', denounce_controller.denounce)
+app.add_url_rule('/denounce_form', 'denounce_form',
+                 denounce_controller.denounce_form)
 app.add_url_rule('/submit_denuncia', 'submit_denuncia',
-                 submit_denuncia, methods=['POST'])
+                 denounce_controller.submit_denuncia, methods=['POST'])
 
 '''
     The section of the Forum is divided into three categories:

@@ -31,15 +31,15 @@ def new_campaign():
     try:
         # Save the information on the database using stored procedures
         save_campaign(nombre_campania, descripcion_campania, fecha_inicio, fecha_fin, presupuesto)
-        flash('Campaña creada exitosamente', 'success') #  Mostrar mensaje de validacion
+        flash('Campaña creada exitosamente', 'success')
     except Exception as e:
         # Si ocurre un error mostrar mensaje
         flash(f'Error al crear la campaña: {str(e)}', 'error')
 
-# Luego de crear la campania redirigir a la interfaz principal
+# After creating the campaign load the main interface with all the campaigns
     return redirect(url_for('campanias'))
 
-# Ruta para agregar comentarios
+# Handle the comments
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
     if request.method == 'POST':
