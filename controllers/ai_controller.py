@@ -6,7 +6,7 @@ from PIL import Image
 from flask import request, jsonify
 import imagehash
 from io import BytesIO
-from models.db import create_connection
+from models.ai_model import create_connection
 
 # Cargar el dataset
 species_data = []

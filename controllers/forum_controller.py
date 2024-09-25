@@ -2,7 +2,7 @@
 
 # Importación de librerías y módulos
 from flask import Flask, render_template, request, url_for, redirect, flash
-from models.foroModel import (
+from models.forum_model import (
     ForoDebate, ForoHilo, ForoPregunta, get_all_debates, get_all_questions, get_all_threads,
     save_response, get_respuestas, create_connection,
     get_debate_by_id, update_debate, delete_debate,
@@ -10,7 +10,7 @@ from models.foroModel import (
     get_thread_by_id, update_thread, delete_thread
 )
 from settings import Config
-from models.autenticacionModel import User
+from models.authentication_model import User
 from flask_login import login_required, current_user, LoginManager  # Importamos para manejar autenticación
 
 app = Flask(__name__)

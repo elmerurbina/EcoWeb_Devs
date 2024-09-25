@@ -3,10 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, LoginManager, login_user, logout_user
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
-from models.profileModel import update_profile, delete_user
+from models.profile_model import update_profile, delete_user
 from settings import Config, create_connection
 from mysql.connector import Error
-from models.autenticacionModel import User
+from models.authentication_model import User
 
 
 app = Flask(__name__)

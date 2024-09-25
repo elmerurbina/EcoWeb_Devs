@@ -1,7 +1,7 @@
-# autenticacion.py
+# authentication_controller.py
 from flask import Blueprint, render_template, request, redirect, url_for, flash, Flask
 from flask_login import login_user
-from models.autenticacionModel import register_user, check_login, User
+from models.authentication_model import register_user, check_login, User
 from settings import Config
 
 
