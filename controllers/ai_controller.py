@@ -56,6 +56,7 @@ class SpeciesRecognizer:
         except Exception as e:
             print(f"Error recognizing species: {e}")
 
+        # If there are no images like the provided on the dataset show a default message
         return {
             'name': 'Lo sentimos, esta imagen no está dentro de nuestro dataset!',
             'description': 'No hay descripción disponible'
