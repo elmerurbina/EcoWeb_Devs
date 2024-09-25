@@ -10,15 +10,17 @@ body {
 
 
 #et-top-navigation {
-    position: relative;
-    background-color: #FFFFFF; /* Adjust based on your design */
+    position: fixed;
+    width: 100%;
+    margin-top: -15px;
+    background-color: #FFFFFF;
     padding: 10px;
 }
 
 .hamburger {
     cursor: pointer;
     font-size: 24px;
-    color: #007bff; /* Change color as needed */
+    color: #007bff;
 }
 
 #menu-items {

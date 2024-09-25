@@ -7,8 +7,10 @@ body {
 
 
 #et-top-navigation {
-    position: relative;
-    background-color: #FFFFFF; /* Adjust based on your design */
+    position: fixed;
+    background-color: #FFFFFF;
+    margin-top: -20px;
+    width: 100%;
     padding: 10px;
 }
 
@@ -37,6 +39,13 @@ body {
     text-decoration: none;
     color: #000000; /* Link color */
 }
+
+
+#menu-items li a:hover {
+    color: #27ae60;
+
+}
+
 
 .hidden {
     display: none;

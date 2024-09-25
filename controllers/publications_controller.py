@@ -55,8 +55,8 @@ def submit_publication():
     return render_template('new_publication.html')
 
 # Ruta para la interfaz principal
-@app.route('/publicaciones')
-def publicaciones():
+@app.route('/publications')
+def publications():
     conn = create_connection()
     if conn is None:
         return jsonify({'error': 'Database connection failed'}), 500

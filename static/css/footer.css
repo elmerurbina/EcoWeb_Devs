@@ -29,7 +29,12 @@ footer {
     margin-bottom: 15px;
 }
 
-.footer-section p, .footer-section ul, .footer-section li {
+.footer-section p {
+    font-size: 0.7rem;
+    color: #000000;
+}
+
+.footer-section ul, .footer-section li {
     font-size: 14px;
     color: #000000;
 }
@@ -49,8 +54,8 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color: #fff;
-    text-decoration: underline;
+    color: #27ae60;
+    text-decoration: none;
 }
 
 .footer-section .social-icons {
@@ -66,7 +71,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #ddd;
+    color: #27ae60;
 }
 
 .footer-bottom {
