@@ -20,7 +20,7 @@ def save_denuncia(titulo, descripcion, evidencia_filename, ubicacion, denunciado
 
 
 
-# Funcion para obtener las denuncias guardadas en la base de datos
+# Obtain all the existing denounces on the database
 def get_all_denuncias():
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)

@@ -1,7 +1,7 @@
 from settings import create_connection
 from mysql.connector import Error
 
-# Funciones para debates
+# Function to load the debates with the user id
 def get_debate_by_id(debate_id):
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)
@@ -20,12 +20,14 @@ def get_debate_by_id(debate_id):
 
 
 
-def update_debate(debate_id, titulo, descripcion, punto_de_vista, otras_observaciones, autor_id):
+def update_debate(debate_id, titulo, descripcion,
+                  punto_de_vista, otras_observaciones, autor_id):
     connection = create_connection()
     cursor = connection.cursor()
     try:
         query = "CALL UpdateDebate(%s, %s, %s, %s, %s, %s)"
-        cursor.execute(query, (debate_id, titulo, descripcion, punto_de_vista, otras_observaciones, autor_id))
+        cursor.execute(query, (debate_id, titulo,
+                               descripcion, punto_de_vista, otras_observaciones, autor_id))
         connection.commit()
         print("Debate updated successfully")
     except Error as e:
@@ -172,12 +174,14 @@ def delete_thread(thread_id):
 # Actualizar las clases para incluir autor_id
 class ForoDebate:
     @staticmethod
-    def save(titulo, descripcion, punto_de_vista, otras_observaciones='', autor_id=None):
+    def save(titulo, descripcion, punto_de_vista,
+             otras_observaciones='', autor_id=None):
         connection = create_connection()
         cursor = connection.cursor()
         try:
             query = "CALL SaveDebate(%s, %s, %s, %s, %s)"
-            cursor.execute(query, (titulo, descripcion, punto_de_vista, otras_observaciones, autor_id))
+            cursor.execute(query, (titulo, descripcion,
+                                   punto_de_vista, otras_observaciones, autor_id))
             connection.commit()
             print("Debate saved successfully")
         except Error as e:

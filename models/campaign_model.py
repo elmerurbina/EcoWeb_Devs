@@ -72,7 +72,7 @@ def get_comments_for_campaign(campaign_id):
 
 
 
-# Funcion para guardar los comentarios en la base de datos
+# Function to save the comment on the database
 def save_comment(campaign_id, comment_text):
     connection = create_connection()
     cursor = connection.cursor()
