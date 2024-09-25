@@ -1,0 +1,49 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Acerca de Nosotros</h4>
+                <p>
+                    <b>VerdeNica</b> es una plataforma innovadora diseñada para empoderar a los nicaragüenses en
+                    la lucha contra el cambio climático. En un país donde la información y las herramientas para
+                    enfrentar este desafío son limitadas, VerdeNica ofrece un espacio integral para la educación
+                    y la acción comunitaria. La plataforma combina tecnología avanzada con un enfoque
+                    centrado en la comunidad, proporcionando acceso a información verificada y fomentando la
+                    participación ciudadana.
+                </p>
+            </div>
+            <div class="footer-section links">
+                <h4>Links de Interes</h4>
+                <ul>
+                    <li><a href="" class="view-terms-link">Terminos de Uso</a></li>
+                    <li><a href="">Privacidad </a></li>
+                    <li><a href="">Contactanos</a></li>
+                    <li><a href="{{url_for ('documentacion')}}">Manual de Uso</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h4>Siguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 VerdeNica. All rights reserved.</p>
+        </div>
+    </div>
+
+     <script src="{{ url_for('static', filename='js/condition-terms.js') }}"></script>
+</footer>
+</html>

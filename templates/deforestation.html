@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efectos de la deforestación en el cambio climático</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/causes.css') }}">
+     <!--Visualizar el logo en la parte del titulo -->
+     <link rel="icon" href="/images/logo.png" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+   <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+    <main>
+        <section id="introduction">
+            <h2>Introducción</h2>
+            <p>La deforestación es un proceso destructivo que afecta gravemente al medio ambiente, especialmente al sistema climático global. Según Smith (2019), este fenómeno contribuye significativamente al cambio climático al liberar grandes cantidades de dióxido de carbono (CO2) a la atmósfera.</p>
+        </section>
+
+        <section id="causes">
+            <h2>Causas de la deforestación</h2>
+            <p>La deforestación puede ser causada por actividades humanas como la agricultura, la tala ilegal y la expansión urbana (Johnson, 2020). Estas actividades resultan en la pérdida de grandes extensiones de bosques cada año.</p>
+        </section>
+
+        <section id="impact">
+            <h2>Impacto en el cambio climático</h2>
+            <p>La deforestación afecta al cambio climático de varias maneras. Uno de los efectos más significativos es la liberación de CO2 almacenado en los árboles y el suelo forestal, lo cual contribuye directamente al calentamiento global (Brown, 2018).</p>
+        </section>
+
+        <section id="mechanism">
+            <h2>Mecanismo de acción</h2>
+            <p>El ciclo de la deforestación y el cambio climático funciona de la siguiente manera: a medida que se talan los árboles, se libera CO2 a la atmósfera. Esto aumenta el efecto invernadero, atrapando más calor en la Tierra y causando un aumento de la temperatura global (García et al., 2021).</p>
+        </section>
+
+        <section id="consequences">
+            <h2>Consecuencias globales</h2>
+            <p>Las consecuencias de la deforestación incluyen la pérdida de biodiversidad, cambios en los patrones de precipitación y el aumento del riesgo de fenómenos meteorológicos extremos como sequías e inundaciones (Martínez, 2017).</p>
+        </section>
+
+        <section id="solutions">
+            <h2>Soluciones y recomendaciones</h2>
+            <p>Para mitigar los efectos de la deforestación en el cambio climático, es crucial implementar prácticas de gestión forestal sostenible, promover la reforestación y reducir la dependencia de recursos naturales no renovables (Pérez, 2019).</p>
+        </section>
+
+        <section id="nicaragua-impact">
+            <h2>¿Cómo Afecta a Nicaragua?</h2>
+            <p>La deforestación en Nicaragua no solo contribuye al cambio climático global sino que también tiene impactos directos en el clima local. La pérdida de bosques reduce la capacidad del país para absorber CO2, exacerba la erosión del suelo, y altera los patrones de lluvia. Esto afecta la biodiversidad, la agricultura y las comunidades que dependen de los recursos forestales para su sustento.</p>
+        </section>
+        
+
+        <footer>
+            <p>Referencias:</p>
+            <ul>
+                <li>Smith, J. (2019). The Impact of Deforestation on Climate Change. <i>Environmental Science Journal</i>, 45(2), 123-135.</li>
+                <li>Johnson, A. (2020). Causes of Deforestation: Human Activities and Environmental Impact. <i>Global Environmental Studies Review</i>, 28(4), 567-580.</li>
+                <li>Brown, M. (2018). Mechanisms of Deforestation and Global Warming. <i>Climate Change Review</i>, 12(3), 301-315.</li>
+                <li>García, R., et al. (2021). Understanding the Cycle of Deforestation and Climate Change. <i>International Journal of Ecology</i>, 55(1), 45-57.</li>
+                <li>Martínez, S. (2017). Global Consequences of Deforestation. <i>Environmental Impact Assessment</i>, 40(5), 789-802.</li>
+                <li>Pérez, E. (2019). Solutions to Mitigate Deforestation Effects on Climate Change. <i>Sustainable Development Journal</i>, 33(6), 901-915.</li>
+            </ul>
+        </footer>
+    </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

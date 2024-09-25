@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Perfil</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit-profile.css') }}">
+    <title>Respuestas</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responses.css') }}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
 <header id="et-top-navigation" class="et_header_style_left">
     <nav>
         <div class="hamburger" id="hamburger-menu">
@@ -17,7 +16,6 @@
         <ul id="menu-items" class="hidden">
             <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
              <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
-            <li><a href="{{url_for('profile')}}">Volver</a></li>
             <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
              <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
              <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
@@ -30,36 +28,28 @@
         </ul>
     </nav>
 </header>
-
     <div class="container">
-        <h1>Editar Perfil</h1>
+        <h1>Respuestas</h1>
 
-        {% if get_flashed_messages() %}
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
             <div class="flash-messages">
-                {% with messages=get_flashed_messages() %}
-                    {% if messages %}
-                        <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
             </div>
-        {% endif %}
+          {% endif %}
+        {% endwith %}
 
-        <form action="{{ url_for('edit_profile') }}" method="POST" enctype="multipart/form-data">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="{{ user.nombre }}" required>
+        <!-- Display the responses -->
+        <ul>
+            {% for respuesta in respuestas %}
+                <li>{{ respuesta['respuesta'] }}</li>
+            {% endfor %}
+        </ul>
 
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo" value="{{ user.correo }}" required>
-
-            <label for="profile_photo">Foto de perfil (opcional):</label>
-            <input type="file" id="profile_photo" name="profile_photo" accept="image/*">
-
-            <button type="submit">Actualizar Perfil</button>
-        </form>
+        <a href="{{ url_for('foro') }}">Regresar al Foro</a>
     </div>
 
 <script src="{{ url_for('static', filename='js/menu.js') }}"></script>

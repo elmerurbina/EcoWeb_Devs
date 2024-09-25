@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campania - Campania Comunitaria</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campaigns.css') }}">
+    <!-- Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+</head>
+<body>
+
+<header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+
+<div class="campania-container">
+    <section id="docs">
+                   <p>Para obtener más información o guías de navegación para el sistema, ver la <a href="{{url_for ('documentacion')}}">Documentación</a></p>
+    </section>
+
+    <h2>Campaña Comunitaria</h2>
+
+    <div class="prompt-login">
+        <button id="btnCampania" onclick="location.href='{{ url_for('login', next='campaniaForm') }}'">Crear una Nueva Campania</button>
+    </div>
+
+    <!-- Mostrar los mensajes informativos -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- Formulario para crear una nueva campania -->
+    <form id="campaniaForm" action="{{url_for('new_campaign')}}" method="POST" class="campania-form" style="display: none;">
+        <h3>Crear una Nueva Campaña</h3>
+        <section class="campaing">
+        <div class="form-group">
+            <label for="nombre_campania">Nombre de la Campaña:</label>
+            <input type="text" id="nombre_campania" name="nombre_campania" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion_campania">Descripción:</label>
+            <textarea id="descripcion_campania" name="descripcion_campania" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+        </div>
+        <div class="form-group">
+            <label for="presupuesto">Presupuesto: (opcional)</label>
+            <input type="number" id="presupuesto" name="presupuesto">
+        </div>
+        <button type="submit" class="btn-campania">Crear Campaña</button>
+    </form>
+
+</div>
+
+<!-- Seccion para mostrar las campanias que estan guardadas en la base de datos -->
+<section id="campanias" class="campaigns">
+    <h3>Campañas Comunitarias Recientes</h3>
+    <ul>
+        {% for campaign in campaigns %}
+        <li>
+            <h4>{{ campaign.nombre_campania }}</h4>
+            <p>{{ campaign.descripcion_campania }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ campaign.fecha_inicio }}</p>
+            <p><strong>Fecha de Fin:</strong> {{ campaign.fecha_fin }}</p>
+            {% if campaign.presupuesto %}
+            <p><strong>Presupuesto:</strong> {{ campaign.presupuesto }}</p>
+            {% endif %}
+
+            <div class="campaign-actions">
+                <!-- Icono para dar Like -->
+                <a href="#" class="action-icon" id="likeButton"><i class="fas fa-heart"></i> Like</a>
+                <!-- Icono para comentar -->
+                <a href="#" class="action-icon" onclick="toggleCommentForm('{{ campaign.id }}')"><i class="fas fa-comment"></i> Comentar</a>
+                <!-- Icono para seguir la campania -->
+                <a href="#" class="action-icon" id="followButton"><i class="fas fa-user-plus"></i> Seguir</a>
+            </div>
+
+            <!-- Formulario para agregar un nuevo comentario -->
+            <div id="commentForm{{ campaign.id }}" class="comment-form" style="display: none;">
+                <form action="{{ url_for('add_comment') }}" method="POST">
+                    <textarea name="commentText" placeholder="Escribe tu comentario aquí..." rows="4"></textarea>
+                    <button type="submit">Comentar</button>
+                </form>
+            </div>
+
+            <!-- Mostrar los comentarios -->
+            <div class="comments">
+                <h5>Comentarios:</h5>
+                <ul>
+                    {% for comment in campaign.comments %}
+                    <li>{{ comment.comment_text }}</li>
+                    {% endfor %}
+                </ul>
+
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+
+<!-- JavaScript para manejar el tipo de forma y mostrar el formulario de comentar -->
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const formType = "{{ form_type }}";
+        if (formType) {
+            document.getElementById(formType).style.display = 'block';
+        }
+
+        // Handling like button
+        const likeButton = document.getElementById('likeButton');
+        if (likeButton) {
+            likeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+                this.style.color = this.classList.contains('active') ? 'green' : 'initial';
+            });
+        }
+
+        // Handling follow button
+        const followButton = document.getElementById('followButton');
+        if (followButton) {
+            followButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.innerHTML = '<i class="fas fa-user-plus"></i> Siguiendo';
+            });
+        }
+    });
+</script>
+
+<!-- Archivos JavaScript externos -->
+<script src="{{ url_for('static', filename='js/campaigns-form.js') }}"></script>
+<script src="{{url_for('static', filename='js/comments.js')}}"></script>
+<script src="{{url_for('static', filename='js/id.js')}}"></script>
+<script src="{{url_for ('static', filename='js/menu.js')}}"
+
+
+
+</body>
+</html>

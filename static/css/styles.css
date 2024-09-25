@@ -138,7 +138,7 @@ a.main :hover {
     margin-top: 30px;
     height: 100vh;
     overflow: hidden;
-    background-image: url('/static/imagenes/main.png');
+    background-image: url('/static/images/main.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

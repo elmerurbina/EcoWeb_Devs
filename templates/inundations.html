@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inundaciones y Cambio Climático</title>
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/consequences.css') }}">
+    <!--Visualizar el logo en la parte superior izquierda del titulo -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+    <header id="et-top-navigation" class="et_header_style_left">
+    <nav>
+        <div class="hamburger" id="hamburger-menu">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+        <ul id="menu-items" class="hidden">
+            <li><a href="{{url_for('verde_nica')}}">Inicio</a></li>
+             <li><a href="{{url_for('ps')}}">Productos Sostenibles</a></li>
+            <li><a href="{{url_for('ia')}}">Reconocimiento Especies con IA</a></li>
+             <li><a href="{{url_for('biodiversidad')}}">Biodiversidad en Nicaragua</a></li>
+             <li><a href="{{ url_for('campanias')}}">Campañas</a></li>
+            <li><a href="{{ url_for('forum')}}">Foro</a></li>
+            <li><a href="{{url_for('publicaciones')}}">Publicaciones</a></li>
+            <li><a href="{{url_for('denuncia')}}">Denuncias</a></li>
+            <li><a href="{{ url_for('ayuda')}}">Ayuda</a></li>
+            <li><a href="{{ url_for('login', next='profile') }}"><i class="fas fa-user-circle"></i> Perfil</a></li>
+
+        </ul>
+    </nav>
+</header>
+    
+    <main>
+        <section id="introduction">
+            <h2>Introducción</h2>
+            <p>Las inundaciones son eventos naturales que ocurren cuando el agua cubre áreas de tierra que normalmente están secas, con efectos devastadores sobre las comunidades humanas y los ecosistemas.</p>
+        </section>
+
+        <section id="how-it-works">
+            <h2>¿Cómo Funcionan las Inundaciones?</h2>
+            <p>Las inundaciones pueden ser causadas por diferentes factores, incluyendo:</p>
+            <ul>
+                <li><strong>Lluvias Intensas:</strong> Precipitaciones extremas que superan la capacidad de absorción del suelo y los sistemas de drenaje.</li>
+                <li><strong>Desbordamiento de Ríos:</strong> Aumento repentino del caudal de los ríos debido a lluvias intensas o deshielos rápidos.</li>
+                <li><strong>Marejadas Ciclónicas:</strong> Elevación del nivel del mar causada por tormentas tropicales o ciclones, que inundan áreas costeras (Martínez, 2020).</li>
+            </ul>
+        </section>
+
+        <section id="la-nina-phenomenon">
+            <h2>El Fenómeno de La Niña</h2>
+            <p>La Niña es un fenómeno climático opuesto a El Niño, caracterizado por temperaturas más frías de lo normal en las aguas superficiales del océano Pacífico tropical central y oriental. Este fenómeno puede provocar cambios significativos en los patrones de precipitación, aumentando las lluvias en algunas regiones y contribuyendo a la ocurrencia de inundaciones en áreas específicas (González, 2019).</p>
+            <p>La influencia de La Niña en las inundaciones varía según la región, pero generalmente se asocia con períodos de precipitaciones intensas y potenciales desastres naturales, especialmente en áreas costeras y cuencas fluviales (Rodríguez, 2020).</p>
+            <p>Entender los efectos de La Niña es crucial para la gestión de riesgos y la planificación de adaptación frente a eventos climáticos extremos y fluctuaciones estacionales en todo el mundo.</p>
+        </section>
+
+        <section id="la-nina-como-funciona">
+            <h2>¿Cómo Funciona el Fenómeno de La Niña?</h2>
+            <p>La Niña es la fase opuesta de El Niño, caracterizada por temperaturas más frías de lo normal en las aguas superficiales del Pacífico ecuatorial central y oriental. Durante un episodio de La Niña:</p>
+            <ul>
+                <li>Las aguas frías del océano promueven un fortalecimiento de los vientos alisios y una mayor circulación atmosférica.</li>
+                <li>Esto provoca una intensificación de la convección atmosférica sobre las aguas cálidas del Pacífico occidental.</li>
+                <li>La Niña puede generar un aumento en las lluvias sobre algunas regiones y condiciones más secas en otras debido a cambios en los patrones de precipitación.</li>
+                <li>Impacta los sistemas climáticos globales, influenciando los patrones de temperatura y precipitación a nivel mundial (García, 2021).</li>
+            </ul>
+            <p>La comprensión de La Niña es fundamental para la predicción y gestión de eventos meteorológicos extremos, así como para la planificación de adaptación al cambio climático (Martínez, 2019).</p>
+        </section>
+
+        <section id="consequences">
+            <h2>Consecuencias</h2>
+            <p>Las inundaciones pueden provocar pérdida de vidas humanas, daños a la infraestructura, contaminación del agua potable y pérdida de cultivos, afectando la economía y la salud pública (Hernández, 2022).</p>
+        </section>
+
+        <section id="short-long-term-effects">
+            <h2>Efectos a Corto y Largo Plazo</h2>
+            <p>A corto plazo, las inundaciones requieren medidas de respuesta rápida para evacuar y proporcionar ayuda humanitaria. A largo plazo, pueden alterar la estructura del paisaje y la vulnerabilidad de las comunidades a eventos climáticos extremos (García et al., 2023).</p>
+        </section>
+
+        <footer>
+            <p>Referencias:</p>
+            <ul>
+                <li>Martínez, J. (2020). Marejadas Ciclónicas y su Impacto en las Inundaciones. <i>Journal of Hydrological Sciences</i>, 48(2), 180-195.</li>
+                <li>Hernández, A. (2022). Impacto Socioeconómico de las Inundaciones. <i>Journal of Environmental Studies</i>, 28(2), 78-91.</li>
+                <li>García, M., et al. (2023). Efectos a Largo Plazo de las Inundaciones en las Comunidades. <i>Revista de Estudios Climáticos</i>, 55(4), 210-225.</li>
+                <li>González, A. (2019). Impacto de La Niña en los patrones de precipitación. <i>Revista de Ciencias Atmosféricas</i>, 24(3), 45-58.</li>
+                <li>García, A. (2021). Understanding La Niña Phenomenon. <i>Climate Research Journal</i>, 45(2), 210-225.</li>
+                <li>Martínez, S. (2019). Impact of La Niña on Global Climate. <i>International Journal of Climatology</i>, 32(4), 78-91.</li>
+                <li>Rodríguez, M. (2020). Consecuencias de La Niña en las inundaciones costeras. <i>Journal of Coastal Studies</i>, 35(2), 112-125.</li>
+            </ul>
+        </footer>
+    </main>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

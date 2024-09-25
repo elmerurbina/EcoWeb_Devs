@@ -10,6 +10,7 @@
 - **Biodiversidad**: Proporciona contenido sobre la biodiversidad de Nicaragua y permite a los usuarios subir contenido o hacer nuevas publicaciones sobre la biovidersidad o el medio ambiente en Nicaragua.
 - **Campañas**: Permite a los usuarios crear y participar en campañas ambientales.
 - **Foros**: Espacios de discusión donde la comunidad puede compartir ideas y debatir sobre temas relacionados con el medio ambiente.
+- **Reconocimiento de Especies Animales y Plantas Mediante IA**: Espacio impulsado por inteligencia artificial para reconocer una especie ya sea animal o vegetal mediante comparacion de imagenes.
 - **Denuncias**: Los usuarios pueden reportar violaciones ambientales para crear un registro y tomar acción.
 
 ## Requisitos Previos
