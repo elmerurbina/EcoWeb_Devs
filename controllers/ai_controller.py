@@ -86,15 +86,12 @@ def recognize():
         recognizer = SpeciesRecognizer()
         species_info = recognizer.recognize_species(image_data)
 
-        # Save to database
+        # Save to database using the stored procedure
         try:
             conn = create_connection()
             cursor = conn.cursor()
-            cursor.execute(
-                """
-                INSERT INTO ia (filename, image_data, species_name, species_description)
-                VALUES (%s, %s, %s, %s)
-                """,
+            cursor.callproc(
+                'insert_species_data',
                 (file.filename, image_data, species_info.get('name', 'Unknown'),
                  species_info.get('description', 'No description available'))
             )
